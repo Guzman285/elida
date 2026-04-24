@@ -82,61 +82,72 @@ body {
 
 /* ─── SECCIÓN HERO ─── */
 .hero {
+  position: relative;
   background-color: var(--crema);
+  min-height: 90vh;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow: hidden;
   padding-bottom: 60px;
 }
 
-/* Flores: fluye con el documento, alineada a la izquierda */
-.hero-flores-wrap {
-  width: 100%;
-  display: flex;
-  justify-content: flex-start;
-  pointer-events: none;
-  line-height: 0;
-}
-
+/* Flor: absoluta, esquina superior izquierda */
 .hero-flores {
-  width: 72%;
-  max-width: 300px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 68%;
+  max-width: 280px;
   height: auto;
-  display: block;
-  /* Sin máscara, sin degradado — PNG con transparencia natural */
+  pointer-events: none;
+  z-index: 1;
 }
 
-/* Versículo: empieza DESPUÉS de la flor */
+/* Zona superior: misma altura que la flor, versículo a la derecha */
+.hero-top {
+  position: relative;
+  width: 100%;
+  min-height: 300px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding-top: 30px;
+  padding-right: 20px;
+  padding-left: 52%;
+  z-index: 2;
+}
+
 .hero-versiculo {
-  margin-top: 24px;
-  padding: 0 32px;
-  text-align: center;
-  max-width: 380px;
+  text-align: left;
+  max-width: 200px;
+  padding-top: 10px;
 }
 
 .versiculo-texto {
   font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(1rem, 4.2vw, 1.15rem);
+  font-size: clamp(0.85rem, 3.5vw, 1rem);
   font-style: italic;
   color: #6b4035;
-  line-height: 1.8;
-  margin-bottom: 14px;
+  line-height: 1.75;
+  margin-bottom: 10px;
 }
 
 .versiculo-ref {
   font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   letter-spacing: 1px;
   color: var(--terracota);
   font-weight: 400;
 }
 
-/* Nombres */
+/* Nombres: debajo del bloque superior, centrados */
 .hero-nombres {
-  margin-top: 36px;
+  margin-top: 20px;
   text-align: center;
   padding: 0 20px;
+  z-index: 2;
+  position: relative;
 }
 
 .nombres-texto {
