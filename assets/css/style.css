@@ -149,16 +149,13 @@ body {
   align-items: center;
   gap: 24px;
 }
-
 .fecha-invitacion {
-  font-family: "Cormorant Garamond", Georgia, serif;
   font-size: clamp(0.72rem, 3.2vw, 0.85rem);
   letter-spacing: 2px;
   color: var(--texto);
   line-height: 1.8;
   text-transform: uppercase;
 }
-
 .fecha-flechas {
   display: flex;
   flex-direction: column;
@@ -166,17 +163,13 @@ body {
   gap: 2px;
   opacity: 0.85;
 }
-
-/* Fecha grande superpuesta */
 .fecha-display {
-  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   line-height: 1;
   width: 100%;
 }
-
 .fecha-dia {
   font-family: "Cormorant Garamond", Georgia, serif;
   font-size: clamp(7rem, 32vw, 10rem);
@@ -185,78 +178,76 @@ body {
   line-height: 0.85;
   letter-spacing: -2px;
 }
-
+/* Junio separado — más espacio del 13 */
 .fecha-mes {
   font-family: "Great Vibes", cursive;
   font-size: clamp(3rem, 14vw, 4.5rem);
   color: var(--texto);
-  margin-top: -20px;
+  margin-top: 6px;
   position: relative;
   z-index: 2;
 }
-
 .fecha-anio {
   font-family: "Cormorant Garamond", Georgia, serif;
   font-size: clamp(1.8rem, 8vw, 2.5rem);
   font-weight: 600;
   letter-spacing: 6px;
   color: var(--verde);
-  margin-top: 4px;
+  margin-top: 8px;
 }
 
-/* ─── CONTADOR ─── */
+/* ─── CONTADOR ELEGANTE ─── */
 .contador-wrap {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 14px;
   margin-top: 8px;
+  width: 100%;
 }
-
 .contador-label {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 0.85rem;
-  letter-spacing: 4px;
+  font-size: 0.78rem;
+  letter-spacing: 5px;
   color: var(--texto);
   text-transform: uppercase;
+  opacity: 0.7;
 }
-
 .contador {
   display: flex;
-  align-items: flex-start;
-  gap: 4px;
+  align-items: stretch;
+  justify-content: center;
+  gap: 0;
+  width: 100%;
+  max-width: 340px;
 }
-
 .contador-item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 52px;
+  justify-content: center;
+  flex: 1;
+  padding: 0 6px;
 }
-
+/* Divisor vertical entre items */
+.contador-item + .contador-item {
+  border-left: 1px solid rgba(90,122,90,0.25);
+}
 .contador-num {
   font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(2.2rem, 10vw, 3rem);
-  font-weight: 400;
+  font-size: clamp(2.4rem, 11vw, 3.2rem);
+  font-weight: 300;
   color: var(--verde);
   line-height: 1;
   font-variant-numeric: tabular-nums;
-}
-
-.contador-txt {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 0.72rem;
   letter-spacing: 1px;
-  color: var(--texto);
-  margin-top: 4px;
 }
-
-.contador-sep {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(2rem, 9vw, 2.8rem);
-  color: var(--verde);
-  line-height: 1;
-  padding-top: 2px;
+.contador-txt {
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+  color: var(--texto);
+  text-transform: uppercase;
+  margin-top: 6px;
+  opacity: 0.65;
 }
 
 /* ─── CONTENIDO PRINCIPAL ─── */
