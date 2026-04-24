@@ -31,11 +31,7 @@
 
     <!-- SECCIÓN HERO -->
     <section class="hero">
-
-      <!-- Flor: esquina superior IZQUIERDA -->
       <img src="./assets/img/fondos/flor1.png" alt="" class="hero-flores" />
-
-      <!-- Versículo a la DERECHA, a la par de la flor -->
       <div class="hero-top">
         <div class="hero-versiculo">
           <p class="versiculo-texto">
@@ -46,27 +42,64 @@
           <p class="versiculo-ref">1 Corintios 13:4-7</p>
         </div>
       </div>
-
-      <!-- Nombres -->
       <div class="hero-nombres">
         <p class="nombre-linea">Carlos</p>
         <p class="nombre-y">y</p>
         <p class="nombre-linea">Elida</p>
       </div>
-
     </section>
 
     <!-- FOTO DE LOS NOVIOS -->
     <section class="foto-novios-section">
       <div class="foto-novios-wrap">
-        <img
-          src="./assets/img/novios/carlos2.jpeg"
-          alt="Carlos y Elida"
-          class="foto-novios-img"
-          loading="lazy"
-        />
+        <img src="./assets/img/novios/carlos2.jpeg" alt="Carlos y Elida" class="foto-novios-img" loading="lazy" />
         <div class="foto-degradado-top"></div>
         <div class="foto-degradado-bottom"></div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN FECHA Y CONTADOR -->
+    <section class="fecha-section">
+      <p class="fecha-invitacion">CON MUCHA ALEGRÍA LOS INVITAMOS<br>A CELEBRAR EL DÍA MÁS ESPECIAL DE<br>NUESTRAS VIDAS</p>
+
+      <div class="fecha-flechas" aria-hidden="true">
+        <svg viewBox="0 0 40 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="40" height="24">
+          <polyline points="4,4 20,18 36,4" stroke="#b86b52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <svg viewBox="0 0 40 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="40" height="24">
+          <polyline points="4,4 20,18 36,4" stroke="#b86b52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <div class="fecha-display">
+        <span class="fecha-dia">13</span>
+        <span class="fecha-mes">Junio</span>
+        <span class="fecha-anio">2026</span>
+      </div>
+
+      <div class="contador-wrap">
+        <p class="contador-label">FALTAN</p>
+        <div class="contador">
+          <div class="contador-item">
+            <span class="contador-num" id="cnt-dias">00</span>
+            <span class="contador-txt">Días</span>
+          </div>
+          <span class="contador-sep">:</span>
+          <div class="contador-item">
+            <span class="contador-num" id="cnt-horas">00</span>
+            <span class="contador-txt">Horas</span>
+          </div>
+          <span class="contador-sep">:</span>
+          <div class="contador-item">
+            <span class="contador-num" id="cnt-min">00</span>
+            <span class="contador-txt">Min</span>
+          </div>
+          <span class="contador-sep">:</span>
+          <div class="contador-item">
+            <span class="contador-num" id="cnt-seg">00</span>
+            <span class="contador-txt">Seg</span>
+          </div>
+        </div>
       </div>
     </section>
 

@@ -1,7 +1,7 @@
 :root {
   --terracota: #b86b52;
   --terracota-oscuro: #8f4e3d;
-  --terracota-suave: #e8c7b8;
+  --verde: #5a7a5a;
   --crema: #f8efe9;
   --blanco: #fffaf7;
   --texto: #5c3528;
@@ -49,20 +49,14 @@ body {
   transition: background-color 0.3s ease, transform 0.2s ease;
   flex-shrink: 0;
 }
-.music-bar-btn:hover .bar-circle {
-  background-color: rgba(255,255,255,0.15);
-  transform: scale(1.1);
-}
-.music-bar.playing .bar-circle {
-  background-color: rgba(255,255,255,0.2);
-  animation: pulse 1.8s ease-in-out infinite;
-}
+.music-bar-btn:hover .bar-circle { background-color: rgba(255,255,255,0.15); transform: scale(1.1); }
+.music-bar.playing .bar-circle { background-color: rgba(255,255,255,0.2); animation: pulse 1.8s ease-in-out infinite; }
 @keyframes pulse {
   0%, 100% { box-shadow: 0 0 0 0 rgba(255,255,255,0.3); }
   50%       { box-shadow: 0 0 0 5px rgba(255,255,255,0); }
 }
 
-/* ─── SECCIÓN HERO ─── */
+/* ─── HERO ─── */
 .hero {
   position: relative;
   background-color: var(--crema);
@@ -72,20 +66,14 @@ body {
   align-items: center;
   padding-bottom: 0;
 }
-
-/* Flor: absoluta esquina superior IZQUIERDA */
 .hero-flores {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 62%;
-  max-width: 240px;
+  top: 0; left: 0;
+  width: 62%; max-width: 240px;
   height: auto;
   pointer-events: none;
   z-index: 1;
 }
-
-/* Versículo a la DERECHA */
 .hero-top {
   position: relative;
   width: 100%;
@@ -98,38 +86,26 @@ body {
   padding-left: 50%;
   z-index: 2;
 }
-
-.hero-versiculo {
-  text-align: left;
-  max-width: 200px;
-}
-
+.hero-versiculo { text-align: left; max-width: 200px; }
 .versiculo-texto {
-  font-family: "Cormorant Garamond", Georgia, serif;
   font-size: clamp(1rem, 4.2vw, 1.1rem);
   font-style: italic;
   color: #6b4035;
   line-height: 1.75;
   margin-bottom: 8px;
 }
-
 .versiculo-ref {
-  font-family: "Cormorant Garamond", Georgia, serif;
   font-size: 0.9rem;
   letter-spacing: 1px;
   color: var(--terracota);
 }
-
-/* Nombres */
 .hero-nombres {
   margin-top: 16px;
-  margin-bottom: 0;
   text-align: center;
   padding: 0 20px;
   z-index: 2;
   position: relative;
 }
-
 .nombre-linea {
   font-family: "Great Vibes", cursive;
   font-size: clamp(3.8rem, 17vw, 5.5rem);
@@ -137,7 +113,6 @@ body {
   font-weight: 400;
   line-height: 1.05;
 }
-
 .nombre-y {
   font-family: "Great Vibes", cursive;
   font-size: clamp(1.8rem, 8vw, 2.8rem);
@@ -148,48 +123,141 @@ body {
 }
 
 /* ─── FOTO NOVIOS ─── */
-.foto-novios-section {
-  background-color: var(--crema);
-  width: 100%;
-  margin-top: 0;
-}
-
-.foto-novios-wrap {
-  position: relative;
-  width: 100%;
-  line-height: 0;
-}
-
-.foto-novios-img {
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: cover;
-}
-
-/* Degradado superior */
+.foto-novios-section { background-color: var(--crema); width: 100%; margin-top: 0; }
+.foto-novios-wrap { position: relative; width: 100%; line-height: 0; }
+.foto-novios-img { width: 100%; height: auto; display: block; object-fit: cover; }
 .foto-degradado-top {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100px;
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 100px;
   background: linear-gradient(to bottom, var(--crema) 0%, transparent 100%);
-  pointer-events: none;
+  pointer-events: none; z-index: 2;
+}
+.foto-degradado-bottom {
+  position: absolute; bottom: 0; left: 0;
+  width: 100%; height: 100px;
+  background: linear-gradient(to top, var(--crema) 0%, transparent 100%);
+  pointer-events: none; z-index: 2;
+}
+
+/* ─── SECCIÓN FECHA ─── */
+.fecha-section {
+  background-color: var(--crema);
+  text-align: center;
+  padding: 40px 24px 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.fecha-invitacion {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(0.72rem, 3.2vw, 0.85rem);
+  letter-spacing: 2px;
+  color: var(--texto);
+  line-height: 1.8;
+  text-transform: uppercase;
+}
+
+.fecha-flechas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  opacity: 0.85;
+}
+
+/* Fecha grande superpuesta */
+.fecha-display {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1;
+  width: 100%;
+}
+
+.fecha-dia {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(7rem, 32vw, 10rem);
+  font-weight: 300;
+  color: var(--verde);
+  line-height: 0.85;
+  letter-spacing: -2px;
+}
+
+.fecha-mes {
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(3rem, 14vw, 4.5rem);
+  color: var(--texto);
+  margin-top: -20px;
+  position: relative;
   z-index: 2;
 }
 
-/* Degradado inferior */
-.foto-degradado-bottom {
-  position: absolute;
-  bottom: 0; left: 0;
-  width: 100%;
-  height: 100px;
-  background: linear-gradient(to top, var(--crema) 0%, transparent 100%);
-  pointer-events: none;
-  z-index: 2;
+.fecha-anio {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.8rem, 8vw, 2.5rem);
+  font-weight: 600;
+  letter-spacing: 6px;
+  color: var(--verde);
+  margin-top: 4px;
+}
+
+/* ─── CONTADOR ─── */
+.contador-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.contador-label {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 0.85rem;
+  letter-spacing: 4px;
+  color: var(--texto);
+  text-transform: uppercase;
+}
+
+.contador {
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.contador-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 52px;
+}
+
+.contador-num {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2.2rem, 10vw, 3rem);
+  font-weight: 400;
+  color: var(--verde);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.contador-txt {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 0.72rem;
+  letter-spacing: 1px;
+  color: var(--texto);
+  margin-top: 4px;
+}
+
+.contador-sep {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2rem, 9vw, 2.8rem);
+  color: var(--verde);
+  line-height: 1;
+  padding-top: 2px;
 }
 
 /* ─── CONTENIDO PRINCIPAL ─── */
-.main-content {
-  padding: 20px;
-}
+.main-content { padding: 20px; }
