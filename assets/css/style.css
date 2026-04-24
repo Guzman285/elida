@@ -82,9 +82,7 @@ body {
 
 /* ─── SECCIÓN HERO ─── */
 .hero {
-  position: relative;
   background-color: var(--crema);
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -92,37 +90,38 @@ body {
   padding-bottom: 60px;
 }
 
-/* Flores esquina superior izquierda */
-.hero-flores {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 75%;
-  max-width: 320px;
-  height: auto;
-  object-fit: cover;
-  object-position: center;
+/* Flores: fluye con el documento, alineada a la izquierda */
+.hero-flores-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
   pointer-events: none;
-  /* Recorte circular/orgánico para que no se vea cuadrada */
-  mask-image: radial-gradient(ellipse 90% 85% at 10% 10%, black 40%, transparent 100%);
-  -webkit-mask-image: radial-gradient(ellipse 90% 85% at 10% 10%, black 40%, transparent 100%);
+  line-height: 0;
 }
 
-/* Versículo */
+.hero-flores {
+  width: 72%;
+  max-width: 300px;
+  height: auto;
+  display: block;
+  /* Sin máscara, sin degradado — PNG con transparencia natural */
+}
+
+/* Versículo: empieza DESPUÉS de la flor */
 .hero-versiculo {
-  margin-top: clamp(180px, 45vw, 260px);
+  margin-top: 24px;
   padding: 0 32px;
   text-align: center;
-  max-width: 360px;
+  max-width: 380px;
 }
 
 .versiculo-texto {
   font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(1rem, 4vw, 1.15rem);
+  font-size: clamp(1rem, 4.2vw, 1.15rem);
   font-style: italic;
   color: #6b4035;
-  line-height: 1.7;
-  margin-bottom: 12px;
+  line-height: 1.8;
+  margin-bottom: 14px;
 }
 
 .versiculo-ref {
@@ -135,14 +134,14 @@ body {
 
 /* Nombres */
 .hero-nombres {
-  margin-top: 40px;
+  margin-top: 36px;
   text-align: center;
   padding: 0 20px;
 }
 
 .nombres-texto {
   font-family: "Great Vibes", cursive;
-  font-size: clamp(3.5rem, 15vw, 5.5rem);
+  font-size: clamp(3.5rem, 16vw, 5.5rem);
   color: var(--texto);
   line-height: 1.1;
   font-weight: 400;
