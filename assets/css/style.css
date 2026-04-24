@@ -147,7 +147,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 24px;
+  gap: 20px;
 }
 .fecha-invitacion {
   font-size: clamp(0.72rem, 3.2vw, 0.85rem);
@@ -163,46 +163,57 @@ body {
   gap: 2px;
   opacity: 0.85;
 }
+
+/* — Bloque fecha superpuesto estilo referencia — */
 .fecha-display {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  line-height: 1;
   width: 100%;
-}
-.fecha-dia {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(7rem, 32vw, 10rem);
-  font-weight: 300;
-  color: var(--verde);
-  line-height: 0.85;
-  letter-spacing: -2px;
-}
-/* Junio separado — más espacio del 13 */
-.fecha-mes {
-  font-family: "Great Vibes", cursive;
-  font-size: clamp(3rem, 14vw, 4.5rem);
-  color: var(--texto);
-  margin-top: 6px;
-  position: relative;
-  z-index: 2;
-}
-.fecha-anio {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(1.8rem, 8vw, 2.5rem);
-  font-weight: 600;
-  letter-spacing: 6px;
-  color: var(--verde);
-  margin-top: 8px;
+  /* espacio extra para que Junio se superponga con holgura */
+  padding-bottom: 8px;
 }
 
-/* ─── CONTADOR ELEGANTE ─── */
+/* Número grande y dominante */
+.fecha-dia {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(9rem, 42vw, 13rem);
+  font-weight: 300;
+  color: var(--verde);
+  line-height: 0.88;
+  letter-spacing: -4px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Junio se superpone al 13 desde abajo — igual que la referencia */
+.fecha-mes {
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(3.6rem, 17vw, 5.5rem);
+  color: var(--texto);
+  margin-top: -28px;
+  position: relative;
+  z-index: 2;
+  line-height: 1;
+}
+
+.fecha-anio {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.6rem, 7vw, 2.2rem);
+  font-weight: 700;
+  letter-spacing: 8px;
+  color: var(--verde);
+  margin-top: 10px;
+}
+
+/* ─── CONTADOR ─── */
 .contador-wrap {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 14px;
-  margin-top: 8px;
+  gap: 12px;
+  margin-top: 4px;
   width: 100%;
 }
 .contador-label {
@@ -214,40 +225,45 @@ body {
 }
 .contador {
   display: flex;
-  align-items: stretch;
+  align-items: flex-start;
   justify-content: center;
   gap: 0;
   width: 100%;
-  max-width: 340px;
 }
 .contador-item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  flex: 1;
-  padding: 0 6px;
-}
-/* Divisor vertical entre items */
-.contador-item + .contador-item {
-  border-left: 1px solid rgba(90,122,90,0.25);
+  min-width: 56px;
+  padding: 0 4px;
 }
 .contador-num {
   font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(2.4rem, 11vw, 3.2rem);
+  font-size: clamp(2.6rem, 12vw, 3.6rem);
   font-weight: 300;
   color: var(--verde);
   line-height: 1;
   font-variant-numeric: tabular-nums;
-  letter-spacing: 1px;
 }
 .contador-txt {
   font-size: 0.65rem;
   letter-spacing: 2px;
   color: var(--texto);
   text-transform: uppercase;
-  margin-top: 6px;
+  margin-top: 5px;
   opacity: 0.65;
+}
+/* Dos puntos grandes entre bloques */
+.contador-sep {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2.2rem, 10vw, 3rem);
+  font-weight: 300;
+  color: var(--verde);
+  line-height: 1;
+  padding-top: 3px;
+  opacity: 0.7;
+  align-self: flex-start;
+  padding: 3px 2px 0;
 }
 
 /* ─── CONTENIDO PRINCIPAL ─── */
