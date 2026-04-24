@@ -1,0 +1,57 @@
+:root {
+  --terracota: #b86b52;
+  --terracota-oscuro: #8f4e3d;
+  --terracota-suave: #e8c7b8;
+  --crema: #f8efe9;
+  --blanco: #fffaf7;
+  --texto: #5c3528;
+}
+
+body {
+  margin: 0;
+  font-family: "Georgia", serif;
+  background-color: var(--crema);
+  color: var(--texto);
+}
+
+.music-header {
+  background: linear-gradient(180deg, var(--terracota-suave), var(--crema));
+  text-align: center;
+  padding: 30px 20px;
+  border-bottom: 2px solid rgba(143, 78, 61, 0.18);
+}
+
+.music-label {
+  margin: 0 0 16px;
+  font-size: 1.2rem;
+  color: var(--terracota-oscuro);
+  letter-spacing: 0.5px;
+}
+
+.play-btn {
+  background-color: var(--terracota);
+  color: var(--blanco);
+  border: none;
+  border-radius: 999px;
+  padding: 14px 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(184, 107, 82, 0.25);
+  transition: transform 0.25s ease, background-color 0.25s ease;
+}
+
+.play-btn:hover {
+  background-color: var(--terracota-oscuro);
+  transform: translateY(-2px);
+}
+
+.play-icon {
+  font-size: 1rem;
+}
+
+.play-text {
+  font-weight: 500;
+}
