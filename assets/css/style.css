@@ -84,7 +84,7 @@ body {
   z-index: 1;
 }
 
-/* Zona superior: versículo a la DERECHA, a la par de la flor */
+/* Versículo a la DERECHA */
 .hero-top {
   position: relative;
   width: 100%;
@@ -119,7 +119,7 @@ body {
   color: var(--terracota);
 }
 
-/* Nombres: más abajo */
+/* Nombres */
 .hero-nombres {
   margin-top: 50px;
   text-align: center;
@@ -143,6 +143,57 @@ body {
   font-weight: 400;
   line-height: 1.2;
   margin: 4px 0;
+}
+
+/* ─── FOTO NOVIOS ─── */
+.foto-novios-section {
+  background-color: var(--crema);
+  width: 100%;
+}
+
+.foto-novios-wrap {
+  position: relative;
+  width: 100%;
+  line-height: 0;
+}
+
+.foto-novios-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* Degradado superior: funde con el crema del hero */
+.foto-degradado-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  background: linear-gradient(
+    to bottom,
+    var(--crema) 0%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Degradado inferior: funde hacia el fondo de lo que sigue */
+.foto-degradado-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  background: linear-gradient(
+    to top,
+    var(--crema) 0%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 2;
 }
 
 /* ─── CONTENIDO PRINCIPAL ─── */
