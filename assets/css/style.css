@@ -14,10 +14,10 @@
 }
 
 body {
-  font-family: "Georgia", serif;
+  font-family: "Cormorant Garamond", Georgia, serif;
   background-color: var(--crema);
   color: var(--texto);
-  padding-top: 48px; /* espacio para la barra fija */
+  padding-top: 48px;
 }
 
 /* ─── BARRA FIJA DE MÚSICA ─── */
@@ -49,7 +49,7 @@ body {
   color: #f5ddd4;
   font-size: 0.7rem;
   letter-spacing: 3px;
-  font-family: "Georgia", serif;
+  font-family: "Cormorant Garamond", Georgia, serif;
   font-weight: normal;
 }
 
@@ -80,8 +80,82 @@ body {
   50%       { box-shadow: 0 0 0 5px rgba(255,255,255,0); }
 }
 
+/* ─── SECCIÓN HERO ─── */
+.hero {
+  position: relative;
+  background-color: var(--crema);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  padding-bottom: 60px;
+}
+
+/* Flores esquina superior izquierda */
+.hero-flores {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 75%;
+  max-width: 320px;
+  height: auto;
+  object-fit: cover;
+  object-position: center;
+  pointer-events: none;
+  /* Recorte circular/orgánico para que no se vea cuadrada */
+  mask-image: radial-gradient(ellipse 90% 85% at 10% 10%, black 40%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 90% 85% at 10% 10%, black 40%, transparent 100%);
+}
+
+/* Versículo */
+.hero-versiculo {
+  margin-top: clamp(180px, 45vw, 260px);
+  padding: 0 32px;
+  text-align: center;
+  max-width: 360px;
+}
+
+.versiculo-texto {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1rem, 4vw, 1.15rem);
+  font-style: italic;
+  color: #6b4035;
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+
+.versiculo-ref {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 0.95rem;
+  letter-spacing: 1px;
+  color: var(--terracota);
+  font-weight: 400;
+}
+
+/* Nombres */
+.hero-nombres {
+  margin-top: 40px;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.nombres-texto {
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(3.5rem, 15vw, 5.5rem);
+  color: var(--texto);
+  line-height: 1.1;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+.nombres-amp {
+  color: var(--terracota);
+  font-size: 0.8em;
+}
+
 /* ─── CONTENIDO PRINCIPAL ─── */
 .main-content {
-  min-height: 100vh;
+  min-height: 50vh;
   padding: 20px;
 }
