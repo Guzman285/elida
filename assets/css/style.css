@@ -7,11 +7,7 @@
   --texto: #5c3528;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
   font-family: "Cormorant Garamond", Georgia, serif;
@@ -23,8 +19,7 @@ body {
 /* ─── BARRA FIJA DE MÚSICA ─── */
 .music-bar {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 0; left: 0;
   width: 100%;
   height: 48px;
   background-color: var(--terracota-oscuro);
@@ -34,47 +29,32 @@ body {
   z-index: 999;
   box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
-
 .music-bar-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 0 16px;
+  background: none; border: none; cursor: pointer;
+  display: flex; align-items: center; gap: 12px; padding: 0 16px;
 }
-
 .bar-text {
   color: #f5ddd4;
   font-size: 0.7rem;
   letter-spacing: 3px;
   font-family: "Cormorant Garamond", Georgia, serif;
-  font-weight: normal;
 }
-
 .bar-circle {
-  width: 30px;
-  height: 30px;
+  width: 30px; height: 30px;
   border-radius: 50%;
   border: 1.5px solid rgba(255,255,255,0.6);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: flex; align-items: center; justify-content: center;
   transition: background-color 0.3s ease, transform 0.2s ease;
   flex-shrink: 0;
 }
-
 .music-bar-btn:hover .bar-circle {
   background-color: rgba(255,255,255,0.15);
   transform: scale(1.1);
 }
-
 .music-bar.playing .bar-circle {
   background-color: rgba(255,255,255,0.2);
   animation: pulse 1.8s ease-in-out infinite;
 }
-
 @keyframes pulse {
   0%, 100% { box-shadow: 0 0 0 0 rgba(255,255,255,0.3); }
   50%       { box-shadow: 0 0 0 5px rgba(255,255,255,0); }
@@ -84,7 +64,7 @@ body {
 .hero {
   position: relative;
   background-color: var(--crema);
-  min-height: 90vh;
+  min-height: 95vh;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -92,76 +72,78 @@ body {
   padding-bottom: 60px;
 }
 
-/* Flor: absoluta, esquina superior izquierda */
+/* Flor: absoluta esquina superior DERECHA */
 .hero-flores {
   position: absolute;
   top: 0;
-  left: 0;
-  width: 68%;
-  max-width: 280px;
+  right: 0;
+  width: 62%;
+  max-width: 260px;
   height: auto;
   pointer-events: none;
   z-index: 1;
 }
 
-/* Zona superior: misma altura que la flor, versículo a la derecha */
+/* Zona superior: versículo a la izquierda, a la par de la flor */
 .hero-top {
   position: relative;
   width: 100%;
-  min-height: 300px;
+  min-height: 280px;
   display: flex;
-  align-items: flex-start;
-  justify-content: flex-end;
-  padding-top: 30px;
-  padding-right: 20px;
-  padding-left: 52%;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 40px;
+  padding-left: 20px;
+  padding-right: 52%;
   z-index: 2;
 }
 
 .hero-versiculo {
   text-align: left;
-  max-width: 200px;
-  padding-top: 10px;
+  max-width: 210px;
 }
 
 .versiculo-texto {
   font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(0.85rem, 3.5vw, 1rem);
+  font-size: clamp(0.82rem, 3.4vw, 0.95rem);
   font-style: italic;
   color: #6b4035;
   line-height: 1.75;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .versiculo-ref {
   font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   letter-spacing: 1px;
   color: var(--terracota);
-  font-weight: 400;
 }
 
-/* Nombres: debajo del bloque superior, centrados */
+/* Nombres: cada uno en su línea */
 .hero-nombres {
-  margin-top: 20px;
+  margin-top: 10px;
   text-align: center;
   padding: 0 20px;
   z-index: 2;
   position: relative;
+  line-height: 1;
 }
 
-.nombres-texto {
+.nombre-linea {
   font-family: "Great Vibes", cursive;
-  font-size: clamp(3.5rem, 16vw, 5.5rem);
+  font-size: clamp(4rem, 18vw, 6rem);
   color: var(--texto);
-  line-height: 1.1;
   font-weight: 400;
-  letter-spacing: 1px;
+  line-height: 1.05;
 }
 
-.nombres-amp {
-  color: var(--terracota);
-  font-size: 0.8em;
+.nombre-y {
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(2rem, 9vw, 3rem);
+  color: var(--texto);
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 4px 0;
 }
 
 /* ─── CONTENIDO PRINCIPAL ─── */
