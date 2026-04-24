@@ -72,11 +72,11 @@ body {
   padding-bottom: 60px;
 }
 
-/* Flor: absoluta esquina superior DERECHA */
+/* Flor: absoluta esquina superior IZQUIERDA */
 .hero-flores {
   position: absolute;
   top: 0;
-  right: 0;
+  left: 0;
   width: 62%;
   max-width: 260px;
   height: auto;
@@ -84,17 +84,17 @@ body {
   z-index: 1;
 }
 
-/* Zona superior: versículo a la izquierda, a la par de la flor */
+/* Zona superior: versículo a la DERECHA, a la par de la flor */
 .hero-top {
   position: relative;
   width: 100%;
   min-height: 280px;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: flex-end;
   padding-top: 40px;
-  padding-left: 20px;
-  padding-right: 52%;
+  padding-right: 20px;
+  padding-left: 52%;
   z-index: 2;
 }
 
@@ -119,14 +119,13 @@ body {
   color: var(--terracota);
 }
 
-/* Nombres: cada uno en su línea */
+/* Nombres: más abajo */
 .hero-nombres {
-  margin-top: 10px;
+  margin-top: 50px;
   text-align: center;
   padding: 0 20px;
   z-index: 2;
   position: relative;
-  line-height: 1;
 }
 
 .nombre-linea {
