@@ -69,7 +69,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 60px;
+  padding-bottom: 10px;
 }
 
 /* Flor: absoluta esquina superior IZQUIERDA */
@@ -149,6 +149,7 @@ body {
 .foto-novios-section {
   background-color: var(--crema);
   width: 100%;
+  margin-top: -40px;
 }
 
 .foto-novios-wrap {
@@ -164,7 +165,7 @@ body {
   object-fit: cover;
 }
 
-/* Degradado superior: funde con el crema del hero */
+/* Degradado superior */
 .foto-degradado-top {
   position: absolute;
   top: 0;
@@ -180,7 +181,7 @@ body {
   z-index: 2;
 }
 
-/* Degradado inferior: funde hacia el fondo de lo que sigue */
+/* Degradado inferior */
 .foto-degradado-bottom {
   position: absolute;
   bottom: 0;
