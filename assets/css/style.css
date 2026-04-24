@@ -163,19 +163,14 @@ body {
   gap: 2px;
   opacity: 0.85;
 }
-
-/* — Bloque fecha superpuesto estilo referencia — */
 .fecha-display {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  /* espacio extra para que Junio se superponga con holgura */
   padding-bottom: 8px;
 }
-
-/* Número grande y dominante */
 .fecha-dia {
   font-family: "Cormorant Garamond", Georgia, serif;
   font-size: clamp(9rem, 42vw, 13rem);
@@ -186,18 +181,16 @@ body {
   position: relative;
   z-index: 1;
 }
-
-/* Junio se superpone al 13 desde abajo — igual que la referencia */
+/* Junio con separación cómoda del 13 */
 .fecha-mes {
   font-family: "Great Vibes", cursive;
   font-size: clamp(3.6rem, 17vw, 5.5rem);
   color: var(--texto);
-  margin-top: -28px;
+  margin-top: -8px;
   position: relative;
   z-index: 2;
   line-height: 1;
 }
-
 .fecha-anio {
   font-family: "Cormorant Garamond", Georgia, serif;
   font-size: clamp(1.6rem, 7vw, 2.2rem);
@@ -253,14 +246,11 @@ body {
   margin-top: 5px;
   opacity: 0.65;
 }
-/* Dos puntos grandes entre bloques */
 .contador-sep {
   font-family: "Cormorant Garamond", Georgia, serif;
   font-size: clamp(2.2rem, 10vw, 3rem);
   font-weight: 300;
   color: var(--verde);
-  line-height: 1;
-  padding-top: 3px;
   opacity: 0.7;
   align-self: flex-start;
   padding: 3px 2px 0;
