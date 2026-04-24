@@ -14,6 +14,8 @@ body {
   background-color: var(--crema);
   color: var(--texto);
   padding-top: 48px;
+  max-width: 480px;
+  margin: 0 auto;
 }
 
 /* ─── BARRA FIJA DE MÚSICA ─── */
@@ -64,12 +66,11 @@ body {
 .hero {
   position: relative;
   background-color: var(--crema);
-  min-height: 95vh;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 10px;
+  padding-bottom: 0;
 }
 
 /* Flor: absoluta esquina superior IZQUIERDA */
@@ -78,7 +79,7 @@ body {
   top: 0;
   left: 0;
   width: 62%;
-  max-width: 260px;
+  max-width: 240px;
   height: auto;
   pointer-events: none;
   z-index: 1;
@@ -88,24 +89,24 @@ body {
 .hero-top {
   position: relative;
   width: 100%;
-  min-height: 280px;
+  min-height: 240px;
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  padding-top: 40px;
-  padding-right: 20px;
-  padding-left: 52%;
+  padding-top: 30px;
+  padding-right: 18px;
+  padding-left: 50%;
   z-index: 2;
 }
 
 .hero-versiculo {
   text-align: left;
-  max-width: 210px;
+  max-width: 200px;
 }
 
 .versiculo-texto {
   font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(1rem, 4.2vw, 1.2rem);
+  font-size: clamp(1rem, 4.2vw, 1.1rem);
   font-style: italic;
   color: #6b4035;
   line-height: 1.75;
@@ -114,14 +115,15 @@ body {
 
 .versiculo-ref {
   font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   letter-spacing: 1px;
   color: var(--terracota);
 }
 
 /* Nombres */
 .hero-nombres {
-  margin-top: 50px;
+  margin-top: 16px;
+  margin-bottom: 0;
   text-align: center;
   padding: 0 20px;
   z-index: 2;
@@ -130,7 +132,7 @@ body {
 
 .nombre-linea {
   font-family: "Great Vibes", cursive;
-  font-size: clamp(4rem, 18vw, 6rem);
+  font-size: clamp(3.8rem, 17vw, 5.5rem);
   color: var(--texto);
   font-weight: 400;
   line-height: 1.05;
@@ -138,18 +140,18 @@ body {
 
 .nombre-y {
   font-family: "Great Vibes", cursive;
-  font-size: clamp(2rem, 9vw, 3rem);
+  font-size: clamp(1.8rem, 8vw, 2.8rem);
   color: var(--texto);
   font-weight: 400;
-  line-height: 1.2;
-  margin: 4px 0;
+  line-height: 1.1;
+  margin: 2px 0;
 }
 
 /* ─── FOTO NOVIOS ─── */
 .foto-novios-section {
   background-color: var(--crema);
   width: 100%;
-  margin-top: -40px;
+  margin-top: 0;
 }
 
 .foto-novios-wrap {
@@ -168,15 +170,10 @@ body {
 /* Degradado superior */
 .foto-degradado-top {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 0; left: 0;
   width: 100%;
-  height: 120px;
-  background: linear-gradient(
-    to bottom,
-    var(--crema) 0%,
-    transparent 100%
-  );
+  height: 100px;
+  background: linear-gradient(to bottom, var(--crema) 0%, transparent 100%);
   pointer-events: none;
   z-index: 2;
 }
@@ -184,21 +181,15 @@ body {
 /* Degradado inferior */
 .foto-degradado-bottom {
   position: absolute;
-  bottom: 0;
-  left: 0;
+  bottom: 0; left: 0;
   width: 100%;
-  height: 120px;
-  background: linear-gradient(
-    to top,
-    var(--crema) 0%,
-    transparent 100%
-  );
+  height: 100px;
+  background: linear-gradient(to top, var(--crema) 0%, transparent 100%);
   pointer-events: none;
   z-index: 2;
 }
 
 /* ─── CONTENIDO PRINCIPAL ─── */
 .main-content {
-  min-height: 50vh;
   padding: 20px;
 }
