@@ -7,14 +7,29 @@
     <title>Boda Carlos & Elida</title>
   </head>
   <body>
-    <header class="music-header">
-      <p class="music-label">Dale play a nuestra canción</p>
-      <button id="playMusicBtn" class="play-btn" type="button">
-        <span class="play-icon">▶</span>
-        <span class="play-text">Reproducir canción</span>
+
+    <!-- BARRA FIJA DE MÚSICA -->
+    <header class="music-bar">
+      <button id="playMusicBtn" class="music-bar-btn" type="button" aria-label="Reproducir canción">
+        <span class="bar-text">DALE PLAY</span>
+        <span class="bar-circle">
+          <svg id="iconPlay" viewBox="0 0 24 24" fill="white" width="14" height="14">
+            <polygon points="6,4 20,12 6,20" />
+          </svg>
+          <svg id="iconPause" viewBox="0 0 24 24" fill="white" width="14" height="14" style="display:none">
+            <rect x="5" y="4" width="4" height="16"/>
+            <rect x="15" y="4" width="4" height="16"/>
+          </svg>
+        </span>
+        <span class="bar-text">A NUESTRA CANCIÓN</span>
       </button>
-      <audio id="weddingSong" src="./assets/audio/camila.mp3"></audio>
+      <audio id="weddingSong" src="./assets/audio/camila.mp3" loop></audio>
     </header>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="main-content">
+      <!-- Aquí irán las secciones -->
+    </main>
 
     <script src="./assets/js/app.js"></script>
   </body>
