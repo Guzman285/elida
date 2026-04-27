@@ -68,7 +68,6 @@ function cerrarModalOverlay(event, id) {
   }
 }
 
-// Cerrar con tecla Escape
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') {
     document.querySelectorAll('.modal-overlay.activo').forEach(function(m) {
@@ -77,3 +76,20 @@ document.addEventListener('keydown', function(e) {
     document.body.style.overflow = '';
   }
 });
+
+// ─── RSVP ───
+function confirmarAsistencia(respuesta) {
+  const opciones    = document.getElementById('rsvpOpciones');
+  const confirmado  = document.getElementById('rsvpConfirmado');
+  const declinado   = document.getElementById('rsvpDeclinado');
+  const mensaje     = document.getElementById('rsvpMensaje');
+
+  opciones.style.display = 'none';
+
+  if (respuesta === 'si') {
+    mensaje.textContent = 'Con mucho amor los esperamos el 13 de Junio. ¡Será un día inolvidable!';
+    confirmado.style.display = 'flex';
+  } else {
+    declinado.style.display = 'block';
+  }
+}
