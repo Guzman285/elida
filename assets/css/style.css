@@ -265,19 +265,16 @@ body {
   gap: 40px;
   background-color: var(--crema);
 }
-
 .evento-card {
   position: relative;
   width: 100%;
   max-width: 400px;
 }
-
 .evento-arco-img {
   width: 100%;
   height: auto;
   display: block;
 }
-
 .evento-card-content {
   position: absolute;
   top: 0; left: 0;
@@ -289,7 +286,6 @@ body {
   gap: 7px;
   padding: 0 8% 28% 10%;
 }
-
 .evento-tipo {
   font-family: "Great Vibes", cursive;
   font-size: clamp(2.6rem, 12vw, 3.6rem);
@@ -298,14 +294,12 @@ body {
   margin-bottom: 2px;
   text-shadow: 0 2px 8px rgba(80,40,20,0.6), 0 1px 3px rgba(0,0,0,0.45);
 }
-
 .evento-linea {
   width: 40px;
   height: 1px;
   background: rgba(255,255,255,0.7);
   margin: 2px 0 6px;
 }
-
 .evento-lugar {
   font-family: "Cormorant Garamond", Georgia, serif;
   font-size: clamp(0.8rem, 3.5vw, 1rem);
@@ -316,7 +310,6 @@ body {
   text-align: left;
   text-shadow: 0 1px 6px rgba(80,40,20,0.65), 0 1px 2px rgba(0,0,0,0.45);
 }
-
 .evento-direccion {
   font-family: "Cormorant Garamond", Georgia, serif;
   font-size: clamp(0.85rem, 3.8vw, 1rem);
@@ -325,7 +318,6 @@ body {
   line-height: 1.55;
   text-shadow: 0 1px 6px rgba(80,40,20,0.65), 0 1px 2px rgba(0,0,0,0.45);
 }
-
 .evento-hora {
   font-family: "Cormorant Garamond", Georgia, serif;
   font-size: clamp(0.82rem, 3.5vw, 0.95rem);
@@ -334,8 +326,6 @@ body {
   margin-top: 2px;
   text-shadow: 0 1px 6px rgba(80,40,20,0.65), 0 1px 2px rgba(0,0,0,0.45);
 }
-
-/* Botones Maps y Waze */
 .evento-nav-btns {
   display: flex;
   flex-direction: row;
@@ -343,7 +333,6 @@ body {
   margin-top: 10px;
   align-items: center;
 }
-
 .evento-nav-btn {
   display: flex;
   flex-direction: column;
@@ -355,7 +344,6 @@ body {
 }
 .evento-nav-btn:hover { opacity: 0.8; transform: scale(1.05); }
 .evento-nav-btn:active { opacity: 0.65; transform: scale(0.97); }
-
 .nav-btn-icon {
   width: 48px;
   height: 48px;
@@ -365,7 +353,6 @@ body {
   padding: 4px;
   box-shadow: 0 2px 8px rgba(80,40,20,0.3);
 }
-
 .nav-btn-texto {
   font-family: "Cormorant Garamond", Georgia, serif;
   font-size: 0.65rem;
@@ -373,6 +360,148 @@ body {
   text-transform: uppercase;
   color: #fff;
   text-shadow: 0 1px 4px rgba(80,40,20,0.5);
+}
+
+/* ─── ITINERARIO ─── */
+.itinerario-section {
+  background-color: var(--crema);
+  padding: 60px 20px 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.itinerario-titulo {
+  text-align: center;
+  line-height: 1;
+}
+.itinerario-h2 {
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(3rem, 14vw, 4.5rem);
+  font-weight: 400;
+  color: var(--texto);
+  line-height: 1.05;
+}
+.itinerario-sub {
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(2rem, 9vw, 3rem);
+  font-weight: 400;
+  color: var(--texto);
+  line-height: 1.1;
+  margin-top: -4px;
+}
+
+/* Timeline */
+.timeline {
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Línea vertical central */
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+  bottom: 0;
+  width: 1.5px;
+  background: var(--terracota);
+  opacity: 0.5;
+  z-index: 0;
+}
+
+/* Cada fila */
+.tl-item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 90px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Ítem izquierda: contenido | punto */
+.tl-izq {
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.tl-izq .tl-contenido {
+  text-align: right;
+  align-items: flex-end;
+  padding-right: 16px;
+  flex: 1;
+}
+.tl-izq .tl-punto {
+  flex-shrink: 0;
+}
+
+/* Ítem derecha: punto | contenido */
+.tl-der {
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.tl-der .tl-contenido {
+  text-align: left;
+  align-items: flex-start;
+  padding-left: 16px;
+  flex: 1;
+}
+.tl-der .tl-punto {
+  flex-shrink: 0;
+}
+
+/* Bloque de contenido */
+.tl-contenido {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-width: calc(50% - 20px);
+}
+
+/* Icono SVG */
+.tl-icono {
+  color: var(--terracota);
+  opacity: 0.85;
+  margin-bottom: 2px;
+}
+
+/* Hora */
+.tl-hora {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(0.78rem, 3.2vw, 0.9rem);
+  letter-spacing: 1px;
+  color: var(--terracota);
+  font-weight: 600;
+}
+
+/* Nombre actividad */
+.tl-nombre {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(0.82rem, 3.5vw, 0.95rem);
+  color: var(--texto);
+  line-height: 1.35;
+  font-weight: 400;
+}
+
+/* Punto corazón */
+.tl-punto {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--crema);
+  border: 1.5px solid var(--terracota);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--terracota);
+  flex-shrink: 0;
+  z-index: 2;
 }
 
 /* ─── CONTENIDO PRINCIPAL ─── */
