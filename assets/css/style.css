@@ -255,103 +255,116 @@ body {
   padding: 3px 2px 0;
 }
 
-/* ─── SECCIÓN EVENTO (CEREMONIA / RECEPCIÓN) ─── */
+/* ─── SECCIÓN EVENTO ─── */
 .evento-section {
   position: relative;
-  padding: 60px 24px 70px;
+  padding: 50px 24px 70px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 32px;
+  gap: 40px;
   overflow: hidden;
   background-color: var(--crema);
 }
 
-/* Flor decorativa esquina derecha */
+/* Flor decorativa fondob */
 .evento-flor {
   position: absolute;
-  bottom: -20px;
-  right: -30px;
-  width: 65%;
-  max-width: 260px;
+  bottom: -10px;
+  right: -20px;
+  width: 60%;
+  max-width: 240px;
   pointer-events: none;
   z-index: 0;
-  opacity: 0.9;
+  opacity: 0.88;
 }
 
-/* Tarjeta con arco verde */
+/* Tarjeta: la imagen arco es el fondo, el texto va encima */
 .evento-card {
   position: relative;
   z-index: 1;
   width: 100%;
-  max-width: 310px;
-  background-color: var(--verde);
-  border-radius: 140px 140px 20px 20px;
-  padding: 48px 32px 40px;
+  max-width: 300px;
+}
+
+/* La imagen arco ocupa todo el contenedor */
+.evento-arco-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* El contenido flota sobre la imagen */
+.evento-card-content {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
-  box-shadow: 0 8px 32px rgba(60,80,60,0.18);
+  justify-content: center;
+  gap: 8px;
+  padding: 10% 12% 12%;
 }
 
 .evento-tipo {
   font-family: "Great Vibes", cursive;
-  font-size: clamp(2.4rem, 11vw, 3.2rem);
+  font-size: clamp(2.2rem, 10vw, 3rem);
   color: #fff;
   line-height: 1;
-  margin-bottom: 4px;
+  margin-bottom: 2px;
 }
 
 .evento-linea {
-  width: 40px;
+  width: 36px;
   height: 1px;
-  background: rgba(255,255,255,0.45);
-  margin: 2px 0 8px;
+  background: rgba(255,255,255,0.5);
+  margin: 2px 0 6px;
 }
 
 .evento-lugar {
   font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 0.95rem;
+  font-size: clamp(0.75rem, 3.2vw, 0.9rem);
   font-weight: 600;
   letter-spacing: 3px;
   color: #fff;
   text-transform: uppercase;
+  text-align: center;
 }
 
 .evento-direccion {
   font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 1rem;
-  color: rgba(255,255,255,0.85);
+  font-size: clamp(0.82rem, 3.5vw, 0.95rem);
+  color: rgba(255,255,255,0.88);
   text-align: center;
-  line-height: 1.6;
+  line-height: 1.55;
 }
 
 .evento-hora {
   font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 1rem;
+  font-size: clamp(0.78rem, 3.2vw, 0.9rem);
   letter-spacing: 2px;
-  color: rgba(255,255,255,0.75);
+  color: rgba(255,255,255,0.78);
   margin-top: 2px;
 }
 
-/* Botón de ubicación */
+/* Botón ubicación */
 .evento-mapa-btn {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
-  margin-top: 12px;
+  gap: 5px;
+  margin-top: 10px;
   text-decoration: none;
   color: #fff;
   transition: opacity 0.2s;
 }
-.evento-mapa-btn:hover { opacity: 0.75; }
+.evento-mapa-btn:hover { opacity: 0.72; }
 
 .evento-mapa-icono {
-  width: 46px; height: 46px;
+  width: 42px; height: 42px;
   border-radius: 50%;
-  border: 1.5px solid rgba(255,255,255,0.6);
+  border: 1.5px solid rgba(255,255,255,0.65);
   background: rgba(255,255,255,0.12);
   display: flex;
   align-items: center;
@@ -359,7 +372,7 @@ body {
 }
 
 .evento-mapa-texto {
-  font-size: 0.65rem;
+  font-size: 0.6rem;
   letter-spacing: 2px;
   text-transform: uppercase;
   color: rgba(255,255,255,0.75);
