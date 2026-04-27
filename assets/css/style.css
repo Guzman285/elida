@@ -20,34 +20,20 @@ body {
 
 /* ─── BARRA FIJA DE MÚSICA ─── */
 .music-bar {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%;
-  height: 48px;
+  position: fixed; top: 0; left: 0;
+  width: 100%; height: 48px;
   background-color: var(--terracota-oscuro);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: flex; align-items: center; justify-content: center;
   z-index: 999;
   box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
-.music-bar-btn {
-  background: none; border: none; cursor: pointer;
-  display: flex; align-items: center; gap: 12px; padding: 0 16px;
-}
-.bar-text {
-  color: #f5ddd4;
-  font-size: 0.7rem;
-  letter-spacing: 3px;
-  font-family: "Cormorant Garamond", Georgia, serif;
-}
+.music-bar-btn { background: none; border: none; cursor: pointer; display: flex; align-items: center; gap: 12px; padding: 0 16px; }
+.bar-text { color: #f5ddd4; font-size: 0.7rem; letter-spacing: 3px; font-family: "Cormorant Garamond", Georgia, serif; }
 .bar-circle {
-  width: 30px; height: 30px;
-  border-radius: 50%;
+  width: 30px; height: 30px; border-radius: 50%;
   border: 1.5px solid rgba(255,255,255,0.6);
   display: flex; align-items: center; justify-content: center;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  flex-shrink: 0;
+  transition: background-color 0.3s ease, transform 0.2s ease; flex-shrink: 0;
 }
 .music-bar-btn:hover .bar-circle { background-color: rgba(255,255,255,0.15); transform: scale(1.1); }
 .music-bar.playing .bar-circle { background-color: rgba(255,255,255,0.2); animation: pulse 1.8s ease-in-out infinite; }
@@ -57,452 +43,233 @@ body {
 }
 
 /* ─── HERO ─── */
-.hero {
-  position: relative;
-  background-color: var(--crema);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-bottom: 0;
-}
-.hero-flores {
-  position: absolute;
-  top: 0; left: 0;
-  width: 62%; max-width: 240px;
-  height: auto;
-  pointer-events: none;
-  z-index: 1;
-}
-.hero-top {
-  position: relative;
-  width: 100%;
-  min-height: 240px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  padding-top: 30px;
-  padding-right: 18px;
-  padding-left: 50%;
-  z-index: 2;
-}
+.hero { position: relative; background-color: var(--crema); overflow: hidden; display: flex; flex-direction: column; align-items: center; padding-bottom: 0; }
+.hero-flores { position: absolute; top: 0; left: 0; width: 62%; max-width: 240px; height: auto; pointer-events: none; z-index: 1; }
+.hero-top { position: relative; width: 100%; min-height: 240px; display: flex; align-items: center; justify-content: flex-end; padding-top: 30px; padding-right: 18px; padding-left: 50%; z-index: 2; }
 .hero-versiculo { text-align: left; max-width: 200px; }
-.versiculo-texto {
-  font-size: clamp(1rem, 4.2vw, 1.1rem);
-  font-style: italic;
-  color: #6b4035;
-  line-height: 1.75;
-  margin-bottom: 8px;
-}
-.versiculo-ref {
-  font-size: 0.9rem;
-  letter-spacing: 1px;
-  color: var(--terracota);
-}
-.hero-nombres {
-  margin-top: 16px;
-  text-align: center;
-  padding: 0 20px;
-  z-index: 2;
-  position: relative;
-}
-.nombre-linea {
-  font-family: "Great Vibes", cursive;
-  font-size: clamp(3.8rem, 17vw, 5.5rem);
-  color: var(--texto);
-  font-weight: 400;
-  line-height: 1.05;
-}
-.nombre-y {
-  font-family: "Great Vibes", cursive;
-  font-size: clamp(1.8rem, 8vw, 2.8rem);
-  color: var(--texto);
-  font-weight: 400;
-  line-height: 1.1;
-  margin: 2px 0;
-}
+.versiculo-texto { font-size: clamp(1rem, 4.2vw, 1.1rem); font-style: italic; color: #6b4035; line-height: 1.75; margin-bottom: 8px; }
+.versiculo-ref { font-size: 0.9rem; letter-spacing: 1px; color: var(--terracota); }
+.hero-nombres { margin-top: 16px; text-align: center; padding: 0 20px; z-index: 2; position: relative; }
+.nombre-linea { font-family: "Great Vibes", cursive; font-size: clamp(3.8rem, 17vw, 5.5rem); color: var(--texto); font-weight: 400; line-height: 1.05; }
+.nombre-y { font-family: "Great Vibes", cursive; font-size: clamp(1.8rem, 8vw, 2.8rem); color: var(--texto); font-weight: 400; line-height: 1.1; margin: 2px 0; }
 
 /* ─── FOTO NOVIOS ─── */
 .foto-novios-section { background-color: var(--crema); width: 100%; margin-top: 0; }
 .foto-novios-wrap { position: relative; width: 100%; line-height: 0; }
 .foto-novios-img { width: 100%; height: auto; display: block; object-fit: cover; }
-.foto-degradado-top {
-  position: absolute; top: 0; left: 0;
-  width: 100%; height: 100px;
-  background: linear-gradient(to bottom, var(--crema) 0%, transparent 100%);
-  pointer-events: none; z-index: 2;
-}
-.foto-degradado-bottom {
-  position: absolute; bottom: 0; left: 0;
-  width: 100%; height: 100px;
-  background: linear-gradient(to top, var(--crema) 0%, transparent 100%);
-  pointer-events: none; z-index: 2;
-}
+.foto-degradado-top { position: absolute; top: 0; left: 0; width: 100%; height: 100px; background: linear-gradient(to bottom, var(--crema) 0%, transparent 100%); pointer-events: none; z-index: 2; }
+.foto-degradado-bottom { position: absolute; bottom: 0; left: 0; width: 100%; height: 100px; background: linear-gradient(to top, var(--crema) 0%, transparent 100%); pointer-events: none; z-index: 2; }
 
 /* ─── SECCIÓN FECHA ─── */
-.fecha-section {
-  background-color: var(--crema);
-  text-align: center;
-  padding: 40px 24px 50px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-}
-.fecha-invitacion {
-  font-size: clamp(0.72rem, 3.2vw, 0.85rem);
-  letter-spacing: 2px;
-  color: var(--texto);
-  line-height: 1.8;
-  text-transform: uppercase;
-}
-.fecha-flechas {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
-  opacity: 0.85;
-}
-.fecha-display {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  padding-bottom: 8px;
-}
-.fecha-dia {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(9rem, 42vw, 13rem);
-  font-weight: 300;
-  color: var(--verde);
-  line-height: 0.88;
-  letter-spacing: -4px;
-  position: relative;
-  z-index: 1;
-}
-.fecha-mes {
-  font-family: "Great Vibes", cursive;
-  font-size: clamp(3.6rem, 17vw, 5.5rem);
-  color: var(--texto);
-  margin-top: -8px;
-  position: relative;
-  z-index: 2;
-  line-height: 1;
-}
-.fecha-anio {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(1.6rem, 7vw, 2.2rem);
-  font-weight: 700;
-  letter-spacing: 8px;
-  color: var(--verde);
-  margin-top: 10px;
-}
+.fecha-section { background-color: var(--crema); text-align: center; padding: 40px 24px 50px; display: flex; flex-direction: column; align-items: center; gap: 20px; }
+.fecha-invitacion { font-size: clamp(0.72rem, 3.2vw, 0.85rem); letter-spacing: 2px; color: var(--texto); line-height: 1.8; text-transform: uppercase; }
+.fecha-flechas { display: flex; flex-direction: column; align-items: center; gap: 2px; opacity: 0.85; }
+.fecha-display { position: relative; display: flex; flex-direction: column; align-items: center; width: 100%; padding-bottom: 8px; }
+.fecha-dia { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(9rem, 42vw, 13rem); font-weight: 300; color: var(--verde); line-height: 0.88; letter-spacing: -4px; position: relative; z-index: 1; }
+.fecha-mes { font-family: "Great Vibes", cursive; font-size: clamp(3.6rem, 17vw, 5.5rem); color: var(--texto); margin-top: -8px; position: relative; z-index: 2; line-height: 1; }
+.fecha-anio { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(1.6rem, 7vw, 2.2rem); font-weight: 700; letter-spacing: 8px; color: var(--verde); margin-top: 10px; }
 
 /* ─── CONTADOR ─── */
-.contador-wrap {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-  margin-top: 4px;
-  width: 100%;
-}
-.contador-label {
-  font-size: 0.78rem;
-  letter-spacing: 5px;
-  color: var(--texto);
-  text-transform: uppercase;
-  opacity: 0.7;
-}
-.contador {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  gap: 0;
-  width: 100%;
-}
-.contador-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-width: 56px;
-  padding: 0 4px;
-}
-.contador-num {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(2.6rem, 12vw, 3.6rem);
-  font-weight: 300;
-  color: var(--verde);
-  line-height: 1;
-  font-variant-numeric: tabular-nums;
-}
-.contador-txt {
-  font-size: 0.65rem;
-  letter-spacing: 2px;
-  color: var(--texto);
-  text-transform: uppercase;
-  margin-top: 5px;
-  opacity: 0.65;
-}
-.contador-sep {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(2.2rem, 10vw, 3rem);
-  font-weight: 300;
-  color: var(--verde);
-  opacity: 0.7;
-  align-self: flex-start;
-  padding: 3px 2px 0;
-}
+.contador-wrap { display: flex; flex-direction: column; align-items: center; gap: 12px; margin-top: 4px; width: 100%; }
+.contador-label { font-size: 0.78rem; letter-spacing: 5px; color: var(--texto); text-transform: uppercase; opacity: 0.7; }
+.contador { display: flex; align-items: flex-start; justify-content: center; gap: 0; width: 100%; }
+.contador-item { display: flex; flex-direction: column; align-items: center; min-width: 56px; padding: 0 4px; }
+.contador-num { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(2.6rem, 12vw, 3.6rem); font-weight: 300; color: var(--verde); line-height: 1; font-variant-numeric: tabular-nums; }
+.contador-txt { font-size: 0.65rem; letter-spacing: 2px; color: var(--texto); text-transform: uppercase; margin-top: 5px; opacity: 0.65; }
+.contador-sep { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(2.2rem, 10vw, 3rem); font-weight: 300; color: var(--verde); opacity: 0.7; align-self: flex-start; padding: 3px 2px 0; }
 
 /* ─── SECCIÓN EVENTO ─── */
-.evento-section {
-  position: relative;
-  padding: 40px 16px 60px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 40px;
-  background-color: var(--crema);
-}
-.evento-card {
-  position: relative;
-  width: 100%;
-  max-width: 400px;
-}
-.evento-arco-img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-.evento-card-content {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-end;
-  gap: 7px;
-  padding: 0 8% 28% 10%;
-}
-.evento-tipo {
-  font-family: "Great Vibes", cursive;
-  font-size: clamp(2.6rem, 12vw, 3.6rem);
-  color: #fff;
-  line-height: 1;
-  margin-bottom: 2px;
-  text-shadow: 0 2px 8px rgba(80,40,20,0.6), 0 1px 3px rgba(0,0,0,0.45);
-}
-.evento-linea {
-  width: 40px;
-  height: 1px;
-  background: rgba(255,255,255,0.7);
-  margin: 2px 0 6px;
-}
-.evento-lugar {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(0.8rem, 3.5vw, 1rem);
-  font-weight: 700;
-  letter-spacing: 3px;
-  color: #fff;
-  text-transform: uppercase;
-  text-align: left;
-  text-shadow: 0 1px 6px rgba(80,40,20,0.65), 0 1px 2px rgba(0,0,0,0.45);
-}
-.evento-direccion {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(0.85rem, 3.8vw, 1rem);
-  color: #fff;
-  text-align: left;
-  line-height: 1.55;
-  text-shadow: 0 1px 6px rgba(80,40,20,0.65), 0 1px 2px rgba(0,0,0,0.45);
-}
-.evento-hora {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(0.82rem, 3.5vw, 0.95rem);
-  letter-spacing: 3px;
-  color: #fff;
-  margin-top: 2px;
-  text-shadow: 0 1px 6px rgba(80,40,20,0.65), 0 1px 2px rgba(0,0,0,0.45);
-}
-.evento-nav-btns {
-  display: flex;
-  flex-direction: row;
-  gap: 16px;
-  margin-top: 10px;
-  align-items: center;
-}
-.evento-nav-btn {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 5px;
-  text-decoration: none;
-  color: #fff;
-  transition: opacity 0.2s, transform 0.2s;
-}
+.evento-section { position: relative; padding: 40px 16px 60px; display: flex; flex-direction: column; align-items: center; gap: 40px; background-color: var(--crema); }
+.evento-card { position: relative; width: 100%; max-width: 400px; }
+.evento-arco-img { width: 100%; height: auto; display: block; }
+.evento-card-content { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end; gap: 7px; padding: 0 8% 28% 10%; }
+.evento-tipo { font-family: "Great Vibes", cursive; font-size: clamp(2.6rem, 12vw, 3.6rem); color: #fff; line-height: 1; margin-bottom: 2px; text-shadow: 0 2px 8px rgba(80,40,20,0.6), 0 1px 3px rgba(0,0,0,0.45); }
+.evento-linea { width: 40px; height: 1px; background: rgba(255,255,255,0.7); margin: 2px 0 6px; }
+.evento-lugar { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(0.8rem, 3.5vw, 1rem); font-weight: 700; letter-spacing: 3px; color: #fff; text-transform: uppercase; text-align: left; text-shadow: 0 1px 6px rgba(80,40,20,0.65), 0 1px 2px rgba(0,0,0,0.45); }
+.evento-direccion { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(0.85rem, 3.8vw, 1rem); color: #fff; text-align: left; line-height: 1.55; text-shadow: 0 1px 6px rgba(80,40,20,0.65), 0 1px 2px rgba(0,0,0,0.45); }
+.evento-hora { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(0.82rem, 3.5vw, 0.95rem); letter-spacing: 3px; color: #fff; margin-top: 2px; text-shadow: 0 1px 6px rgba(80,40,20,0.65), 0 1px 2px rgba(0,0,0,0.45); }
+.evento-nav-btns { display: flex; flex-direction: row; gap: 16px; margin-top: 10px; align-items: center; }
+.evento-nav-btn { display: flex; flex-direction: column; align-items: center; gap: 5px; text-decoration: none; color: #fff; transition: opacity 0.2s, transform 0.2s; }
 .evento-nav-btn:hover { opacity: 0.8; transform: scale(1.05); }
 .evento-nav-btn:active { opacity: 0.65; transform: scale(0.97); }
-.nav-btn-icon {
-  width: 48px;
-  height: 48px;
-  object-fit: contain;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.15);
-  padding: 4px;
-  box-shadow: 0 2px 8px rgba(80,40,20,0.3);
-}
-.nav-btn-texto {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 0.65rem;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: #fff;
-  text-shadow: 0 1px 4px rgba(80,40,20,0.5);
-}
+.nav-btn-icon { width: 48px; height: 48px; object-fit: contain; border-radius: 50%; background: rgba(255,255,255,0.15); padding: 4px; box-shadow: 0 2px 8px rgba(80,40,20,0.3); }
+.nav-btn-texto { font-family: "Cormorant Garamond", Georgia, serif; font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; color: #fff; text-shadow: 0 1px 4px rgba(80,40,20,0.5); }
 
 /* ─── ITINERARIO ─── */
-.itinerario-section {
+.itinerario-section { background-color: var(--crema); padding: 60px 20px 70px; display: flex; flex-direction: column; align-items: center; gap: 40px; }
+.itinerario-titulo { text-align: center; line-height: 1; }
+.itinerario-h2 { font-family: "Great Vibes", cursive; font-size: clamp(3rem, 14vw, 4.5rem); font-weight: 400; color: var(--texto); line-height: 1.05; }
+.itinerario-sub { font-family: "Great Vibes", cursive; font-size: clamp(2rem, 9vw, 3rem); font-weight: 400; color: var(--texto); line-height: 1.1; margin-top: -4px; }
+.timeline { position: relative; width: 100%; max-width: 380px; display: flex; flex-direction: column; gap: 0; }
+.timeline::before { content: ""; position: absolute; left: 50%; transform: translateX(-50%); top: 0; bottom: 0; width: 1.5px; background: var(--terracota); opacity: 0.5; z-index: 0; }
+.tl-item { display: flex; align-items: center; width: 100%; min-height: 90px; position: relative; z-index: 1; }
+.tl-izq { flex-direction: row; justify-content: flex-end; }
+.tl-izq .tl-contenido { text-align: right; align-items: flex-end; padding-right: 16px; flex: 1; }
+.tl-izq .tl-punto { flex-shrink: 0; }
+.tl-der { flex-direction: row; justify-content: flex-start; }
+.tl-der .tl-contenido { text-align: left; align-items: flex-start; padding-left: 16px; flex: 1; }
+.tl-der .tl-punto { flex-shrink: 0; }
+.tl-contenido { display: flex; flex-direction: column; gap: 4px; max-width: calc(50% - 20px); }
+.tl-icono { color: var(--terracota); opacity: 0.85; margin-bottom: 2px; }
+.tl-hora { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(0.78rem, 3.2vw, 0.9rem); letter-spacing: 1px; color: var(--terracota); font-weight: 600; }
+.tl-nombre { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(0.82rem, 3.5vw, 0.95rem); color: var(--texto); line-height: 1.35; font-weight: 400; }
+.tl-punto { width: 28px; height: 28px; border-radius: 50%; background: var(--crema); border: 1.5px solid var(--terracota); display: flex; align-items: center; justify-content: center; color: var(--terracota); flex-shrink: 0; z-index: 2; }
+
+/* ─── SECCIÓN NOTAS ─── */
+.notas-section {
   background-color: var(--crema);
-  padding: 60px 20px 70px;
+  padding: 60px 32px 70px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 40px;
+  gap: 36px;
 }
 
-.itinerario-titulo {
-  text-align: center;
-  line-height: 1;
-}
-.itinerario-h2 {
+.notas-titulo {
   font-family: "Great Vibes", cursive;
   font-size: clamp(3rem, 14vw, 4.5rem);
   font-weight: 400;
   color: var(--texto);
-  line-height: 1.05;
-}
-.itinerario-sub {
-  font-family: "Great Vibes", cursive;
-  font-size: clamp(2rem, 9vw, 3rem);
-  font-weight: 400;
-  color: var(--texto);
-  line-height: 1.1;
-  margin-top: -4px;
+  line-height: 1;
+  text-align: center;
 }
 
-/* Timeline */
-.timeline {
-  position: relative;
-  width: 100%;
-  max-width: 380px;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-
-/* Línea vertical central */
-.timeline::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 0;
-  bottom: 0;
-  width: 1.5px;
+.notas-linea-deco {
+  width: 60px;
+  height: 1px;
   background: var(--terracota);
   opacity: 0.5;
-  z-index: 0;
+  margin-top: -20px;
 }
 
-/* Cada fila */
-.tl-item {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  min-height: 90px;
-  position: relative;
-  z-index: 1;
-}
-
-/* Ítem izquierda: contenido | punto */
-.tl-izq {
-  flex-direction: row;
-  justify-content: flex-end;
-}
-.tl-izq .tl-contenido {
-  text-align: right;
-  align-items: flex-end;
-  padding-right: 16px;
-  flex: 1;
-}
-.tl-izq .tl-punto {
-  flex-shrink: 0;
-}
-
-/* Ítem derecha: punto | contenido */
-.tl-der {
-  flex-direction: row;
-  justify-content: flex-start;
-}
-.tl-der .tl-contenido {
-  text-align: left;
-  align-items: flex-start;
-  padding-left: 16px;
-  flex: 1;
-}
-.tl-der .tl-punto {
-  flex-shrink: 0;
-}
-
-/* Bloque de contenido */
-.tl-contenido {
+.nota-item {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  max-width: calc(50% - 20px);
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+  width: 100%;
 }
 
-/* Icono SVG */
-.tl-icono {
+.nota-icono {
   color: var(--terracota);
-  opacity: 0.85;
+  opacity: 0.8;
   margin-bottom: 2px;
 }
 
-/* Hora */
-.tl-hora {
+.nota-nombre {
   font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(0.78rem, 3.2vw, 0.9rem);
-  letter-spacing: 1px;
-  color: var(--terracota);
+  font-size: clamp(1.1rem, 5vw, 1.35rem);
   font-weight: 600;
-}
-
-/* Nombre actividad */
-.tl-nombre {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(0.82rem, 3.5vw, 0.95rem);
+  letter-spacing: 2px;
   color: var(--texto);
-  line-height: 1.35;
-  font-weight: 400;
+  text-transform: uppercase;
 }
 
-/* Punto corazón */
-.tl-punto {
-  width: 28px;
-  height: 28px;
+.nota-desc {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(0.88rem, 3.8vw, 1rem);
+  color: var(--texto);
+  opacity: 0.7;
+  line-height: 1.55;
+  max-width: 280px;
+  font-style: italic;
+}
+
+.nota-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+  padding: 10px 28px;
+  background: transparent;
+  border: 1px solid var(--terracota);
+  color: var(--terracota);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 0.78rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 0;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+.nota-btn:hover {
+  background: var(--terracota);
+  color: #fff;
+}
+.nota-btn:active {
+  background: var(--terracota-oscuro);
+  color: #fff;
+  transform: scale(0.97);
+}
+
+.nota-separador {
+  width: 40px;
+  height: 1px;
+  background: var(--terracota);
+  opacity: 0.3;
+}
+
+/* ─── MODALES ─── */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(60, 25, 15, 0.65);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  animation: fadeInOverlay 0.25s ease;
+}
+.modal-overlay.activo {
+  display: flex;
+}
+@keyframes fadeInOverlay {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.modal-contenido {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  animation: slideUpModal 0.3s cubic-bezier(0.16,1,0.3,1);
+}
+@keyframes slideUpModal {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.modal-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 4px;
+  box-shadow: 0 16px 48px rgba(60,25,15,0.35);
+}
+
+.modal-cerrar {
+  position: absolute;
+  top: -14px;
+  right: -14px;
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
   background: var(--crema);
-  border: 1.5px solid var(--terracota);
+  border: 1px solid var(--terracota);
+  color: var(--terracota);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--terracota);
-  flex-shrink: 0;
-  z-index: 2;
+  cursor: pointer;
+  z-index: 10;
+  transition: background 0.2s, color 0.2s;
+  box-shadow: 0 2px 8px rgba(60,25,15,0.2);
 }
+.modal-cerrar:hover { background: var(--terracota); color: #fff; }
 
 /* ─── CONTENIDO PRINCIPAL ─── */
 .main-content { padding: 20px; }
