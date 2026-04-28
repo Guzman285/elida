@@ -60,6 +60,70 @@ body {
 .foto-degradado-top { position: absolute; top: 0; left: 0; width: 100%; height: 100px; background: linear-gradient(to bottom, var(--crema) 0%, transparent 100%); pointer-events: none; z-index: 2; }
 .foto-degradado-bottom { position: absolute; bottom: 0; left: 0; width: 100%; height: 100px; background: linear-gradient(to top, var(--crema) 0%, transparent 100%); pointer-events: none; z-index: 2; }
 
+/* ─── SECCIÓN PADRES ─── */
+.padres-section {
+  background-color: var(--crema);
+  padding: 50px 28px 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  text-align: center;
+}
+.padres-intro {
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(1.9rem, 8.5vw, 2.6rem);
+  color: var(--texto);
+  line-height: 1.15;
+}
+.padres-linea-deco {
+  width: 50px; height: 1px;
+  background: var(--terracota);
+  opacity: 0.45;
+  margin-top: -14px;
+}
+.padres-columnas {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0;
+  width: 100%;
+  max-width: 380px;
+}
+.padres-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 0 10px;
+}
+.padres-rol {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(0.65rem, 2.8vw, 0.75rem);
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--terracota);
+  opacity: 0.85;
+  margin-bottom: 2px;
+}
+.padres-nombre {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(0.82rem, 3.6vw, 0.95rem);
+  font-weight: 400;
+  color: var(--texto);
+  line-height: 1.5;
+  font-style: italic;
+}
+.padres-divisor {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 4px;
+}
+
 /* ─── SECCIÓN FECHA ─── */
 .fecha-section { background-color: var(--crema); text-align: center; padding: 40px 24px 50px; display: flex; flex-direction: column; align-items: center; gap: 20px; }
 .fecha-invitacion { font-size: clamp(0.72rem, 3.2vw, 0.85rem); letter-spacing: 2px; color: var(--texto); line-height: 1.8; text-transform: uppercase; }
@@ -346,7 +410,6 @@ body {
   line-height: 1.6;
 }
 
-/* Validación: error */
 .rsvp-input-error {
   border-color: #c0392b !important;
   box-shadow: 0 0 0 3px rgba(192,57,43,0.12) !important;
@@ -390,7 +453,6 @@ body {
 .rsvp-submit-btn:active { transform: scale(0.97); }
 .rsvp-submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
 
-/* Mensaje de confirmación */
 .rsvp-confirmado {
   display: flex;
   flex-direction: column;
