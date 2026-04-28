@@ -175,20 +175,128 @@ body {
 .itinerario-titulo { text-align: center; line-height: 1; }
 .itinerario-h2 { font-family: "Great Vibes", cursive; font-size: clamp(3rem, 14vw, 4.5rem); font-weight: 400; color: var(--texto); line-height: 1.05; }
 .itinerario-sub { font-family: "Great Vibes", cursive; font-size: clamp(2rem, 9vw, 3rem); font-weight: 400; color: var(--texto); line-height: 1.1; margin-top: -4px; }
-.timeline { position: relative; width: 100%; max-width: 380px; display: flex; flex-direction: column; gap: 0; }
-.timeline::before { content: ""; position: absolute; left: 50%; transform: translateX(-50%); top: 0; bottom: 0; width: 1.5px; background: var(--terracota); opacity: 0.5; z-index: 0; }
-.tl-item { display: flex; align-items: center; width: 100%; min-height: 90px; position: relative; z-index: 1; }
-.tl-izq { flex-direction: row; justify-content: flex-end; }
-.tl-izq .tl-contenido { text-align: right; align-items: flex-end; padding-right: 16px; flex: 1; }
+
+/* Timeline */
+.timeline {
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0; bottom: 0;
+  width: 1.5px;
+  background: var(--terracota);
+  opacity: 0.5;
+  z-index: 0;
+}
+
+/* Cada fila del timeline */
+.tl-item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  padding: 16px 0;
+}
+
+/* Izquierda: icono+texto a la izquierda, punto en el centro */
+.tl-izq {
+  flex-direction: row;
+}
+.tl-izq .tl-contenido {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  padding-right: 14px;
+}
 .tl-izq .tl-punto { flex-shrink: 0; }
-.tl-der { flex-direction: row; justify-content: flex-start; }
-.tl-der .tl-contenido { text-align: left; align-items: flex-start; padding-left: 16px; flex: 1; }
+/* ocupa la mitad derecha vacía */
+.tl-izq::after {
+  content: "";
+  flex: 1;
+}
+
+/* Derecha: punto en el centro, icono+texto a la derecha */
+.tl-der {
+  flex-direction: row;
+}
+/* ocupa la mitad izquierda vacía */
+.tl-der::before {
+  content: "";
+  flex: 1;
+}
 .tl-der .tl-punto { flex-shrink: 0; }
-.tl-contenido { display: flex; flex-direction: column; gap: 4px; max-width: calc(50% - 20px); }
-.tl-icono { color: var(--terracota); opacity: 0.85; margin-bottom: 2px; }
-.tl-hora { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(0.78rem, 3.2vw, 0.9rem); letter-spacing: 1px; color: var(--terracota); font-weight: 600; }
-.tl-nombre { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(0.82rem, 3.5vw, 0.95rem); color: var(--texto); line-height: 1.35; font-weight: 400; }
-.tl-punto { width: 28px; height: 28px; border-radius: 50%; background: var(--crema); border: 1.5px solid var(--terracota); display: flex; align-items: center; justify-content: center; color: var(--terracota); flex-shrink: 0; z-index: 2; }
+.tl-der .tl-contenido {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  padding-left: 14px;
+}
+
+/* Contenido (icono + hora + nombre) */
+.tl-contenido {
+  gap: 4px;
+}
+
+/* Icono PNG */
+.tl-icono {
+  margin-bottom: 4px;
+}
+.tl-icono-img {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+  display: block;
+}
+/* Alinear imagen al lado correcto */
+.tl-izq .tl-icono-img {
+  margin-left: auto;
+}
+.tl-der .tl-icono-img {
+  margin-right: auto;
+}
+
+.tl-hora {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(0.78rem, 3.2vw, 0.9rem);
+  letter-spacing: 1px;
+  color: var(--terracota);
+  font-weight: 600;
+}
+.tl-nombre {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(0.82rem, 3.5vw, 0.95rem);
+  color: var(--texto);
+  line-height: 1.35;
+  font-weight: 400;
+}
+
+/* Punto central */
+.tl-punto {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--crema);
+  border: 1.5px solid var(--terracota);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--terracota);
+  flex-shrink: 0;
+  z-index: 2;
+}
 
 /* ─── SECCIÓN NOTAS ─── */
 .notas-section { background-color: var(--crema); padding: 60px 32px 70px; display: flex; flex-direction: column; align-items: center; gap: 36px; }
