@@ -99,7 +99,7 @@ body {
 
 /* flor2: esquina SUPERIOR izquierda → ahora va ABAJO (donde terminan los nombres) */
 .deco-flor-padres-sup-izq {
-  bottom: -10px; left: -10px;
+  bottom: 245px; left: -20px;
   top: auto;
   transform: rotate(180deg) scaleX(-1);
   width: 48%; max-width: 190px;
@@ -107,7 +107,7 @@ body {
 }
 /* flor2: esquina SUPERIOR derecha → ahora va ABAJO */
 .deco-flor-padres-sup-der {
-  bottom: -10px; right: -10px;
+  bottom: 245px; right: -20px;
   top: auto;
   transform: rotate(180deg);
   width: 48%; max-width: 190px;
@@ -115,7 +115,7 @@ body {
 }
 /* flor2: esquina INFERIOR izquierda → ahora va ARRIBA (encima de "Con la bendición...") */
 .deco-flor-padres-inf-izq {
-  top: -10px; left: -10px;
+  top: 280px; left: -20px;
   bottom: auto;
   transform: none;
   width: 48%; max-width: 190px;
@@ -123,7 +123,7 @@ body {
 }
 /* flor2: esquina INFERIOR derecha → ahora va ARRIBA */
 .deco-flor-padres-inf-der {
-  top: -10px; right: -10px;
+  top: 280px; right: -20px;
   bottom: auto;
   transform: scaleX(-1);
   width: 48%; max-width: 190px;
@@ -201,14 +201,14 @@ body {
 }
 /* flor1 arriba-izquierda: volteada verticalmente */
 .deco-flor-fecha-izq {
-  top: -10px; left: -10px;
+  top: 60px; left: -15px;
   transform: scaleY(-1);
   width: 50%; max-width: 195px;
   opacity: 0.75;
 }
 /* flor1 arriba-derecha: espejo total (volteo doble) */
 .deco-flor-fecha-der {
-  top: -10px; right: -10px;
+  top: 270px; right: -10px;
   transform: scaleY(-1) scaleX(-1);
   width: 50%; max-width: 195px;
   opacity: 0.75;
@@ -224,7 +224,7 @@ body {
 .fecha-anio { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(1.6rem, 7vw, 2.2rem); font-weight: 700; letter-spacing: 8px; color: var(--verde); margin-top: 10px; }
 
 /* ─── CONTADOR ─── */
-.contador-wrap { display: flex; flex-direction: column; align-items: center; gap: 12px; margin-top: 4px; width: 100%; }
+.contador-wrap { display: flex; flex-direction: column; align-items: center; gap: 12px; margin-top: 4px; width: 300%; }
 .contador-label { font-size: 0.78rem; letter-spacing: 5px; color: var(--texto); text-transform: uppercase; opacity: 0.7; }
 .contador { display: flex; align-items: flex-start; justify-content: center; gap: 0; width: 100%; }
 .contador-item { display: flex; flex-direction: column; align-items: center; min-width: 56px; padding: 0 4px; }
@@ -273,14 +273,14 @@ body {
 }
 /* flor2 arriba-derecha */
 .deco-flor-itinerario-der {
-  top: -15px; right: -12px;
+  top: 850px; right: -12px;
   transform: scaleX(-1);
   width: 46%; max-width: 180px;
   opacity: 0.72;
 }
 /* flor2 abajo-izquierda: doble espejo */
 .deco-flor-itinerario-izq {
-  bottom: -15px; left: -12px;
+  bottom: 880px; left: 252px;
   transform: rotate(180deg);
   width: 46%; max-width: 180px;
   opacity: 0.72;
@@ -572,14 +572,14 @@ body {
 }
 /* flor2 arriba-izquierda */
 .deco-flor-rsvp-izq {
-  top: -10px; left: -10px;
+  top: 370px; left: -10px;
   transform: none;
   width: 42%; max-width: 165px;
   opacity: 0.65;
 }
 /* flor2 arriba-derecha: espejo */
 .deco-flor-rsvp-der {
-  top: -10px; right: -10px;
+  top: 370px; right: -10px;
   transform: scaleX(-1);
   width: 42%; max-width: 165px;
   opacity: 0.65;
