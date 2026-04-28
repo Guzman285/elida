@@ -82,13 +82,24 @@ body {
 .evento-section { position: relative; padding: 40px 16px 60px; display: flex; flex-direction: column; align-items: center; gap: 40px; background-color: var(--crema); }
 .evento-card { position: relative; width: 100%; max-width: 400px; }
 .evento-arco-img { width: 100%; height: auto; display: block; }
-.evento-card-content { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end; gap: 7px; padding: 0 8% 28% 10%; }
+.evento-card-content {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 20% 10% 22%;
+  text-align: center;
+}
 .evento-tipo { font-family: "Great Vibes", cursive; font-size: clamp(2.6rem, 12vw, 3.6rem); color: #fff; line-height: 1; margin-bottom: 2px; text-shadow: 0 2px 8px rgba(80,40,20,0.6), 0 1px 3px rgba(0,0,0,0.45); }
 .evento-linea { width: 40px; height: 1px; background: rgba(255,255,255,0.7); margin: 2px 0 6px; }
-.evento-lugar { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(0.8rem, 3.5vw, 1rem); font-weight: 700; letter-spacing: 3px; color: #fff; text-transform: uppercase; text-align: left; text-shadow: 0 1px 6px rgba(80,40,20,0.65), 0 1px 2px rgba(0,0,0,0.45); }
-.evento-direccion { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(0.85rem, 3.8vw, 1rem); color: #fff; text-align: left; line-height: 1.55; text-shadow: 0 1px 6px rgba(80,40,20,0.65), 0 1px 2px rgba(0,0,0,0.45); }
+.evento-lugar { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(0.8rem, 3.5vw, 1rem); font-weight: 700; letter-spacing: 3px; color: #fff; text-transform: uppercase; text-align: center; text-shadow: 0 1px 6px rgba(80,40,20,0.65), 0 1px 2px rgba(0,0,0,0.45); }
+.evento-direccion { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(0.85rem, 3.8vw, 1rem); color: #fff; text-align: center; line-height: 1.55; text-shadow: 0 1px 6px rgba(80,40,20,0.65), 0 1px 2px rgba(0,0,0,0.45); }
 .evento-hora { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(0.82rem, 3.5vw, 0.95rem); letter-spacing: 3px; color: #fff; margin-top: 2px; text-shadow: 0 1px 6px rgba(80,40,20,0.65), 0 1px 2px rgba(0,0,0,0.45); }
-.evento-nav-btns { display: flex; flex-direction: row; gap: 16px; margin-top: 10px; align-items: center; }
+.evento-nav-btns { display: flex; flex-direction: row; gap: 16px; margin-top: 10px; align-items: center; justify-content: center; }
 .evento-nav-btn { display: flex; flex-direction: column; align-items: center; gap: 5px; text-decoration: none; color: #fff; transition: opacity 0.2s, transform 0.2s; }
 .evento-nav-btn:hover { opacity: 0.8; transform: scale(1.05); }
 .evento-nav-btn:active { opacity: 0.65; transform: scale(0.97); }
