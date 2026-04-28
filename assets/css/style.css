@@ -44,7 +44,27 @@ body {
 
 /* ─── HERO ─── */
 .hero { position: relative; background-color: var(--crema); overflow: hidden; display: flex; flex-direction: column; align-items: center; padding-bottom: 0; }
-.hero-flores { position: absolute; top: 0; left: 0; width: 62%; max-width: 240px; height: auto; pointer-events: none; z-index: 1; }
+
+/* flor1 izquierda (original) */
+.hero-flores-izq {
+  position: absolute;
+  top: 0; left: 0;
+  width: 62%; max-width: 240px;
+  height: auto;
+  pointer-events: none;
+  z-index: 1;
+}
+/* flor1 derecha: espejo horizontal */
+.hero-flores-der {
+  position: absolute;
+  top: 0; right: 0;
+  width: 62%; max-width: 240px;
+  height: auto;
+  pointer-events: none;
+  z-index: 1;
+  transform: scaleX(-1);
+}
+
 .hero-top { position: relative; width: 100%; min-height: 240px; display: flex; align-items: center; justify-content: flex-end; padding-top: 30px; padding-right: 18px; padding-left: 50%; z-index: 2; }
 .hero-versiculo { text-align: left; max-width: 200px; }
 .versiculo-texto { font-size: clamp(1rem, 4.2vw, 1.1rem); font-style: italic; color: #6b4035; line-height: 1.75; margin-bottom: 8px; }
@@ -60,8 +80,21 @@ body {
 .foto-degradado-top { position: absolute; top: 0; left: 0; width: 100%; height: 100px; background: linear-gradient(to bottom, var(--crema) 0%, transparent 100%); pointer-events: none; z-index: 2; }
 .foto-degradado-bottom { position: absolute; bottom: 0; left: 0; width: 100%; height: 100px; background: linear-gradient(to top, var(--crema) 0%, transparent 100%); pointer-events: none; z-index: 2; }
 
+/* ─── DECORACIÓN FLORES GENÉRICA ─── */
+/* Clase base: posición absoluta, decorativa, sin interacción */
+.deco-flor {
+  position: absolute;
+  width: 52%; max-width: 200px;
+  height: auto;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.85;
+}
+
 /* ─── SECCIÓN PADRES ─── */
 .padres-section {
+  position: relative;
+  overflow: hidden;
   background-color: var(--crema);
   padding: 50px 28px 56px;
   display: flex;
@@ -70,17 +103,33 @@ body {
   gap: 28px;
   text-align: center;
 }
+/* flor2 abajo-derecha: girada 180° */
+.deco-flor-padres-der {
+  bottom: -20px; right: -10px;
+  transform: rotate(180deg);
+  width: 48%; max-width: 190px;
+  opacity: 0.7;
+}
+/* flor2 abajo-izquierda: espejo de la anterior */
+.deco-flor-padres-izq {
+  bottom: -20px; left: -10px;
+  transform: rotate(180deg) scaleX(-1);
+  width: 48%; max-width: 190px;
+  opacity: 0.7;
+}
 .padres-intro {
   font-family: "Great Vibes", cursive;
   font-size: clamp(1.9rem, 8.5vw, 2.6rem);
   color: var(--texto);
   line-height: 1.15;
+  position: relative; z-index: 1;
 }
 .padres-linea-deco {
   width: 50px; height: 1px;
   background: var(--terracota);
   opacity: 0.45;
   margin-top: -14px;
+  position: relative; z-index: 1;
 }
 .padres-columnas {
   display: flex;
@@ -90,6 +139,7 @@ body {
   gap: 0;
   width: 100%;
   max-width: 380px;
+  position: relative; z-index: 1;
 }
 .padres-col {
   flex: 1;
@@ -125,7 +175,34 @@ body {
 }
 
 /* ─── SECCIÓN FECHA ─── */
-.fecha-section { background-color: var(--crema); text-align: center; padding: 40px 24px 50px; display: flex; flex-direction: column; align-items: center; gap: 20px; }
+.fecha-section {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--crema);
+  text-align: center;
+  padding: 40px 24px 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+/* flor1 arriba-izquierda: volteada verticalmente */
+.deco-flor-fecha-izq {
+  top: -10px; left: -10px;
+  transform: scaleY(-1);
+  width: 50%; max-width: 195px;
+  opacity: 0.75;
+}
+/* flor1 arriba-derecha: espejo total (volteo doble) */
+.deco-flor-fecha-der {
+  top: -10px; right: -10px;
+  transform: scaleY(-1) scaleX(-1);
+  width: 50%; max-width: 195px;
+  opacity: 0.75;
+}
+/* Contenido de fecha sobre las flores */
+.fecha-section > *:not(.deco-flor) { position: relative; z-index: 1; }
+
 .fecha-invitacion { font-size: clamp(0.72rem, 3.2vw, 0.85rem); letter-spacing: 2px; color: var(--texto); line-height: 1.8; text-transform: uppercase; }
 .fecha-flechas { display: flex; flex-direction: column; align-items: center; gap: 2px; opacity: 0.85; }
 .fecha-display { position: relative; display: flex; flex-direction: column; align-items: center; width: 100%; padding-bottom: 8px; }
@@ -171,7 +248,33 @@ body {
 .nav-btn-texto { font-family: "Cormorant Garamond", Georgia, serif; font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; color: #fff; text-shadow: 0 1px 4px rgba(80,40,20,0.5); }
 
 /* ─── ITINERARIO ─── */
-.itinerario-section { background-color: var(--crema); padding: 60px 20px 70px; display: flex; flex-direction: column; align-items: center; gap: 40px; }
+.itinerario-section {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--crema);
+  padding: 60px 20px 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+/* flor2 arriba-derecha */
+.deco-flor-itinerario-der {
+  top: -15px; right: -12px;
+  transform: scaleX(-1);
+  width: 46%; max-width: 180px;
+  opacity: 0.72;
+}
+/* flor2 abajo-izquierda: doble espejo */
+.deco-flor-itinerario-izq {
+  bottom: -15px; left: -12px;
+  transform: rotate(180deg);
+  width: 46%; max-width: 180px;
+  opacity: 0.72;
+}
+/* Contenido sobre las flores */
+.itinerario-section > *:not(.deco-flor) { position: relative; z-index: 1; }
+
 .itinerario-titulo { text-align: center; line-height: 1; }
 .itinerario-h2 { font-family: "Great Vibes", cursive; font-size: clamp(3rem, 14vw, 4.5rem); font-weight: 400; color: var(--texto); line-height: 1.05; }
 .itinerario-sub { font-family: "Great Vibes", cursive; font-size: clamp(2rem, 9vw, 3rem); font-weight: 400; color: var(--texto); line-height: 1.1; margin-top: -4px; }
@@ -196,8 +299,6 @@ body {
   opacity: 0.5;
   z-index: 0;
 }
-
-/* Cada fila del timeline */
 .tl-item {
   display: flex;
   align-items: center;
@@ -206,8 +307,6 @@ body {
   z-index: 1;
   padding: 16px 0;
 }
-
-/* Izquierda */
 .tl-izq { flex-direction: row; }
 .tl-izq .tl-contenido {
   flex: 1;
@@ -219,8 +318,6 @@ body {
 }
 .tl-izq .tl-punto { flex-shrink: 0; }
 .tl-izq::after { content: ""; flex: 1; }
-
-/* Derecha */
 .tl-der { flex-direction: row; }
 .tl-der::before { content: ""; flex: 1; }
 .tl-der .tl-punto { flex-shrink: 0; }
@@ -232,10 +329,7 @@ body {
   text-align: left;
   padding-left: 14px;
 }
-
 .tl-contenido { gap: 4px; }
-
-/* Icono PNG */
 .tl-icono { margin-bottom: 4px; }
 .tl-icono-img {
   width: 90px;
@@ -245,7 +339,6 @@ body {
 }
 .tl-izq .tl-icono-img { margin-left: auto; }
 .tl-der .tl-icono-img { margin-right: auto; }
-
 .tl-hora {
   font-family: "Cormorant Garamond", Georgia, serif;
   font-size: clamp(0.78rem, 3.2vw, 0.9rem);
@@ -260,8 +353,6 @@ body {
   line-height: 1.35;
   font-weight: 400;
 }
-
-/* Punto central */
 .tl-punto {
   width: 28px;
   height: 28px;
@@ -277,15 +368,37 @@ body {
 }
 
 /* ─── SECCIÓN NOTAS ─── */
-.notas-section { background-color: var(--crema); padding: 60px 32px 70px; display: flex; flex-direction: column; align-items: center; gap: 36px; }
+.notas-section {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--crema);
+  padding: 60px 32px 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 36px;
+}
+/* flor1 arriba-izquierda */
+.deco-flor-notas-izq {
+  top: -8px; left: -8px;
+  transform: none;
+  width: 44%; max-width: 170px;
+  opacity: 0.68;
+}
+/* flor1 arriba-derecha: espejo */
+.deco-flor-notas-der {
+  top: -8px; right: -8px;
+  transform: scaleX(-1);
+  width: 44%; max-width: 170px;
+  opacity: 0.68;
+}
+/* Contenido sobre las flores */
+.notas-section > *:not(.deco-flor) { position: relative; z-index: 1; }
+
 .notas-titulo { font-family: "Great Vibes", cursive; font-size: clamp(3rem, 14vw, 4.5rem); font-weight: 400; color: var(--texto); line-height: 1; text-align: center; }
 .notas-linea-deco { width: 60px; height: 1px; background: var(--terracota); opacity: 0.5; margin-top: -20px; }
 .nota-item { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 10px; width: 100%; }
-
-/* Icono SVG legacy */
 .nota-icono { color: var(--terracota); opacity: 0.8; margin-bottom: 2px; }
-
-/* Imágenes PNG en notas (regalo, par, bebida) */
 .nota-icono-img {
   width: 80px;
   height: 80px;
@@ -293,15 +406,12 @@ body {
   display: block;
   margin: 0 auto 2px;
 }
-
 .nota-nombre { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(1.1rem, 5vw, 1.35rem); font-weight: 600; letter-spacing: 2px; color: var(--texto); text-transform: uppercase; }
 .nota-desc { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(0.88rem, 3.8vw, 1rem); color: var(--texto); opacity: 0.7; line-height: 1.55; max-width: 280px; font-style: italic; }
 .nota-btn { display: inline-flex; align-items: center; gap: 8px; margin-top: 4px; padding: 10px 28px; background: transparent; border: 1px solid var(--terracota); color: var(--terracota); font-family: "Cormorant Garamond", Georgia, serif; font-size: 0.78rem; letter-spacing: 3px; text-transform: uppercase; cursor: pointer; border-radius: 0; transition: background 0.25s ease, color 0.25s ease; }
 .nota-btn:hover { background: var(--terracota); color: #fff; }
 .nota-btn:active { background: var(--terracota-oscuro); color: #fff; transform: scale(0.97); }
 .nota-separador { width: 40px; height: 1px; background: var(--terracota); opacity: 0.3; }
-
-/* Vestimenta: mujer y hombre lado a lado */
 .vestimenta-iconos {
   display: flex;
   flex-direction: row;
@@ -325,8 +435,6 @@ body {
 @keyframes slideUpModal { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
 .modal-cerrar { position: absolute; top: -14px; right: -14px; width: 34px; height: 34px; border-radius: 50%; background: var(--crema); border: 1px solid var(--terracota); color: var(--terracota); display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10; transition: background 0.2s, color 0.2s; box-shadow: 0 2px 8px rgba(60,25,15,0.2); }
 .modal-cerrar:hover { background: var(--terracota); color: #fff; }
-
-/* Modal con arco + texto superpuesto */
 .modal-arco-wrap { position: relative; width: 100%; border-radius: 4px; overflow: hidden; box-shadow: 0 16px 48px rgba(60,25,15,0.35); }
 .modal-img { width: 100%; height: auto; display: block; }
 .modal-arco-texto {
@@ -360,12 +468,9 @@ body {
   line-height: 1.55;
   text-shadow: 0 1px 6px rgba(60,25,15,0.75), 0 1px 2px rgba(0,0,0,0.5);
 }
-.modal-arco-desc strong {
-  font-weight: 700;
-  font-style: normal;
-}
+.modal-arco-desc strong { font-weight: 700; font-style: normal; }
 
-/* ─── MODAL VESTIMENTA: texto más abajo y a la izquierda ─── */
+/* ─── MODAL VESTIMENTA ─── */
 .modal-vestimenta-texto {
   align-items: flex-start !important;
   justify-content: flex-end !important;
@@ -373,19 +478,11 @@ body {
   padding: 8% 10% 12% 8% !important;
   gap: 8px !important;
 }
-.modal-vestimenta-texto .modal-arco-titulo {
-  text-align: left;
-  line-height: 1.05;
-}
-.modal-vestimenta-texto .modal-arco-linea {
-  margin-left: 0;
-}
-.modal-vestimenta-texto .modal-arco-desc {
-  text-align: left;
-  max-width: 200px;
-}
+.modal-vestimenta-texto .modal-arco-titulo { text-align: left; line-height: 1.05; }
+.modal-vestimenta-texto .modal-arco-linea { margin-left: 0; }
+.modal-vestimenta-texto .modal-arco-desc { text-align: left; max-width: 200px; }
 
-/* ─── MODAL REGALOS: texto más abajo y a la izquierda ─── */
+/* ─── MODAL REGALOS ─── */
 .modal-regalos-texto {
   align-items: flex-start !important;
   justify-content: flex-end !important;
@@ -393,19 +490,11 @@ body {
   padding: 8% 10% 10% 8% !important;
   gap: 7px !important;
 }
-.modal-regalos-texto .modal-arco-titulo {
-  text-align: left;
-  line-height: 1.05;
-}
-.modal-regalos-texto .modal-arco-linea {
-  margin-left: 0;
-}
-.modal-regalos-texto .modal-arco-desc {
-  text-align: left;
-  max-width: 210px;
-}
+.modal-regalos-texto .modal-arco-titulo { text-align: left; line-height: 1.05; }
+.modal-regalos-texto .modal-arco-linea { margin-left: 0; }
+.modal-regalos-texto .modal-arco-desc { text-align: left; max-width: 210px; }
 
-/* ─── CUENTAS BANCARIAS CON BOTÓN COPIAR ─── */
+/* ─── CUENTAS BANCARIAS ─── */
 .cuenta-item {
   display: flex;
   align-items: center;
@@ -418,13 +507,7 @@ body {
   border-radius: 6px;
   padding: 6px 8px 6px 10px;
 }
-.cuenta-info {
-  display: flex;
-  flex-direction: column;
-  gap: 1px;
-  flex: 1;
-  min-width: 0;
-}
+.cuenta-info { display: flex; flex-direction: column; gap: 1px; flex: 1; min-width: 0; }
 .cuenta-banco {
   font-family: "Cormorant Garamond", Georgia, serif;
   font-size: clamp(0.65rem, 2.8vw, 0.75rem);
@@ -446,8 +529,7 @@ body {
 }
 .cuenta-copiar {
   flex-shrink: 0;
-  width: 28px;
-  height: 28px;
+  width: 28px; height: 28px;
   border-radius: 50%;
   border: 1px solid rgba(255,255,255,0.5);
   background: rgba(255,255,255,0.15);
@@ -460,13 +542,12 @@ body {
 }
 .cuenta-copiar:hover { background: rgba(255,255,255,0.3); }
 .cuenta-copiar:active { transform: scale(0.9); }
-.cuenta-copiar.copiado {
-  background: rgba(90,122,90,0.6);
-  border-color: rgba(255,255,255,0.7);
-}
+.cuenta-copiar.copiado { background: rgba(90,122,90,0.6); border-color: rgba(255,255,255,0.7); }
 
 /* ─── SECCIÓN RSVP ─── */
 .rsvp-section {
+  position: relative;
+  overflow: hidden;
   background-color: var(--crema);
   padding: 70px 32px 80px;
   display: flex;
@@ -476,6 +557,23 @@ body {
   text-align: center;
   border-top: 1px solid rgba(184,107,82,0.15);
 }
+/* flor2 arriba-izquierda */
+.deco-flor-rsvp-izq {
+  top: -10px; left: -10px;
+  transform: none;
+  width: 42%; max-width: 165px;
+  opacity: 0.65;
+}
+/* flor2 arriba-derecha: espejo */
+.deco-flor-rsvp-der {
+  top: -10px; right: -10px;
+  transform: scaleX(-1);
+  width: 42%; max-width: 165px;
+  opacity: 0.65;
+}
+/* Contenido sobre las flores */
+.rsvp-section > *:not(.deco-flor) { position: relative; z-index: 1; }
+
 .rsvp-deco-top, .rsvp-deco-bottom { opacity: 0.8; }
 .rsvp-pre { font-family: "Great Vibes", cursive; font-size: clamp(1.8rem, 8vw, 2.5rem); color: var(--terracota); line-height: 1; opacity: 0.85; }
 .rsvp-titulo { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(1.3rem, 6vw, 1.7rem); font-weight: 300; letter-spacing: 5px; color: var(--texto); text-transform: uppercase; margin-top: -14px; }
