@@ -89,7 +89,6 @@ body {
   position: relative;
   overflow: hidden;
   background-color: var(--crema);
-  /* Padding generoso para que el contenido quede bien centrado entre las flores de las 4 esquinas */
   padding: 130px 28px 130px;
   display: flex;
   flex-direction: column;
@@ -98,47 +97,37 @@ body {
   text-align: center;
 }
 
-/* flor2: esquina SUPERIOR izquierda */
+/* flor2: esquina SUPERIOR izquierda → ahora va ABAJO (donde terminan los nombres) */
 .deco-flor-padres-sup-izq {
+  bottom: -10px; left: -10px;
+  top: auto;
+  transform: rotate(180deg) scaleX(-1);
+  width: 48%; max-width: 190px;
+  opacity: 0.82;
+}
+/* flor2: esquina SUPERIOR derecha → ahora va ABAJO */
+.deco-flor-padres-sup-der {
+  bottom: -10px; right: -10px;
+  top: auto;
+  transform: rotate(180deg);
+  width: 48%; max-width: 190px;
+  opacity: 0.82;
+}
+/* flor2: esquina INFERIOR izquierda → ahora va ARRIBA (encima de "Con la bendición...") */
+.deco-flor-padres-inf-izq {
   top: -10px; left: -10px;
+  bottom: auto;
   transform: none;
   width: 48%; max-width: 190px;
-  opacity: 0.82;
+  opacity: 0.75;
 }
-/* flor2: esquina SUPERIOR derecha — espejo horizontal */
-.deco-flor-padres-sup-der {
+/* flor2: esquina INFERIOR derecha → ahora va ARRIBA */
+.deco-flor-padres-inf-der {
   top: -10px; right: -10px;
+  bottom: auto;
   transform: scaleX(-1);
   width: 48%; max-width: 190px;
-  opacity: 0.82;
-}
-/* flor2: esquina INFERIOR izquierda — girada 180° */
-.deco-flor-padres-inf-izq {
-  bottom: -10px; left: -10px;
-  transform: rotate(180deg) scaleX(-1);
-  width: 48%; max-width: 190px;
   opacity: 0.75;
-}
-/* flor2: esquina INFERIOR derecha — girada 180° */
-.deco-flor-padres-inf-der {
-  bottom: -10px; right: -10px;
-  transform: rotate(180deg);
-  width: 48%; max-width: 190px;
-  opacity: 0.75;
-}
-
-/* Mantener compatibilidad con nombres antiguos (por si acaso) */
-.deco-flor-padres-der {
-  bottom: -20px; right: -10px;
-  transform: rotate(180deg);
-  width: 48%; max-width: 190px;
-  opacity: 0.7;
-}
-.deco-flor-padres-izq {
-  bottom: -20px; left: -10px;
-  transform: rotate(180deg) scaleX(-1);
-  width: 48%; max-width: 190px;
-  opacity: 0.7;
 }
 
 .padres-intro {
