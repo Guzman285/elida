@@ -97,36 +97,16 @@
       </div>
     </section>
 
-    <!-- SECCIÓN CEREMONIA Y RECEPCIÓN -->
+    <!-- SECCIÓN EVENTO (una sola card) -->
     <section class="evento-section">
       <div class="evento-card">
-        <img src="./assets/img/fondos/arco.png" alt="" class="evento-arco-img" aria-hidden="true" />
+        <img src="./assets/img/fondos/arco2.png" alt="" class="evento-arco-img" aria-hidden="true" />
         <div class="evento-card-content">
-          <p class="evento-tipo">Ceremonia</p>
+          <p class="evento-tipo">Celebración</p>
           <div class="evento-linea"></div>
           <p class="evento-lugar">CASA DEL LAGO</p>
           <p class="evento-direccion">Km 32.6, Circunvalación<br>Lago de Amatitlán</p>
           <p class="evento-hora">11:00 AM</p>
-          <div class="evento-nav-btns">
-            <a class="evento-nav-btn" href="https://www.google.com/maps/place/CASA+DEL+LAGO/@14.4572059,-90.6249416,14z/data=!4m6!3m5!1s0x858909bd75a51c95:0xd3ae47181ded58f5!8m2!3d14.4481766!4d-90.5930761!16s%2Fg%2F11bc72q1n2" target="_blank" rel="noopener noreferrer" aria-label="Abrir en Google Maps">
-              <img src="./assets/img/iconos/maps.png" alt="Google Maps" class="nav-btn-icon" />
-              <span class="nav-btn-texto">Maps</span>
-            </a>
-            <a class="evento-nav-btn" href="https://waze.com/ul?ll=14.4481766,-90.5930761&navigate=yes" target="_blank" rel="noopener noreferrer" aria-label="Abrir en Waze">
-              <img src="./assets/img/iconos/waze.png" alt="Waze" class="nav-btn-icon" />
-              <span class="nav-btn-texto">Waze</span>
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="evento-card">
-        <img src="./assets/img/fondos/arco.png" alt="" class="evento-arco-img" aria-hidden="true" />
-        <div class="evento-card-content">
-          <p class="evento-tipo">Recepción</p>
-          <div class="evento-linea"></div>
-          <p class="evento-lugar">CASA DEL LAGO</p>
-          <p class="evento-direccion">Km 32.6, Circunvalación<br>Lago de Amatitlán</p>
-          <p class="evento-hora">12:00 PM</p>
           <div class="evento-nav-btns">
             <a class="evento-nav-btn" href="https://www.google.com/maps/place/CASA+DEL+LAGO/@14.4572059,-90.6249416,14z/data=!4m6!3m5!1s0x858909bd75a51c95:0xd3ae47181ded58f5!8m2!3d14.4481766!4d-90.5930761!16s%2Fg%2F11bc72q1n2" target="_blank" rel="noopener noreferrer" aria-label="Abrir en Google Maps">
               <img src="./assets/img/iconos/maps.png" alt="Google Maps" class="nav-btn-icon" />
@@ -292,7 +272,6 @@
         Por favor, háznoslo saber antes del <strong>1 de Junio.</strong>
       </p>
 
-      <!-- Botones Sí / No -->
       <div class="rsvp-opciones" id="rsvpOpciones">
         <button class="rsvp-btn rsvp-si" onclick="confirmarAsistencia('si')" aria-label="Confirmar asistencia">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18">
@@ -308,7 +287,6 @@
         </button>
       </div>
 
-      <!-- Formulario de datos -->
       <div class="rsvp-form-wrap" id="rsvpFormWrap" style="display:none">
         <form class="rsvp-form" onsubmit="enviarRSVP(event)" novalidate>
           <div class="rsvp-field">
@@ -329,7 +307,6 @@
         </form>
       </div>
 
-      <!-- Mensaje de gracias tras envío -->
       <div class="rsvp-confirmado" id="rsvpConfirmado" style="display:none">
         <div class="rsvp-confirmado-icono" aria-hidden="true">
           <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" width="44" height="44">
