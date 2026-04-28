@@ -236,6 +236,104 @@ body {
 }
 .rsvp-no:active { transform: scale(0.97); }
 
+/* ─── FORMULARIO RSVP ─── */
+.rsvp-form-wrap {
+  width: 100%;
+  max-width: 320px;
+  animation: fadeInUp 0.4s cubic-bezier(0.16,1,0.3,1);
+}
+
+.rsvp-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.rsvp-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+}
+
+.rsvp-label {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(0.78rem, 3.2vw, 0.88rem);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--texto);
+  opacity: 0.7;
+}
+
+.rsvp-opcional {
+  font-style: italic;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 0.82em;
+  opacity: 0.8;
+}
+
+.rsvp-input {
+  width: 100%;
+  padding: 12px 14px;
+  background: var(--blanco);
+  border: 1px solid rgba(184,107,82,0.35);
+  border-radius: 0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(0.95rem, 4vw, 1.05rem);
+  color: var(--texto);
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.rsvp-input:focus {
+  border-color: var(--terracota);
+  box-shadow: 0 0 0 3px rgba(184,107,82,0.12);
+}
+
+.rsvp-input::placeholder {
+  color: var(--texto);
+  opacity: 0.35;
+  font-style: italic;
+}
+
+.rsvp-textarea {
+  resize: vertical;
+  min-height: 90px;
+  line-height: 1.6;
+}
+
+.rsvp-submit-btn {
+  width: 100%;
+  padding: 14px 24px;
+  background: var(--terracota);
+  color: #fff;
+  border: 1px solid var(--terracota);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(0.85rem, 3.5vw, 0.95rem);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 0;
+  margin-top: 6px;
+  transition: background 0.25s ease, transform 0.15s ease;
+}
+
+.rsvp-submit-btn:hover {
+  background: var(--terracota-oscuro);
+  border-color: var(--terracota-oscuro);
+}
+
+.rsvp-submit-btn:active { transform: scale(0.97); }
+
+.rsvp-submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
 /* Mensaje de confirmación */
 .rsvp-confirmado {
   display: flex;
