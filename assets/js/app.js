@@ -77,6 +77,47 @@ document.addEventListener('keydown', function(e) {
   }
 });
 
+// ─── COPIAR NÚMERO DE CUENTA ───
+function copiarCuenta(elementId, btn) {
+  var numero = document.getElementById(elementId);
+  if (!numero) return;
+  var texto = numero.textContent.trim();
+
+  // Usar Clipboard API si está disponible
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(texto).then(function() {
+      _feedbackCopiado(btn);
+    }).catch(function() {
+      _copiarFallback(texto, btn);
+    });
+  } else {
+    _copiarFallback(texto, btn);
+  }
+}
+
+function _copiarFallback(texto, btn) {
+  var ta = document.createElement('textarea');
+  ta.value = texto;
+  ta.style.position = 'fixed';
+  ta.style.opacity = '0';
+  document.body.appendChild(ta);
+  ta.focus();
+  ta.select();
+  try { document.execCommand('copy'); } catch(e) {}
+  document.body.removeChild(ta);
+  _feedbackCopiado(btn);
+}
+
+function _feedbackCopiado(btn) {
+  btn.classList.add('copiado');
+  // Cambiar icono a check
+  btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="15" height="15"><path d="M20 6L9 17l-5-5"/></svg>';
+  setTimeout(function() {
+    btn.classList.remove('copiado');
+    btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+  }, 2000);
+}
+
 // ─── RSVP ───
 var _rsvpStatus = '';
 
