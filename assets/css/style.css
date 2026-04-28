@@ -365,6 +365,26 @@ body {
   font-style: normal;
 }
 
+/* ─── MODAL VESTIMENTA: texto más abajo y a la izquierda ─── */
+.modal-vestimenta-texto {
+  align-items: flex-start !important;
+  justify-content: flex-end !important;
+  text-align: left !important;
+  padding: 8% 10% 12% 8% !important;
+  gap: 8px !important;
+}
+.modal-vestimenta-texto .modal-arco-titulo {
+  text-align: left;
+  line-height: 1.05;
+}
+.modal-vestimenta-texto .modal-arco-linea {
+  margin-left: 0;
+}
+.modal-vestimenta-texto .modal-arco-desc {
+  text-align: left;
+  max-width: 200px;
+}
+
 /* ─── SECCIÓN RSVP ─── */
 .rsvp-section {
   background-color: var(--crema);
