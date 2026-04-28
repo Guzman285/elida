@@ -54,20 +54,14 @@ body {
   pointer-events: none;
   z-index: 1;
 }
-/* flor1 derecha: espejo horizontal */
+/* flor1 derecha: OCULTA */
 .hero-flores-der {
-  position: absolute;
-  top: 0; right: 0;
-  width: 62%; max-width: 240px;
-  height: auto;
-  pointer-events: none;
-  z-index: 1;
-  transform: scaleX(-1);
+  display: none;
 }
 
 .hero-top { position: relative; width: 100%; min-height: 240px; display: flex; align-items: center; justify-content: flex-end; padding-top: 30px; padding-right: 18px; padding-left: 50%; z-index: 2; }
 .hero-versiculo { text-align: left; max-width: 200px; }
-.versiculo-texto { font-size: clamp(1rem, 4.2vw, 1.1rem); font-style: italic; color: #6b4035; line-height: 1.75; margin-bottom: 8px; }
+.versiculo-texto { font-size: clamp(1.15rem, 5vw, 1.35rem); font-style: italic; color: #6b4035; line-height: 1.75; margin-bottom: 8px; }
 .versiculo-ref { font-size: 0.9rem; letter-spacing: 1px; color: var(--terracota); }
 .hero-nombres { margin-top: 16px; text-align: center; padding: 0 20px; z-index: 2; position: relative; }
 .nombre-linea { font-family: "Great Vibes", cursive; font-size: clamp(3.8rem, 17vw, 5.5rem); color: var(--texto); font-weight: 400; line-height: 1.05; }
