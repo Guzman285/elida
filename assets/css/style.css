@@ -75,7 +75,6 @@ body {
 .foto-degradado-bottom { position: absolute; bottom: 0; left: 0; width: 100%; height: 100px; background: linear-gradient(to top, var(--crema) 0%, transparent 100%); pointer-events: none; z-index: 2; }
 
 /* ─── DECORACIÓN FLORES GENÉRICA ─── */
-/* Clase base: posición absoluta, decorativa, sin interacción */
 .deco-flor {
   position: absolute;
   width: 52%; max-width: 200px;
@@ -90,27 +89,58 @@ body {
   position: relative;
   overflow: hidden;
   background-color: var(--crema);
-  padding: 50px 28px 56px;
+  /* Padding generoso para que el contenido quede bien centrado entre las flores de las 4 esquinas */
+  padding: 130px 28px 130px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 28px;
   text-align: center;
 }
-/* flor2 abajo-derecha: girada 180° */
+
+/* flor2: esquina SUPERIOR izquierda */
+.deco-flor-padres-sup-izq {
+  top: -10px; left: -10px;
+  transform: none;
+  width: 48%; max-width: 190px;
+  opacity: 0.82;
+}
+/* flor2: esquina SUPERIOR derecha — espejo horizontal */
+.deco-flor-padres-sup-der {
+  top: -10px; right: -10px;
+  transform: scaleX(-1);
+  width: 48%; max-width: 190px;
+  opacity: 0.82;
+}
+/* flor2: esquina INFERIOR izquierda — girada 180° */
+.deco-flor-padres-inf-izq {
+  bottom: -10px; left: -10px;
+  transform: rotate(180deg) scaleX(-1);
+  width: 48%; max-width: 190px;
+  opacity: 0.75;
+}
+/* flor2: esquina INFERIOR derecha — girada 180° */
+.deco-flor-padres-inf-der {
+  bottom: -10px; right: -10px;
+  transform: rotate(180deg);
+  width: 48%; max-width: 190px;
+  opacity: 0.75;
+}
+
+/* Mantener compatibilidad con nombres antiguos (por si acaso) */
 .deco-flor-padres-der {
   bottom: -20px; right: -10px;
   transform: rotate(180deg);
   width: 48%; max-width: 190px;
   opacity: 0.7;
 }
-/* flor2 abajo-izquierda: espejo de la anterior */
 .deco-flor-padres-izq {
   bottom: -20px; left: -10px;
   transform: rotate(180deg) scaleX(-1);
   width: 48%; max-width: 190px;
   opacity: 0.7;
 }
+
 .padres-intro {
   font-family: "Great Vibes", cursive;
   font-size: clamp(1.9rem, 8.5vw, 2.6rem);
