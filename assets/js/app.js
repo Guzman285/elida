@@ -78,18 +78,75 @@ document.addEventListener('keydown', function(e) {
 });
 
 // ─── RSVP ───
+var _rsvpStatus = '';
+
 function confirmarAsistencia(respuesta) {
-  const opciones    = document.getElementById('rsvpOpciones');
-  const confirmado  = document.getElementById('rsvpConfirmado');
-  const declinado   = document.getElementById('rsvpDeclinado');
-  const mensaje     = document.getElementById('rsvpMensaje');
+  _rsvpStatus = respuesta === 'si' ? 'Asistirá' : 'No Asistirá';
+
+  const opciones = document.getElementById('rsvpOpciones');
+  const formWrap = document.getElementById('rsvpFormWrap');
 
   opciones.style.display = 'none';
+  formWrap.style.display = 'block';
 
+  // Ajustar label del campo personas según respuesta
+  const labelPersonas = document.getElementById('rsvpLabelPersonas');
   if (respuesta === 'si') {
-    mensaje.textContent = 'Con mucho amor los esperamos el 13 de Junio. ¡Será un día inolvidable!';
-    confirmado.style.display = 'flex';
+    labelPersonas.textContent = '¿Cuántas personas asistirán?';
   } else {
-    declinado.style.display = 'block';
+    labelPersonas.textContent = 'Número de personas (referencia)';
   }
+}
+
+function enviarRSVP(e) {
+  e.preventDefault();
+
+  const nombre   = document.getElementById('rsvpNombre').value.trim();
+  const personas = document.getElementById('rsvpPersonas').value.trim();
+  const mensaje  = document.getElementById('rsvpMensajeInput').value.trim();
+  const btn      = document.getElementById('rsvpSubmitBtn');
+
+  if (!nombre || !personas) return;
+
+  btn.disabled = true;
+  btn.textContent = 'Enviando...';
+
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwLO6QmRbU2CvTxuK3wDIglsfMPBR4TwaxOq0lBIIy-eEbuQa94s6nsuirZFau1gGbZ/exec';
+
+  const params = new URLSearchParams({
+    nama:    nombre,
+    jumlah:  personas,
+    status:  _rsvpStatus,
+    mensaje: mensaje
+  });
+
+  fetch(SCRIPT_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: params.toString()
+  })
+  .then(function() {
+    mostrarMensajeFinal();
+  })
+  .catch(function() {
+    // no-cors siempre llega aquí como opaque, igual mostramos gracias
+    mostrarMensajeFinal();
+  });
+}
+
+function mostrarMensajeFinal() {
+  const formWrap   = document.getElementById('rsvpFormWrap');
+  const confirmado = document.getElementById('rsvpConfirmado');
+  const msgTexto   = document.getElementById('rsvpMensaje');
+
+  formWrap.style.display = 'none';
+
+  if (_rsvpStatus === 'Asistirá') {
+    msgTexto.textContent = 'Con mucho amor los esperamos el 13 de Junio. ¡Será un día inolvidable!';
+  } else {
+    msgTexto.textContent = 'Los tendremos en el corazón ese día. ♥';
+  }
+
+  confirmado.style.display = 'flex';
 }
