@@ -45,7 +45,6 @@ body {
 /* ─── HERO ─── */
 .hero { position: relative; background-color: var(--crema); overflow: hidden; display: flex; flex-direction: column; align-items: center; padding-bottom: 0; }
 
-/* flor1 izquierda (original) */
 .hero-flores-izq {
   position: absolute;
   top: 0; left: 0;
@@ -54,7 +53,6 @@ body {
   pointer-events: none;
   z-index: 1;
 }
-/* flor1 derecha: OCULTA */
 .hero-flores-der {
   display: none;
 }
@@ -96,8 +94,6 @@ body {
   gap: 28px;
   text-align: center;
 }
-
-/* flor2: esquina SUPERIOR izquierda → ahora va ABAJO (donde terminan los nombres) */
 .deco-flor-padres-sup-izq {
   bottom: 245px; left: -20px;
   top: auto;
@@ -105,7 +101,6 @@ body {
   width: 48%; max-width: 190px;
   opacity: 0.82;
 }
-/* flor2: esquina SUPERIOR derecha → ahora va ABAJO */
 .deco-flor-padres-sup-der {
   bottom: 245px; right: -20px;
   top: auto;
@@ -113,7 +108,6 @@ body {
   width: 48%; max-width: 190px;
   opacity: 0.82;
 }
-/* flor2: esquina INFERIOR izquierda → ahora va ARRIBA (encima de "Con la bendición...") */
 .deco-flor-padres-inf-izq {
   top: 280px; left: -20px;
   bottom: auto;
@@ -121,7 +115,6 @@ body {
   width: 48%; max-width: 190px;
   opacity: 0.75;
 }
-/* flor2: esquina INFERIOR derecha → ahora va ARRIBA */
 .deco-flor-padres-inf-der {
   top: 280px; right: -20px;
   bottom: auto;
@@ -199,21 +192,18 @@ body {
   align-items: center;
   gap: 0;
 }
-/* flor1 arriba-izquierda: volteada verticalmente */
 .deco-flor-fecha-izq {
   top: 60px; left: -15px;
   transform: scaleY(-1);
   width: 50%; max-width: 195px;
   opacity: 0.75;
 }
-/* flor1 arriba-derecha: espejo total (volteo doble) */
 .deco-flor-fecha-der {
   top: 270px; right: -10px;
   transform: scaleY(-1) scaleX(-1);
   width: 50%; max-width: 195px;
   opacity: 0.75;
 }
-/* Contenido de fecha sobre las flores */
 .fecha-section > *:not(.deco-flor) { position: relative; z-index: 1; }
 
 .fecha-invitacion { font-size: clamp(0.72rem, 3.2vw, 0.85rem); letter-spacing: 2px; color: var(--texto); line-height: 1.8; text-transform: uppercase; margin-bottom: 4px; }
@@ -253,12 +243,30 @@ body {
 .evento-lugar { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(0.8rem, 3.5vw, 1rem); font-weight: 700; letter-spacing: 3px; color: #fff; text-transform: uppercase; text-align: center; text-shadow: 0 0 16px rgba(0,0,0,0.85), 0 2px 8px rgba(80,40,20,0.95), 0 1px 3px rgba(0,0,0,0.9); }
 .evento-direccion { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(0.85rem, 3.8vw, 1rem); color: #fff; text-align: center; line-height: 1.55; text-shadow: 0 0 16px rgba(0,0,0,0.85), 0 2px 8px rgba(80,40,20,0.95), 0 1px 3px rgba(0,0,0,0.9); }
 .evento-hora { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(0.82rem, 3.5vw, 0.95rem); letter-spacing: 3px; color: #fff; margin-top: 2px; text-shadow: 0 0 16px rgba(0,0,0,0.85), 0 2px 8px rgba(80,40,20,0.95), 0 1px 3px rgba(0,0,0,0.9); }
-.evento-nav-btns { display: flex; flex-direction: row; gap: 16px; margin-top: 10px; align-items: center; justify-content: center; }
-.evento-nav-btn { display: flex; flex-direction: column; align-items: center; gap: 5px; text-decoration: none; color: #fff; transition: opacity 0.2s, transform 0.2s; }
-.evento-nav-btn:hover { opacity: 0.8; transform: scale(1.05); }
-.evento-nav-btn:active { opacity: 0.65; transform: scale(0.97); }
-.nav-btn-icon { width: 48px; height: 48px; object-fit: contain; border-radius: 50%; background: rgba(255,255,255,0.15); padding: 4px; box-shadow: 0 2px 8px rgba(80,40,20,0.3); }
-.nav-btn-texto { font-family: "Cormorant Garamond", Georgia, serif; font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; color: #fff; text-shadow: 0 1px 4px rgba(80,40,20,0.5); }
+
+/* Botones de navegación Maps / Waze */
+.evento-nav-btns { display: flex; flex-direction: row; gap: 24px; margin-top: 14px; align-items: center; justify-content: center; }
+.evento-nav-btn { display: flex; flex-direction: column; align-items: center; gap: 6px; text-decoration: none; color: #fff; transition: opacity 0.2s, transform 0.2s; }
+.evento-nav-btn:hover { opacity: 0.85; transform: scale(1.07); }
+.evento-nav-btn:active { opacity: 0.65; transform: scale(0.96); }
+.nav-btn-icon {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.92);
+  padding: 8px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.35), 0 1px 4px rgba(0,0,0,0.25);
+}
+.nav-btn-texto {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #fff;
+  text-shadow: 0 0 12px rgba(0,0,0,0.8), 0 1px 4px rgba(0,0,0,0.9);
+  font-weight: 600;
+}
 
 /* ─── ITINERARIO ─── */
 .itinerario-section {
@@ -271,21 +279,18 @@ body {
   align-items: center;
   gap: 40px;
 }
-/* flor2 arriba-derecha */
 .deco-flor-itinerario-der {
   top: 850px; right: -12px;
   transform: scaleX(-1);
   width: 46%; max-width: 180px;
   opacity: 0.72;
 }
-/* flor2 abajo-izquierda: doble espejo */
 .deco-flor-itinerario-izq {
   bottom: 880px; left: 252px;
   transform: rotate(180deg);
   width: 46%; max-width: 180px;
   opacity: 0.72;
 }
-/* Contenido sobre las flores */
 .itinerario-section > *:not(.deco-flor) { position: relative; z-index: 1; }
 
 .itinerario-titulo { text-align: center; line-height: 1; }
@@ -391,21 +396,18 @@ body {
   align-items: center;
   gap: 36px;
 }
-/* flor1 arriba-izquierda */
 .deco-flor-notas-izq {
   top: -8px; left: -8px;
   transform: none;
   width: 44%; max-width: 170px;
   opacity: 0.68;
 }
-/* flor1 arriba-derecha: espejo */
 .deco-flor-notas-der {
   top: -8px; right: -8px;
   transform: scaleX(-1);
   width: 44%; max-width: 170px;
   opacity: 0.68;
 }
-/* Contenido sobre las flores */
 .notas-section > *:not(.deco-flor) { position: relative; z-index: 1; }
 
 .notas-titulo { font-family: "Great Vibes", cursive; font-size: clamp(3rem, 14vw, 4.5rem); font-weight: 400; color: var(--texto); line-height: 1; text-align: center; }
@@ -570,21 +572,18 @@ body {
   text-align: center;
   border-top: 1px solid rgba(184,107,82,0.15);
 }
-/* flor2 arriba-izquierda */
 .deco-flor-rsvp-izq {
   top: 370px; left: -10px;
   transform: none;
   width: 42%; max-width: 165px;
   opacity: 0.65;
 }
-/* flor2 arriba-derecha: espejo */
 .deco-flor-rsvp-der {
   top: 370px; right: -10px;
   transform: scaleX(-1);
   width: 42%; max-width: 165px;
   opacity: 0.65;
 }
-/* Contenido sobre las flores */
 .rsvp-section > *:not(.deco-flor) { position: relative; z-index: 1; }
 
 .rsvp-deco-top, .rsvp-deco-bottom { opacity: 0.8; }
