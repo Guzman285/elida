@@ -89,7 +89,6 @@ function confirmarAsistencia(respuesta) {
   opciones.style.display = 'none';
   formWrap.style.display = 'block';
 
-  // Ajustar label del campo personas según respuesta
   const labelPersonas = document.getElementById('rsvpLabelPersonas');
   if (respuesta === 'si') {
     labelPersonas.textContent = '¿Cuántas personas asistirán?';
@@ -98,15 +97,43 @@ function confirmarAsistencia(respuesta) {
   }
 }
 
+function marcarError(input, mostrar) {
+  var field = input.closest('.rsvp-field');
+  if (!field) return;
+  var error = field.querySelector('.rsvp-error');
+  if (mostrar) {
+    input.classList.add('rsvp-input-error');
+    if (error) error.style.display = 'block';
+  } else {
+    input.classList.remove('rsvp-input-error');
+    if (error) error.style.display = 'none';
+  }
+}
+
 function enviarRSVP(e) {
   e.preventDefault();
 
-  const nombre   = document.getElementById('rsvpNombre').value.trim();
-  const personas = document.getElementById('rsvpPersonas').value.trim();
-  const mensaje  = document.getElementById('rsvpMensajeInput').value.trim();
-  const btn      = document.getElementById('rsvpSubmitBtn');
+  var inputNombre   = document.getElementById('rsvpNombre');
+  var inputPersonas = document.getElementById('rsvpPersonas');
+  var nombre   = inputNombre.value.trim();
+  var personas = inputPersonas.value.trim();
+  var mensaje  = document.getElementById('rsvpMensajeInput').value.trim();
+  var btn      = document.getElementById('rsvpSubmitBtn');
 
-  if (!nombre || !personas) return;
+  // Limpiar errores previos
+  marcarError(inputNombre, false);
+  marcarError(inputPersonas, false);
+
+  var valido = true;
+  if (!nombre) {
+    marcarError(inputNombre, true);
+    valido = false;
+  }
+  if (!personas || parseInt(personas) < 1) {
+    marcarError(inputPersonas, true);
+    valido = false;
+  }
+  if (!valido) return;
 
   btn.disabled = true;
   btn.textContent = 'Enviando...';
@@ -126,19 +153,14 @@ function enviarRSVP(e) {
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     body: params.toString()
   })
-  .then(function() {
-    mostrarMensajeFinal();
-  })
-  .catch(function() {
-    // no-cors siempre llega aquí como opaque, igual mostramos gracias
-    mostrarMensajeFinal();
-  });
+  .then(function() { mostrarMensajeFinal(); })
+  .catch(function() { mostrarMensajeFinal(); });
 }
 
 function mostrarMensajeFinal() {
-  const formWrap   = document.getElementById('rsvpFormWrap');
-  const confirmado = document.getElementById('rsvpConfirmado');
-  const msgTexto   = document.getElementById('rsvpMensaje');
+  var formWrap   = document.getElementById('rsvpFormWrap');
+  var confirmado = document.getElementById('rsvpConfirmado');
+  var msgTexto   = document.getElementById('rsvpMensaje');
 
   formWrap.style.display = 'none';
 
