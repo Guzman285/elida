@@ -207,10 +207,8 @@ body {
   padding: 16px 0;
 }
 
-/* Izquierda: icono+texto a la izquierda, punto en el centro */
-.tl-izq {
-  flex-direction: row;
-}
+/* Izquierda */
+.tl-izq { flex-direction: row; }
 .tl-izq .tl-contenido {
   flex: 1;
   display: flex;
@@ -220,21 +218,11 @@ body {
   padding-right: 14px;
 }
 .tl-izq .tl-punto { flex-shrink: 0; }
-/* ocupa la mitad derecha vacía */
-.tl-izq::after {
-  content: "";
-  flex: 1;
-}
+.tl-izq::after { content: ""; flex: 1; }
 
-/* Derecha: punto en el centro, icono+texto a la derecha */
-.tl-der {
-  flex-direction: row;
-}
-/* ocupa la mitad izquierda vacía */
-.tl-der::before {
-  content: "";
-  flex: 1;
-}
+/* Derecha */
+.tl-der { flex-direction: row; }
+.tl-der::before { content: ""; flex: 1; }
 .tl-der .tl-punto { flex-shrink: 0; }
 .tl-der .tl-contenido {
   flex: 1;
@@ -245,28 +233,18 @@ body {
   padding-left: 14px;
 }
 
-/* Contenido (icono + hora + nombre) */
-.tl-contenido {
-  gap: 4px;
-}
+.tl-contenido { gap: 4px; }
 
 /* Icono PNG */
-.tl-icono {
-  margin-bottom: 4px;
-}
+.tl-icono { margin-bottom: 4px; }
 .tl-icono-img {
   width: 90px;
   height: 90px;
   object-fit: contain;
   display: block;
 }
-/* Alinear imagen al lado correcto */
-.tl-izq .tl-icono-img {
-  margin-left: auto;
-}
-.tl-der .tl-icono-img {
-  margin-right: auto;
-}
+.tl-izq .tl-icono-img { margin-left: auto; }
+.tl-der .tl-icono-img { margin-right: auto; }
 
 .tl-hora {
   font-family: "Cormorant Garamond", Georgia, serif;
@@ -310,6 +288,22 @@ body {
 .nota-btn:hover { background: var(--terracota); color: #fff; }
 .nota-btn:active { background: var(--terracota-oscuro); color: #fff; transform: scale(0.97); }
 .nota-separador { width: 40px; height: 1px; background: var(--terracota); opacity: 0.3; }
+
+/* Vestimenta: dos imágenes lado a lado */
+.vestimenta-iconos {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 4px;
+}
+.vestimenta-img {
+  width: 80px;
+  height: 100px;
+  object-fit: contain;
+  display: block;
+}
 
 /* ─── MODALES ─── */
 .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(60,25,15,0.65); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); z-index: 1000; align-items: center; justify-content: center; padding: 24px; }
@@ -370,238 +364,42 @@ body {
   text-align: center;
   border-top: 1px solid rgba(184,107,82,0.15);
 }
-
-.rsvp-deco-top,
-.rsvp-deco-bottom { opacity: 0.8; }
-
-.rsvp-pre {
-  font-family: "Great Vibes", cursive;
-  font-size: clamp(1.8rem, 8vw, 2.5rem);
-  color: var(--terracota);
-  line-height: 1;
-  opacity: 0.85;
-}
-
-.rsvp-titulo {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(1.3rem, 6vw, 1.7rem);
-  font-weight: 300;
-  letter-spacing: 5px;
-  color: var(--texto);
-  text-transform: uppercase;
-  margin-top: -14px;
-}
-
-.rsvp-texto {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(0.95rem, 4vw, 1.1rem);
-  color: var(--texto);
-  opacity: 0.75;
-  line-height: 1.75;
-  max-width: 300px;
-  font-style: italic;
-}
-
-.rsvp-texto strong {
-  font-style: normal;
-  font-weight: 600;
-  opacity: 1;
-  color: var(--terracota);
-}
-
-.rsvp-opciones {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  width: 100%;
-  max-width: 300px;
-  margin-top: 8px;
-}
-
-.rsvp-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  width: 100%;
-  padding: 14px 24px;
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(0.88rem, 3.8vw, 1rem);
-  letter-spacing: 2px;
-  cursor: pointer;
-  border-radius: 0;
-  transition: background 0.25s ease, color 0.25s ease, transform 0.15s ease;
-}
-
-.rsvp-si {
-  background: var(--terracota);
-  color: #fff;
-  border: 1px solid var(--terracota);
-}
+.rsvp-deco-top, .rsvp-deco-bottom { opacity: 0.8; }
+.rsvp-pre { font-family: "Great Vibes", cursive; font-size: clamp(1.8rem, 8vw, 2.5rem); color: var(--terracota); line-height: 1; opacity: 0.85; }
+.rsvp-titulo { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(1.3rem, 6vw, 1.7rem); font-weight: 300; letter-spacing: 5px; color: var(--texto); text-transform: uppercase; margin-top: -14px; }
+.rsvp-texto { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(0.95rem, 4vw, 1.1rem); color: var(--texto); opacity: 0.75; line-height: 1.75; max-width: 300px; font-style: italic; }
+.rsvp-texto strong { font-style: normal; font-weight: 600; opacity: 1; color: var(--terracota); }
+.rsvp-opciones { display: flex; flex-direction: column; gap: 14px; width: 100%; max-width: 300px; margin-top: 8px; }
+.rsvp-btn { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 14px 24px; font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(0.88rem, 3.8vw, 1rem); letter-spacing: 2px; cursor: pointer; border-radius: 0; transition: background 0.25s ease, color 0.25s ease, transform 0.15s ease; }
+.rsvp-si { background: var(--terracota); color: #fff; border: 1px solid var(--terracota); }
 .rsvp-si:hover { background: var(--terracota-oscuro); border-color: var(--terracota-oscuro); }
 .rsvp-si:active { transform: scale(0.97); }
-
-.rsvp-no {
-  background: transparent;
-  color: var(--texto);
-  border: 1px solid rgba(92,53,40,0.3);
-}
+.rsvp-no { background: transparent; color: var(--texto); border: 1px solid rgba(92,53,40,0.3); }
 .rsvp-no:hover { background: rgba(92,53,40,0.06); border-color: rgba(92,53,40,0.5); }
 .rsvp-no:active { transform: scale(0.97); }
-
-/* ─── FORMULARIO RSVP ─── */
-.rsvp-form-wrap {
-  width: 100%;
-  max-width: 320px;
-  animation: fadeInUp 0.4s cubic-bezier(0.16,1,0.3,1);
-}
-
-.rsvp-form {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.rsvp-field {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  text-align: left;
-}
-
-.rsvp-label {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(0.78rem, 3.2vw, 0.88rem);
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--texto);
-  opacity: 0.7;
-}
-
-.rsvp-opcional {
-  font-style: italic;
-  text-transform: none;
-  letter-spacing: 0;
-  font-size: 0.82em;
-  opacity: 0.8;
-}
-
-.rsvp-input {
-  width: 100%;
-  padding: 12px 14px;
-  background: var(--blanco);
-  border: 1px solid rgba(184,107,82,0.35);
-  border-radius: 0;
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(0.95rem, 4vw, 1.05rem);
-  color: var(--texto);
-  outline: none;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-  -webkit-appearance: none;
-  appearance: none;
-}
-
-.rsvp-input:focus {
-  border-color: var(--terracota);
-  box-shadow: 0 0 0 3px rgba(184,107,82,0.12);
-}
-
-.rsvp-input::placeholder {
-  color: var(--texto);
-  opacity: 0.35;
-  font-style: italic;
-}
-
-.rsvp-textarea {
-  resize: vertical;
-  min-height: 90px;
-  line-height: 1.6;
-}
-
-.rsvp-input-error {
-  border-color: #c0392b !important;
-  box-shadow: 0 0 0 3px rgba(192,57,43,0.12) !important;
-  animation: shake 0.35s cubic-bezier(0.36,0.07,0.19,0.97);
-}
-
-@keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  20%       { transform: translateX(-6px); }
-  40%       { transform: translateX(6px); }
-  60%       { transform: translateX(-4px); }
-  80%       { transform: translateX(4px); }
-}
-
-.rsvp-error {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 0.82rem;
-  font-style: italic;
-  color: #c0392b;
-  letter-spacing: 0.5px;
-  margin-top: -2px;
-}
-
-.rsvp-submit-btn {
-  width: 100%;
-  padding: 14px 24px;
-  background: var(--terracota);
-  color: #fff;
-  border: 1px solid var(--terracota);
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(0.85rem, 3.5vw, 0.95rem);
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  cursor: pointer;
-  border-radius: 0;
-  margin-top: 6px;
-  transition: background 0.25s ease, transform 0.15s ease;
-}
-
+.rsvp-form-wrap { width: 100%; max-width: 320px; animation: fadeInUp 0.4s cubic-bezier(0.16,1,0.3,1); }
+.rsvp-form { display: flex; flex-direction: column; gap: 20px; }
+.rsvp-field { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+.rsvp-label { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(0.78rem, 3.2vw, 0.88rem); letter-spacing: 2px; text-transform: uppercase; color: var(--texto); opacity: 0.7; }
+.rsvp-opcional { font-style: italic; text-transform: none; letter-spacing: 0; font-size: 0.82em; opacity: 0.8; }
+.rsvp-input { width: 100%; padding: 12px 14px; background: var(--blanco); border: 1px solid rgba(184,107,82,0.35); border-radius: 0; font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(0.95rem, 4vw, 1.05rem); color: var(--texto); outline: none; transition: border-color 0.2s ease, box-shadow 0.2s ease; -webkit-appearance: none; appearance: none; }
+.rsvp-input:focus { border-color: var(--terracota); box-shadow: 0 0 0 3px rgba(184,107,82,0.12); }
+.rsvp-input::placeholder { color: var(--texto); opacity: 0.35; font-style: italic; }
+.rsvp-textarea { resize: vertical; min-height: 90px; line-height: 1.6; }
+.rsvp-input-error { border-color: #c0392b !important; box-shadow: 0 0 0 3px rgba(192,57,43,0.12) !important; animation: shake 0.35s cubic-bezier(0.36,0.07,0.19,0.97); }
+@keyframes shake { 0%, 100% { transform: translateX(0); } 20% { transform: translateX(-6px); } 40% { transform: translateX(6px); } 60% { transform: translateX(-4px); } 80% { transform: translateX(4px); } }
+.rsvp-error { font-family: "Cormorant Garamond", Georgia, serif; font-size: 0.82rem; font-style: italic; color: #c0392b; letter-spacing: 0.5px; margin-top: -2px; }
+.rsvp-submit-btn { width: 100%; padding: 14px 24px; background: var(--terracota); color: #fff; border: 1px solid var(--terracota); font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(0.85rem, 3.5vw, 0.95rem); letter-spacing: 3px; text-transform: uppercase; cursor: pointer; border-radius: 0; margin-top: 6px; transition: background 0.25s ease, transform 0.15s ease; }
 .rsvp-submit-btn:hover { background: var(--terracota-oscuro); border-color: var(--terracota-oscuro); }
 .rsvp-submit-btn:active { transform: scale(0.97); }
 .rsvp-submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
-
-.rsvp-confirmado {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 14px;
-  animation: fadeInUp 0.5s cubic-bezier(0.16,1,0.3,1);
-}
-
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
+.rsvp-confirmado { display: flex; flex-direction: column; align-items: center; gap: 14px; animation: fadeInUp 0.5s cubic-bezier(0.16,1,0.3,1); }
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
 .rsvp-confirmado-icono { color: var(--verde); opacity: 0.85; }
-
-.rsvp-confirmado-titulo {
-  font-family: "Great Vibes", cursive;
-  font-size: clamp(2.2rem, 10vw, 3rem);
-  color: var(--texto);
-  line-height: 1;
-}
-
-.rsvp-confirmado-texto {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(0.92rem, 4vw, 1.05rem);
-  color: var(--texto);
-  opacity: 0.7;
-  line-height: 1.7;
-  font-style: italic;
-  max-width: 280px;
-}
-
+.rsvp-confirmado-titulo { font-family: "Great Vibes", cursive; font-size: clamp(2.2rem, 10vw, 3rem); color: var(--texto); line-height: 1; }
+.rsvp-confirmado-texto { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(0.92rem, 4vw, 1.05rem); color: var(--texto); opacity: 0.7; line-height: 1.7; font-style: italic; max-width: 280px; }
 .rsvp-declinado { animation: fadeInUp 0.5s cubic-bezier(0.16,1,0.3,1); }
-
-.rsvp-declinado-texto {
-  font-family: "Great Vibes", cursive;
-  font-size: clamp(1.8rem, 8vw, 2.4rem);
-  color: var(--terracota);
-  line-height: 1.3;
-  opacity: 0.85;
-}
+.rsvp-declinado-texto { font-family: "Great Vibes", cursive; font-size: clamp(1.8rem, 8vw, 2.4rem); color: var(--terracota); line-height: 1.3; opacity: 0.85; }
 
 /* ─── CONTENIDO PRINCIPAL ─── */
 .main-content { padding: 20px; }
