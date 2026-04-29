@@ -51,7 +51,7 @@ body {
   grid-template-columns: 44% 56%;
   align-items: center;
   min-height: 320px;
-  padding: 16px 0;
+  padding: 16px 0 0;
 }
 
 /* Flor izquierda: más grande, sobresale un poco por arriba y abajo */
@@ -103,7 +103,7 @@ body {
 }
 
 /* ─── FOTO NOVIOS ─── */
-.foto-novios-section { background-color: var(--crema); width: 100%; margin-top: 0; }
+.foto-novios-section { background-color: var(--crema); width: 100%; margin-top: -32px; }
 .foto-novios-wrap { position: relative; width: 100%; line-height: 0; }
 .foto-novios-img { width: 100%; height: auto; display: block; object-fit: cover; }
 .foto-degradado-top { position: absolute; top: 0; left: 0; width: 100%; height: 100px; background: linear-gradient(to bottom, var(--crema) 0%, transparent 100%); pointer-events: none; z-index: 2; }
