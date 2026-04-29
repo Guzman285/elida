@@ -168,11 +168,13 @@ function _feedbackCopiado(btn) {
 var WA_NUMBER = '50235717258';
 
 function confirmarSi() {
+  cerrarModal('modal-confirmar');
   var msg = encodeURIComponent('¡Hola Carlos & Elida! 💍🌸 Con mucha alegría confirmo mi asistencia a su boda el 13 de Junio. ¡Será un honor acompañarlos en tan especial día! 🎉');
   window.open('https://wa.me/' + WA_NUMBER + '?text=' + msg, '_blank');
 }
 
 function confirmarNo() {
+  cerrarModal('modal-confirmar');
   var msg = encodeURIComponent('¡Hola Carlos & Elida! 💐 Lamentablemente no podré acompañarlos el 13 de Junio, pero los tendré en mi corazón ese día tan especial. ¡Les deseo toda la felicidad del mundo! 🤍');
   document.getElementById('rsvpOpciones').style.display = 'none';
   document.getElementById('rsvpNoAsiste').style.display = 'flex';

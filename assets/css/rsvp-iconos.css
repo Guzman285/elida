@@ -1,0 +1,13 @@
+/* Iconos del modal de confirmación RSVP */
+.rsvp-icono-si,
+.rsvp-icono-no {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.rsvp-icono-si { background-color: #b86b52; }
+.rsvp-icono-no { background-color: #a0998e; }

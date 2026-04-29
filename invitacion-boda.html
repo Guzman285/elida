@@ -33,7 +33,6 @@
     <section class="hero">
       <img src="./assets/img/fondos/flor1.png" alt="" class="hero-flores hero-flores-izq" aria-hidden="true" />
       <img src="./assets/img/fondos/flor1.png" alt="" class="hero-flores hero-flores-der" aria-hidden="true" />
-
       <div class="hero-top">
         <div class="hero-versiculo">
           <p class="versiculo-texto">
@@ -60,10 +59,8 @@
     <section class="padres-section">
       <img src="./assets/img/fondos/flor2.png" alt="" class="deco-flor deco-flor-padres-inf-der" aria-hidden="true" />
       <img src="./assets/img/fondos/flor2.png" alt="" class="deco-flor deco-flor-padres-sup-izq" aria-hidden="true" />
-
       <p class="padres-intro">En compania de <br> nuestros padres</p>
       <div class="padres-linea-deco"></div>
-
       <div class="padres-columnas">
         <div class="padres-col">
           <p class="padres-rol">Papá del novio</p>
@@ -321,20 +318,18 @@
         Por favor, házsnoslo saber antes del <strong>1 de Junio.</strong>
       </p>
 
-      <!-- Opciones principales -->
-      <div class="rsvp-opciones" id="rsvpOpciones">
-        <button class="rsvp-btn rsvp-si" onclick="confirmarSi()" aria-label="Confirmar asistencia por WhatsApp">
-          <img src="./assets/img/iconos/whatsapp.png" alt="" style="width:22px;height:22px;object-fit:contain" aria-hidden="true" />
-          <span>Sí, allá estaremos</span>
-        </button>
-        <button class="rsvp-btn rsvp-no" onclick="confirmarNo()" aria-label="Declinar invitación">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18"><path d="M18 6L6 18M6 6l12 12"/></svg>
-          <span>Lamentablemente no podré</span>
-        </button>
-        <button class="rsvp-btn rsvp-mensaje" onclick="abrirModal('modal-mensaje')" aria-label="Dejar un mensaje a los novios">
-          <img src="./assets/img/iconos/mensaje.png" alt="" style="width:22px;height:22px;object-fit:contain" aria-hidden="true" />
-          <span>Dejar un mensaje</span>
-        </button>
+      <!-- Dos iconos: igual al modal de navegación -->
+      <div id="rsvpOpciones">
+        <div class="modal-nav-opciones">
+          <button class="modal-nav-opcion" type="button" onclick="abrirModal('modal-confirmar')" aria-label="Confirmar asistencia">
+            <img src="./assets/img/iconos/whatsapp.png" alt="Confirmar" class="modal-nav-icon" loading="lazy" />
+            <span class="modal-nav-nombre">Confirmar</span>
+          </button>
+          <button class="modal-nav-opcion" type="button" onclick="abrirModal('modal-mensaje')" aria-label="Dejar mensaje">
+            <img src="./assets/img/iconos/mensaje.png" alt="Mensaje" class="modal-nav-icon" loading="lazy" />
+            <span class="modal-nav-nombre">Mensaje</span>
+          </button>
+        </div>
       </div>
 
       <!-- Pantalla bonita: no podré asistir -->
@@ -430,6 +425,35 @@
               <img src="./assets/img/iconos/waze.png" alt="Waze" class="modal-nav-icon" />
               <span class="modal-nav-nombre">Waze</span>
             </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL: CONFIRMAR ASISTENCIA (Sí / No) -->
+    <div class="modal-overlay" id="modal-confirmar" role="dialog" aria-modal="true" aria-label="Confirmar asistencia" onclick="cerrarModalOverlay(event, 'modal-confirmar')">
+      <div class="modal-contenido modal-nav-contenido">
+        <button class="modal-cerrar" onclick="cerrarModal('modal-confirmar')" aria-label="Cerrar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+        <div class="modal-nav-body">
+          <p class="modal-nav-titulo">¿Podrás acompañarnos?</p>
+          <p class="modal-nav-lugar">Carlos &amp; Elida &bull; 13 de Junio</p>
+          <div class="modal-nav-opciones">
+            <button class="modal-nav-opcion" type="button" onclick="confirmarSi()" aria-label="Sí asistiré">
+              <span class="modal-nav-icon rsvp-icono-si" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" width="30" height="30"><path d="M20 6L9 17l-5-5"/></svg>
+              </span>
+              <span class="modal-nav-nombre">Sí asistiré</span>
+            </button>
+            <button class="modal-nav-opcion" type="button" onclick="confirmarNo()" aria-label="No podré ir">
+              <span class="modal-nav-icon rsvp-icono-no" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" width="30" height="30"><path d="M18 6L6 18M6 6l12 12"/></svg>
+              </span>
+              <span class="modal-nav-nombre">No podré ir</span>
+            </button>
           </div>
         </div>
       </div>
