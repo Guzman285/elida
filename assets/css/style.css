@@ -43,27 +43,56 @@ body {
 }
 
 /* ─── HERO ─── */
-.hero { position: relative; background-color: var(--crema); overflow: hidden; display: flex; flex-direction: column; align-items: center; padding-bottom: 0; }
+.hero {
+  position: relative;
+  background-color: var(--crema);
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 48% 52%;
+  align-items: center;
+  min-height: 280px;
+  padding: 20px 0;
+}
 
 .hero-flores-izq {
-  position: absolute;
-  top: -10px; left: -7px;
-  width: 62%; max-width: 240px;
+  position: relative;
+  width: 100%;
+  max-width: 220px;
   height: auto;
   pointer-events: none;
   z-index: 1;
+  margin-left: -10px;
+  align-self: stretch;
+  object-fit: contain;
+  object-position: left center;
 }
 .hero-flores-der {
   display: none;
 }
 
-.hero-top { position: relative; width: 100%; min-height: 240px; display: flex; align-items: center; justify-content: flex-end; padding-top: 30px; padding-right: 18px; padding-left: 50%; z-index: 2; }
-.hero-versiculo { text-align: left; max-width: 200px; }
-.versiculo-texto { font-size: clamp(1.15rem, 5vw, 1.35rem); font-style: italic; color: #6b4035; line-height: 1.75; margin-bottom: 8px; }
-.versiculo-ref { font-size: 0.9rem; letter-spacing: 1px; color: var(--terracota); }
-.hero-nombres { margin-top: 16px; text-align: center; padding: 0 20px; z-index: 2; position: relative; }
-.nombre-linea { font-family: "Great Vibes", cursive; font-size: clamp(3.8rem, 17vw, 5.5rem); color: var(--texto); font-weight: 400; line-height: 1.05; }
-.nombre-y { font-family: "Great Vibes", cursive; font-size: clamp(1.8rem, 8vw, 2.8rem); color: var(--texto); font-weight: 400; line-height: 1.1; margin: 2px 0; }
+/* columna derecha: versículo */
+.hero-top {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 24px 18px 24px 8px;
+  z-index: 2;
+}
+.hero-versiculo {
+  text-align: left;
+}
+.versiculo-texto {
+  font-size: clamp(1.05rem, 4.5vw, 1.25rem);
+  font-style: italic;
+  color: #6b4035;
+  line-height: 1.7;
+  margin-bottom: 10px;
+}
+.versiculo-ref {
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  color: var(--terracota);
+}
 
 /* ─── FOTO NOVIOS ─── */
 .foto-novios-section { background-color: var(--crema); width: 100%; margin-top: 0; }
@@ -769,3 +798,8 @@ body {
 
 /* ─── CONTENIDO PRINCIPAL ─── */
 .main-content { padding: 20px; }
+
+/* ─── NOMBRES (para uso dentro de padres-section) ─── */
+.hero-nombres { margin-top: 16px; text-align: center; padding: 0 20px; z-index: 2; position: relative; }
+.nombre-linea { font-family: "Great Vibes", cursive; font-size: clamp(3.8rem, 17vw, 5.5rem); color: var(--texto); font-weight: 400; line-height: 1.05; }
+.nombre-y { font-family: "Great Vibes", cursive; font-size: clamp(1.8rem, 8vw, 2.8rem); color: var(--texto); font-weight: 400; line-height: 1.1; margin: 2px 0; }
