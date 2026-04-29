@@ -11,11 +11,16 @@
 
 body {
   font-family: "Cormorant Garamond", Georgia, serif;
-  background-color: var(--crema);
-  background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.045'/%3E%3C/svg%3E");
-  background-repeat: repeat;
-  background-size: 300px 300px;
+  background: linear-gradient(
+    to bottom,
+    #f8efe9 0%,
+    #f4e4d8 18%,
+    #f8efe9 38%,
+    #f2e0d4 58%,
+    #f8efe9 78%,
+    #f5e5da 100%
+  );
+  background-attachment: fixed;
   color: var(--texto);
   padding-top: 48px;
   max-width: 480px;
@@ -58,7 +63,6 @@ body {
   padding: 16px 0 0;
 }
 
-/* Flor izquierda: más grande, sobresale un poco por arriba y abajo */
 .hero-flores-izq {
   position: relative;
   width: 280%;
@@ -75,7 +79,6 @@ body {
   display: none;
 }
 
-/* columna derecha: versículo — más cerca de la flor */
 .hero-top {
   display: flex;
   align-items: center;
@@ -87,7 +90,6 @@ body {
   text-align: left;
 }
 
-/* Texto principal en Great Vibes — igual que los títulos de la invitación */
 .versiculo-texto {
   font-family: "Great Vibes", cursive;
   font-size: clamp(1.6rem, 7.5vw, 2.2rem);
@@ -97,7 +99,6 @@ body {
   margin-bottom: 12px;
 }
 
-/* Referencia en Cormorant pequeño y elegante */
 .versiculo-ref {
   font-family: "Cormorant Garamond", Georgia, serif;
   font-size: clamp(1.25rem, 3.7vw, 1.28rem);
@@ -110,10 +111,9 @@ body {
 .foto-novios-section { background-color: transparent; width: 100%; margin-top: -72px; }
 .foto-novios-wrap { position: relative; width: 100%; line-height: 0; }
 .foto-novios-img { width: 100%; height: auto; display: block; object-fit: cover; }
-.foto-degradado-top { position: absolute; top: 0; left: 0; width: 100%; height: 100px; background: linear-gradient(to bottom, var(--crema) 0%, transparent 100%); pointer-events: none; z-index: 2; }
-.foto-degradado-bottom { position: absolute; bottom: 0; left: 0; width: 100%; height: 100px; background: linear-gradient(to top, var(--crema) 0%, transparent 100%); pointer-events: none; z-index: 2; }
+.foto-degradado-top { position: absolute; top: 0; left: 0; width: 100%; height: 100px; background: linear-gradient(to bottom, #f8efe9 0%, transparent 100%); pointer-events: none; z-index: 2; }
+.foto-degradado-bottom { position: absolute; bottom: 0; left: 0; width: 100%; height: 100px; background: linear-gradient(to top, #f8efe9 0%, transparent 100%); pointer-events: none; z-index: 2; }
 
-/* FOTO 2: bajar más respecto al itinerario */
 .foto-novios-section-2 { margin-top: 10px; }
 
 /* ─── DECORACIÓN FLORES GENÉRICA ─── */
@@ -136,53 +136,16 @@ body {
   opacity: 0.55;
 }
 
-/* Brillo en sección FECHA */
-.deco-brillo-fecha-izq {
-  top: 50%; left: -10px;
-  transform: translateY(-50%);
-}
-.deco-brillo-fecha-der {
-  top: 50%; right: -10px;
-  transform: translateY(-50%) scaleX(-1);
-}
-
-/* Brillo en sección EVENTO */
-.deco-brillo-evento-izq {
-  top: 50%; left: -10px;
-  transform: translateY(-50%);
-}
-.deco-brillo-evento-der {
-  top: 50%; right: -10px;
-  transform: translateY(-50%) scaleX(-1);
-}
-
-/* Brillo en sección ITINERARIO */
-.deco-brillo-itinerario-izq {
-  top: 30%; left: -10px;
-  transform: translateY(-50%);
-}
-.deco-brillo-itinerario-der {
-  bottom: 30%; right: -10px;
-  transform: translateY(50%) scaleX(-1);
-}
-
-/* Brillo en sección NOTAS */
-.deco-brillo-notas-izq {
-  bottom: 20%; left: -10px;
-}
-.deco-brillo-notas-der {
-  top: 20%; right: -10px;
-  transform: scaleX(-1);
-}
-
-/* Brillo en sección RSVP */
-.deco-brillo-rsvp-izq {
-  top: 15%; left: -10px;
-}
-.deco-brillo-rsvp-der {
-  bottom: 15%; right: -10px;
-  transform: scaleX(-1);
-}
+.deco-brillo-fecha-izq { top: 50%; left: -10px; transform: translateY(-50%); }
+.deco-brillo-fecha-der { top: 50%; right: -10px; transform: translateY(-50%) scaleX(-1); }
+.deco-brillo-evento-izq { top: 50%; left: -10px; transform: translateY(-50%); }
+.deco-brillo-evento-der { top: 50%; right: -10px; transform: translateY(-50%) scaleX(-1); }
+.deco-brillo-itinerario-izq { top: 30%; left: -10px; transform: translateY(-50%); }
+.deco-brillo-itinerario-der { bottom: 30%; right: -10px; transform: translateY(50%) scaleX(-1); }
+.deco-brillo-notas-izq { bottom: 20%; left: -10px; }
+.deco-brillo-notas-der { top: 20%; right: -10px; transform: scaleX(-1); }
+.deco-brillo-rsvp-izq { top: 15%; left: -10px; }
+.deco-brillo-rsvp-der { bottom: 15%; right: -10px; transform: scaleX(-1); }
 
 /* ─── SECCIÓN PADRES ─── */
 .padres-section {
@@ -203,7 +166,6 @@ body {
   width: 48%; max-width: 190px;
   opacity: 0.82;
 }
-
 .deco-flor-padres-inf-der {
   top: 260px; right: -20px;
   bottom: auto;
@@ -269,10 +231,6 @@ body {
   padding-top: 4px;
 }
 
-/* ══════════════════════════════════════════
-   BLOQUE FRASE + NOMBRES — OPCIÓN A
-   Ornamentos decorativos y mayor presencia
-   ══════════════════════════════════════════ */
 .padres-frase-wrap {
   display: flex;
   flex-direction: column;
@@ -284,7 +242,6 @@ body {
   width: 100%;
 }
 
-/* Separador ornamental superior e inferior de la frase */
 .frase-ornamento {
   display: flex;
   align-items: center;
@@ -300,12 +257,8 @@ body {
   background: linear-gradient(to right, transparent, var(--terracota), transparent);
   opacity: 0.5;
 }
-.frase-ornamento-linea.izq {
-  background: linear-gradient(to right, transparent, var(--terracota));
-}
-.frase-ornamento-linea.der {
-  background: linear-gradient(to left, transparent, var(--terracota));
-}
+.frase-ornamento-linea.izq { background: linear-gradient(to right, transparent, var(--terracota)); }
+.frase-ornamento-linea.der { background: linear-gradient(to left, transparent, var(--terracota)); }
 .frase-ornamento-rombo {
   width: 6px; height: 6px;
   background: var(--terracota);
@@ -321,7 +274,6 @@ body {
   flex-shrink: 0;
 }
 
-/* Frase "Tenemos el agrado de invitarlos a nuestra boda" */
 .padres-frase-invitacion {
   font-family: "Cormorant Garamond", Georgia, serif;
   font-size: clamp(1.05rem, 4.8vw, 1.22rem);
@@ -348,7 +300,6 @@ body {
   gap: 0;
 }
 
-/* Línea ornamental encima del primer nombre */
 .nombres-deco-top {
   display: flex;
   align-items: center;
@@ -360,9 +311,7 @@ body {
   background: linear-gradient(to right, transparent, var(--terracota));
   opacity: 0.4;
 }
-.nombres-deco-top-linea.der {
-  background: linear-gradient(to left, transparent, var(--terracota));
-}
+.nombres-deco-top-linea.der { background: linear-gradient(to left, transparent, var(--terracota)); }
 .nombres-deco-top-flor {
   color: var(--terracota);
   opacity: 0.55;
@@ -370,7 +319,6 @@ body {
   line-height: 1;
 }
 
-/* Nombres principales */
 .nombre-linea {
   font-family: "Great Vibes", cursive;
   font-size: clamp(4.6rem, 20vw, 6.5rem);
@@ -380,7 +328,6 @@ body {
   text-shadow: 1px 2px 12px rgba(92,53,40,0.10);
 }
 
-/* Separador "&" con líneas a los lados */
 .nombre-y-wrap {
   display: flex;
   align-items: center;
@@ -401,7 +348,6 @@ body {
   opacity: 0.85;
 }
 
-/* Línea ornamental debajo del último nombre */
 .nombres-deco-bottom {
   display: flex;
   align-items: center;
@@ -493,7 +439,6 @@ body {
 .evento-direccion { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(1.05rem, 4.8vw, 1.25rem); color: #fff; text-align: center; line-height: 1.55; text-shadow: 0 0 16px rgba(0,0,0,0.85), 0 2px 8px rgba(80,40,20,0.95), 0 1px 3px rgba(0,0,0,0.9); }
 .evento-hora { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(1.05rem, 4.5vw, 1.25rem); letter-spacing: 3px; color: #fff; margin-top: 2px; text-shadow: 0 0 16px rgba(0,0,0,0.85), 0 2px 8px rgba(80,40,20,0.95), 0 1px 3px rgba(0,0,0,0.9); }
 
-/* ── Botón único "Cómo llegar" ── */
 .evento-nav-btn-unico {
   display: inline-flex;
   align-items: center;
@@ -547,7 +492,6 @@ body {
 .itinerario-h2 { font-family: "Great Vibes", cursive; font-size: clamp(3rem, 14vw, 4.5rem); font-weight: 400; color: var(--texto); line-height: 1.05; }
 .itinerario-sub { font-family: "Great Vibes", cursive; font-size: clamp(2rem, 9vw, 3rem); font-weight: 400; color: var(--texto); line-height: 1.1; margin-top: -4px; }
 
-/* Timeline */
 .timeline {
   position: relative;
   width: 100%;
@@ -575,9 +519,7 @@ body {
   z-index: 1;
   margin-top: -40px;
 }
-.tl-item:first-child {
-  margin-top: 0;
-}
+.tl-item:first-child { margin-top: 0; }
 .tl-izq { flex-direction: row; }
 .tl-izq .tl-contenido {
   flex: 1;
@@ -602,12 +544,7 @@ body {
 }
 .tl-contenido { gap: 4px; }
 .tl-icono { margin-bottom: 4px; }
-.tl-icono-img {
-  width: 160px;
-  height: 160px;
-  object-fit: contain;
-  display: block;
-}
+.tl-icono-img { width: 160px; height: 160px; object-fit: contain; display: block; }
 .tl-izq .tl-icono-img { margin-left: auto; }
 .tl-der .tl-icono-img { margin-right: auto; }
 .tl-hora {
@@ -667,13 +604,7 @@ body {
 .notas-linea-deco { width: 60px; height: 1px; background: var(--terracota); opacity: 0.5; margin-top: -20px; }
 .nota-item { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 10px; width: 100%; }
 .nota-icono { color: var(--terracota); opacity: 0.8; margin-bottom: 2px; }
-.nota-icono-img {
-  width: 80px;
-  height: 80px;
-  object-fit: contain;
-  display: block;
-  margin: 0 auto 2px;
-}
+.nota-icono-img { width: 80px; height: 80px; object-fit: contain; display: block; margin: 0 auto 2px; }
 .nota-nombre { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(1.1rem, 5vw, 1.35rem); font-weight: 600; letter-spacing: 2px; color: var(--texto); text-transform: uppercase; }
 .nota-desc { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(0.88rem, 3.8vw, 1rem); color: var(--texto); opacity: 0.7; line-height: 1.55; max-width: 280px; font-style: italic; }
 .nota-btn { display: inline-flex; align-items: center; gap: 8px; margin-top: 4px; padding: 10px 28px; background: transparent; border: 1px solid var(--terracota); color: var(--terracota); font-family: "Cormorant Garamond", Georgia, serif; font-size: 0.78rem; letter-spacing: 3px; text-transform: uppercase; cursor: pointer; border-radius: 0; transition: background 0.25s ease, color 0.25s ease; }
@@ -688,12 +619,7 @@ body {
   gap: 16px;
   margin-bottom: 4px;
 }
-.vestimenta-img {
-  width: 80px;
-  height: 100px;
-  object-fit: contain;
-  display: block;
-}
+.vestimenta-img { width: 80px; height: 100px; object-fit: contain; display: block; }
 
 /* ─── MODALES ─── */
 .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(60,25,15,0.65); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); z-index: 1000; align-items: center; justify-content: center; padding: 24px; }
@@ -724,11 +650,7 @@ body {
   line-height: 1;
   text-shadow: 0 2px 8px rgba(60,25,15,0.7);
 }
-.modal-arco-linea {
-  width: 36px; height: 1px;
-  background: rgba(255,255,255,0.7);
-  margin: 2px 0 4px;
-}
+.modal-arco-linea { width: 36px; height: 1px; background: rgba(255,255,255,0.7); margin: 2px 0 4px; }
 .modal-arco-desc {
   font-family: "Cormorant Garamond", Georgia, serif;
   font-size: clamp(0.78rem, 3.4vw, 0.9rem);
@@ -738,7 +660,6 @@ body {
 }
 .modal-arco-desc strong { font-weight: 700; font-style: normal; }
 
-/* ─── MODAL VESTIMENTA ─── */
 .modal-vestimenta-texto {
   align-items: flex-start !important;
   justify-content: flex-end !important;
@@ -750,7 +671,6 @@ body {
 .modal-vestimenta-texto .modal-arco-linea { margin-left: 0; }
 .modal-vestimenta-texto .modal-arco-desc { text-align: left; max-width: 200px; }
 
-/* ─── MODAL REGALOS ─── */
 .modal-regalos-texto {
   align-items: flex-start !important;
   justify-content: flex-end !important;
@@ -812,10 +732,8 @@ body {
 .cuenta-copiar:active { transform: scale(0.9); }
 .cuenta-copiar.copiado { background: rgba(90,122,90,0.6); border-color: rgba(255,255,255,0.7); }
 
-/* ─── MODAL NAVEGACIÓN (Maps / Waze) ─── */
-.modal-nav-contenido {
-  max-width: 340px;
-}
+/* ─── MODAL NAVEGACIÓN ─── */
+.modal-nav-contenido { max-width: 340px; }
 .modal-nav-body {
   background: var(--blanco);
   border-radius: 20px;
@@ -842,7 +760,6 @@ body {
   opacity: 0.9;
   margin-bottom: 14px;
 }
-
 .modal-nav-opciones {
   width: 100%;
   display: grid;
@@ -870,7 +787,6 @@ body {
   box-shadow: 0 6px 18px rgba(60,25,15,0.12);
 }
 .modal-nav-opcion:active { transform: scale(0.97); }
-
 .modal-nav-icon {
   width: 100px;
   height: 100px;
@@ -879,7 +795,6 @@ body {
   flex-shrink: 0;
   box-shadow: 0 4px 12px rgba(60,25,15,0.15);
 }
-
 .modal-nav-nombre {
   font-family: "Cormorant Garamond", Georgia, serif;
   font-size: clamp(0.85rem, 3.8vw, 1rem);
