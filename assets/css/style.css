@@ -126,27 +126,6 @@ body {
   opacity: 0.85;
 }
 
-/* ─── DECORACIÓN BRILLO GENÉRICA ─── */
-.deco-brillo {
-  position: absolute;
-  width: 38%; max-width: 140px;
-  height: auto;
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.55;
-}
-
-.deco-brillo-fecha-izq { top: 50%; left: -10px; transform: translateY(-50%); }
-.deco-brillo-fecha-der { top: 50%; right: -10px; transform: translateY(-50%) scaleX(-1); }
-.deco-brillo-evento-izq { top: 50%; left: -10px; transform: translateY(-50%); }
-.deco-brillo-evento-der { top: 50%; right: -10px; transform: translateY(-50%) scaleX(-1); }
-.deco-brillo-itinerario-izq { top: 30%; left: -10px; transform: translateY(-50%); }
-.deco-brillo-itinerario-der { bottom: 30%; right: -10px; transform: translateY(50%) scaleX(-1); }
-.deco-brillo-notas-izq { bottom: 20%; left: -10px; }
-.deco-brillo-notas-der { top: 20%; right: -10px; transform: scaleX(-1); }
-.deco-brillo-rsvp-izq { top: 15%; left: -10px; }
-.deco-brillo-rsvp-der { bottom: 15%; right: -10px; transform: scaleX(-1); }
-
 /* ─── SECCIÓN PADRES ─── */
 .padres-section {
   position: relative;
@@ -396,7 +375,7 @@ body {
   width: 50%; max-width: 195px;
   opacity: 0.75;
 }
-.fecha-section > *:not(.deco-flor):not(.deco-brillo) { position: relative; z-index: 1; }
+.fecha-section > *:not(.deco-flor) { position: relative; z-index: 1; }
 
 .fecha-invitacion { font-size: clamp(0.72rem, 3.2vw, 0.85rem); letter-spacing: 2px; color: var(--texto); line-height: 1.8; text-transform: uppercase; margin-bottom: 4px; }
 .fecha-flechas { display: flex; flex-direction: column; align-items: center; gap: 2px; opacity: 0.85; margin-bottom: 4px; }
@@ -486,7 +465,7 @@ body {
   width: 46%; max-width: 180px;
   opacity: 0.72;
 }
-.itinerario-section > *:not(.deco-flor):not(.deco-brillo) { position: relative; z-index: 1; }
+.itinerario-section > *:not(.deco-flor) { position: relative; z-index: 1; }
 
 .itinerario-titulo { text-align: center; line-height: 1; }
 .itinerario-h2 { font-family: "Great Vibes", cursive; font-size: clamp(3rem, 14vw, 4.5rem); font-weight: 400; color: var(--texto); line-height: 1.05; }
@@ -598,7 +577,7 @@ body {
   width: 44%; max-width: 170px;
   opacity: 0.68;
 }
-.notas-section > *:not(.deco-flor):not(.deco-brillo) { position: relative; z-index: 1; }
+.notas-section > *:not(.deco-flor) { position: relative; z-index: 1; }
 
 .notas-titulo { font-family: "Great Vibes", cursive; font-size: clamp(3rem, 14vw, 4.5rem); font-weight: 400; color: var(--texto); line-height: 1; text-align: center; }
 .notas-linea-deco { width: 60px; height: 1px; background: var(--terracota); opacity: 0.5; margin-top: -20px; }
@@ -831,7 +810,7 @@ body {
   width: 42%; max-width: 165px;
   opacity: 0.65;
 }
-.rsvp-section > *:not(.deco-flor):not(.deco-brillo) { position: relative; z-index: 1; }
+.rsvp-section > *:not(.deco-flor) { position: relative; z-index: 1; }
 
 .rsvp-deco-top, .rsvp-deco-bottom { opacity: 0.8; }
 .rsvp-pre { font-family: "Great Vibes", cursive; font-size: clamp(1.8rem, 8vw, 2.5rem); color: var(--terracota); line-height: 1; opacity: 0.85; }
