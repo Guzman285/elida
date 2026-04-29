@@ -227,7 +227,6 @@ body {
 .evento-card { position: relative; width: 100%; max-width: 400px; }
 .evento-arco-img { width: 100%; height: auto; display: block; }
 
-/* Contenedor absoluto sobre la imagen — texto más arriba, más grande */
 .evento-card-content {
   position: absolute;
   top: 0; left: 0;
@@ -237,43 +236,40 @@ body {
   align-items: center;
   justify-content: center;
   gap: 6px;
-  /* Más padding-bottom para empujar contenido hacia arriba */
   padding: 6% 10% 26%;
   text-align: center;
   pointer-events: none;
 }
 
-/* Textos más grandes */
 .evento-tipo { font-family: "Great Vibes", cursive; font-size: clamp(3.6rem, 15vw, 5rem); color: #fff; line-height: 1; margin-bottom: 4px; text-shadow: 0 0 20px rgba(0,0,0,0.8), 0 2px 12px rgba(80,40,20,0.9), 0 1px 4px rgba(0,0,0,0.9); }
 .evento-linea { width: 40px; height: 1px; background: rgba(255,255,255,0.7); margin: 2px 0 8px; }
 .evento-lugar { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(1.1rem, 4.8vw, 1.35rem); font-weight: 700; letter-spacing: 3px; color: #fff; text-transform: uppercase; text-align: center; text-shadow: 0 0 16px rgba(0,0,0,0.85), 0 2px 8px rgba(80,40,20,0.95), 0 1px 3px rgba(0,0,0,0.9); }
 .evento-direccion { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(1.05rem, 4.8vw, 1.25rem); color: #fff; text-align: center; line-height: 1.55; text-shadow: 0 0 16px rgba(0,0,0,0.85), 0 2px 8px rgba(80,40,20,0.95), 0 1px 3px rgba(0,0,0,0.9); }
 .evento-hora { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(1.05rem, 4.5vw, 1.25rem); letter-spacing: 3px; color: #fff; margin-top: 2px; text-shadow: 0 0 16px rgba(0,0,0,0.85), 0 2px 8px rgba(80,40,20,0.95), 0 1px 3px rgba(0,0,0,0.9); }
 
-/* ── Botón único "Cómo llegar" ── */
+/* ── Botón único "Cómo llegar" — más pequeño y legible ── */
 .evento-nav-btn-unico {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  margin-top: 12px;
-  padding: 11px 26px;
-  background: rgba(255,255,255,0.18);
-  border: 1.5px solid rgba(255,255,255,0.80);
+  gap: 6px;
+  margin-top: 10px;
+  padding: 7px 18px;
+  background: rgba(0,0,0,0.45);
+  border: 1.5px solid rgba(255,255,255,0.70);
   border-radius: 999px;
   color: #fff;
   font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(0.9rem, 3.8vw, 1.05rem);
+  font-size: clamp(0.75rem, 3.2vw, 0.88rem);
   letter-spacing: 2px;
   text-transform: uppercase;
+  font-weight: 600;
   cursor: pointer;
   pointer-events: auto;
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  text-shadow: 0 1px 6px rgba(0,0,0,0.7);
-  box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+  text-shadow: none;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.35);
   transition: background 0.25s ease, transform 0.2s ease;
 }
-.evento-nav-btn-unico:hover { background: rgba(255,255,255,0.30); transform: scale(1.04); }
+.evento-nav-btn-unico:hover { background: rgba(0,0,0,0.60); transform: scale(1.04); }
 .evento-nav-btn-unico:active { transform: scale(0.97); }
 
 /* ─── ITINERARIO ─── */
