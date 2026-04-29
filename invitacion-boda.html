@@ -141,24 +141,19 @@
     <section class="evento-section">
       <div class="evento-card">
         <img src="./assets/img/fondos/arco2.png" alt="" class="evento-arco-img" aria-hidden="true" />
-        <!-- pointer-events:none en el contenedor, auto en los links -->
         <div class="evento-card-content">
           <p class="evento-tipo">Celebración</p>
           <div class="evento-linea"></div>
           <p class="evento-lugar">CASA DEL LAGO</p>
           <p class="evento-direccion">Km 32.6, Circunvalación<br>Lago de Amatitlán</p>
           <p class="evento-hora">10:30 AM</p>
-          <!-- Botones DENTRO del card-content -->
-          <div class="evento-nav-btns">
-            <a class="evento-nav-btn" href="https://www.google.com/maps/place/CASA+DEL+LAGO/@14.4572059,-90.6249416,14z/data=!4m6!3m5!1s0x858909bd75a51c95:0xd3ae47181ded58f5!8m2!3d14.4481766!4d-90.5930761!16s%2Fg%2F11bc72q1n2" target="_blank" rel="noopener noreferrer" aria-label="Abrir en Google Maps">
-              <img src="./assets/img/iconos/maps.png" alt="Google Maps" class="nav-btn-icon" />
-              <span class="nav-btn-texto">Maps</span>
-            </a>
-            <a class="evento-nav-btn" href="https://waze.com/ul?ll=14.4481766,-90.5930761&navigate=yes" target="_blank" rel="noopener noreferrer" aria-label="Abrir en Waze">
-              <img src="./assets/img/iconos/waze.png" alt="Waze" class="nav-btn-icon" />
-              <span class="nav-btn-texto">Waze</span>
-            </a>
-          </div>
+          <!-- Un solo botón que abre el modal de navegación -->
+          <button class="evento-nav-btn-unico" onclick="abrirModal('modal-navegacion')" aria-label="Ver cómo llegar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="16" height="16">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+            </svg>
+            <span>Cómo llegar</span>
+          </button>
         </div>
       </div>
     </section>
@@ -436,6 +431,38 @@
             </div>
 
             <p class="modal-arco-desc" style="font-style:italic; opacity:0.8;">O también puedes entregar un <strong>sobre</strong> el día del evento. ¡Con mucho amor! 🤍</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL: NAVEGACIÓN (Maps / Waze) -->
+    <div class="modal-overlay" id="modal-navegacion" role="dialog" aria-modal="true" aria-label="Cómo llegar" onclick="cerrarModalOverlay(event, 'modal-navegacion')">
+      <div class="modal-contenido modal-nav-contenido">
+        <button class="modal-cerrar" onclick="cerrarModal('modal-navegacion')" aria-label="Cerrar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+        <div class="modal-nav-body">
+          <p class="modal-nav-titulo">¿Cómo deseas llegar?</p>
+          <p class="modal-nav-lugar">Casa del Lago — Lago de Amatitlán</p>
+          <div class="modal-nav-opciones">
+            <a class="modal-nav-opcion" href="https://www.google.com/maps/place/CASA+DEL+LAGO/@14.4572059,-90.6249416,14z/data=!4m6!3m5!1s0x858909bd75a51c95:0xd3ae47181ded58f5!8m2!3d14.4481766!4d-90.5930761!16s%2Fg%2F11bc72q1n2" target="_blank" rel="noopener noreferrer">
+              <img src="./assets/img/iconos/maps.png" alt="Google Maps" class="modal-nav-icon" />
+              <span class="modal-nav-nombre">Google Maps</span>
+              <span class="modal-nav-flecha">
+                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" width="16" height="16"><path d="M4 10h12M12 6l4 4-4 4"/></svg>
+              </span>
+            </a>
+            <div class="modal-nav-separador"></div>
+            <a class="modal-nav-opcion" href="https://waze.com/ul?ll=14.4481766,-90.5930761&navigate=yes" target="_blank" rel="noopener noreferrer">
+              <img src="./assets/img/iconos/waze.png" alt="Waze" class="modal-nav-icon" />
+              <span class="modal-nav-nombre">Waze</span>
+              <span class="modal-nav-flecha">
+                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" width="16" height="16"><path d="M4 10h12M12 6l4 4-4 4"/></svg>
+              </span>
+            </a>
           </div>
         </div>
       </div>
