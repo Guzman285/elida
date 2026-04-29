@@ -12,7 +12,7 @@
   </head>
   <body>
 
-    <!-- BARRA FIJA DE MÚSÍCA -->
+    <!-- BARRA FIJA DE MÚSICA -->
     <header class="music-bar">
       <button id="playMusicBtn" class="music-bar-btn" type="button" aria-label="Reproducir canción">
         <span class="bar-text">DALE PLAY</span>
@@ -319,18 +319,16 @@
         Por favor, házsnoslo saber antes del <strong>1 de Junio.</strong>
       </p>
 
-      <!-- Dos iconos estilo modal de navegación -->
-      <div id="rsvpOpciones">
-        <div class="modal-nav-opciones">
-          <button class="modal-nav-opcion" type="button" onclick="abrirModal('modal-confirmar')" aria-label="Confirmar asistencia">
-            <img src="./assets/img/iconos/whatsapp.png" alt="Confirmar" class="modal-nav-icon" loading="lazy" />
-            <span class="modal-nav-nombre">Confirmar</span>
-          </button>
-          <button class="modal-nav-opcion" type="button" onclick="abrirModal('modal-mensaje')" aria-label="Dejar mensaje">
-            <img src="./assets/img/iconos/mensaje.png" alt="Mensaje" class="modal-nav-icon" loading="lazy" />
-            <span class="modal-nav-nombre">Mensaje</span>
-          </button>
-        </div>
+      <!-- Dos iconos simples sin cuadro -->
+      <div id="rsvpOpciones" class="rsvp-opciones-simples">
+        <button class="rsvp-btn-simple" type="button" onclick="abrirModal('modal-confirmar')" aria-label="Confirmar asistencia">
+          <img src="./assets/img/iconos/whatsapp.png" alt="Confirmar" loading="lazy" />
+          <span>Confirmar</span>
+        </button>
+        <button class="rsvp-btn-simple" type="button" onclick="abrirModal('modal-mensaje')" aria-label="Dejar mensaje">
+          <img src="./assets/img/iconos/mensaje.png" alt="Mensaje" loading="lazy" />
+          <span>Mensaje</span>
+        </button>
       </div>
 
       <!-- Pantalla bonita: no podré asistir -->

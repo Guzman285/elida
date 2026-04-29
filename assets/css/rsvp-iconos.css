@@ -11,3 +11,50 @@
 }
 .rsvp-icono-si { background-color: #b86b52; }
 .rsvp-icono-no { background-color: #a0998e; }
+
+/* ─── BOTONES RSVP SIMPLES (sin cuadro) ─── */
+.rsvp-opciones-simples {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 40px;
+  width: 100%;
+  margin-top: 8px;
+}
+.rsvp-btn-simple {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.rsvp-btn-simple:active {
+  transform: scale(0.93);
+  opacity: 0.85;
+}
+.rsvp-btn-simple img {
+  width: 110px;
+  height: 110px;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 4px 12px rgba(92,53,40,0.18));
+  transition: filter 0.2s ease, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.rsvp-btn-simple:hover img {
+  filter: drop-shadow(0 6px 18px rgba(92,53,40,0.28));
+  transform: translateY(-3px);
+}
+.rsvp-btn-simple span {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(0.9rem, 3.8vw, 1rem);
+  letter-spacing: 2px;
+  color: var(--texto);
+  font-weight: 600;
+  text-align: center;
+}
