@@ -327,7 +327,10 @@ body {
   width: 100%;
   position: relative;
   z-index: 1;
-  padding: 4px 0;
+  margin-top: -40px;
+}
+.tl-item:first-child {
+  margin-top: 0;
 }
 .tl-izq { flex-direction: row; }
 .tl-izq .tl-contenido {
@@ -363,17 +366,17 @@ body {
 .tl-der .tl-icono-img { margin-right: auto; }
 .tl-hora {
   font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(0.78rem, 3.2vw, 0.9rem);
+  font-size: clamp(1rem, 4.2vw, 1.2rem);
   letter-spacing: 1px;
   color: var(--terracota);
-  font-weight: 600;
+  font-weight: 700;
 }
 .tl-nombre {
   font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(0.82rem, 3.5vw, 0.95rem);
+  font-size: clamp(1.05rem, 4.5vw, 1.25rem);
   color: var(--texto);
   line-height: 1.35;
-  font-weight: 400;
+  font-weight: 600;
 }
 .tl-punto {
   width: 28px;
