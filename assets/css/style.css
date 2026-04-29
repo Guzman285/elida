@@ -82,6 +82,64 @@ body {
   opacity: 0.85;
 }
 
+/* ─── DECORACIÓN BRILLO GENÉRICA ─── */
+.deco-brillo {
+  position: absolute;
+  width: 38%; max-width: 140px;
+  height: auto;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.55;
+}
+
+/* Brillo en sección FECHA */
+.deco-brillo-fecha-izq {
+  top: 50%; left: -10px;
+  transform: translateY(-50%);
+}
+.deco-brillo-fecha-der {
+  top: 50%; right: -10px;
+  transform: translateY(-50%) scaleX(-1);
+}
+
+/* Brillo en sección EVENTO */
+.deco-brillo-evento-izq {
+  top: 50%; left: -10px;
+  transform: translateY(-50%);
+}
+.deco-brillo-evento-der {
+  top: 50%; right: -10px;
+  transform: translateY(-50%) scaleX(-1);
+}
+
+/* Brillo en sección ITINERARIO */
+.deco-brillo-itinerario-izq {
+  top: 30%; left: -10px;
+  transform: translateY(-50%);
+}
+.deco-brillo-itinerario-der {
+  bottom: 30%; right: -10px;
+  transform: translateY(50%) scaleX(-1);
+}
+
+/* Brillo en sección NOTAS */
+.deco-brillo-notas-izq {
+  bottom: 20%; left: -10px;
+}
+.deco-brillo-notas-der {
+  top: 20%; right: -10px;
+  transform: scaleX(-1);
+}
+
+/* Brillo en sección RSVP */
+.deco-brillo-rsvp-izq {
+  top: 15%; left: -10px;
+}
+.deco-brillo-rsvp-der {
+  bottom: 15%; right: -10px;
+  transform: scaleX(-1);
+}
+
 /* ─── SECCIÓN PADRES ─── */
 .padres-section {
   position: relative;
@@ -204,7 +262,7 @@ body {
   width: 50%; max-width: 195px;
   opacity: 0.75;
 }
-.fecha-section > *:not(.deco-flor) { position: relative; z-index: 1; }
+.fecha-section > *:not(.deco-flor):not(.deco-brillo) { position: relative; z-index: 1; }
 
 .fecha-invitacion { font-size: clamp(0.72rem, 3.2vw, 0.85rem); letter-spacing: 2px; color: var(--texto); line-height: 1.8; text-transform: uppercase; margin-bottom: 4px; }
 .fecha-flechas { display: flex; flex-direction: column; align-items: center; gap: 2px; opacity: 0.85; margin-bottom: 4px; }
@@ -223,7 +281,7 @@ body {
 .contador-sep { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(2.2rem, 10vw, 3rem); font-weight: 300; color: var(--verde); opacity: 0.7; align-self: flex-start; padding: 3px 2px 0; }
 
 /* ─── SECCIÓN EVENTO ─── */
-.evento-section { position: relative; padding: 40px 16px 60px; display: flex; flex-direction: column; align-items: center; gap: 40px; background-color: var(--crema); }
+.evento-section { position: relative; overflow: hidden; padding: 40px 16px 60px; display: flex; flex-direction: column; align-items: center; gap: 40px; background-color: var(--crema); }
 .evento-card { position: relative; width: 100%; max-width: 400px; }
 .evento-arco-img { width: 100%; height: auto; display: block; }
 
@@ -284,18 +342,18 @@ body {
   gap: 40px;
 }
 .deco-flor-itinerario-der {
-  top: 950px; right: -12px;
+  top: 850px; right: -12px;
   transform: scaleX(-1);
   width: 46%; max-width: 180px;
   opacity: 0.72;
 }
 .deco-flor-itinerario-izq {
-  bottom: 970px; left: 252px;
+  bottom: 880px; left: 252px;
   transform: rotate(180deg);
   width: 46%; max-width: 180px;
   opacity: 0.72;
 }
-.itinerario-section > *:not(.deco-flor) { position: relative; z-index: 1; }
+.itinerario-section > *:not(.deco-flor):not(.deco-brillo) { position: relative; z-index: 1; }
 
 .itinerario-titulo { text-align: center; line-height: 1; }
 .itinerario-h2 { font-family: "Great Vibes", cursive; font-size: clamp(3rem, 14vw, 4.5rem); font-weight: 400; color: var(--texto); line-height: 1.05; }
@@ -415,7 +473,7 @@ body {
   width: 44%; max-width: 170px;
   opacity: 0.68;
 }
-.notas-section > *:not(.deco-flor) { position: relative; z-index: 1; }
+.notas-section > *:not(.deco-flor):not(.deco-brillo) { position: relative; z-index: 1; }
 
 .notas-titulo { font-family: "Great Vibes", cursive; font-size: clamp(3rem, 14vw, 4.5rem); font-weight: 400; color: var(--texto); line-height: 1; text-align: center; }
 .notas-linea-deco { width: 60px; height: 1px; background: var(--terracota); opacity: 0.5; margin-top: -20px; }
@@ -597,7 +655,6 @@ body {
   margin-bottom: 14px;
 }
 
-/* Grid 2 columnas con tarjetas grandes */
 .modal-nav-opciones {
   width: 100%;
   display: grid;
@@ -626,7 +683,6 @@ body {
 }
 .modal-nav-opcion:active { transform: scale(0.97); }
 
-/* Ícono grande cuadrado */
 .modal-nav-icon {
   width: 100px;
   height: 100px;
@@ -636,7 +692,6 @@ body {
   box-shadow: 0 4px 12px rgba(60,25,15,0.15);
 }
 
-/* Nombre pequeño debajo del ícono */
 .modal-nav-nombre {
   font-family: "Cormorant Garamond", Georgia, serif;
   font-size: clamp(0.85rem, 3.8vw, 1rem);
@@ -673,7 +728,7 @@ body {
   width: 42%; max-width: 165px;
   opacity: 0.65;
 }
-.rsvp-section > *:not(.deco-flor) { position: relative; z-index: 1; }
+.rsvp-section > *:not(.deco-flor):not(.deco-brillo) { position: relative; z-index: 1; }
 
 .rsvp-deco-top, .rsvp-deco-bottom { opacity: 0.8; }
 .rsvp-pre { font-family: "Great Vibes", cursive; font-size: clamp(1.8rem, 8vw, 2.5rem); color: var(--terracota); line-height: 1; opacity: 0.85; }
