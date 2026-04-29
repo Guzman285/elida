@@ -247,7 +247,7 @@ body {
 .evento-direccion { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(1.05rem, 4.8vw, 1.25rem); color: #fff; text-align: center; line-height: 1.55; text-shadow: 0 0 16px rgba(0,0,0,0.85), 0 2px 8px rgba(80,40,20,0.95), 0 1px 3px rgba(0,0,0,0.9); }
 .evento-hora { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(1.05rem, 4.5vw, 1.25rem); letter-spacing: 3px; color: #fff; margin-top: 2px; text-shadow: 0 0 16px rgba(0,0,0,0.85), 0 2px 8px rgba(80,40,20,0.95), 0 1px 3px rgba(0,0,0,0.9); }
 
-/* ── Botón único "Cómo llegar" — más pequeño y legible ── */
+/* ── Botón único "Cómo llegar" ── */
 .evento-nav-btn-unico {
   display: inline-flex;
   align-items: center;
@@ -604,8 +604,8 @@ body {
 .modal-nav-opcion {
   display: flex;
   align-items: center;
-  gap: 14px;
-  padding: 16px 18px;
+  gap: 16px;
+  padding: 20px 18px;
   text-decoration: none;
   color: var(--texto);
   background: var(--blanco);
@@ -614,15 +614,15 @@ body {
 .modal-nav-opcion:hover { background: var(--crema); }
 .modal-nav-opcion:active { background: var(--crema); opacity: 0.75; }
 .modal-nav-icon {
-  width: 44px;
-  height: 44px;
+  width: 62px;
+  height: 62px;
   object-fit: contain;
-  border-radius: 10px;
+  border-radius: 14px;
   flex-shrink: 0;
 }
 .modal-nav-nombre {
   font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(1rem, 4.5vw, 1.15rem);
+  font-size: clamp(1.1rem, 5vw, 1.3rem);
   font-weight: 600;
   color: var(--texto);
   letter-spacing: 1px;
