@@ -354,8 +354,8 @@ body {
 .tl-contenido { gap: 4px; }
 .tl-icono { margin-bottom: 4px; }
 .tl-icono-img {
-  width: 90px;
-  height: 90px;
+  width: 160px;
+  height: 160px;
   object-fit: contain;
   display: block;
 }
