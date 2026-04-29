@@ -182,7 +182,7 @@ body {
   position: relative;
   overflow: hidden;
   background-color: var(--crema);
-  padding: 130px 28px 130px;
+  padding: 130px 28px 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -425,7 +425,7 @@ body {
   overflow: hidden;
   background-color: var(--crema);
   text-align: center;
-  padding: 10px 24px 50px;
+  padding: 0px 24px 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
