@@ -284,13 +284,13 @@ body {
   gap: 40px;
 }
 .deco-flor-itinerario-der {
-  top: 850px; right: -12px;
+  top: 950px; right: -12px;
   transform: scaleX(-1);
   width: 46%; max-width: 180px;
   opacity: 0.72;
 }
 .deco-flor-itinerario-izq {
-  bottom: 880px; left: 252px;
+  bottom: 970px; left: 252px;
   transform: rotate(180deg);
   width: 46%; max-width: 180px;
   opacity: 0.72;
