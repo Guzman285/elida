@@ -154,9 +154,9 @@ function mostrarMensajeFinal() {
 }
 
 
-// ═══════════════════════════════════════════
+// ═══════════════════════════════════════════════
 //   EFECTOS ESPECIALES
-// ═══════════════════════════════════════════
+// ═══════════════════════════════════════════════
 
 // ─── SCROLL REVEAL (secciones generales) ───
 (function() {
@@ -203,19 +203,15 @@ function mostrarMensajeFinal() {
 })();
 
 
-// ─── ITINERARIO: ANIMACIÓN POR SCROLL ───
+// ─── ITINERARIO: ANIMACIÓN POR SCROLL (slide izq/der) ───
 (function() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   if (!('IntersectionObserver' in window)) {
-    document.querySelectorAll('.tl-item').forEach(function(el) {
-      el.classList.add('tl-visible');
-    });
+    document.querySelectorAll('.tl-item').forEach(function(el) { el.classList.add('tl-visible'); });
     return;
   }
-
   var items = document.querySelectorAll('.tl-item');
   if (!items.length) return;
-
   var obsTimeline = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry) {
       if (entry.isIntersecting) {
@@ -224,8 +220,36 @@ function mostrarMensajeFinal() {
       }
     });
   }, { threshold: 0.25, rootMargin: '0px 0px -40px 0px' });
+  items.forEach(function(item) { obsTimeline.observe(item); });
+})();
 
-  items.forEach(function(item) {
-    obsTimeline.observe(item);
+
+// ─── NOTAS: ANIMACIÓN POR SCROLL (bloom escalonado) ───
+(function() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('.nota-item').forEach(function(el) { el.classList.add('nota-visible'); });
+    return;
+  }
+  var notaItems = document.querySelectorAll('.nota-item');
+  if (!notaItems.length) return;
+
+  // Asignar índice para stagger delay
+  notaItems.forEach(function(item, i) {
+    item.setAttribute('data-nota-idx', i);
   });
+
+  var obsNotas = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        var idx = parseInt(entry.target.getAttribute('data-nota-idx') || 0);
+        // Stagger: cada card espera 120ms más que la anterior
+        entry.target.style.transitionDelay = (idx * 0.12) + 's';
+        entry.target.classList.add('nota-visible');
+        obsNotas.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.22, rootMargin: '0px 0px -30px 0px' });
+
+  notaItems.forEach(function(item) { obsNotas.observe(item); });
 })();

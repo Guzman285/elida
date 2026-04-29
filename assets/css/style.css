@@ -273,25 +273,14 @@ body {
     opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
     transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
 }
-/* Par (izquierda): entra desde la izquierda */
-.tl-izq {
-  transform: translateX(-40px);
-}
-/* Impar (derecha): entra desde la derecha */
-.tl-der {
-  transform: translateX(40px);
-}
-/* Estado visible */
+.tl-izq { transform: translateX(-40px); }
+.tl-der { transform: translateX(40px); }
 .tl-item.tl-visible {
   opacity: 1;
   transform: translateX(0) !important;
 }
-/* El punto del timeline también se anima */
 .tl-punto {
   transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.3s ease;
-}
-.tl-item.tl-visible .tl-punto {
-  transform: scale(1.15);
 }
 .tl-item.tl-visible .tl-punto {
   animation: pulsoPunto 0.5s 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) both;
@@ -301,7 +290,6 @@ body {
   60%  { transform: scale(1.25); }
   100% { transform: scale(1); }
 }
-/* Imagen del icono: escala desde 0 */
 .tl-icono-img {
   transform: scale(0.7);
   opacity: 0;
@@ -313,13 +301,10 @@ body {
   transform: scale(1);
   opacity: 1;
 }
-/* Hora y nombre: aparecen con micro-delay */
 .tl-hora, .tl-nombre {
   opacity: 0;
   transform: translateY(8px);
-  transition:
-    opacity 0.5s ease,
-    transform 0.5s ease;
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 .tl-item.tl-visible .tl-hora,
 .tl-item.tl-visible .tl-nombre {
@@ -355,6 +340,86 @@ body {
 .nota-separador { width: 40px; height: 1px; background: var(--terracota); opacity: 0.3; }
 .vestimenta-iconos { display: flex; flex-direction: row; align-items: flex-end; justify-content: center; gap: 16px; margin-bottom: 4px; }
 .vestimenta-img { width: 80px; height: 100px; object-fit: contain; display: block; }
+
+/* ─── NOTAS SCROLL ANIMATION (bloom) ─── */
+.nota-item {
+  opacity: 0;
+  transform: scale(0.86) translateY(28px);
+  transition:
+    opacity  0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nota-item.nota-visible {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+/* Icono: pop con giro y rebote */
+.nota-icono-img {
+  transform: scale(0.55) rotate(-12deg);
+  opacity: 0;
+  transition:
+    transform 0.65s cubic-bezier(0.34, 1.56, 0.64, 1),
+    opacity   0.45s ease;
+}
+.nota-item.nota-visible .nota-icono-img {
+  transform: scale(1) rotate(0deg);
+  opacity: 1;
+}
+/* Vestimenta: misma animación de pop */
+.vestimenta-iconos {
+  transform: scale(0.6) rotate(-8deg);
+  opacity: 0;
+  transition:
+    transform 0.65s cubic-bezier(0.34, 1.56, 0.64, 1),
+    opacity   0.45s ease;
+}
+.nota-item.nota-visible .vestimenta-iconos {
+  transform: scale(1) rotate(0deg);
+  opacity: 1;
+}
+/* Nombre: fade-up con delay */
+.nota-nombre {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.nota-item.nota-visible .nota-nombre {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.16s;
+}
+/* Descripción: fade-up con más delay */
+.nota-desc {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.nota-item.nota-visible .nota-desc {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.25s;
+}
+/* Botón: aparece último */
+.nota-btn {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.5s ease, transform 0.5s ease,
+              background 0.25s ease, color 0.25s ease;
+}
+.nota-item.nota-visible .nota-btn {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.35s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nota-item, .nota-icono-img, .vestimenta-iconos,
+  .nota-nombre, .nota-desc, .nota-btn {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
 
 /* ─── MODALES ─── */
 .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(60,25,15,0.65); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); z-index: 1000; align-items: center; justify-content: center; padding: 24px; }
