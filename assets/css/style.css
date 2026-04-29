@@ -327,7 +327,7 @@ body {
   width: 100%;
   position: relative;
   z-index: 1;
-  padding: 16px 0;
+  padding: 4px 0;
 }
 .tl-izq { flex-direction: row; }
 .tl-izq .tl-contenido {
