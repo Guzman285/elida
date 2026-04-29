@@ -165,53 +165,55 @@ function _feedbackCopiado(btn) {
 }
 
 // ─── RSVP ───
-var _rsvpStatus = '';
+var WA_NUMBER = '50235717258';
 
-function confirmarAsistencia(respuesta) {
-  _rsvpStatus = respuesta === 'si' ? 'Asistirá' : 'No Asistirá';
+function confirmarSi() {
+  var msg = encodeURIComponent('¡Hola Carlos & Elida! 💍🌸 Con mucha alegría confirmo mi asistencia a su boda el 13 de Junio. ¡Será un honor acompañarlos en tan especial día! 🎉');
+  window.open('https://wa.me/' + WA_NUMBER + '?text=' + msg, '_blank');
+}
+
+function confirmarNo() {
+  var msg = encodeURIComponent('¡Hola Carlos & Elida! 💐 Lamentablemente no podré acompañarlos el 13 de Junio, pero los tendré en mi corazón ese día tan especial. ¡Les deseo toda la felicidad del mundo! 🤍');
   document.getElementById('rsvpOpciones').style.display = 'none';
-  document.getElementById('rsvpFormWrap').style.display = 'block';
-  var lp = document.getElementById('rsvpLabelPersonas');
-  lp.textContent = respuesta === 'si' ? '¿Cuántas personas asistirán?' : 'Número de personas (referencia)';
+  document.getElementById('rsvpNoAsiste').style.display = 'flex';
+  window.open('https://wa.me/' + WA_NUMBER + '?text=' + msg, '_blank');
 }
 
-function marcarError(input, mostrar) {
-  var field = input.closest('.rsvp-field');
-  if (!field) return;
-  var error = field.querySelector('.rsvp-error');
-  if (mostrar) { input.classList.add('rsvp-input-error'); if (error) error.style.display = 'block'; }
-  else { input.classList.remove('rsvp-input-error'); if (error) error.style.display = 'none'; }
-}
-
-function enviarRSVP(e) {
+function enviarMensaje(e) {
   e.preventDefault();
-  var inputNombre   = document.getElementById('rsvpNombre');
-  var inputPersonas = document.getElementById('rsvpPersonas');
-  var nombre   = inputNombre.value.trim();
-  var personas = inputPersonas.value.trim();
-  var mensaje  = document.getElementById('rsvpMensajeInput').value.trim();
-  var btn      = document.getElementById('rsvpSubmitBtn');
-  marcarError(inputNombre, false); marcarError(inputPersonas, false);
+  var inputNombre = document.getElementById('msgNombre');
+  var inputTexto  = document.getElementById('msgTexto');
+  var nombre  = inputNombre.value.trim();
+  var texto   = inputTexto.value.trim();
+  var btn     = document.getElementById('msgSubmitBtn');
+
+  var nombreField = inputNombre.closest('.rsvp-field');
+  var textoField  = inputTexto.closest('.rsvp-field');
+  var nombreError = nombreField.querySelector('.rsvp-error');
+  var textoError  = textoField.querySelector('.rsvp-error');
+
+  inputNombre.classList.remove('rsvp-input-error');
+  inputTexto.classList.remove('rsvp-input-error');
+  nombreError.style.display = 'none';
+  textoError.style.display  = 'none';
+
   var valido = true;
-  if (!nombre) { marcarError(inputNombre, true); valido = false; }
-  if (!personas || parseInt(personas) < 1) { marcarError(inputPersonas, true); valido = false; }
+  if (!nombre) { inputNombre.classList.add('rsvp-input-error'); nombreError.style.display = 'block'; valido = false; }
+  if (!texto)  { inputTexto.classList.add('rsvp-input-error');  textoError.style.display  = 'block'; valido = false; }
   if (!valido) return;
+
   btn.disabled = true; btn.textContent = 'Enviando...';
+
   var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwLO6QmRbU2CvTxuK3wDIglsfMPBR4TwaxOq0lBIIy-eEbuQa94s6nsuirZFau1gGbZ/exec';
-  var params = new URLSearchParams({ nama: nombre, jumlah: personas, status: _rsvpStatus, mensaje: mensaje });
+  var params = new URLSearchParams({ nama: nombre, jumlah: '0', status: 'Mensaje', mensaje: texto });
   fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: params.toString() })
-    .then(function() { mostrarMensajeFinal(); })
-    .catch(function() { mostrarMensajeFinal(); });
+    .then(function() { _mostrarConfirmacionMensaje(); })
+    .catch(function() { _mostrarConfirmacionMensaje(); });
 }
 
-function mostrarMensajeFinal() {
-  document.getElementById('rsvpFormWrap').style.display = 'none';
-  var confirmado = document.getElementById('rsvpConfirmado');
-  var msgTexto   = document.getElementById('rsvpMensaje');
-  msgTexto.textContent = _rsvpStatus === 'Asistirá'
-    ? 'Con mucho amor los esperamos el 13 de Junio. ¡Será un día inolvidable!'
-    : 'Los tendremos en el corazón ese día. ♥';
-  confirmado.style.display = 'flex';
+function _mostrarConfirmacionMensaje() {
+  document.getElementById('modalMensajeForm').style.display = 'none';
+  document.getElementById('modalMensajeConfirmado').style.display = 'flex';
 }
 
 

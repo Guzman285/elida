@@ -320,45 +320,34 @@
         Tu presencia hace que este día sea aún más especial.<br>
         Por favor, házsnoslo saber antes del <strong>1 de Junio.</strong>
       </p>
+
+      <!-- Opciones principales -->
       <div class="rsvp-opciones" id="rsvpOpciones">
-        <button class="rsvp-btn rsvp-si" onclick="confirmarAsistencia('si')" aria-label="Confirmar asistencia">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18"><path d="M20 6L9 17l-5-5"/></svg>
+        <button class="rsvp-btn rsvp-si" onclick="confirmarSi()" aria-label="Confirmar asistencia por WhatsApp">
+          <img src="./assets/img/iconos/whatsapp.png" alt="" style="width:22px;height:22px;object-fit:contain" aria-hidden="true" />
           <span>Sí, allá estaremos</span>
         </button>
-        <button class="rsvp-btn rsvp-no" onclick="confirmarAsistencia('no')" aria-label="Declinar invitación">
+        <button class="rsvp-btn rsvp-no" onclick="confirmarNo()" aria-label="Declinar invitación">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18"><path d="M18 6L6 18M6 6l12 12"/></svg>
           <span>Lamentablemente no podré</span>
         </button>
+        <button class="rsvp-btn rsvp-mensaje" onclick="abrirModal('modal-mensaje')" aria-label="Dejar un mensaje a los novios">
+          <img src="./assets/img/iconos/mensaje.png" alt="" style="width:22px;height:22px;object-fit:contain" aria-hidden="true" />
+          <span>Dejar un mensaje</span>
+        </button>
       </div>
-      <div class="rsvp-form-wrap" id="rsvpFormWrap" style="display:none">
-        <form class="rsvp-form" onsubmit="enviarRSVP(event)" novalidate>
-          <div class="rsvp-field">
-            <label class="rsvp-label" for="rsvpNombre">Tu nombre completo</label>
-            <input class="rsvp-input" type="text" id="rsvpNombre" placeholder="Ej: María García" autocomplete="name" />
-            <span class="rsvp-error" style="display:none">Por favor escribe tu nombre.</span>
-          </div>
-          <div class="rsvp-field">
-            <label class="rsvp-label" id="rsvpLabelPersonas" for="rsvpPersonas">¿Cuántas personas asistirán?</label>
-            <input class="rsvp-input" type="number" id="rsvpPersonas" min="1" max="20" placeholder="Ej: 2" />
-            <span class="rsvp-error" style="display:none">Indica el número de personas.</span>
-          </div>
-          <div class="rsvp-field">
-            <label class="rsvp-label" for="rsvpMensajeInput">Mensaje para los novios <span class="rsvp-opcional">(opcional)</span></label>
-            <textarea class="rsvp-input rsvp-textarea" id="rsvpMensajeInput" rows="3" placeholder="Un mensaje especial..."></textarea>
-          </div>
-          <button class="rsvp-submit-btn" type="submit" id="rsvpSubmitBtn">Enviar confirmación</button>
-        </form>
-      </div>
-      <div class="rsvp-confirmado" id="rsvpConfirmado" style="display:none">
+
+      <!-- Pantalla bonita: no podré asistir -->
+      <div class="rsvp-confirmado" id="rsvpNoAsiste" style="display:none">
         <div class="rsvp-confirmado-icono" aria-hidden="true">
           <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" width="44" height="44">
-            <circle cx="24" cy="24" r="20"/>
-            <path d="M15 24l7 7 11-12"/>
+            <path d="M24 42s-18-10-18-22a10 10 0 0 1 18-6 10 10 0 0 1 18 6c0 12-18 22-18 22z"/>
           </svg>
         </div>
-        <p class="rsvp-confirmado-titulo">&#xA1;Muchas gracias!</p>
-        <p class="rsvp-confirmado-texto" id="rsvpMensaje"></p>
+        <p class="rsvp-confirmado-titulo">¡Muchas gracias!</p>
+        <p class="rsvp-confirmado-texto">Los tendremos en nuestro corazón ese día. ♥</p>
       </div>
+
       <div class="rsvp-deco-bottom" aria-hidden="true">
         <svg viewBox="0 0 200 20" fill="none" width="160" height="20">
           <line x1="0" y1="10" x2="80" y2="10" stroke="#b86b52" stroke-width="0.8" opacity="0.5"/>
@@ -441,6 +430,47 @@
               <img src="./assets/img/iconos/waze.png" alt="Waze" class="modal-nav-icon" />
               <span class="modal-nav-nombre">Waze</span>
             </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL: MENSAJE A LOS NOVIOS -->
+    <div class="modal-overlay" id="modal-mensaje" role="dialog" aria-modal="true" aria-label="Dejar mensaje" onclick="cerrarModalOverlay(event, 'modal-mensaje')">
+      <div class="modal-contenido">
+        <button class="modal-cerrar" onclick="cerrarModal('modal-mensaje')" aria-label="Cerrar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+        <div class="modal-arco-wrap">
+          <img src="./assets/img/fondos/arco2.png" alt="" class="modal-img" />
+          <div class="modal-arco-texto" id="modalMensajeForm">
+            <p class="modal-arco-titulo">Un mensaje<br>para nosotros 💌</p>
+            <div class="modal-arco-linea"></div>
+            <form class="rsvp-form" onsubmit="enviarMensaje(event)" novalidate>
+              <div class="rsvp-field">
+                <label class="rsvp-label" for="msgNombre">Tu nombre</label>
+                <input class="rsvp-input" type="text" id="msgNombre" placeholder="Ej: María García" autocomplete="name" />
+                <span class="rsvp-error" style="display:none">Por favor escribe tu nombre.</span>
+              </div>
+              <div class="rsvp-field">
+                <label class="rsvp-label" for="msgTexto">Tu mensaje</label>
+                <textarea class="rsvp-input rsvp-textarea" id="msgTexto" rows="4" placeholder="Escríbeles algo bonito a los novios..."></textarea>
+                <span class="rsvp-error" style="display:none">Por favor escribe tu mensaje.</span>
+              </div>
+              <button class="rsvp-submit-btn" type="submit" id="msgSubmitBtn">Enviar mensaje 💌</button>
+            </form>
+          </div>
+          <div class="rsvp-confirmado" id="modalMensajeConfirmado" style="display:none">
+            <div class="rsvp-confirmado-icono" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" width="44" height="44">
+                <circle cx="24" cy="24" r="20"/>
+                <path d="M15 24l7 7 11-12"/>
+              </svg>
+            </div>
+            <p class="rsvp-confirmado-titulo">¡Gracias por tu mensaje!</p>
+            <p class="rsvp-confirmado-texto">Carlos &amp; Elida lo leerán con mucho cariño. 🤍</p>
           </div>
         </div>
       </div>
