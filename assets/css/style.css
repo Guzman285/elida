@@ -244,7 +244,36 @@ body {
 .evento-direccion { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(0.85rem, 3.8vw, 1rem); color: #fff; text-align: center; line-height: 1.55; text-shadow: 0 0 16px rgba(0,0,0,0.85), 0 2px 8px rgba(80,40,20,0.95), 0 1px 3px rgba(0,0,0,0.9); }
 .evento-hora { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(0.82rem, 3.5vw, 0.95rem); letter-spacing: 3px; color: #fff; margin-top: 2px; text-shadow: 0 0 16px rgba(0,0,0,0.85), 0 2px 8px rgba(80,40,20,0.95), 0 1px 3px rgba(0,0,0,0.9); }
 
-/* Botones de navegación Maps / Waze */
+/* ─── BOTÓN ÚNICO "CÓMO LLEGAR" (dentro del card de evento) ─── */
+.evento-nav-btn-unico {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  padding: 10px 26px;
+  background: rgba(0,0,0,0.35);
+  border: 1px solid rgba(255,255,255,0.80);
+  color: #fff;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 0.8rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 0;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.7);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1);
+  transition: background 0.25s ease, transform 0.15s ease;
+}
+.evento-nav-btn-unico:hover {
+  background: rgba(0,0,0,0.52);
+  transform: scale(1.04);
+}
+.evento-nav-btn-unico:active {
+  background: rgba(0,0,0,0.6);
+  transform: scale(0.97);
+}
+
+/* Botones de navegación Maps / Waze (versión antigua, se mantiene por compatibilidad) */
 .evento-nav-btns { display: flex; flex-direction: row; gap: 24px; margin-top: 14px; align-items: center; justify-content: center; }
 .evento-nav-btn { display: flex; flex-direction: column; align-items: center; gap: 6px; text-decoration: none; color: #fff; transition: opacity 0.2s, transform 0.2s; }
 .evento-nav-btn:hover { opacity: 0.85; transform: scale(1.07); }
@@ -558,6 +587,68 @@ body {
 .cuenta-copiar:hover { background: rgba(255,255,255,0.3); }
 .cuenta-copiar:active { transform: scale(0.9); }
 .cuenta-copiar.copiado { background: rgba(90,122,90,0.6); border-color: rgba(255,255,255,0.7); }
+
+/* ─── MODAL NAVEGACIÓN (Maps / Waze) ─── */
+.modal-nav-body {
+  background: var(--crema);
+  border-radius: 6px;
+  padding: 40px 28px 36px;
+  text-align: center;
+  box-shadow: 0 16px 48px rgba(60,25,15,0.35);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+.modal-nav-titulo {
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(2rem, 9vw, 2.8rem);
+  color: var(--texto);
+  line-height: 1.1;
+}
+.modal-nav-lugar {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(0.75rem, 3vw, 0.85rem);
+  letter-spacing: 1.5px;
+  color: var(--terracota);
+  text-transform: uppercase;
+  opacity: 0.85;
+  margin-top: -6px;
+}
+.modal-nav-opciones {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  margin-top: 10px;
+  align-items: center;
+  justify-content: center;
+}
+.modal-nav-opcion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--texto);
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.modal-nav-opcion:hover { transform: scale(1.08); opacity: 0.85; }
+.modal-nav-opcion:active { transform: scale(0.95); }
+.modal-nav-icon {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(60,25,15,0.18);
+}
+.modal-nav-nombre {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 0.78rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--texto);
+  font-weight: 600;
+}
 
 /* ─── SECCIÓN RSVP ─── */
 .rsvp-section {
