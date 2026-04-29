@@ -227,7 +227,7 @@ body {
 .evento-card { position: relative; width: 100%; max-width: 400px; }
 .evento-arco-img { width: 100%; height: auto; display: block; }
 
-/* Contenedor absoluto sobre la imagen — incluye texto Y botón */
+/* Contenedor absoluto sobre la imagen — texto más arriba, más grande */
 .evento-card-content {
   position: absolute;
   top: 0; left: 0;
@@ -236,32 +236,33 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  /* Empuja todo hacia arriba: menos padding-bottom que padding-top */
-  padding: 10% 10% 18%;
+  gap: 6px;
+  /* Más padding-bottom para empujar contenido hacia arriba */
+  padding: 6% 10% 26%;
   text-align: center;
   pointer-events: none;
 }
 
-.evento-tipo { font-family: "Great Vibes", cursive; font-size: clamp(3rem, 13vw, 4.2rem); color: #fff; line-height: 1; margin-bottom: 2px; text-shadow: 0 0 20px rgba(0,0,0,0.8), 0 2px 12px rgba(80,40,20,0.9), 0 1px 4px rgba(0,0,0,0.9); }
-.evento-linea { width: 40px; height: 1px; background: rgba(255,255,255,0.7); margin: 2px 0 6px; }
-.evento-lugar { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(0.95rem, 4vw, 1.15rem); font-weight: 700; letter-spacing: 3px; color: #fff; text-transform: uppercase; text-align: center; text-shadow: 0 0 16px rgba(0,0,0,0.85), 0 2px 8px rgba(80,40,20,0.95), 0 1px 3px rgba(0,0,0,0.9); }
-.evento-direccion { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(0.95rem, 4.2vw, 1.15rem); color: #fff; text-align: center; line-height: 1.55; text-shadow: 0 0 16px rgba(0,0,0,0.85), 0 2px 8px rgba(80,40,20,0.95), 0 1px 3px rgba(0,0,0,0.9); }
-.evento-hora { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(0.95rem, 4vw, 1.1rem); letter-spacing: 3px; color: #fff; margin-top: 2px; text-shadow: 0 0 16px rgba(0,0,0,0.85), 0 2px 8px rgba(80,40,20,0.95), 0 1px 3px rgba(0,0,0,0.9); }
+/* Textos más grandes */
+.evento-tipo { font-family: "Great Vibes", cursive; font-size: clamp(3.6rem, 15vw, 5rem); color: #fff; line-height: 1; margin-bottom: 4px; text-shadow: 0 0 20px rgba(0,0,0,0.8), 0 2px 12px rgba(80,40,20,0.9), 0 1px 4px rgba(0,0,0,0.9); }
+.evento-linea { width: 40px; height: 1px; background: rgba(255,255,255,0.7); margin: 2px 0 8px; }
+.evento-lugar { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(1.1rem, 4.8vw, 1.35rem); font-weight: 700; letter-spacing: 3px; color: #fff; text-transform: uppercase; text-align: center; text-shadow: 0 0 16px rgba(0,0,0,0.85), 0 2px 8px rgba(80,40,20,0.95), 0 1px 3px rgba(0,0,0,0.9); }
+.evento-direccion { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(1.05rem, 4.8vw, 1.25rem); color: #fff; text-align: center; line-height: 1.55; text-shadow: 0 0 16px rgba(0,0,0,0.85), 0 2px 8px rgba(80,40,20,0.95), 0 1px 3px rgba(0,0,0,0.9); }
+.evento-hora { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(1.05rem, 4.5vw, 1.25rem); letter-spacing: 3px; color: #fff; margin-top: 2px; text-shadow: 0 0 16px rgba(0,0,0,0.85), 0 2px 8px rgba(80,40,20,0.95), 0 1px 3px rgba(0,0,0,0.9); }
 
 /* ── Botón único "Cómo llegar" ── */
 .evento-nav-btn-unico {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  margin-top: 10px;
-  padding: 10px 22px;
+  margin-top: 12px;
+  padding: 11px 26px;
   background: rgba(255,255,255,0.18);
-  border: 1.5px solid rgba(255,255,255,0.75);
+  border: 1.5px solid rgba(255,255,255,0.80);
   border-radius: 999px;
   color: #fff;
   font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(0.82rem, 3.5vw, 0.95rem);
+  font-size: clamp(0.9rem, 3.8vw, 1.05rem);
   letter-spacing: 2px;
   text-transform: uppercase;
   cursor: pointer;
