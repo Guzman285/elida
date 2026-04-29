@@ -139,14 +139,14 @@ body {
   text-align: center;
 }
 .deco-flor-padres-sup-izq {
-  bottom: 710px; left: -20px;
+  bottom: 610px; left: -20px;
   top: auto;
   transform: rotate(180deg) scaleX(-1);
   width: 48%; max-width: 190px;
   opacity: 0.82;
 }
 .deco-flor-padres-inf-der {
-  top: 260px; right: -20px;
+  top: 280px; right: -20px;
   bottom: auto;
   transform: scaleX(-1);
   width: 48%; max-width: 190px;
@@ -370,7 +370,7 @@ body {
   opacity: 0.75;
 }
 .deco-flor-fecha-der {
-  top: 270px; right: -10px;
+  top: 260px; right: -10px;
   transform: scaleY(-1) scaleX(-1);
   width: 50%; max-width: 195px;
   opacity: 0.75;
@@ -454,14 +454,14 @@ body {
   gap: 40px;
 }
 .deco-flor-itinerario-der {
-  top: 850px; right: -12px;
+  top: 920px; right: -12px;
   transform: scaleX(-1);
   width: 46%; max-width: 180px;
   opacity: 0.72;
 }
 .deco-flor-itinerario-izq {
-  bottom: 880px; left: 252px;
-  transform: rotate(180deg);
+  bottom: 960px; left: 12px;
+  transform: rotate(90deg);
   width: 46%; max-width: 180px;
   opacity: 0.72;
 }
@@ -572,7 +572,7 @@ body {
   opacity: 0.68;
 }
 .deco-flor-notas-der {
-  top: -8px; right: -8px;
+  top: 680px; right: -8px;
   transform: scaleX(-1);
   width: 44%; max-width: 170px;
   opacity: 0.68;
