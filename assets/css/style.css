@@ -431,7 +431,7 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(20, 8, 4, 0.38);
+  background: rgba(51, 15, 3, 0.58);
   pointer-events: none;
   z-index: 1;
 }
