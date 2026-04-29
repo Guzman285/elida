@@ -83,7 +83,6 @@ function copiarCuenta(elementId, btn) {
   if (!numero) return;
   var texto = numero.textContent.trim();
 
-  // Usar Clipboard API si está disponible
   if (navigator.clipboard && navigator.clipboard.writeText) {
     navigator.clipboard.writeText(texto).then(function() {
       _feedbackCopiado(btn);
@@ -110,7 +109,6 @@ function _copiarFallback(texto, btn) {
 
 function _feedbackCopiado(btn) {
   btn.classList.add('copiado');
-  // Cambiar icono a check
   btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="15" height="15"><path d="M20 6L9 17l-5-5"/></svg>';
   setTimeout(function() {
     btn.classList.remove('copiado');
@@ -161,32 +159,19 @@ function enviarRSVP(e) {
   var mensaje  = document.getElementById('rsvpMensajeInput').value.trim();
   var btn      = document.getElementById('rsvpSubmitBtn');
 
-  // Limpiar errores previos
   marcarError(inputNombre, false);
   marcarError(inputPersonas, false);
 
   var valido = true;
-  if (!nombre) {
-    marcarError(inputNombre, true);
-    valido = false;
-  }
-  if (!personas || parseInt(personas) < 1) {
-    marcarError(inputPersonas, true);
-    valido = false;
-  }
+  if (!nombre) { marcarError(inputNombre, true); valido = false; }
+  if (!personas || parseInt(personas) < 1) { marcarError(inputPersonas, true); valido = false; }
   if (!valido) return;
 
   btn.disabled = true;
   btn.textContent = 'Enviando...';
 
   const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwLO6QmRbU2CvTxuK3wDIglsfMPBR4TwaxOq0lBIIy-eEbuQa94s6nsuirZFau1gGbZ/exec';
-
-  const params = new URLSearchParams({
-    nama:    nombre,
-    jumlah:  personas,
-    status:  _rsvpStatus,
-    mensaje: mensaje
-  });
+  const params = new URLSearchParams({ nama: nombre, jumlah: personas, status: _rsvpStatus, mensaje: mensaje });
 
   fetch(SCRIPT_URL, {
     method: 'POST',
@@ -213,3 +198,122 @@ function mostrarMensajeFinal() {
 
   confirmado.style.display = 'flex';
 }
+
+
+// ═══════════════════════════════════════════
+//   EFECTOS ESPECIALES
+// ═══════════════════════════════════════════
+
+// ─── SCROLL REVEAL ───
+(function() {
+  var reducirMovimiento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reducirMovimiento) return;
+
+  var secciones = document.querySelectorAll(
+    '.padres-section, .fecha-section, .evento-section, ' +
+    '.itinerario-section, .notas-section, .rsvp-section, .foto-novios-section'
+  );
+
+  secciones.forEach(function(el) { el.classList.add('reveal'); });
+
+  if (!('IntersectionObserver' in window)) {
+    secciones.forEach(function(el) { el.classList.add('visible'); });
+    return;
+  }
+
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.07, rootMargin: '0px 0px -20px 0px' });
+
+  secciones.forEach(function(el) { obs.observe(el); });
+})();
+
+
+// ─── PARALLAX FOTOS ───
+(function() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var fotos = document.querySelectorAll('.foto-novios-img');
+  if (!fotos.length) return;
+
+  var ticking = false;
+
+  function aplicarParallax() {
+    var wh = window.innerHeight;
+    fotos.forEach(function(img) {
+      var seccion = img.closest('.foto-novios-section');
+      if (!seccion) return;
+      var rect = seccion.getBoundingClientRect();
+      // Progreso: -1 (arriba de vista) a +1 (abajo de vista)
+      var progreso = (rect.top + rect.height / 2 - wh / 2) / wh;
+      var offset = progreso * 45;
+      img.style.transform = 'scale(1.08) translateY(' + offset + 'px)';
+    });
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', function() {
+    if (!ticking) {
+      requestAnimationFrame(aplicarParallax);
+      ticking = true;
+    }
+  }, { passive: true });
+
+  aplicarParallax();
+})();
+
+
+// ─── PÉTALOS CAYENDO ───
+(function() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var hero = document.querySelector('.hero');
+  if (!hero) return;
+
+  var colores = ['#c97d6a', '#e8b4a0', '#d4856a', '#f0c5b0', '#b86b52', '#dda898'];
+  var total = 18;
+
+  for (var i = 0; i < total; i++) {
+    var petalo = document.createElement('div');
+    petalo.className = 'petalo';
+
+    var color = colores[i % colores.length];
+    var w = 7 + Math.random() * 11;
+    var h = w * (1.25 + Math.random() * 0.5);
+    var cx = (w / 2).toFixed(1);
+    var cy = (h / 2).toFixed(1);
+    var rx = (w / 2 * 0.88).toFixed(1);
+    var ry = (h / 2 * 0.82).toFixed(1);
+    var rotSvg = (Math.random() * 50 - 25).toFixed(1);
+    var opaSvg = (0.60 + Math.random() * 0.25).toFixed(2);
+
+    petalo.innerHTML =
+      '<svg width="' + w.toFixed(0) + '" height="' + h.toFixed(0) +
+      '" viewBox="0 0 ' + w.toFixed(1) + ' ' + h.toFixed(1) + '" fill="none">' +
+      '<ellipse cx="' + cx + '" cy="' + cy + '" rx="' + rx + '" ry="' + ry +
+      '" fill="' + color + '" opacity="' + opaSvg + '"' +
+      ' transform="rotate(' + rotSvg + ' ' + cx + ' ' + cy + ')"/>' +
+      '</svg>';
+
+    var left      = (Math.random() * 96).toFixed(1);
+    var delay     = (Math.random() * 10).toFixed(2);
+    var duracion  = (6 + Math.random() * 7).toFixed(2);
+    var driftMid  = ((Math.random() * 40 - 20)).toFixed(1);
+    var driftEnd  = ((Math.random() * 60 - 30)).toFixed(1);
+
+    petalo.style.cssText =
+      'left:' + left + '%;' +
+      'top:0;' +
+      'animation-duration:' + duracion + 's;' +
+      'animation-delay:-' + delay + 's;' +
+      '--drift-mid:' + driftMid + 'px;' +
+      '--drift-end:' + driftEnd + 'px;';
+
+    hero.appendChild(petalo);
+  }
+})();

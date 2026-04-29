@@ -109,8 +109,8 @@ body {
 
 /* ─── FOTO NOVIOS ─── */
 .foto-novios-section { background-color: transparent; width: 100%; margin-top: -72px; }
-.foto-novios-wrap { position: relative; width: 100%; line-height: 0; }
-.foto-novios-img { width: 100%; height: auto; display: block; object-fit: cover; }
+.foto-novios-wrap { position: relative; width: 100%; line-height: 0; overflow: hidden; }
+.foto-novios-img { width: 100%; height: auto; display: block; object-fit: cover; will-change: transform; }
 .foto-degradado-top { position: absolute; top: 0; left: 0; width: 100%; height: 100px; background: linear-gradient(to bottom, #f8efe9 0%, transparent 100%); pointer-events: none; z-index: 2; }
 .foto-degradado-bottom { position: absolute; bottom: 0; left: 0; width: 100%; height: 100px; background: linear-gradient(to top, #f8efe9 0%, transparent 100%); pointer-events: none; z-index: 2; }
 
@@ -851,3 +851,42 @@ body {
 
 /* ─── CONTENIDO PRINCIPAL ─── */
 .main-content { padding: 20px; }
+
+
+/* ═══════════════════════════════════════════
+   EFECTOS ESPECIALES
+═══════════════════════════════════════════ */
+
+/* ─── SCROLL REVEAL ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* ─── PÉTALOS CAYENDO ─── */
+.petalo {
+  position: absolute;
+  pointer-events: none;
+  z-index: 3;
+  opacity: 0;
+  animation: caerPetalo linear infinite;
+}
+@keyframes caerPetalo {
+  0%   { transform: translateX(0px) translateY(-30px) rotate(0deg);   opacity: 0; }
+  8%   { opacity: 0.75; }
+  50%  { transform: translateX(var(--drift-mid, 12px)) translateY(180px) rotate(280deg); opacity: 0.6; }
+  90%  { opacity: 0.4; }
+  100% { transform: translateX(var(--drift-end, 24px)) translateY(400px) rotate(580deg); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .petalo { display: none; }
+}
