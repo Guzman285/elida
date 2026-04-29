@@ -48,20 +48,21 @@ body {
   background-color: var(--crema);
   overflow: hidden;
   display: grid;
-  grid-template-columns: 48% 52%;
+  grid-template-columns: 44% 56%;
   align-items: center;
-  min-height: 280px;
-  padding: 20px 0;
+  min-height: 320px;
+  padding: 16px 0;
 }
 
+/* Flor izquierda: más grande, sobresale un poco por arriba y abajo */
 .hero-flores-izq {
   position: relative;
-  width: 100%;
-  max-width: 220px;
+  width: 115%;
+  max-width: 260px;
   height: auto;
   pointer-events: none;
   z-index: 1;
-  margin-left: -10px;
+  margin-left: -22px;
   align-self: stretch;
   object-fit: contain;
   object-position: left center;
@@ -70,28 +71,35 @@ body {
   display: none;
 }
 
-/* columna derecha: versículo */
+/* columna derecha: versículo — más cerca de la flor */
 .hero-top {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  padding: 24px 18px 24px 8px;
+  padding: 20px 14px 20px 0;
   z-index: 2;
 }
 .hero-versiculo {
   text-align: left;
 }
+
+/* Texto principal en Great Vibes — igual que los títulos de la invitación */
 .versiculo-texto {
-  font-size: clamp(1.05rem, 4.5vw, 1.25rem);
-  font-style: italic;
-  color: #6b4035;
-  line-height: 1.7;
-  margin-bottom: 10px;
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(1.6rem, 7.5vw, 2.2rem);
+  font-style: normal;
+  color: var(--texto);
+  line-height: 1.45;
+  margin-bottom: 12px;
 }
+
+/* Referencia en Cormorant pequeño y elegante */
 .versiculo-ref {
-  font-size: 0.85rem;
-  letter-spacing: 1px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(0.75rem, 3.2vw, 0.88rem);
+  letter-spacing: 2px;
   color: var(--terracota);
+  font-style: italic;
 }
 
 /* ─── FOTO NOVIOS ─── */
