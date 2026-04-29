@@ -57,7 +57,7 @@ body {
 /* Flor izquierda: más grande, sobresale un poco por arriba y abajo */
 .hero-flores-izq {
   position: relative;
-  width: 115%;
+  width: 260%;
   max-width: 260px;
   height: auto;
   pointer-events: none;
@@ -96,7 +96,7 @@ body {
 /* Referencia en Cormorant pequeño y elegante */
 .versiculo-ref {
   font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(0.75rem, 3.2vw, 0.88rem);
+  font-size: clamp(1.25rem, 3.7vw, 1.28rem);
   letter-spacing: 2px;
   color: var(--terracota);
   font-style: italic;
