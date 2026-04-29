@@ -1,36 +1,97 @@
-// ─── CONTADOR REGRESIVO ───
+// ─── CONTADOR REGRESIVO con COUNT-UP animado ───
 (function() {
-  const boda = new Date('2026-06-13T11:00:00');
-  function actualizar() {
-    const ahora = new Date();
-    const diff = boda - ahora;
-    if (diff <= 0) {
-      document.getElementById('cnt-dias').textContent = '00';
-      document.getElementById('cnt-horas').textContent = '00';
-      document.getElementById('cnt-min').textContent = '00';
-      document.getElementById('cnt-seg').textContent = '00';
-      return;
-    }
-    const dias  = Math.floor(diff / 86400000);
-    const horas = Math.floor((diff % 86400000) / 3600000);
-    const min   = Math.floor((diff % 3600000) / 60000);
-    const seg   = Math.floor((diff % 60000) / 1000);
-    document.getElementById('cnt-dias').textContent  = String(dias).padStart(2,'0');
-    document.getElementById('cnt-horas').textContent = String(horas).padStart(2,'0');
-    document.getElementById('cnt-min').textContent   = String(min).padStart(2,'0');
-    document.getElementById('cnt-seg').textContent   = String(seg).padStart(2,'0');
+  var boda = new Date('2026-06-13T11:00:00');
+  var intervaloActivo = false;
+  var contadorAnimado = false;
+
+  function getValores() {
+    var diff = boda - new Date();
+    if (diff <= 0) return { dias: 0, horas: 0, min: 0, seg: 0 };
+    return {
+      dias:  Math.floor(diff / 86400000),
+      horas: Math.floor((diff % 86400000) / 3600000),
+      min:   Math.floor((diff % 3600000) / 60000),
+      seg:   Math.floor((diff % 60000) / 1000)
+    };
   }
-  actualizar();
-  setInterval(actualizar, 1000);
+
+  function actualizarReloj() {
+    var v = getValores();
+    document.getElementById('cnt-dias').textContent  = String(v.dias).padStart(2,'0');
+    document.getElementById('cnt-horas').textContent = String(v.horas).padStart(2,'0');
+    document.getElementById('cnt-min').textContent   = String(v.min).padStart(2,'0');
+    var segEl = document.getElementById('cnt-seg');
+    var segNuevo = String(v.seg).padStart(2,'0');
+    if (segEl.textContent !== segNuevo) {
+      segEl.textContent = segNuevo;
+      segEl.classList.remove('cnt-tick');
+      void segEl.offsetWidth;
+      segEl.classList.add('cnt-tick');
+      segEl.addEventListener('animationend', function() {
+        segEl.classList.remove('cnt-tick');
+      }, { once: true });
+    }
+  }
+
+  function countUp(id, target, duration, delay) {
+    return new Promise(function(resolve) {
+      setTimeout(function() {
+        var el = document.getElementById(id);
+        if (!el) { resolve(); return; }
+        var start = performance.now();
+        function frame(now) {
+          var progress = Math.min((now - start) / duration, 1);
+          var eased = 1 - Math.pow(1 - progress, 3);
+          el.textContent = String(Math.round(eased * target)).padStart(2, '0');
+          if (progress < 1) { requestAnimationFrame(frame); }
+          else { el.textContent = String(target).padStart(2, '0'); resolve(); }
+        }
+        requestAnimationFrame(frame);
+      }, delay);
+    });
+  }
+
+  function iniciarCountUp() {
+    if (contadorAnimado) return;
+    contadorAnimado = true;
+    var v = getValores();
+    var wrap = document.querySelector('.contador-wrap');
+    if (wrap) wrap.classList.add('contador-visible');
+    Promise.all([
+      countUp('cnt-dias',  v.dias,  1100, 80),
+      countUp('cnt-horas', v.horas, 950,  230),
+      countUp('cnt-min',   v.min,   820,  380),
+      countUp('cnt-seg',   v.seg,   680,  530)
+    ]).then(function() {
+      if (!intervaloActivo) {
+        intervaloActivo = true;
+        setInterval(actualizarReloj, 1000);
+      }
+    });
+  }
+
+  if ('IntersectionObserver' in window) {
+    var wrap = document.querySelector('.contador-wrap');
+    if (wrap) {
+      var obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) { iniciarCountUp(); obs.unobserve(entry.target); }
+        });
+      }, { threshold: 0.35 });
+      obs.observe(wrap);
+    }
+  } else {
+    iniciarCountUp();
+  }
 })();
 
 // ─── MÚSICA ───
 (function() {
-  const btn  = document.getElementById('playMusicBtn');
-  const song = document.getElementById('weddingSong');
-  const bar  = document.querySelector('.music-bar');
-  const iconPlay  = document.getElementById('iconPlay');
-  const iconPause = document.getElementById('iconPause');
+  var btn  = document.getElementById('playMusicBtn');
+  var song = document.getElementById('weddingSong');
+  var bar  = document.querySelector('.music-bar');
+  var iconPlay  = document.getElementById('iconPlay');
+  var iconPause = document.getElementById('iconPause');
   if (!btn || !song) return;
   btn.addEventListener('click', function() {
     if (song.paused) {
@@ -49,14 +110,14 @@
 
 // ─── MODALES ───
 function abrirModal(id) {
-  const modal = document.getElementById(id);
+  var modal = document.getElementById(id);
   if (!modal) return;
   modal.classList.add('activo');
   document.body.style.overflow = 'hidden';
 }
 
 function cerrarModal(id) {
-  const modal = document.getElementById(id);
+  var modal = document.getElementById(id);
   if (!modal) return;
   modal.classList.remove('activo');
   document.body.style.overflow = '';
@@ -136,8 +197,8 @@ function enviarRSVP(e) {
   if (!personas || parseInt(personas) < 1) { marcarError(inputPersonas, true); valido = false; }
   if (!valido) return;
   btn.disabled = true; btn.textContent = 'Enviando...';
-  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwLO6QmRbU2CvTxuK3wDIglsfMPBR4TwaxOq0lBIIy-eEbuQa94s6nsuirZFau1gGbZ/exec';
-  const params = new URLSearchParams({ nama: nombre, jumlah: personas, status: _rsvpStatus, mensaje: mensaje });
+  var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwLO6QmRbU2CvTxuK3wDIglsfMPBR4TwaxOq0lBIIy-eEbuQa94s6nsuirZFau1gGbZ/exec';
+  var params = new URLSearchParams({ nama: nombre, jumlah: personas, status: _rsvpStatus, mensaje: mensaje });
   fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: params.toString() })
     .then(function() { mostrarMensajeFinal(); })
     .catch(function() { mostrarMensajeFinal(); });
@@ -175,6 +236,27 @@ function mostrarMensajeFinal() {
     });
   }, { threshold: 0.07, rootMargin: '0px 0px -20px 0px' });
   secciones.forEach(function(el) { obs.observe(el); });
+})();
+
+
+// ─── FECHA: ANIMACIÓN DE ENTRADA (zoom + slide + fade escalonado) ───
+(function() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var display = document.querySelector('.fecha-display');
+  if (!display) return;
+  if (!('IntersectionObserver' in window)) {
+    display.classList.add('fecha-visible');
+    return;
+  }
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('fecha-visible');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.25, rootMargin: '0px 0px -30px 0px' });
+  obs.observe(display);
 })();
 
 
@@ -234,7 +316,6 @@ function mostrarMensajeFinal() {
   var notaItems = document.querySelectorAll('.nota-item');
   if (!notaItems.length) return;
 
-  // Asignar índice para stagger delay
   notaItems.forEach(function(item, i) {
     item.setAttribute('data-nota-idx', i);
   });
@@ -243,7 +324,6 @@ function mostrarMensajeFinal() {
     entries.forEach(function(entry) {
       if (entry.isIntersecting) {
         var idx = parseInt(entry.target.getAttribute('data-nota-idx') || 0);
-        // Stagger: cada card espera 120ms más que la anterior
         entry.target.style.transitionDelay = (idx * 0.12) + 's';
         entry.target.classList.add('nota-visible');
         obsNotas.unobserve(entry.target);

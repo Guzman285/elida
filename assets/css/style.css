@@ -431,7 +431,7 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(51, 15, 3, 0.58);
+  background: rgba(20, 8, 4, 0.38);
   pointer-events: none;
   z-index: 1;
 }
@@ -537,4 +537,120 @@ body {
 }
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+
+/* ═══════════════════════════════════════════
+   FECHA — ANIMACIÓN DE ENTRADA ESCALONADA
+   ═══════════════════════════════════════════ */
+
+.fecha-dia {
+  opacity: 0;
+  transform: scale(0.72) translateY(40px);
+  transition:
+    opacity  1s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: 0s;
+}
+.fecha-mes {
+  opacity: 0;
+  transform: translateX(70px);
+  transition:
+    opacity  0.85s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: 0s;
+}
+.fecha-anio {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity  0.75s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: 0s;
+}
+
+/* Estado visible — la clase .fecha-visible se agrega al .fecha-display */
+.fecha-display.fecha-visible .fecha-dia {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  transition-delay: 0.05s;
+}
+.fecha-display.fecha-visible .fecha-mes {
+  opacity: 1;
+  transform: translateX(0);
+  transition-delay: 0.32s;
+}
+.fecha-display.fecha-visible .fecha-anio {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.58s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fecha-dia, .fecha-mes, .fecha-anio {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+
+/* ═══════════════════════════════════════════
+   CONTADOR — COUNT-UP ENTRADA + TICK PULSE
+   ═══════════════════════════════════════════ */
+
+.contador-label {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.6s ease 0.05s, transform 0.6s ease 0.05s;
+}
+.contador-item {
+  opacity: 0;
+  transform: translateY(22px) scale(0.92);
+  transition:
+    opacity  0.65s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.contador-sep {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.contador-wrap.contador-visible .contador-label {
+  opacity: 0.7;
+  transform: translateY(0);
+}
+.contador-wrap.contador-visible .contador-sep {
+  opacity: 0.7;
+}
+.contador-wrap.contador-visible .contador-item:nth-child(1) {
+  opacity: 1; transform: translateY(0) scale(1); transition-delay: 0.08s;
+}
+.contador-wrap.contador-visible .contador-item:nth-child(3) {
+  opacity: 1; transform: translateY(0) scale(1); transition-delay: 0.18s;
+}
+.contador-wrap.contador-visible .contador-item:nth-child(5) {
+  opacity: 1; transform: translateY(0) scale(1); transition-delay: 0.28s;
+}
+.contador-wrap.contador-visible .contador-item:nth-child(7) {
+  opacity: 1; transform: translateY(0) scale(1); transition-delay: 0.38s;
+}
+
+/* Pulso suave en segundos cada tick */
+@keyframes tickPulse {
+  0%   { transform: scale(1); }
+  35%  { transform: scale(1.12); color: var(--terracota); }
+  100% { transform: scale(1); color: var(--verde); }
+}
+.cnt-tick {
+  animation: tickPulse 0.38s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contador-label, .contador-item, .contador-sep {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .cnt-tick { animation: none !important; }
 }
