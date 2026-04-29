@@ -264,10 +264,10 @@ function _mostrarConfirmacionMensaje() {
 })();
 
 
-// ─── PARALLAX FOTOS ───
+// ─── PARALLAX FOTOS (excluye imágenes del carrusel) ───
 (function() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var fotos = document.querySelectorAll('.foto-novios-img');
+  var fotos = document.querySelectorAll('.foto-novios-img:not(.carrusel-img)');
   if (!fotos.length) return;
   var ticking = false;
   function aplicarParallax() {
@@ -336,4 +336,99 @@ function _mostrarConfirmacionMensaje() {
   }, { threshold: 0.22, rootMargin: '0px 0px -30px 0px' });
 
   notaItems.forEach(function(item) { obsNotas.observe(item); });
+})();
+
+
+// ─── CARRUSEL DE FOTOS ───
+(function() {
+  var track        = document.getElementById('carruselTrack');
+  var dotsContainer = document.getElementById('carruselDots');
+  var wrap         = document.getElementById('carruselWrap');
+  if (!track || !wrap) return;
+
+  var slides = track.querySelectorAll('.carrusel-slide');
+  var total  = slides.length;
+  if (total <= 1) {
+    // Si solo hay una foto, mostrar sin dots
+    wrap.classList.add('carrusel-visible');
+    return;
+  }
+
+  var actual    = 0;
+  var autoTimer = null;
+  var startX    = 0;
+  var startY    = 0;
+  var isDragging = false;
+
+  // Crear dots dinámicamente
+  for (var i = 0; i < total; i++) {
+    var dot = document.createElement('button');
+    dot.className = 'carrusel-dot' + (i === 0 ? ' activo' : '');
+    dot.setAttribute('aria-label', 'Foto ' + (i + 1));
+    (function(idx) {
+      dot.addEventListener('click', function() { irSlide(idx); });
+    })(i);
+    dotsContainer.appendChild(dot);
+  }
+
+  function actualizarDots() {
+    dotsContainer.querySelectorAll('.carrusel-dot').forEach(function(d, i) {
+      d.classList.toggle('activo', i === actual);
+    });
+  }
+
+  function irSlide(n) {
+    actual = ((n % total) + total) % total;
+    track.style.transform = 'translateX(-' + (actual * 100) + '%)';
+    actualizarDots();
+    reiniciarAuto();
+  }
+
+  function siguiente() { irSlide(actual + 1); }
+
+  function reiniciarAuto() {
+    clearInterval(autoTimer);
+    autoTimer = setInterval(siguiente, 4500);
+  }
+
+  // Touch / swipe
+  wrap.addEventListener('touchstart', function(e) {
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+    isDragging = true;
+  }, { passive: true });
+
+  wrap.addEventListener('touchmove', function(e) {
+    if (!isDragging) return;
+    // Si el scroll es más vertical que horizontal, no interferir
+    var dx = Math.abs(e.touches[0].clientX - startX);
+    var dy = Math.abs(e.touches[0].clientY - startY);
+    if (dy > dx) { isDragging = false; }
+  }, { passive: true });
+
+  wrap.addEventListener('touchend', function(e) {
+    if (!isDragging) return;
+    var diff = startX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) {
+      diff > 0 ? irSlide(actual + 1) : irSlide(actual - 1);
+    }
+    isDragging = false;
+  }, { passive: true });
+
+  // Scroll reveal del carrusel
+  if ('IntersectionObserver' in window) {
+    var obsCarrusel = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('carrusel-visible');
+          obsCarrusel.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    obsCarrusel.observe(wrap);
+  } else {
+    wrap.classList.add('carrusel-visible');
+  }
+
+  reiniciarAuto();
 })();

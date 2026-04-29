@@ -156,12 +156,20 @@
       </div>
     </section>
 
-    <!-- FOTO 2 -->
+    <!-- GALERÍA / CARRUSEL DE FOTOS -->
     <section class="foto-novios-section foto-novios-section-2">
-      <div class="foto-novios-wrap">
-        <img src="./assets/img/novios/carlos.jpeg" alt="Carlos y Elida" class="foto-novios-img" loading="lazy" />
+      <div class="carrusel-wrap" id="carruselWrap">
+        <div class="carrusel-track" id="carruselTrack">
+          <div class="carrusel-slide">
+            <img src="./assets/img/novios/carlos.jpeg" alt="Carlos y Elida" class="foto-novios-img carrusel-img" loading="lazy" />
+          </div>
+          <div class="carrusel-slide">
+            <img src="./assets/img/novios/carlos2.jpeg" alt="Carlos y Elida" class="foto-novios-img carrusel-img" loading="lazy" />
+          </div>
+        </div>
         <div class="foto-degradado-top"></div>
         <div class="foto-degradado-bottom"></div>
+        <div class="carrusel-dots" id="carruselDots"></div>
       </div>
     </section>
 
@@ -319,7 +327,6 @@
         Por favor, házsnoslo saber antes del <strong>1 de Junio.</strong>
       </p>
 
-      <!-- Dos iconos simples sin cuadro -->
       <div id="rsvpOpciones" class="rsvp-opciones-simples">
         <button class="rsvp-btn-simple" type="button" onclick="abrirModal('modal-confirmar')" aria-label="Confirmar asistencia">
           <img src="./assets/img/iconos/whatsapp.png" alt="Confirmar" loading="lazy" />
@@ -331,7 +338,6 @@
         </button>
       </div>
 
-      <!-- Pantalla bonita: no podré asistir -->
       <div class="rsvp-confirmado" id="rsvpNoAsiste" style="display:none">
         <div class="rsvp-confirmado-icono" aria-hidden="true">
           <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" width="44" height="44">
@@ -458,7 +464,7 @@
       </div>
     </div>
 
-    <!-- MODAL: MENSAJE A LOS NOVIOS — panel blanco limpio -->
+    <!-- MODAL: MENSAJE A LOS NOVIOS -->
     <div class="modal-overlay" id="modal-mensaje" role="dialog" aria-modal="true" aria-label="Dejar mensaje" onclick="cerrarModalOverlay(event, 'modal-mensaje')">
       <div class="modal-contenido modal-nav-contenido" style="max-width:360px;">
         <button class="modal-cerrar" onclick="cerrarModal('modal-mensaje')" aria-label="Cerrar">
@@ -467,8 +473,6 @@
           </svg>
         </button>
         <div class="modal-nav-body" style="gap:14px;">
-
-          <!-- Formulario -->
           <div id="modalMensajeForm" style="width:100%; display:flex; flex-direction:column; align-items:center; gap:12px;">
             <p class="modal-nav-titulo" style="font-size:clamp(1.6rem,7vw,2rem);">Un mensaje<br>para nosotros 💌</p>
             <p class="modal-nav-lugar">Cuéntanos algo bonito</p>
@@ -486,8 +490,6 @@
               <button class="rsvp-submit-btn" type="submit" id="msgSubmitBtn">Enviar mensaje 💌</button>
             </form>
           </div>
-
-          <!-- Confirmación -->
           <div class="rsvp-confirmado" id="modalMensajeConfirmado" style="display:none;">
             <div class="rsvp-confirmado-icono" aria-hidden="true">
               <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" width="44" height="44">
@@ -498,7 +500,6 @@
             <p class="rsvp-confirmado-titulo">¡Gracias por tu mensaje!</p>
             <p class="rsvp-confirmado-texto">Carlos &amp; Elida lo leerán con mucho cariño. 🤍</p>
           </div>
-
         </div>
       </div>
     </div>
