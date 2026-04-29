@@ -353,7 +353,6 @@ body {
   opacity: 1;
   transform: scale(1) translateY(0);
 }
-/* Icono: pop con giro y rebote */
 .nota-icono-img {
   transform: scale(0.55) rotate(-12deg);
   opacity: 0;
@@ -365,7 +364,6 @@ body {
   transform: scale(1) rotate(0deg);
   opacity: 1;
 }
-/* Vestimenta: misma animación de pop */
 .vestimenta-iconos {
   transform: scale(0.6) rotate(-8deg);
   opacity: 0;
@@ -377,7 +375,6 @@ body {
   transform: scale(1) rotate(0deg);
   opacity: 1;
 }
-/* Nombre: fade-up con delay */
 .nota-nombre {
   opacity: 0;
   transform: translateY(10px);
@@ -388,7 +385,6 @@ body {
   transform: translateY(0);
   transition-delay: 0.16s;
 }
-/* Descripción: fade-up con más delay */
 .nota-desc {
   opacity: 0;
   transform: translateY(10px);
@@ -399,7 +395,6 @@ body {
   transform: translateY(0);
   transition-delay: 0.25s;
 }
-/* Botón: aparece último */
 .nota-btn {
   opacity: 0;
   transform: translateY(12px);
@@ -422,28 +417,33 @@ body {
 }
 
 /* ─── MODALES ─── */
-.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(60,25,15,0.65); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); z-index: 1000; align-items: center; justify-content: center; padding: 24px; }
+/* Overlay exterior: semi-transparente suave, sin tanto blur */
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(60,25,15,0.28); backdrop-filter: blur(1.5px); -webkit-backdrop-filter: blur(1.5px); z-index: 1000; align-items: center; justify-content: center; padding: 24px; }
 .modal-overlay.activo { display: flex; animation: fadeInOverlay 0.25s ease; }
 @keyframes fadeInOverlay { from { opacity: 0; } to { opacity: 1; } }
 .modal-contenido { position: relative; width: 100%; max-width: 380px; animation: slideUpModal 0.3s cubic-bezier(0.16,1,0.3,1); }
 @keyframes slideUpModal { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
 .modal-cerrar { position: absolute; top: -14px; right: -14px; width: 34px; height: 34px; border-radius: 50%; background: var(--crema); border: 1px solid var(--terracota); color: var(--terracota); display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10; transition: background 0.2s, color 0.2s; box-shadow: 0 2px 8px rgba(60,25,15,0.2); }
 .modal-cerrar:hover { background: var(--terracota); color: #fff; }
-.modal-arco-wrap { position: relative; width: 100%; border-radius: 4px; overflow: hidden; box-shadow: 0 16px 48px rgba(60,25,15,0.35); }
+.modal-arco-wrap { position: relative; width: 100%; border-radius: 4px; overflow: hidden; box-shadow: 0 16px 48px rgba(60,25,15,0.5); }
 .modal-img { width: 100%; height: auto; display: block; }
 .modal-arco-texto { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; padding: 20% 12% 22%; text-align: center; }
 .modal-arco-titulo { font-family: "Great Vibes", cursive; font-size: clamp(1.8rem, 8vw, 2.4rem); color: #fff; line-height: 1; text-shadow: 0 2px 8px rgba(60,25,15,0.7); }
 .modal-arco-linea { width: 36px; height: 1px; background: rgba(255,255,255,0.7); margin: 2px 0 4px; }
 .modal-arco-desc { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(0.78rem, 3.4vw, 0.9rem); color: #fff; line-height: 1.55; text-shadow: 0 1px 6px rgba(60,25,15,0.75), 0 1px 2px rgba(0,0,0,0.5); }
 .modal-arco-desc strong { font-weight: 700; font-style: normal; }
-.modal-vestimenta-texto { align-items: flex-start !important; justify-content: flex-end !important; text-align: left !important; padding: 8% 10% 12% 8% !important; gap: 8px !important; }
-.modal-vestimenta-texto .modal-arco-titulo { text-align: left; line-height: 1.05; }
-.modal-vestimenta-texto .modal-arco-linea { margin-left: 0; }
-.modal-vestimenta-texto .modal-arco-desc { text-align: left; max-width: 200px; }
-.modal-regalos-texto { align-items: flex-start !important; justify-content: flex-end !important; text-align: left !important; padding: 8% 10% 10% 8% !important; gap: 7px !important; }
-.modal-regalos-texto .modal-arco-titulo { text-align: left; line-height: 1.05; }
-.modal-regalos-texto .modal-arco-linea { margin-left: 0; }
-.modal-regalos-texto .modal-arco-desc { text-align: left; max-width: 210px; }
+
+/* Texto centrado en modal vestimenta */
+.modal-vestimenta-texto { align-items: center !important; justify-content: center !important; text-align: center !important; padding: 8% 10% 22% !important; gap: 8px !important; }
+.modal-vestimenta-texto .modal-arco-titulo { text-align: center; line-height: 1.05; }
+.modal-vestimenta-texto .modal-arco-linea { margin-left: auto; margin-right: auto; }
+.modal-vestimenta-texto .modal-arco-desc { text-align: center; max-width: 220px; }
+
+/* Texto centrado en modal regalos */
+.modal-regalos-texto { align-items: center !important; justify-content: center !important; text-align: center !important; padding: 8% 10% 16% !important; gap: 7px !important; }
+.modal-regalos-texto .modal-arco-titulo { text-align: center; line-height: 1.05; }
+.modal-regalos-texto .modal-arco-linea { margin-left: auto; margin-right: auto; }
+.modal-regalos-texto .modal-arco-desc { text-align: center; max-width: 220px; }
 
 /* ─── CUENTAS BANCARIAS ─── */
 .cuenta-item { display: flex; align-items: center; justify-content: space-between; gap: 8px; width: 100%; max-width: 210px; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.3); border-radius: 6px; padding: 6px 8px 6px 10px; }
