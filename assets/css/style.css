@@ -565,17 +565,17 @@ body {
 
 /* ─── MODAL NAVEGACIÓN (Maps / Waze) ─── */
 .modal-nav-contenido {
-  max-width: 320px;
+  max-width: 340px;
 }
 .modal-nav-body {
   background: var(--blanco);
-  border-radius: 16px;
-  padding: 28px 24px 24px;
+  border-radius: 20px;
+  padding: 28px 20px 24px;
   box-shadow: 0 16px 48px rgba(60,25,15,0.25);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
 }
 .modal-nav-titulo {
   font-family: "Great Vibes", cursive;
@@ -591,53 +591,59 @@ body {
   letter-spacing: 1px;
   text-align: center;
   opacity: 0.9;
-  margin-bottom: 10px;
+  margin-bottom: 14px;
 }
+
+/* Grid 2 columnas con tarjetas grandes */
 .modal-nav-opciones {
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  border: 1px solid rgba(184,107,82,0.2);
-  border-radius: 12px;
-  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
 }
 .modal-nav-opcion {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 16px;
-  padding: 20px 18px;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px 12px 16px;
   text-decoration: none;
   color: var(--texto);
-  background: var(--blanco);
-  transition: background 0.2s ease;
+  background: var(--crema);
+  border: 1px solid rgba(184,107,82,0.18);
+  border-radius: 16px;
+  transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+  box-shadow: 0 2px 8px rgba(60,25,15,0.06);
 }
-.modal-nav-opcion:hover { background: var(--crema); }
-.modal-nav-opcion:active { background: var(--crema); opacity: 0.75; }
+.modal-nav-opcion:hover {
+  background: #f3e6de;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(60,25,15,0.12);
+}
+.modal-nav-opcion:active { transform: scale(0.97); }
+
+/* Ícono grande cuadrado */
 .modal-nav-icon {
-  width: 62px;
-  height: 62px;
+  width: 100px;
+  height: 100px;
   object-fit: contain;
-  border-radius: 14px;
+  border-radius: 22px;
   flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(60,25,15,0.15);
 }
+
+/* Nombre pequeño debajo del ícono */
 .modal-nav-nombre {
   font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(1.1rem, 5vw, 1.3rem);
+  font-size: clamp(0.85rem, 3.8vw, 1rem);
   font-weight: 600;
   color: var(--texto);
-  letter-spacing: 1px;
-  flex: 1;
+  letter-spacing: 1.5px;
+  text-align: center;
 }
-.modal-nav-flecha {
-  color: var(--terracota);
-  opacity: 0.7;
-  flex-shrink: 0;
-}
-.modal-nav-separador {
-  height: 1px;
-  background: rgba(184,107,82,0.15);
-  width: 100%;
-}
+.modal-nav-flecha { display: none; }
+.modal-nav-separador { display: none; }
 
 /* ─── SECCIÓN RSVP ─── */
 .rsvp-section {
