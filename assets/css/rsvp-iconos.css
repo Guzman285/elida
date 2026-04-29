@@ -31,9 +31,8 @@
   border: none;
   cursor: pointer;
   padding: 4px;
-  /* Cada botón toma ~45% del ancho disponible */
-  width: 45%;
-  max-width: 180px;
+  width: 48%;
+  max-width: 220px;
   transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
   -webkit-tap-highlight-color: transparent;
 }
@@ -42,7 +41,6 @@
   opacity: 0.85;
 }
 .rsvp-btn-simple img {
-  /* Imagen horizontal: ocupa todo el ancho del botón, altura proporcional */
   width: 100%;
   height: auto;
   object-fit: contain;
