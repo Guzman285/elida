@@ -252,8 +252,8 @@ body {
   align-items: center;
   justify-content: flex-start;
   gap: 7px;
-  /* padding-top grande para empujar el texto al centro del arco (donde está el hueco de la imagen) */
-  padding: 32% 10% 0;
+  /* Desplazado ligeramente a la izquierda con padding asimétrico */
+  padding: 32% 18% 0 8%;
   text-align: center;
 }
 .evento-tipo { font-family: "Great Vibes", cursive; font-size: clamp(2.6rem, 12vw, 3.6rem); color: #fff; line-height: 1; margin-bottom: 2px; text-shadow: 0 0 20px rgba(0,0,0,0.8), 0 2px 12px rgba(80,40,20,0.9), 0 1px 4px rgba(0,0,0,0.9); }
@@ -262,15 +262,18 @@ body {
 .evento-direccion { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(0.85rem, 3.8vw, 1rem); color: #fff; text-align: center; line-height: 1.55; text-shadow: 0 0 16px rgba(0,0,0,0.85), 0 2px 8px rgba(80,40,20,0.95), 0 1px 3px rgba(0,0,0,0.9); }
 .evento-hora { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(0.82rem, 3.5vw, 0.95rem); letter-spacing: 3px; color: #fff; margin-top: 2px; text-shadow: 0 0 16px rgba(0,0,0,0.85), 0 2px 8px rgba(80,40,20,0.95), 0 1px 3px rgba(0,0,0,0.9); }
 
-/* Botones Maps / Waze — debajo de la imagen del arco */
+/* Botones Maps / Waze — debajo de la imagen del arco, DENTRO del card pero sin position:absolute */
 .evento-nav-btns {
   display: flex;
   flex-direction: row;
   gap: 48px;
-  margin-top: 10px;
+  margin-top: 14px;
   align-items: center;
   justify-content: center;
   width: 100%;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
 }
 .evento-nav-btn {
   display: flex;
