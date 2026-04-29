@@ -190,28 +190,15 @@ body {
   text-align: center;
 }
 .deco-flor-padres-sup-izq {
-  bottom: 510px; left: -20px;
+  bottom: 530px; left: -20px;
   top: auto;
   transform: rotate(180deg) scaleX(-1);
   width: 48%; max-width: 190px;
   opacity: 0.82;
 }
-.deco-flor-padres-sup-der {
-  bottom: 245px; right: -20px;
-  top: auto;
-  transform: rotate(180deg);
-  width: 48%; max-width: 190px;
-  opacity: 0.82;
-}
-.deco-flor-padres-inf-izq {
-  top: 280px; left: -20px;
-  bottom: auto;
-  transform: none;
-  width: 48%; max-width: 190px;
-  opacity: 0.75;
-}
+
 .deco-flor-padres-inf-der {
-  top: 280px; right: -20px;
+  top: 260px; right: -20px;
   bottom: auto;
   transform: scaleX(-1);
   width: 48%; max-width: 190px;
