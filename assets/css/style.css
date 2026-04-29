@@ -106,8 +106,36 @@ body {
 .foto-novios-section { background-color: var(--crema); width: 100%; margin-top: -72px; }
 .foto-novios-wrap { position: relative; width: 100%; line-height: 0; }
 .foto-novios-img { width: 100%; height: auto; display: block; object-fit: cover; }
-.foto-degradado-top { position: absolute; top: 0; left: 0; width: 100%; height: 100px; background: linear-gradient(to bottom, var(--crema) 0%, transparent 100%); pointer-events: none; z-index: 2; }
-.foto-degradado-bottom { position: absolute; bottom: 0; left: 0; width: 100%; height: 100px; background: linear-gradient(to top, var(--crema) 0%, transparent 100%); pointer-events: none; z-index: 2; }
+/* Degradado superior: curva suave de opaco a transparente en 200px */
+.foto-degradado-top {
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 200px;
+  background: linear-gradient(
+    to bottom,
+    #f8efe9 0%,
+    #f8efe9 15%,
+    rgba(248,239,233,0.85) 35%,
+    rgba(248,239,233,0.5) 55%,
+    rgba(248,239,233,0.15) 75%,
+    transparent 100%
+  );
+  pointer-events: none; z-index: 2;
+}
+/* Degradado inferior: curva suave de transparente a opaco en 200px */
+.foto-degradado-bottom {
+  position: absolute; bottom: 0; left: 0;
+  width: 100%; height: 200px;
+  background: linear-gradient(
+    to top,
+    #f8efe9 0%,
+    #f8efe9 15%,
+    rgba(248,239,233,0.85) 35%,
+    rgba(248,239,233,0.5) 55%,
+    rgba(248,239,233,0.15) 75%,
+    transparent 100%
+  );
+  pointer-events: none; z-index: 2;
+}
 
 /* ─── DECORACIÓN FLORES GENÉRICA ─── */
 .deco-flor {
