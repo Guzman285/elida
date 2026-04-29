@@ -12,7 +12,7 @@
   </head>
   <body>
 
-    <!-- BARRA FIJA DE MÚSICA -->
+    <!-- BARRA FIJA DE MÚSÍCA -->
     <header class="music-bar">
       <button id="playMusicBtn" class="music-bar-btn" type="button" aria-label="Reproducir canción">
         <span class="bar-text">DALE PLAY</span>
@@ -460,20 +460,21 @@
       </div>
     </div>
 
-    <!-- MODAL: MENSAJE A LOS NOVIOS -->
+    <!-- MODAL: MENSAJE A LOS NOVIOS — panel blanco limpio -->
     <div class="modal-overlay" id="modal-mensaje" role="dialog" aria-modal="true" aria-label="Dejar mensaje" onclick="cerrarModalOverlay(event, 'modal-mensaje')">
-      <div class="modal-contenido">
+      <div class="modal-contenido modal-nav-contenido" style="max-width:360px;">
         <button class="modal-cerrar" onclick="cerrarModal('modal-mensaje')" aria-label="Cerrar">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
             <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
           </svg>
         </button>
-        <div class="modal-arco-wrap">
-          <img src="./assets/img/fondos/arco2.png" alt="" class="modal-img" />
-          <div class="modal-arco-texto" id="modalMensajeForm">
-            <p class="modal-arco-titulo">Un mensaje<br>para nosotros 💌</p>
-            <div class="modal-arco-linea"></div>
-            <form class="rsvp-form" onsubmit="enviarMensaje(event)" novalidate>
+        <div class="modal-nav-body" style="gap:14px;">
+
+          <!-- Formulario -->
+          <div id="modalMensajeForm" style="width:100%; display:flex; flex-direction:column; align-items:center; gap:12px;">
+            <p class="modal-nav-titulo" style="font-size:clamp(1.6rem,7vw,2rem);">Un mensaje<br>para nosotros 💌</p>
+            <p class="modal-nav-lugar">Cuéntanos algo bonito</p>
+            <form class="rsvp-form" onsubmit="enviarMensaje(event)" novalidate style="width:100%;">
               <div class="rsvp-field">
                 <label class="rsvp-label" for="msgNombre">Tu nombre</label>
                 <input class="rsvp-input" type="text" id="msgNombre" placeholder="Ej: María García" autocomplete="name" />
@@ -487,7 +488,9 @@
               <button class="rsvp-submit-btn" type="submit" id="msgSubmitBtn">Enviar mensaje 💌</button>
             </form>
           </div>
-          <div class="rsvp-confirmado" id="modalMensajeConfirmado" style="display:none">
+
+          <!-- Confirmación -->
+          <div class="rsvp-confirmado" id="modalMensajeConfirmado" style="display:none;">
             <div class="rsvp-confirmado-icono" aria-hidden="true">
               <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" width="44" height="44">
                 <circle cx="24" cy="24" r="20"/>
@@ -497,6 +500,7 @@
             <p class="rsvp-confirmado-titulo">¡Gracias por tu mensaje!</p>
             <p class="rsvp-confirmado-texto">Carlos &amp; Elida lo leerán con mucho cariño. 🤍</p>
           </div>
+
         </div>
       </div>
     </div>
