@@ -1,79 +1,96 @@
-/* ═══════════════════════════════════════════
-   CARRUSEL DE FOTOS
-   ═══════════════════════════════════════════ */
+/* ═════════════════════════════════════════════
+   CARRUSEL CONTINUO — infinite ticker
+   ═════════════════════════════════════════════ */
 
+.foto-novios-section-2 {
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+
+/* Contenedor — fade-in al hacer scroll */
 .carrusel-wrap {
   position: relative;
   width: 100%;
   overflow: hidden;
   line-height: 0;
-  /* cursor drag hint */
-  cursor: grab;
-}
-.carrusel-wrap:active { cursor: grabbing; }
-
-.carrusel-track {
-  display: flex;
-  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform;
-}
-.carrusel-track.sin-transicion {
-  transition: none;
-}
-
-.carrusel-slide {
-  flex: 0 0 100%;
-  width: 100%;
-  overflow: hidden;
-}
-
-/* Dots de navegación */
-.carrusel-dots {
-  position: absolute;
-  bottom: 22px;
-  left: 0;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  z-index: 3;
-  pointer-events: none;
-}
-.carrusel-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.4);
-  border: 1.5px solid rgba(255, 255, 255, 0.65);
-  cursor: pointer;
-  pointer-events: auto;
-  padding: 0;
-  transition: background 0.3s ease, transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
-  flex-shrink: 0;
-}
-.carrusel-dot.activo {
-  background: rgba(255, 255, 255, 0.92);
-  transform: scale(1.35);
-  border-color: rgba(255, 255, 255, 0.9);
-}
-
-/* Animación fade-in del carrusel al entrar en pantalla */
-.carrusel-wrap {
   opacity: 0;
-  transform: translateY(28px);
+  transform: translateY(32px);
   transition:
-    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity  0.9s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .carrusel-wrap.carrusel-visible {
   opacity: 1;
   transform: translateY(0);
 }
-/* La transición del track no debe interferir */
-.carrusel-wrap.carrusel-visible .carrusel-track {
-  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+
+/* Track: 4 slides (2 reales + 2 clones) — ancho total = 4 × 100vw */
+.carrusel-track {
+  display: flex;
+  width: calc(4 * 100vw);
+  animation: carrusel-ticker 20s linear infinite;
+  will-change: transform;
 }
 
+/* Pausa elegante al pasar el cursor en desktop */
+@media (hover: hover) {
+  .carrusel-wrap:hover .carrusel-track {
+    animation-play-state: paused;
+  }
+}
+
+/* Cada slide ocupa exactamente el ancho de pantalla */
+.carrusel-slide {
+  flex: 0 0 100vw;
+  width: 100vw;
+  overflow: hidden;
+  line-height: 0;
+}
+
+/* Foto: mismo tamaño estándar sin importar el original */
+.carrusel-img {
+  display: block;
+  width: 100vw;
+  height: clamp(420px, 85vh, 780px);
+  object-fit: cover;
+  object-position: center 18%;
+  transform: none !important; /* Anula parallax en estas fotos */
+}
+
+/* Degradados suaves arriba y abajo */
+.carrusel-wrap .foto-degradado-top {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 120px;
+  background: linear-gradient(
+    to bottom,
+    var(--fondo, #f5ede6) 0%,
+    transparent 100%
+  );
+  z-index: 2;
+  pointer-events: none;
+}
+.carrusel-wrap .foto-degradado-bottom {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 120px;
+  background: linear-gradient(
+    to top,
+    var(--fondo, #f5ede6) 0%,
+    transparent 100%
+  );
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Animación: desplaza exactamente 2 slides (= 200vw) para volver al inicio */
+@keyframes carrusel-ticker {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(calc(-2 * 100vw)); }
+}
+
+/* Respeta prefers-reduced-motion */
 @media (prefers-reduced-motion: reduce) {
   .carrusel-wrap {
     opacity: 1 !important;
@@ -81,6 +98,10 @@
     transition: none !important;
   }
   .carrusel-track {
-    transition: none !important;
+    animation: none !important;
+    width: 100vw !important;
+  }
+  .carrusel-slide:not(:first-child) {
+    display: none;
   }
 }
