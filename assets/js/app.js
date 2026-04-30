@@ -1,244 +1,414 @@
-/* ═══════════════════════════════════════════════════════════════
-   INVITACIÓN BODA — CARLOS & ELIDA — app.js
-   ═══════════════════════════════════════════════════════════════ */
+// ─── CONTADOR REGRESIVO con COUNT-UP animado ───
+(function() {
+  var boda = new Date('2026-06-13T11:00:00');
+  var intervaloActivo = false;
+  var contadorAnimado = false;
 
-const WHATSAPP = '50236043284'; // ← cambia al número real si es necesario
+  function getValores() {
+    var diff = boda - new Date();
+    if (diff <= 0) return { dias: 0, horas: 0, min: 0, seg: 0 };
+    return {
+      dias:  Math.floor(diff / 86400000),
+      horas: Math.floor((diff % 86400000) / 3600000),
+      min:   Math.floor((diff % 3600000) / 60000),
+      seg:   Math.floor((diff % 60000) / 1000)
+    };
+  }
 
-/* ─── MÚSICA ─── */
-(function () {
-  const btn      = document.getElementById('playMusicBtn');
-  const audio    = document.getElementById('weddingSong');
-  const bar      = document.querySelector('.music-bar');
-  const iconPlay = document.getElementById('iconPlay');
-  const iconPause= document.getElementById('iconPause');
-  if (!btn || !audio) return;
-  btn.addEventListener('click', () => {
-    if (audio.paused) {
-      audio.play().then(() => {
-        bar.classList.add('playing');
-        iconPlay.style.display  = 'none';
-        iconPause.style.display = '';
-      }).catch(() => {});
+  function actualizarReloj() {
+    var v = getValores();
+    document.getElementById('cnt-dias').textContent  = String(v.dias).padStart(2,'0');
+    document.getElementById('cnt-horas').textContent = String(v.horas).padStart(2,'0');
+    document.getElementById('cnt-min').textContent   = String(v.min).padStart(2,'0');
+    var segEl = document.getElementById('cnt-seg');
+    var segNuevo = String(v.seg).padStart(2,'0');
+    if (segEl.textContent !== segNuevo) {
+      segEl.textContent = segNuevo;
+      segEl.classList.remove('cnt-tick');
+      void segEl.offsetWidth;
+      segEl.classList.add('cnt-tick');
+      segEl.addEventListener('animationend', function() {
+        segEl.classList.remove('cnt-tick');
+      }, { once: true });
+    }
+  }
+
+  function countUp(id, target, duration, delay) {
+    return new Promise(function(resolve) {
+      setTimeout(function() {
+        var el = document.getElementById(id);
+        if (!el) { resolve(); return; }
+        var start = performance.now();
+        function frame(now) {
+          var progress = Math.min((now - start) / duration, 1);
+          var eased = 1 - Math.pow(1 - progress, 3);
+          el.textContent = String(Math.round(eased * target)).padStart(2, '0');
+          if (progress < 1) { requestAnimationFrame(frame); }
+          else { el.textContent = String(target).padStart(2, '0'); resolve(); }
+        }
+        requestAnimationFrame(frame);
+      }, delay);
+    });
+  }
+
+  function iniciarCountUp() {
+    if (contadorAnimado) return;
+    contadorAnimado = true;
+    var v = getValores();
+    var wrap = document.querySelector('.contador-wrap');
+    if (wrap) wrap.classList.add('contador-visible');
+    Promise.all([
+      countUp('cnt-dias',  v.dias,  1100, 80),
+      countUp('cnt-horas', v.horas, 950,  230),
+      countUp('cnt-min',   v.min,   820,  380),
+      countUp('cnt-seg',   v.seg,   680,  530)
+    ]).then(function() {
+      if (!intervaloActivo) {
+        intervaloActivo = true;
+        setInterval(actualizarReloj, 1000);
+      }
+    });
+  }
+
+  if ('IntersectionObserver' in window) {
+    var wrap = document.querySelector('.contador-wrap');
+    if (wrap) {
+      var obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) { iniciarCountUp(); obs.unobserve(entry.target); }
+        });
+      }, { threshold: 0.35 });
+      obs.observe(wrap);
+    }
+  } else {
+    iniciarCountUp();
+  }
+})();
+
+// ─── MÚSICA ───
+(function() {
+  var btn  = document.getElementById('playMusicBtn');
+  var song = document.getElementById('weddingSong');
+  var bar  = document.querySelector('.music-bar');
+  var iconPlay  = document.getElementById('iconPlay');
+  var iconPause = document.getElementById('iconPause');
+  if (!btn || !song) return;
+  btn.addEventListener('click', function() {
+    if (song.paused) {
+      song.play();
+      iconPlay.style.display  = 'none';
+      iconPause.style.display = 'block';
+      bar.classList.add('playing');
     } else {
-      audio.pause();
-      bar.classList.remove('playing');
-      iconPlay.style.display  = '';
+      song.pause();
+      iconPlay.style.display  = 'block';
       iconPause.style.display = 'none';
+      bar.classList.remove('playing');
     }
   });
 })();
 
-/* ─── MODALES ─── */
+// ─── MODALES ───
 function abrirModal(id) {
-  const el = document.getElementById(id);
-  if (!el) return;
-  el.classList.add('activo');
+  var modal = document.getElementById(id);
+  if (!modal) return;
+  modal.classList.add('activo');
   document.body.style.overflow = 'hidden';
 }
+
 function cerrarModal(id) {
-  const el = document.getElementById(id);
-  if (!el) return;
-  el.classList.remove('activo');
+  var modal = document.getElementById(id);
+  if (!modal) return;
+  modal.classList.remove('activo');
   document.body.style.overflow = '';
 }
-function cerrarModalOverlay(e, id) {
-  if (e.target === e.currentTarget) cerrarModal(id);
+
+function cerrarModalOverlay(event, id) {
+  if (event.target === event.currentTarget) cerrarModal(id);
 }
 
-/* ─── COPIAR CUENTA BANCARIA ─── */
-function copiarCuenta(spanId, btn) {
-  const el = document.getElementById(spanId);
-  if (!el) return;
-  navigator.clipboard.writeText(el.textContent.trim()).then(() => {
-    btn.classList.add('copiado');
-    const orig = btn.innerHTML;
-    btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="15" height="15"><path d="M20 6L9 17l-5-5"/></svg>';
-    setTimeout(() => { btn.classList.remove('copiado'); btn.innerHTML = orig; }, 2000);
-  });
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal-overlay.activo').forEach(function(m) {
+      m.classList.remove('activo');
+    });
+    document.body.style.overflow = '';
+  }
+});
+
+// ─── COPIAR NÚMERO DE CUENTA ───
+function copiarCuenta(elementId, btn) {
+  var numero = document.getElementById(elementId);
+  if (!numero) return;
+  var texto = numero.textContent.trim();
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(texto).then(function() { _feedbackCopiado(btn); }).catch(function() { _copiarFallback(texto, btn); });
+  } else {
+    _copiarFallback(texto, btn);
+  }
+}
+function _copiarFallback(texto, btn) {
+  var ta = document.createElement('textarea');
+  ta.value = texto; ta.style.position = 'fixed'; ta.style.opacity = '0';
+  document.body.appendChild(ta); ta.focus(); ta.select();
+  try { document.execCommand('copy'); } catch(e) {}
+  document.body.removeChild(ta);
+  _feedbackCopiado(btn);
+}
+function _feedbackCopiado(btn) {
+  btn.classList.add('copiado');
+  btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="15" height="15"><path d="M20 6L9 17l-5-5"/></svg>';
+  setTimeout(function() {
+    btn.classList.remove('copiado');
+    btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+  }, 2000);
 }
 
-/* ─── RSVP: contador de personas ─── */
-let rsvpCantidadVal = 1;
-function cambiarCantidad(delta) {
-  rsvpCantidadVal = Math.max(1, Math.min(20, rsvpCantidadVal + delta));
-  const el = document.getElementById('rsvpCantidad');
-  if (el) el.textContent = rsvpCantidadVal;
-}
+// ─── RSVP — FORMULARIO DE CONFIRMACIÓN ───
+var WA_NUMBER = '50235717258';
+var _asistencia = 'si';
+var _cantidad   = 1;
 
-/* ─── RSVP: toggle asistencia ─── */
-let rsvpAsistencia = 'si';
 function seleccionarAsistencia(tipo) {
-  rsvpAsistencia = tipo;
-  const si = document.getElementById('btnSi');
-  const no = document.getElementById('btnNo');
-  if (!si || !no) return;
-  si.classList.toggle('activo', tipo === 'si');
-  si.setAttribute('aria-pressed', tipo === 'si');
-  no.classList.toggle('activo', tipo === 'no');
-  no.setAttribute('aria-pressed', tipo === 'no');
+  _asistencia = tipo;
+  var btnSi = document.getElementById('btnSi');
+  var btnNo = document.getElementById('btnNo');
+  if (!btnSi || !btnNo) return;
+  btnSi.classList.toggle('activo', tipo === 'si');
+  btnNo.classList.toggle('activo', tipo === 'no');
+  btnSi.setAttribute('aria-pressed', String(tipo === 'si'));
+  btnNo.setAttribute('aria-pressed', String(tipo === 'no'));
 }
 
-/* ─── RSVP: enviar confirmación por WhatsApp ─── */
+function cambiarCantidad(delta) {
+  _cantidad = Math.max(1, Math.min(20, _cantidad + delta));
+  var el = document.getElementById('rsvpCantidad');
+  if (el) el.textContent = _cantidad;
+}
+
 function enviarConfirmacion(e) {
   e.preventDefault();
-  const nombreEl = document.getElementById('rsvpNombre');
-  const errorEl  = document.getElementById('rsvpNombreError');
-  const nombre   = nombreEl ? nombreEl.value.trim() : '';
+  var inputNombre = document.getElementById('rsvpNombre');
+  var nombre      = inputNombre ? inputNombre.value.trim() : '';
+  var errorEl     = document.getElementById('rsvpNombreError');
+
+  if (inputNombre) inputNombre.classList.remove('rsvp-input-error');
+  if (errorEl)     errorEl.style.display = 'none';
+
   if (!nombre) {
-    nombreEl.classList.add('rsvp-input-error');
-    if (errorEl) errorEl.style.display = '';
-    setTimeout(() => nombreEl.classList.remove('rsvp-input-error'), 800);
+    if (inputNombre) inputNombre.classList.add('rsvp-input-error');
+    if (errorEl)     errorEl.style.display = 'block';
+    if (inputNombre) inputNombre.focus();
     return;
   }
-  if (errorEl) errorEl.style.display = 'none';
-  const asiste = rsvpAsistencia === 'si'
-    ? `✅ Sí asistiré (${rsvpCantidadVal} persona${rsvpCantidadVal > 1 ? 's' : ''})`
-    : '❌ No podré asistir';
-  const msg = encodeURIComponent(
-    `Hola! Soy ${nombre}.\n${asiste}\nBoda de Carlos & Elida — 13 de Junio 2026 🌸`
-  );
-  window.open(`https://wa.me/${WHATSAPP}?text=${msg}`, '_blank');
+
   cerrarModal('modal-confirmar');
+
+  var personas = _cantidad === 1 ? '1 persona' : _cantidad + ' personas';
+  var msg;
+
+  if (_asistencia === 'si') {
+    msg =
+      '\u00a1Hola Carlos & Elida! \ud83d\udc8d\ud83c\udf38\n\n' +
+      'Con mucha alegr\u00eda les confirmo mi asistencia a su boda el *13 de Junio*. \ud83c\udf89\n\n' +
+      '\ud83d\udc64 *Nombre:* ' + nombre + '\n' +
+      '\ud83d\udc65 *Personas:* ' + personas + '\n\n' +
+      '\u00a1Ser\u00e1 un honor acompa\u00f1arlos en tan especial d\u00eda! \u2728';
+  } else {
+    msg =
+      '\u00a1Hola Carlos & Elida! \ud83d\udc90\n\n' +
+      'Lamentablemente no podr\u00e9 acompa\u00f1arlos el *13 de Junio*. \ud83d\ude14\n\n' +
+      '\ud83d\udc64 *Nombre:* ' + nombre + '\n\n' +
+      'Los tendr\u00e9 en mi coraz\u00f3n ese d\u00eda tan especial.\nCon mucho cari\u00f1o \ud83e\udd0d';
+    var rsvpOpciones = document.getElementById('rsvpOpciones');
+    var rsvpNoAsiste = document.getElementById('rsvpNoAsiste');
+    if (rsvpOpciones) rsvpOpciones.style.display = 'none';
+    if (rsvpNoAsiste) rsvpNoAsiste.style.display  = 'flex';
+  }
+
+  if (inputNombre) inputNombre.value = '';
+  _cantidad = 1;
+  var cantEl = document.getElementById('rsvpCantidad');
+  if (cantEl) cantEl.textContent = '1';
+  seleccionarAsistencia('si');
+
+  window.open('https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(msg), '_blank');
 }
 
-/* ─── MENSAJE: enviar por WhatsApp ─── */
+// ─── MODAL MENSAJE A LOS NOVIOS ───
 function enviarMensaje(e) {
   e.preventDefault();
-  const nombreEl = document.getElementById('msgNombre');
-  const textoEl  = document.getElementById('msgTexto');
-  const nombre   = nombreEl ? nombreEl.value.trim() : '';
-  const texto    = textoEl  ? textoEl.value.trim()  : '';
-  const errores  = e.target.querySelectorAll('.rsvp-error');
-  let ok = true;
-  if (!nombre) {
-    nombreEl.classList.add('rsvp-input-error');
-    if (errores[0]) errores[0].style.display = '';
-    setTimeout(() => nombreEl.classList.remove('rsvp-input-error'), 800);
-    ok = false;
-  } else { if (errores[0]) errores[0].style.display = 'none'; }
-  if (!texto) {
-    textoEl.classList.add('rsvp-input-error');
-    if (errores[1]) errores[1].style.display = '';
-    setTimeout(() => textoEl.classList.remove('rsvp-input-error'), 800);
-    ok = false;
-  } else { if (errores[1]) errores[1].style.display = 'none'; }
-  if (!ok) return;
-  const msg = encodeURIComponent(`Hola Carlos & Elida!\nSoy ${nombre}. 💌\n\n"${texto}"`);
-  window.open(`https://wa.me/${WHATSAPP}?text=${msg}`, '_blank');
-  const form = document.getElementById('modalMensajeForm');
-  const conf = document.getElementById('modalMensajeConfirmado');
-  if (form) form.style.display = 'none';
-  if (conf) { conf.style.display = ''; conf.style.animation = 'fadeInUp 0.5s ease'; }
-  setTimeout(() => cerrarModal('modal-mensaje'), 3000);
+  var inputNombre = document.getElementById('msgNombre');
+  var inputTexto  = document.getElementById('msgTexto');
+  var nombre  = inputNombre.value.trim();
+  var texto   = inputTexto.value.trim();
+  var btn     = document.getElementById('msgSubmitBtn');
+
+  var nombreField = inputNombre.closest('.rsvp-field');
+  var textoField  = inputTexto.closest('.rsvp-field');
+  var nombreError = nombreField.querySelector('.rsvp-error');
+  var textoError  = textoField.querySelector('.rsvp-error');
+
+  inputNombre.classList.remove('rsvp-input-error');
+  inputTexto.classList.remove('rsvp-input-error');
+  nombreError.style.display = 'none';
+  textoError.style.display  = 'none';
+
+  var valido = true;
+  if (!nombre) { inputNombre.classList.add('rsvp-input-error'); nombreError.style.display = 'block'; valido = false; }
+  if (!texto)  { inputTexto.classList.add('rsvp-input-error');  textoError.style.display  = 'block'; valido = false; }
+  if (!valido) return;
+
+  btn.disabled = true; btn.textContent = 'Enviando...';
+
+  var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwLO6QmRbU2CvTxuK3wDIglsfMPBR4TwaxOq0lBIIy-eEbuQa94s6nsuirZFau1gGbZ/exec';
+  var params = new URLSearchParams({ nama: nombre, jumlah: '0', status: 'Mensaje', mensaje: texto });
+  fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: params.toString() })
+    .then(function() { _mostrarConfirmacionMensaje(); })
+    .catch(function() { _mostrarConfirmacionMensaje(); });
 }
 
-/* ─── COUNTDOWN ─── */
-(function () {
-  const boda = new Date('2026-06-13T10:30:00');
-  function pad(n) { return String(n).padStart(2, '0'); }
-  function tick() {
-    const diff = boda - Date.now();
-    const vals = diff > 0
-      ? [Math.floor(diff/86400000), Math.floor((diff%86400000)/3600000), Math.floor((diff%3600000)/60000), Math.floor((diff%60000)/1000)]
-      : [0, 0, 0, 0];
-    ['cnt-dias','cnt-horas','cnt-min','cnt-seg'].forEach((id, i) => {
-      const el = document.getElementById(id);
-      if (!el) return;
-      const next = pad(vals[i]);
-      if (el.textContent !== next) {
-        el.classList.add('cnt-tick');
-        el.textContent = next;
-        el.addEventListener('animationend', () => el.classList.remove('cnt-tick'), { once: true });
-      }
-    });
+function _mostrarConfirmacionMensaje() {
+  document.getElementById('modalMensajeForm').style.display = 'none';
+  document.getElementById('modalMensajeConfirmado').style.display = 'flex';
+}
+
+
+// ═══════════════════════════════════════════════
+//   EFECTOS ESPECIALES
+// ═══════════════════════════════════════════════
+
+// ─── SCROLL REVEAL (secciones generales) ───
+(function() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var secciones = document.querySelectorAll(
+    '.padres-section, .fecha-section, .evento-section, .notas-section, .rsvp-section, .foto-novios-section'
+  );
+  secciones.forEach(function(el) { el.classList.add('reveal'); });
+  if (!('IntersectionObserver' in window)) {
+    secciones.forEach(function(el) { el.classList.add('visible'); });
+    return;
   }
-  tick();
-  setInterval(tick, 1000);
-})();
-
-/* ─── CARRUSEL CONTINUO ─── */
-(function () {
-  const track = document.getElementById('carruselTrack');
-  if (!track) return;
-  let pos = 0, raf = null;
-  function animate() {
-    pos += 0.45;
-    const half = track.scrollWidth / 2;
-    if (pos >= half) pos -= half;
-    track.style.transform = `translateX(-${pos}px)`;
-    raf = requestAnimationFrame(animate);
-  }
-  const wrap = document.getElementById('carruselWrap');
-  if (wrap) {
-    new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) { if (!raf) raf = requestAnimationFrame(animate); }
-        else { cancelAnimationFrame(raf); raf = null; }
-      });
-    }).observe(wrap);
-  } else {
-    raf = requestAnimationFrame(animate);
-  }
-})();
-
-/* ─── TIMELINE ─── */
-(function () {
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('tl-visible'); obs.unobserve(e.target); }
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) { entry.target.classList.add('visible'); obs.unobserve(entry.target); }
     });
-  }, { threshold: 0.25 });
-  document.querySelectorAll('.tl-item').forEach((el, i) => {
-    el.style.transitionDelay = `${i * 0.08}s`;
-    obs.observe(el);
-  });
+  }, { threshold: 0.07, rootMargin: '0px 0px -20px 0px' });
+  secciones.forEach(function(el) { obs.observe(el); });
 })();
 
-/* ─── NOTAS (bloom) ─── */
-(function () {
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('nota-visible'); obs.unobserve(e.target); }
-    });
-  }, { threshold: 0.2 });
-  document.querySelectorAll('.nota-item').forEach(el => obs.observe(el));
-})();
 
-/* ─── FECHA: animación de entrada ─── */
-(function () {
-  const display = document.querySelector('.fecha-display');
+// ─── FECHA: ANIMACIÓN DE ENTRADA ───
+(function() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var display = document.querySelector('.fecha-display');
   if (!display) return;
-  new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { display.classList.add('fecha-visible'); }
-    });
-  }, { threshold: 0.3 }).observe(display);
-})();
-
-/* ─── CONTADOR: animación de entrada ─── */
-(function () {
-  const wrap = document.querySelector('.contador-wrap');
-  if (!wrap) return;
-  new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { wrap.classList.add('contador-visible'); }
-    });
-  }, { threshold: 0.25 }).observe(wrap);
-})();
-
-/* ═══════════════════════════════════════════════════════════════
-   SECCIÓN PADRES
-   Efecto 1: nombres escalonados izq/der al hacer scroll
-   Efecto 2: flores entrando desde las esquinas
-   ═══════════════════════════════════════════════════════════════ */
-(function () {
-  const section = document.querySelector('.padres-section');
-  if (!section) return;
-  new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        section.classList.add('padres-visible');
+  if (!('IntersectionObserver' in window)) {
+    display.classList.add('fecha-visible');
+    return;
+  }
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('fecha-visible');
+        obs.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.12 }).observe(section);
+  }, { threshold: 0.25, rootMargin: '0px 0px -30px 0px' });
+  obs.observe(display);
+})();
+
+
+// ─── PARALLAX FOTOS (excluye imágenes del carrusel) ───
+(function() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var fotos = document.querySelectorAll('.foto-novios-img:not(.carrusel-img)');
+  if (!fotos.length) return;
+  var ticking = false;
+  function aplicarParallax() {
+    var wh = window.innerHeight;
+    fotos.forEach(function(img) {
+      var seccion = img.closest('.foto-novios-section');
+      if (!seccion) return;
+      var rect = seccion.getBoundingClientRect();
+      var progreso = (rect.top + rect.height / 2 - wh / 2) / wh;
+      var offset = progreso * 45;
+      img.style.transform = 'scale(1.08) translateY(' + offset + 'px)';
+    });
+    ticking = false;
+  }
+  window.addEventListener('scroll', function() {
+    if (!ticking) { requestAnimationFrame(aplicarParallax); ticking = true; }
+  }, { passive: true });
+  aplicarParallax();
+})();
+
+
+// ─── ITINERARIO: ANIMACIÓN POR SCROLL ───
+(function() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('.tl-item').forEach(function(el) { el.classList.add('tl-visible'); });
+    return;
+  }
+  var items = document.querySelectorAll('.tl-item');
+  if (!items.length) return;
+  var obsTimeline = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('tl-visible');
+        obsTimeline.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.25, rootMargin: '0px 0px -40px 0px' });
+  items.forEach(function(item) { obsTimeline.observe(item); });
+})();
+
+
+// ─── NOTAS: ANIMACIÓN POR SCROLL ───
+(function() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('.nota-item').forEach(function(el) { el.classList.add('nota-visible'); });
+    return;
+  }
+  var notaItems = document.querySelectorAll('.nota-item');
+  if (!notaItems.length) return;
+
+  notaItems.forEach(function(item, i) {
+    item.setAttribute('data-nota-idx', i);
+  });
+
+  var obsNotas = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        var idx = parseInt(entry.target.getAttribute('data-nota-idx') || 0);
+        entry.target.style.transitionDelay = (idx * 0.12) + 's';
+        entry.target.classList.add('nota-visible');
+        obsNotas.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.22, rootMargin: '0px 0px -30px 0px' });
+
+  notaItems.forEach(function(item) { obsNotas.observe(item); });
+})();
+
+
+// ─── CARRUSEL: fade-in al entrar en pantalla ───
+(function() {
+  var wrap = document.getElementById('carruselWrap');
+  if (!wrap) return;
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('carrusel-visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    obs.observe(wrap);
+  } else {
+    wrap.classList.add('carrusel-visible');
+  }
 })();
