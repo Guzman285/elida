@@ -192,11 +192,9 @@ function enviarConfirmacion(e) {
   var nombre      = inputNombre ? inputNombre.value.trim() : '';
   var errorEl     = document.getElementById('rsvpNombreError');
 
-  // Limpiar error previo
   if (inputNombre) inputNombre.classList.remove('rsvp-input-error');
   if (errorEl)     errorEl.style.display = 'none';
 
-  // Validar nombre
   if (!nombre) {
     if (inputNombre) inputNombre.classList.add('rsvp-input-error');
     if (errorEl)     errorEl.style.display = 'block';
@@ -204,7 +202,6 @@ function enviarConfirmacion(e) {
     return;
   }
 
-  // Cerrar modal antes de abrir WhatsApp
   cerrarModal('modal-confirmar');
 
   var personas = _cantidad === 1 ? '1 persona' : _cantidad + ' personas';
@@ -217,28 +214,24 @@ function enviarConfirmacion(e) {
       '\ud83d\udc64 *Nombre:* ' + nombre + '\n' +
       '\ud83d\udc65 *Personas:* ' + personas + '\n\n' +
       '\u00a1Ser\u00e1 un honor acompa\u00f1arlos en tan especial d\u00eda! \u2728';
-    // Mostrar estado "confirmado" en sección RSVP
   } else {
     msg =
       '\u00a1Hola Carlos & Elida! \ud83d\udc90\n\n' +
       'Lamentablemente no podr\u00e9 acompa\u00f1arlos el *13 de Junio*. \ud83d\ude14\n\n' +
       '\ud83d\udc64 *Nombre:* ' + nombre + '\n\n' +
       'Los tendr\u00e9 en mi coraz\u00f3n ese d\u00eda tan especial.\nCon mucho cari\u00f1o \ud83e\udd0d';
-    // Mostrar mensaje de "no asiste" en la página
-    var rsvpOpciones  = document.getElementById('rsvpOpciones');
-    var rsvpNoAsiste  = document.getElementById('rsvpNoAsiste');
+    var rsvpOpciones = document.getElementById('rsvpOpciones');
+    var rsvpNoAsiste = document.getElementById('rsvpNoAsiste');
     if (rsvpOpciones) rsvpOpciones.style.display = 'none';
     if (rsvpNoAsiste) rsvpNoAsiste.style.display  = 'flex';
   }
 
-  // Resetear formulario para próxima apertura
   if (inputNombre) inputNombre.value = '';
   _cantidad = 1;
   var cantEl = document.getElementById('rsvpCantidad');
   if (cantEl) cantEl.textContent = '1';
   seleccionarAsistencia('si');
 
-  // Abrir WhatsApp
   window.open('https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(msg), '_blank');
 }
 
@@ -305,7 +298,7 @@ function _mostrarConfirmacionMensaje() {
 })();
 
 
-// ─── FECHA: ANIMACIÓN DE ENTRADA (zoom + slide + fade escalonado) ───
+// ─── FECHA: ANIMACIÓN DE ENTRADA ───
 (function() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   var display = document.querySelector('.fecha-display');
@@ -351,7 +344,7 @@ function _mostrarConfirmacionMensaje() {
 })();
 
 
-// ─── ITINERARIO: ANIMACIÓN POR SCROLL (slide izq/der) ───
+// ─── ITINERARIO: ANIMACIÓN POR SCROLL ───
 (function() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   if (!('IntersectionObserver' in window)) {
@@ -372,7 +365,7 @@ function _mostrarConfirmacionMensaje() {
 })();
 
 
-// ─── NOTAS: ANIMACIÓN POR SCROLL (bloom escalonado) ───
+// ─── NOTAS: ANIMACIÓN POR SCROLL ───
 (function() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   if (!('IntersectionObserver' in window)) {
@@ -401,91 +394,21 @@ function _mostrarConfirmacionMensaje() {
 })();
 
 
-// ─── CARRUSEL DE FOTOS ───
+// ─── CARRUSEL: fade-in al entrar en pantalla ───
 (function() {
-  var track        = document.getElementById('carruselTrack');
-  var dotsContainer = document.getElementById('carruselDots');
-  var wrap         = document.getElementById('carruselWrap');
-  if (!track || !wrap) return;
-
-  var slides = track.querySelectorAll('.carrusel-slide');
-  var total  = slides.length;
-  if (total <= 1) {
-    wrap.classList.add('carrusel-visible');
-    return;
-  }
-
-  var actual    = 0;
-  var autoTimer = null;
-  var startX    = 0;
-  var startY    = 0;
-  var isDragging = false;
-
-  for (var i = 0; i < total; i++) {
-    var dot = document.createElement('button');
-    dot.className = 'carrusel-dot' + (i === 0 ? ' activo' : '');
-    dot.setAttribute('aria-label', 'Foto ' + (i + 1));
-    (function(idx) {
-      dot.addEventListener('click', function() { irSlide(idx); });
-    })(i);
-    dotsContainer.appendChild(dot);
-  }
-
-  function actualizarDots() {
-    dotsContainer.querySelectorAll('.carrusel-dot').forEach(function(d, i) {
-      d.classList.toggle('activo', i === actual);
-    });
-  }
-
-  function irSlide(n) {
-    actual = ((n % total) + total) % total;
-    track.style.transform = 'translateX(-' + (actual * 100) + '%)';
-    actualizarDots();
-    reiniciarAuto();
-  }
-
-  function siguiente() { irSlide(actual + 1); }
-
-  function reiniciarAuto() {
-    clearInterval(autoTimer);
-    autoTimer = setInterval(siguiente, 4500);
-  }
-
-  wrap.addEventListener('touchstart', function(e) {
-    startX = e.touches[0].clientX;
-    startY = e.touches[0].clientY;
-    isDragging = true;
-  }, { passive: true });
-
-  wrap.addEventListener('touchmove', function(e) {
-    if (!isDragging) return;
-    var dx = Math.abs(e.touches[0].clientX - startX);
-    var dy = Math.abs(e.touches[0].clientY - startY);
-    if (dy > dx) { isDragging = false; }
-  }, { passive: true });
-
-  wrap.addEventListener('touchend', function(e) {
-    if (!isDragging) return;
-    var diff = startX - e.changedTouches[0].clientX;
-    if (Math.abs(diff) > 40) {
-      diff > 0 ? irSlide(actual + 1) : irSlide(actual - 1);
-    }
-    isDragging = false;
-  }, { passive: true });
-
+  var wrap = document.getElementById('carruselWrap');
+  if (!wrap) return;
   if ('IntersectionObserver' in window) {
-    var obsCarrusel = new IntersectionObserver(function(entries) {
+    var obs = new IntersectionObserver(function(entries) {
       entries.forEach(function(entry) {
         if (entry.isIntersecting) {
           entry.target.classList.add('carrusel-visible');
-          obsCarrusel.unobserve(entry.target);
+          obs.unobserve(entry.target);
         }
       });
     }, { threshold: 0.1 });
-    obsCarrusel.observe(wrap);
+    obs.observe(wrap);
   } else {
     wrap.classList.add('carrusel-visible');
   }
-
-  reiniciarAuto();
 })();
