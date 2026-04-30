@@ -164,23 +164,85 @@ function _feedbackCopiado(btn) {
   }, 2000);
 }
 
-// ─── RSVP ───
+// ─── RSVP — FORMULARIO DE CONFIRMACIÓN ───
 var WA_NUMBER = '50235717258';
+var _asistencia = 'si';
+var _cantidad   = 1;
 
-function confirmarSi() {
-  cerrarModal('modal-confirmar');
-  var msg = encodeURIComponent('¡Hola Carlos & Elida! 💍🌸 Con mucha alegría confirmo mi asistencia a su boda el 13 de Junio. ¡Será un honor acompañarlos en tan especial día! 🎉');
-  window.open('https://wa.me/' + WA_NUMBER + '?text=' + msg, '_blank');
+function seleccionarAsistencia(tipo) {
+  _asistencia = tipo;
+  var btnSi = document.getElementById('btnSi');
+  var btnNo = document.getElementById('btnNo');
+  if (!btnSi || !btnNo) return;
+  btnSi.classList.toggle('activo', tipo === 'si');
+  btnNo.classList.toggle('activo', tipo === 'no');
+  btnSi.setAttribute('aria-pressed', String(tipo === 'si'));
+  btnNo.setAttribute('aria-pressed', String(tipo === 'no'));
 }
 
-function confirmarNo() {
-  cerrarModal('modal-confirmar');
-  var msg = encodeURIComponent('¡Hola Carlos & Elida! 💐 Lamentablemente no podré acompañarlos el 13 de Junio, pero los tendré en mi corazón ese día tan especial. ¡Les deseo toda la felicidad del mundo! 🤍');
-  document.getElementById('rsvpOpciones').style.display = 'none';
-  document.getElementById('rsvpNoAsiste').style.display = 'flex';
-  window.open('https://wa.me/' + WA_NUMBER + '?text=' + msg, '_blank');
+function cambiarCantidad(delta) {
+  _cantidad = Math.max(1, Math.min(20, _cantidad + delta));
+  var el = document.getElementById('rsvpCantidad');
+  if (el) el.textContent = _cantidad;
 }
 
+function enviarConfirmacion(e) {
+  e.preventDefault();
+  var inputNombre = document.getElementById('rsvpNombre');
+  var nombre      = inputNombre ? inputNombre.value.trim() : '';
+  var errorEl     = document.getElementById('rsvpNombreError');
+
+  // Limpiar error previo
+  if (inputNombre) inputNombre.classList.remove('rsvp-input-error');
+  if (errorEl)     errorEl.style.display = 'none';
+
+  // Validar nombre
+  if (!nombre) {
+    if (inputNombre) inputNombre.classList.add('rsvp-input-error');
+    if (errorEl)     errorEl.style.display = 'block';
+    if (inputNombre) inputNombre.focus();
+    return;
+  }
+
+  // Cerrar modal antes de abrir WhatsApp
+  cerrarModal('modal-confirmar');
+
+  var personas = _cantidad === 1 ? '1 persona' : _cantidad + ' personas';
+  var msg;
+
+  if (_asistencia === 'si') {
+    msg =
+      '\u00a1Hola Carlos & Elida! \ud83d\udc8d\ud83c\udf38\n\n' +
+      'Con mucha alegr\u00eda les confirmo mi asistencia a su boda el *13 de Junio*. \ud83c\udf89\n\n' +
+      '\ud83d\udc64 *Nombre:* ' + nombre + '\n' +
+      '\ud83d\udc65 *Personas:* ' + personas + '\n\n' +
+      '\u00a1Ser\u00e1 un honor acompa\u00f1arlos en tan especial d\u00eda! \u2728';
+    // Mostrar estado "confirmado" en sección RSVP
+  } else {
+    msg =
+      '\u00a1Hola Carlos & Elida! \ud83d\udc90\n\n' +
+      'Lamentablemente no podr\u00e9 acompa\u00f1arlos el *13 de Junio*. \ud83d\ude14\n\n' +
+      '\ud83d\udc64 *Nombre:* ' + nombre + '\n\n' +
+      'Los tendr\u00e9 en mi coraz\u00f3n ese d\u00eda tan especial.\nCon mucho cari\u00f1o \ud83e\udd0d';
+    // Mostrar mensaje de "no asiste" en la página
+    var rsvpOpciones  = document.getElementById('rsvpOpciones');
+    var rsvpNoAsiste  = document.getElementById('rsvpNoAsiste');
+    if (rsvpOpciones) rsvpOpciones.style.display = 'none';
+    if (rsvpNoAsiste) rsvpNoAsiste.style.display  = 'flex';
+  }
+
+  // Resetear formulario para próxima apertura
+  if (inputNombre) inputNombre.value = '';
+  _cantidad = 1;
+  var cantEl = document.getElementById('rsvpCantidad');
+  if (cantEl) cantEl.textContent = '1';
+  seleccionarAsistencia('si');
+
+  // Abrir WhatsApp
+  window.open('https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(msg), '_blank');
+}
+
+// ─── MODAL MENSAJE A LOS NOVIOS ───
 function enviarMensaje(e) {
   e.preventDefault();
   var inputNombre = document.getElementById('msgNombre');
@@ -349,7 +411,6 @@ function _mostrarConfirmacionMensaje() {
   var slides = track.querySelectorAll('.carrusel-slide');
   var total  = slides.length;
   if (total <= 1) {
-    // Si solo hay una foto, mostrar sin dots
     wrap.classList.add('carrusel-visible');
     return;
   }
@@ -360,7 +421,6 @@ function _mostrarConfirmacionMensaje() {
   var startY    = 0;
   var isDragging = false;
 
-  // Crear dots dinámicamente
   for (var i = 0; i < total; i++) {
     var dot = document.createElement('button');
     dot.className = 'carrusel-dot' + (i === 0 ? ' activo' : '');
@@ -391,7 +451,6 @@ function _mostrarConfirmacionMensaje() {
     autoTimer = setInterval(siguiente, 4500);
   }
 
-  // Touch / swipe
   wrap.addEventListener('touchstart', function(e) {
     startX = e.touches[0].clientX;
     startY = e.touches[0].clientY;
@@ -400,7 +459,6 @@ function _mostrarConfirmacionMensaje() {
 
   wrap.addEventListener('touchmove', function(e) {
     if (!isDragging) return;
-    // Si el scroll es más vertical que horizontal, no interferir
     var dx = Math.abs(e.touches[0].clientX - startX);
     var dy = Math.abs(e.touches[0].clientY - startY);
     if (dy > dx) { isDragging = false; }
@@ -415,7 +473,6 @@ function _mostrarConfirmacionMensaje() {
     isDragging = false;
   }, { passive: true });
 
-  // Scroll reveal del carrusel
   if ('IntersectionObserver' in window) {
     var obsCarrusel = new IntersectionObserver(function(entries) {
       entries.forEach(function(entry) {
