@@ -9,17 +9,29 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
-body {
-  font-family: "Cormorant Garamond", Georgia, serif;
+/* ─── FONDO EN HTML para que cubra toda la pantalla ─── */
+html {
   background-image: url('../img/fondos/fondo2.webp');
   background-attachment: fixed;
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
+}
+
+body {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  background-color: transparent;
   color: var(--texto);
   padding-top: 48px;
   max-width: 480px;
   margin: 0 auto;
+}
+
+/* ─── MÓVIL: background-attachment fallback ─── */
+@media (max-width: 768px) {
+  html {
+    background-attachment: scroll;
+  }
 }
 
 /* ─── BARRA FIJA DE MÚSÍCA ─── */
@@ -677,7 +689,6 @@ body {
    HERO — BLUR REVEAL (entrada al cargar)
    ═════════════════════════════════════════════ */
 
-/* Flor: entra deslizándose desde la izquierda con blur */
 @keyframes heroEntradaFlor {
   from {
     opacity: 0;
@@ -691,7 +702,6 @@ body {
   }
 }
 
-/* Versículo: emerge desde abajo con blur profundo */
 @keyframes heroBlurReveal {
   from {
     opacity: 0;
@@ -705,7 +715,6 @@ body {
   }
 }
 
-/* Referencia: aparece con un blur suave, después del texto */
 @keyframes heroBlurRefSuave {
   from {
     opacity: 0;
@@ -719,7 +728,6 @@ body {
   }
 }
 
-/* Aplicar animaciones con delays escalonados */
 .hero-flores-izq {
   opacity: 0;
   animation: heroEntradaFlor 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
@@ -744,12 +752,5 @@ body {
     transform: none !important;
     animation: none !important;
     letter-spacing: inherit !important;
-  }
-}
-
-/* ─── MÓVIL: background-attachment fallback ─── */
-@media (max-width: 768px) {
-  body {
-    background-attachment: scroll;
   }
 }
