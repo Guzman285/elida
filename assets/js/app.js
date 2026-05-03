@@ -394,6 +394,36 @@ function _mostrarConfirmacionMensaje() {
 })();
 
 
+// ─── NOMBRES CARLOS & ELIDA: ANIMACIÓN POR SCROLL ───
+(function() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (!('IntersectionObserver' in window)) {
+    var frase = document.querySelector('.padres-frase-wrap');
+    var nombres = document.querySelector('.hero-nombres');
+    if (frase) frase.classList.add('nombres-visible');
+    if (nombres) nombres.classList.add('nombres-visible');
+    return;
+  }
+
+  // Observamos el bloque de la frase (primer elemento visible de la seccion)
+  var fraseWrap = document.querySelector('.padres-frase-wrap');
+  var nombresWrap = document.querySelector('.hero-nombres');
+  if (!fraseWrap || !nombresWrap) return;
+
+  var obsNombres = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        fraseWrap.classList.add('nombres-visible');
+        nombresWrap.classList.add('nombres-visible');
+        obsNombres.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.18, rootMargin: '0px 0px -20px 0px' });
+
+  obsNombres.observe(fraseWrap);
+})();
+
+
 // ─── CARRUSEL: fade-in al entrar en pantalla ───
 (function() {
   var wrap = document.getElementById('carruselWrap');
