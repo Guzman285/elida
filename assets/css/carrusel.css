@@ -48,21 +48,21 @@
   line-height: 0;
 }
 
-/* Foto: mismo tamaño estándar sin importar el original */
+/* Foto: altura reducida para que no ocupe tanto espacio */
 .carrusel-img {
   display: block;
   width: 100vw;
-  height: clamp(420px, 85vh, 780px);
+  height: clamp(240px, 52vh, 420px);
   object-fit: cover;
   object-position: center 18%;
-  transform: none !important; /* Anula parallax en estas fotos */
+  transform: none !important;
 }
 
 /* Degradados suaves arriba y abajo */
 .carrusel-wrap .foto-degradado-top {
   position: absolute;
   top: 0; left: 0; right: 0;
-  height: 120px;
+  height: 80px;
   background: linear-gradient(
     to bottom,
     var(--fondo, #f5ede6) 0%,
@@ -74,7 +74,7 @@
 .carrusel-wrap .foto-degradado-bottom {
   position: absolute;
   bottom: 0; left: 0; right: 0;
-  height: 120px;
+  height: 80px;
   background: linear-gradient(
     to top,
     var(--fondo, #f5ede6) 0%,
