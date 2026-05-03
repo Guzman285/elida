@@ -403,3 +403,26 @@ function _mostrarConfirmacionMensaje() {
   }, { threshold: 0.3 });
   obs.observe(fd);
 })();
+
+// ─── SCROLL REVEAL — FOOTER DE CIERRE ───
+(function() {
+  var footer = document.querySelector('.boda-footer');
+  if (!footer) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    footer.classList.add('footer-visible');
+    return;
+  }
+  if (!('IntersectionObserver' in window)) {
+    footer.classList.add('footer-visible');
+    return;
+  }
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('footer-visible');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  obs.observe(footer);
+})();
