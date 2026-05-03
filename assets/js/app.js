@@ -300,17 +300,34 @@ function _mostrarConfirmacionMensaje() {
   secciones.forEach(function(el) { obs.observe(el); });
 })();
 
+// ─── SCROLL REVEAL — CARRUSEL DE FOTOS ───
+(function() {
+  var carrusel = document.querySelector('.carrusel-wrap');
+  if (!carrusel) return;
+  if (!('IntersectionObserver' in window)) {
+    carrusel.classList.add('carrusel-visible');
+    return;
+  }
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('carrusel-visible');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  obs.observe(carrusel);
+})();
+
 // ─── SCROLL REVEAL — NOMBRES CARLOS & ELIDA ───
 (function() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    // Sin animación: mostrar todo directamente
     var fraseWrap   = document.querySelector('.padres-frase-wrap');
     var heroNombres = document.querySelector('.hero-nombres');
     if (fraseWrap)   fraseWrap.classList.add('nombres-visible');
     if (heroNombres) heroNombres.classList.add('nombres-visible');
     return;
   }
-
   if (!('IntersectionObserver' in window)) {
     var fraseWrap   = document.querySelector('.padres-frase-wrap');
     var heroNombres = document.querySelector('.hero-nombres');
@@ -318,24 +335,18 @@ function _mostrarConfirmacionMensaje() {
     if (heroNombres) heroNombres.classList.add('nombres-visible');
     return;
   }
-
-  // Observamos .padres-frase-wrap como trigger
   var trigger = document.querySelector('.padres-frase-wrap');
   if (!trigger) return;
-
   var nombresObs = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry) {
       if (entry.isIntersecting) {
-        // Activar frase + ornamentos
         entry.target.classList.add('nombres-visible');
-        // Activar nombres (Carlos, &, Elida) con leve retardo
         var heroNombres = document.querySelector('.hero-nombres');
         if (heroNombres) heroNombres.classList.add('nombres-visible');
         nombresObs.unobserve(entry.target);
       }
     });
   }, { threshold: 0.25 });
-
   nombresObs.observe(trigger);
 })();
 
