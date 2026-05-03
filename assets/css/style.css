@@ -9,13 +9,14 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* ─── FONDO EN HTML para que cubra toda la pantalla ─── */
+/* ─── FONDO: optimizado para móvil ─── */
 html {
   background-image: url('../img/fondos/fondo2.webp');
-  background-attachment: fixed;
+  background-attachment: scroll;   /* scroll es lo correcto en móvil */
   background-size: cover;
-  background-position: center center;
+  background-position: top center; /* ancla desde arriba, no se corta lo importante */
   background-repeat: no-repeat;
+  min-height: 100%;
 }
 
 body {
@@ -25,13 +26,6 @@ body {
   padding-top: 48px;
   max-width: 480px;
   margin: 0 auto;
-}
-
-/* ─── MÓVIL: background-attachment fallback ─── */
-@media (max-width: 768px) {
-  html {
-    background-attachment: scroll;
-  }
 }
 
 /* ─── BARRA FIJA DE MÚSÍCA ─── */
