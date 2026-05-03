@@ -765,3 +765,196 @@ body {
     letter-spacing: inherit !important;
   }
 }
+
+
+/* ═════════════════════════════════════════════
+   NOMBRES CARLOS & ELIDA — SCROLL REVEAL
+   ═════════════════════════════════════════════ */
+
+/* Keyframes exclusivos para esta sección */
+@keyframes nombreCaeDesdArriba {
+  from {
+    opacity: 0;
+    filter: blur(6px);
+    transform: translateY(-48px) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0px);
+    transform: translateY(0) scale(1);
+  }
+}
+@keyframes nombreSubeDesdeAbajo {
+  from {
+    opacity: 0;
+    filter: blur(6px);
+    transform: translateY(48px) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0px);
+    transform: translateY(0) scale(1);
+  }
+}
+@keyframes yGiroReveal {
+  from {
+    opacity: 0;
+    transform: rotate(-12deg) scale(0.6);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 0.85;
+    transform: rotate(0deg) scale(1);
+    filter: blur(0px);
+  }
+}
+@keyframes ornamentoCrece {
+  from { transform: scaleX(0); opacity: 0; }
+  to   { transform: scaleX(1); opacity: 1; }
+}
+@keyframes fraseBlurUp {
+  from {
+    opacity: 0;
+    filter: blur(8px);
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 0.88;
+    filter: blur(0px);
+    transform: translateY(0);
+  }
+}
+@keyframes romboGira {
+  from { opacity: 0; transform: rotate(0deg) scale(0); }
+  to   { opacity: 0.5; transform: rotate(45deg) scale(1); }
+}
+@keyframes shimmerNombre {
+  0%   { text-shadow: 1px 2px 12px rgba(92,53,40,0.10); }
+  50%  { text-shadow: 0 0 32px rgba(184,107,82,0.35), 1px 2px 12px rgba(92,53,40,0.10); }
+  100% { text-shadow: 1px 2px 12px rgba(92,53,40,0.10); }
+}
+
+/* ── Estado inicial (invisible hasta que entra en viewport) ── */
+.nombres-anim-wrap {
+  /* contenedor que agrupa .padres-frase-wrap + .hero-nombres */
+}
+
+/* Ornamentos de frase */
+.padres-frase-wrap .frase-ornamento {
+  opacity: 0;
+  transform-origin: center;
+}
+.padres-frase-wrap .frase-ornamento .frase-ornamento-linea {
+  transform: scaleX(0);
+  transition: none;
+}
+
+/* Frase de invitación */
+.padres-frase-invitacion {
+  opacity: 0;
+  filter: blur(8px);
+  transform: translateY(18px);
+  transition: none;
+}
+
+/* Deco top del bloque nombres */
+.nombres-deco-top {
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: none;
+}
+
+/* Carlos */
+.nombre-carlos {
+  opacity: 0;
+  filter: blur(6px);
+  transform: translateY(-48px) scale(0.92);
+  transition: none;
+}
+
+/* & */
+.nombre-y-wrap {
+  opacity: 0;
+  transform: rotate(-12deg) scale(0.6);
+  filter: blur(4px);
+  transition: none;
+}
+
+/* Elida */
+.nombre-elida {
+  opacity: 0;
+  filter: blur(6px);
+  transform: translateY(48px) scale(0.92);
+  transition: none;
+}
+
+/* Deco bottom */
+.nombres-deco-bottom {
+  opacity: 0;
+  transform: scaleY(0);
+  transform-origin: center;
+  transition: none;
+}
+
+/* ── Clase .nombres-visible activa todas las animaciones ── */
+
+.padres-frase-wrap.nombres-visible .frase-ornamento:nth-child(1) {
+  animation: ornamentoCrece 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.05s forwards;
+  transform-origin: center;
+}
+.padres-frase-wrap.nombres-visible .frase-ornamento:nth-child(3) {
+  animation: ornamentoCrece 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
+  transform-origin: center;
+}
+
+.padres-frase-wrap.nombres-visible .padres-frase-invitacion {
+  animation: fraseBlurUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+}
+
+.hero-nombres.nombres-visible .nombres-deco-top {
+  animation: ornamentoCrece 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+}
+
+.hero-nombres.nombres-visible .nombre-carlos {
+  animation: nombreCaeDesdArriba 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.42s forwards;
+}
+
+.hero-nombres.nombres-visible .nombre-y-wrap {
+  animation: yGiroReveal 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.72s forwards;
+}
+
+.hero-nombres.nombres-visible .nombre-elida {
+  animation: nombreSubeDesdeAbajo 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.58s forwards;
+}
+
+.hero-nombres.nombres-visible .nombres-deco-bottom {
+  animation: ornamentoCrece 0.6s cubic-bezier(0.16, 1, 0.3, 1) 1.0s forwards;
+}
+
+/* Shimmer de brillo en los nombres después de aparecer */
+.hero-nombres.nombres-visible .nombre-carlos {
+  animation:
+    nombreCaeDesdArriba 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.42s forwards,
+    shimmerNombre 2.2s ease-in-out 1.5s 1;
+}
+.hero-nombres.nombres-visible .nombre-elida {
+  animation:
+    nombreSubeDesdeAbajo 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.58s forwards,
+    shimmerNombre 2.2s ease-in-out 1.7s 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .padres-frase-wrap .frase-ornamento,
+  .padres-frase-invitacion,
+  .nombres-deco-top,
+  .nombre-carlos,
+  .nombre-y-wrap,
+  .nombre-elida,
+  .nombres-deco-bottom {
+    opacity: 1 !important;
+    filter: none !important;
+    transform: none !important;
+    animation: none !important;
+  }
+}
