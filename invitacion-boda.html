@@ -82,8 +82,6 @@
         opacity: 0.7;
         margin-top: 4px;
       }
-
-      /* QR Code */
       .aviso-qr-wrap {
         display: flex;
         flex-direction: column;
@@ -115,14 +113,10 @@
         letter-spacing: 0.03em;
         margin-top: -4px;
       }
-
-      /* En pantallas > 520px → mostrar aviso, ocultar invitación */
       @media (min-width: 521px) {
         #aviso-movil   { display: flex; }
         body > *:not(#aviso-movil) { visibility: hidden; pointer-events: none; }
       }
-
-      /* En móvil (≤520px) → ocultar aviso, mostrar invitación normal */
       @media (max-width: 520px) {
         #aviso-movil { display: none !important; }
       }
@@ -164,7 +158,6 @@
         font-weight: 500;
         pointer-events: none;
       }
-      /* ── RSVP Toggle asistencia ── */
       .rsvp-toggle-wrap {
         display: flex;
         gap: 10px;
@@ -206,8 +199,6 @@
          FOOTER DE CIERRE
          ════════════════════════════════════════════ */
       .boda-footer {
-        position: relative;
-        overflow: hidden;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -216,30 +207,6 @@
         text-align: center;
         background: transparent;
       }
-
-      /* Flores decorativas en esquinas */
-      .footer-flor-izq {
-        position: absolute;
-        bottom: 0; left: -18px;
-        width: 52%; max-width: 200px;
-        height: auto;
-        pointer-events: none;
-        opacity: 0.70;
-        transform: rotate(180deg) scaleX(-1);
-        z-index: 0;
-      }
-      .footer-flor-der {
-        position: absolute;
-        bottom: 0; right: -18px;
-        width: 52%; max-width: 200px;
-        height: auto;
-        pointer-events: none;
-        opacity: 0.70;
-        transform: rotate(180deg);
-        z-index: 0;
-      }
-
-      /* Ornamento central */
       .footer-ornamento {
         display: flex;
         align-items: center;
@@ -247,7 +214,6 @@
         width: 100%;
         max-width: 260px;
         margin-bottom: 22px;
-        position: relative; z-index: 1;
       }
       .footer-orn-linea {
         flex: 1;
@@ -272,28 +238,20 @@
         opacity: 0.4;
         flex-shrink: 0;
       }
-
-      /* Nombres grandes */
       .footer-nombres {
         font-family: "Great Vibes", cursive;
         font-size: clamp(3.2rem, 15vw, 5rem);
         color: var(--texto);
         line-height: 1.05;
-        position: relative; z-index: 1;
         text-shadow: 1px 2px 14px rgba(92,53,40,0.09);
       }
-
-      /* Corazón separador */
       .footer-corazon {
         color: var(--terracota);
         opacity: 0.75;
         font-size: 1.1rem;
         line-height: 1;
         margin: 10px 0 8px;
-        position: relative; z-index: 1;
       }
-
-      /* Fecha */
       .footer-fecha {
         font-family: "Cormorant Garamond", Georgia, serif;
         font-size: clamp(0.72rem, 3.2vw, 0.82rem);
@@ -301,11 +259,8 @@
         text-transform: uppercase;
         color: var(--terracota);
         opacity: 0.8;
-        position: relative; z-index: 1;
         margin-bottom: 20px;
       }
-
-      /* Frase final */
       .footer-frase {
         font-family: "Cormorant Garamond", Georgia, serif;
         font-size: clamp(0.98rem, 4.4vw, 1.1rem);
@@ -314,16 +269,10 @@
         opacity: 0.7;
         line-height: 1.7;
         max-width: 260px;
-        position: relative; z-index: 1;
       }
-
-      /* Ornamento inferior */
       .footer-ornamento-bottom {
         margin-top: 24px;
-        position: relative; z-index: 1;
       }
-
-      /* Animación reveal al hacer scroll */
       .boda-footer {
         opacity: 0;
         transform: translateY(28px);
@@ -339,33 +288,21 @@
   </head>
   <body>
 
-    <!-- AVISO SOLO MÓVIL (visible únicamente en PC/tablet) -->
+    <!-- AVISO SOLO MÓVIL -->
     <div id="aviso-movil" role="alert" aria-live="polite">
       <div class="aviso-card">
         <p class="aviso-titulo">Carlos &amp; Elida</p>
         <div class="aviso-linea"></div>
         <span class="aviso-icono">📱</span>
-        <p class="aviso-texto">
-          Esta invitación fue diseñada especialmente para ser vista desde tu celular.
-        </p>
-        <p class="aviso-texto" style="font-style:normal; opacity:0.9;">
-          Escanea el código QR con la cámara de tu teléfono para abrirla:
-        </p>
-
-        <!-- QR Code -->
+        <p class="aviso-texto">Esta invitación fue diseñada especialmente para ser vista desde tu celular.</p>
+        <p class="aviso-texto" style="font-style:normal; opacity:0.9;">Escanea el código QR con la cámara de tu teléfono para abrirla:</p>
         <div class="aviso-qr-wrap">
-          <img
-            class="aviso-qr-img"
+          <img class="aviso-qr-img"
             src="https://api.qrserver.com/v1/create-qr-code/?size=148x148&margin=6&color=5c3528&bgcolor=fffaf7&data=https%3A%2F%2Fguzman285.github.io%2Felida%2F"
-            alt="Código QR — Boda Carlos y Elida"
-            width="148"
-            height="148"
-            loading="eager"
-          />
+            alt="Código QR — Boda Carlos y Elida" width="148" height="148" loading="eager" />
           <p class="aviso-qr-label">Escanea para abrir</p>
           <p class="aviso-url">guzman285.github.io/elida</p>
         </div>
-
         <p class="aviso-sub">Boda · 13 de Junio 2026</p>
       </div>
     </div>
@@ -375,13 +312,8 @@
       <button id="playMusicBtn" class="music-bar-btn" type="button" aria-label="Reproducir canción">
         <span class="bar-text">DALE PLAY</span>
         <span class="bar-circle">
-          <svg id="iconPlay" viewBox="0 0 24 24" fill="white" width="14" height="14">
-            <polygon points="6,4 20,12 6,20" />
-          </svg>
-          <svg id="iconPause" viewBox="0 0 24 24" fill="white" width="14" height="14" style="display:none">
-            <rect x="5" y="4" width="4" height="16"/>
-            <rect x="15" y="4" width="4" height="16"/>
-          </svg>
+          <svg id="iconPlay" viewBox="0 0 24 24" fill="white" width="14" height="14"><polygon points="6,4 20,12 6,20" /></svg>
+          <svg id="iconPause" viewBox="0 0 24 24" fill="white" width="14" height="14" style="display:none"><rect x="5" y="4" width="4" height="16"/><rect x="15" y="4" width="4" height="16"/></svg>
         </span>
         <span class="bar-text">A NUESTRA CANCIÓN</span>
       </button>
@@ -394,11 +326,7 @@
       <img src="./assets/img/fondos/flor1.png" alt="" class="hero-flores hero-flores-der" aria-hidden="true" />
       <div class="hero-top">
         <div class="hero-versiculo">
-          <p class="versiculo-texto">
-            &ldquo;El amor es paciente, es bondadoso. El amor no es
-            envidioso ni jactancioso. &hellip;Todo lo soporta, todo lo
-            cree, todo lo espera, todo lo soporta.&rdquo;
-          </p>
+          <p class="versiculo-texto">&ldquo;El amor es paciente, es bondadoso. El amor no es envidioso ni jactancioso. &hellip;Todo lo soporta, todo lo cree, todo lo espera, todo lo soporta.&rdquo;</p>
           <p class="versiculo-ref">1 Corintios 13:4-7</p>
         </div>
       </div>
@@ -441,7 +369,7 @@
           <p class="padres-nombre">Elida Olimpia<br>de León y<br>de León</p>
         </div>
       </div>
-<br><br><br>
+      <br><br><br>
       <div class="padres-frase-wrap">
         <div class="frase-ornamento" aria-hidden="true">
           <div class="frase-ornamento-linea izq"></div>
@@ -488,12 +416,8 @@
       <img src="./assets/img/fondos/flor1.png" alt="" class="deco-flor deco-flor-fecha-der" aria-hidden="true" />
       <p class="fecha-invitacion">CON MUCHA ALEGRÍA LOS INVITAMOS<br>A CELEBRAR EL DÍA MÁS ESPECIAL DE<br>NUESTRAS VIDAS</p>
       <div class="fecha-flechas" aria-hidden="true">
-        <svg viewBox="0 0 40 24" fill="none" width="40" height="24">
-          <polyline points="4,4 20,18 36,4" stroke="#b86b52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <svg viewBox="0 0 40 24" fill="none" width="40" height="24">
-          <polyline points="4,4 20,18 36,4" stroke="#b86b52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
+        <svg viewBox="0 0 40 24" fill="none" width="40" height="24"><polyline points="4,4 20,18 36,4" stroke="#b86b52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg viewBox="0 0 40 24" fill="none" width="40" height="24"><polyline points="4,4 20,18 36,4" stroke="#b86b52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
       <div class="fecha-display">
         <span class="fecha-dia">13</span>
@@ -518,35 +442,10 @@
     <section class="foto-novios-section foto-novios-section-2">
       <div class="carrusel-wrap" id="carruselWrap">
         <div class="carrusel-track" id="carruselTrack">
-
-          <!-- Fotos reales -->
-          <div class="carrusel-slide">
-            <img src="./assets/img/novios/carlos.jpeg"
-                 alt="Carlos y Elida"
-                 class="foto-novios-img carrusel-img"
-                 loading="lazy" />
-          </div>
-          <div class="carrusel-slide">
-            <img src="./assets/img/novios/carlos2.jpeg"
-                 alt="Carlos y Elida"
-                 class="foto-novios-img carrusel-img"
-                 loading="lazy" />
-          </div>
-
-          <!-- Clones para loop infinito (aria-hidden) -->
-          <div class="carrusel-slide" aria-hidden="true">
-            <img src="./assets/img/novios/carlos.jpeg"
-                 alt=""
-                 class="foto-novios-img carrusel-img"
-                 loading="lazy" />
-          </div>
-          <div class="carrusel-slide" aria-hidden="true">
-            <img src="./assets/img/novios/carlos2.jpeg"
-                 alt=""
-                 class="foto-novios-img carrusel-img"
-                 loading="lazy" />
-          </div>
-
+          <div class="carrusel-slide"><img src="./assets/img/novios/carlos.jpeg" alt="Carlos y Elida" class="foto-novios-img carrusel-img" loading="lazy" /></div>
+          <div class="carrusel-slide"><img src="./assets/img/novios/carlos2.jpeg" alt="Carlos y Elida" class="foto-novios-img carrusel-img" loading="lazy" /></div>
+          <div class="carrusel-slide" aria-hidden="true"><img src="./assets/img/novios/carlos.jpeg" alt="" class="foto-novios-img carrusel-img" loading="lazy" /></div>
+          <div class="carrusel-slide" aria-hidden="true"><img src="./assets/img/novios/carlos2.jpeg" alt="" class="foto-novios-img carrusel-img" loading="lazy" /></div>
         </div>
         <div class="foto-degradado-top"></div>
         <div class="foto-degradado-bottom"></div>
@@ -581,9 +480,7 @@
       <div class="timeline">
         <div class="tl-item tl-izq">
           <div class="tl-contenido">
-            <div class="tl-icono" aria-hidden="true">
-              <img src="./assets/img/iconos/novios.png" alt="Ingreso" class="tl-icono-img" loading="lazy" />
-            </div>
+            <div class="tl-icono" aria-hidden="true"><img src="./assets/img/iconos/novios.png" alt="Ingreso" class="tl-icono-img" loading="lazy" /></div>
             <p class="tl-hora">10:30 AM</p>
             <p class="tl-nombre">Ingreso</p>
           </div>
@@ -592,18 +489,14 @@
         <div class="tl-item tl-der">
           <div class="tl-punto"><svg viewBox="0 0 20 20" fill="currentColor" width="18" height="18"><path d="M10 17s-7-4.35-7-9a4 4 0 0 1 7-2.646A4 4 0 0 1 17 8c0 4.65-7 9-7 9z"/></svg></div>
           <div class="tl-contenido">
-            <div class="tl-icono" aria-hidden="true">
-              <img src="./assets/img/iconos/civil.png" alt="Ceremonia Civil" class="tl-icono-img" loading="lazy" />
-            </div>
+            <div class="tl-icono" aria-hidden="true"><img src="./assets/img/iconos/civil.png" alt="Ceremonia Civil" class="tl-icono-img" loading="lazy" /></div>
             <p class="tl-hora">11:00 AM</p>
             <p class="tl-nombre">Ceremonia Civil</p>
           </div>
         </div>
         <div class="tl-item tl-izq">
           <div class="tl-contenido">
-            <div class="tl-icono" aria-hidden="true">
-              <img src="./assets/img/iconos/religiosa.png" alt="Ceremonia Religiosa" class="tl-icono-img" loading="lazy" />
-            </div>
+            <div class="tl-icono" aria-hidden="true"><img src="./assets/img/iconos/religiosa.png" alt="Ceremonia Religiosa" class="tl-icono-img" loading="lazy" /></div>
             <p class="tl-hora">11:30 AM</p>
             <p class="tl-nombre">Ceremonia<br>Religiosa</p>
           </div>
@@ -612,18 +505,14 @@
         <div class="tl-item tl-der">
           <div class="tl-punto"><svg viewBox="0 0 20 20" fill="currentColor" width="18" height="18"><path d="M10 17s-7-4.35-7-9a4 4 0 0 1 7-2.646A4 4 0 0 1 17 8c0 4.65-7 9-7 9z"/></svg></div>
           <div class="tl-contenido">
-            <div class="tl-icono" aria-hidden="true">
-              <img src="./assets/img/iconos/comida.png" alt="Almuerzo" class="tl-icono-img" loading="lazy" />
-            </div>
+            <div class="tl-icono" aria-hidden="true"><img src="./assets/img/iconos/comida.png" alt="Almuerzo" class="tl-icono-img" loading="lazy" /></div>
             <p class="tl-hora">1:00 PM</p>
             <p class="tl-nombre">Almuerzo</p>
           </div>
         </div>
         <div class="tl-item tl-izq">
           <div class="tl-contenido">
-            <div class="tl-icono" aria-hidden="true">
-              <img src="./assets/img/iconos/vamos.png" alt="Nos vamos" class="tl-icono-img" loading="lazy" />
-            </div>
+            <div class="tl-icono" aria-hidden="true"><img src="./assets/img/iconos/vamos.png" alt="Nos vamos" class="tl-icono-img" loading="lazy" /></div>
             <p class="tl-hora">3:00 PM</p>
             <p class="tl-nombre">¡Nos vamos!</p>
           </div>
@@ -631,7 +520,8 @@
         </div>
       </div>
     </section>
-<br><br><br><br>
+    <br><br><br><br>
+
     <!-- FOTO 3 -->
     <section class="foto-novios-section">
       <div class="foto-novios-wrap">
@@ -661,9 +551,7 @@
       </div>
       <div class="nota-separador"></div>
       <div class="nota-item">
-        <div class="nota-icono" aria-hidden="true">
-          <img src="./assets/img/iconos/regalo.png" alt="Regalos" class="nota-icono-img" loading="lazy" />
-        </div>
+        <div class="nota-icono" aria-hidden="true"><img src="./assets/img/iconos/regalo.png" alt="Regalos" class="nota-icono-img" loading="lazy" /></div>
         <p class="nota-nombre">Sugerencia de Regalos</p>
         <p class="nota-desc">Si deseas hacernos un regalo, aquí encontrarás opciones</p>
         <button class="nota-btn" onclick="abrirModal('modal-regalos')" aria-label="Ver sugerencia de regalos">
@@ -673,17 +561,13 @@
       </div>
       <div class="nota-separador"></div>
       <div class="nota-item">
-        <div class="nota-icono" aria-hidden="true">
-          <img src="./assets/img/iconos/par.png" alt="Parqueo" class="nota-icono-img" loading="lazy" />
-        </div>
+        <div class="nota-icono" aria-hidden="true"><img src="./assets/img/iconos/par.png" alt="Parqueo" class="nota-icono-img" loading="lazy" /></div>
         <p class="nota-nombre">Parqueo</p>
         <p class="nota-desc">El lugar cuenta con parqueo disponible. Te pedimos llevar <strong style="font-style:normal; color:var(--terracota)">Q25 en efectivo</strong> para el pago al ingreso. ¡Nos vemos pronto!</p>
       </div>
       <div class="nota-separador"></div>
       <div class="nota-item">
-        <div class="nota-icono" aria-hidden="true">
-          <img src="./assets/img/iconos/bebida.png" alt="Ambiente familiar" class="nota-icono-img" loading="lazy" />
-        </div>
+        <div class="nota-icono" aria-hidden="true"><img src="./assets/img/iconos/bebida.png" alt="Ambiente familiar" class="nota-icono-img" loading="lazy" /></div>
         <p class="nota-nombre">Ambiente Familiar</p>
         <p class="nota-desc">Este es un evento familiar y libre de alcohol. Les pedimos con cariño que no se ingrese ni consuma bebidas alcohólicas dentro del lugar, para que todos podamos disfrutar juntos este día tan especial. ¡Gracias por su comprensión!</p>
       </div>
@@ -702,11 +586,7 @@
       </div>
       <p class="rsvp-pre">Sería un honor</p>
       <h2 class="rsvp-titulo">Confirmar Asistencia</h2>
-      <p class="rsvp-texto">
-        Tu presencia hace que este día sea aún más especial.<br>
-        Por favor, házsnoslo saber antes del <strong>1 de Junio.</strong>
-      </p>
-
+      <p class="rsvp-texto">Tu presencia hace que este día sea aún más especial.<br>Por favor, házsnoslo saber antes del <strong>1 de Junio.</strong></p>
       <div id="rsvpOpciones" class="rsvp-opciones-simples">
         <button class="rsvp-btn-simple" type="button" onclick="abrirModal('modal-confirmar')" aria-label="Confirmar asistencia">
           <img src="./assets/img/iconos/whatsapp.png" alt="Confirmar" loading="lazy" />
@@ -717,17 +597,13 @@
           <span>Mensaje</span>
         </button>
       </div>
-
       <div class="rsvp-confirmado" id="rsvpNoAsiste" style="display:none">
         <div class="rsvp-confirmado-icono" aria-hidden="true">
-          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" width="44" height="44">
-            <path d="M24 42s-18-10-18-22a10 10 0 0 1 18-6 10 10 0 0 1 18 6c0 12-18 22-18 22z"/>
-          </svg>
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" width="44" height="44"><path d="M24 42s-18-10-18-22a10 10 0 0 1 18-6 10 10 0 0 1 18 6c0 12-18 22-18 22z"/></svg>
         </div>
         <p class="rsvp-confirmado-titulo">¡Muchas gracias!</p>
         <p class="rsvp-confirmado-texto">Los tendremos en nuestro corazón ese día. ♥</p>
       </div>
-
       <div class="rsvp-deco-bottom" aria-hidden="true">
         <svg viewBox="0 0 200 20" fill="none" width="160" height="20">
           <line x1="0" y1="10" x2="80" y2="10" stroke="#b86b52" stroke-width="0.8" opacity="0.5"/>
@@ -737,16 +613,8 @@
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════
-         FOOTER DE CIERRE
-         ═══════════════════════════════════════ -->
+    <!-- FOOTER DE CIERRE -->
     <footer class="boda-footer" aria-label="Cierre de invitación">
-
-      <!-- Flores decorativas esquinas -->
-      <img src="./assets/img/fondos/flor2.png" alt="" class="footer-flor-izq" aria-hidden="true" />
-      <img src="./assets/img/fondos/flor2.png" alt="" class="footer-flor-der" aria-hidden="true" />
-
-      <!-- Ornamento superior -->
       <div class="footer-ornamento" aria-hidden="true">
         <div class="footer-orn-linea"></div>
         <div class="footer-orn-punto"></div>
@@ -754,26 +622,12 @@
         <div class="footer-orn-punto"></div>
         <div class="footer-orn-linea der"></div>
       </div>
-
-      <!-- Nombres grandes en script -->  
       <p class="footer-nombres">Carlos &amp; Elida</p>
-
-      <!-- Corazón -->
       <div class="footer-corazon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22">
-          <path d="M12 21s-9-5.25-9-11A5 5 0 0 1 12 6.9 5 5 0 0 1 21 10c0 5.75-9 11-9 11z"/>
-        </svg>
+        <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M12 21s-9-5.25-9-11A5 5 0 0 1 12 6.9 5 5 0 0 1 21 10c0 5.75-9 11-9 11z"/></svg>
       </div>
-
-      <!-- Fecha -->
       <p class="footer-fecha">13 · Junio · 2026</p>
-
-      <!-- Frase final -->
-      <p class="footer-frase">
-        Con mucho amor y alegría<br>los esperamos ese día tan especial.
-      </p>
-
-      <!-- Ornamento inferior -->
+      <p class="footer-frase">Con mucho amor y alegría<br>los esperamos ese día tan especial.</p>
       <div class="footer-ornamento footer-ornamento-bottom" aria-hidden="true">
         <div class="footer-orn-linea"></div>
         <div class="footer-orn-punto"></div>
@@ -781,17 +635,12 @@
         <div class="footer-orn-punto"></div>
         <div class="footer-orn-linea der"></div>
       </div>
-
     </footer>
 
     <!-- MODAL: VESTIMENTA -->
     <div class="modal-overlay" id="modal-vestimenta" role="dialog" aria-modal="true" aria-label="Código de vestimenta" onclick="cerrarModalOverlay(event, 'modal-vestimenta')">
       <div class="modal-contenido">
-        <button class="modal-cerrar" onclick="cerrarModal('modal-vestimenta')" aria-label="Cerrar">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
-            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
-          </svg>
-        </button>
+        <button class="modal-cerrar" onclick="cerrarModal('modal-vestimenta')" aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
         <div class="modal-arco-wrap">
           <img src="./assets/img/fondos/arco2.png" alt="Código de vestimenta" class="modal-img" />
           <div class="modal-arco-texto modal-vestimenta-texto">
@@ -808,11 +657,7 @@
     <!-- MODAL: REGALOS -->
     <div class="modal-overlay" id="modal-regalos" role="dialog" aria-modal="true" aria-label="Sugerencia de regalos" onclick="cerrarModalOverlay(event, 'modal-regalos')">
       <div class="modal-contenido">
-        <button class="modal-cerrar" onclick="cerrarModal('modal-regalos')" aria-label="Cerrar">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
-            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
-          </svg>
-        </button>
+        <button class="modal-cerrar" onclick="cerrarModal('modal-regalos')" aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
         <div class="modal-arco-wrap">
           <img src="./assets/img/fondos/arco2.png" alt="Sugerencia de regalos" class="modal-img" />
           <div class="modal-arco-texto modal-regalos-texto">
@@ -825,10 +670,7 @@
                 <span class="cuenta-numero" id="num-banrural">3033299549</span>
               </div>
               <button class="cuenta-copiar" onclick="copiarCuenta('num-banrural', this)" aria-label="Copiar número Banrural">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15">
-                  <rect x="9" y="9" width="13" height="13" rx="2"/>
-                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
-                </svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
               </button>
             </div>
             <p class="modal-arco-desc" style="font-style:italic; opacity:0.8;">O también puedes entregar un <strong>sobre</strong> el día del evento. ¡Con mucho amor! 🤍</p>
@@ -837,14 +679,10 @@
       </div>
     </div>
 
-    <!-- MODAL: NAVEGACIÓN (Maps / Waze) -->
+    <!-- MODAL: NAVEGACIÓN -->
     <div class="modal-overlay" id="modal-navegacion" role="dialog" aria-modal="true" aria-label="Cómo llegar" onclick="cerrarModalOverlay(event, 'modal-navegacion')">
       <div class="modal-contenido modal-nav-contenido">
-        <button class="modal-cerrar" onclick="cerrarModal('modal-navegacion')" aria-label="Cerrar">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
-            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
-          </svg>
-        </button>
+        <button class="modal-cerrar" onclick="cerrarModal('modal-navegacion')" aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
         <div class="modal-nav-body">
           <p class="modal-nav-titulo">¿Cómo deseas llegar?</p>
           <p class="modal-nav-lugar">Casa del Lago — Lago de Amatitlán</p>
@@ -862,14 +700,10 @@
       </div>
     </div>
 
-    <!-- MODAL: CONFIRMAR ASISTENCIA (formulario) -->
+    <!-- MODAL: CONFIRMAR ASISTENCIA -->
     <div class="modal-overlay" id="modal-confirmar" role="dialog" aria-modal="true" aria-label="Confirmar asistencia" onclick="cerrarModalOverlay(event, 'modal-confirmar')">
       <div class="modal-contenido modal-nav-contenido" style="max-width:360px;">
-        <button class="modal-cerrar" onclick="cerrarModal('modal-confirmar')" aria-label="Cerrar">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
-            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
-          </svg>
-        </button>
+        <button class="modal-cerrar" onclick="cerrarModal('modal-confirmar')" aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
         <div class="modal-nav-body" style="gap:14px;">
           <div style="width:100%; display:flex; flex-direction:column; align-items:center; gap:10px;">
             <p class="modal-nav-titulo" style="font-size:clamp(1.6rem,7vw,2rem);">¿Podrás<br>acompañarnos? 💍</p>
@@ -914,11 +748,7 @@
     <!-- MODAL: MENSAJE A LOS NOVIOS -->
     <div class="modal-overlay" id="modal-mensaje" role="dialog" aria-modal="true" aria-label="Dejar mensaje" onclick="cerrarModalOverlay(event, 'modal-mensaje')">
       <div class="modal-contenido modal-nav-contenido" style="max-width:360px;">
-        <button class="modal-cerrar" onclick="cerrarModal('modal-mensaje')" aria-label="Cerrar">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
-            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
-          </svg>
-        </button>
+        <button class="modal-cerrar" onclick="cerrarModal('modal-mensaje')" aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
         <div class="modal-nav-body" style="gap:14px;">
           <div id="modalMensajeForm" style="width:100%; display:flex; flex-direction:column; align-items:center; gap:12px;">
             <p class="modal-nav-titulo" style="font-size:clamp(1.6rem,7vw,2rem);">Un mensaje<br>para nosotros 💌</p>
@@ -939,10 +769,7 @@
           </div>
           <div class="rsvp-confirmado" id="modalMensajeConfirmado" style="display:none;">
             <div class="rsvp-confirmado-icono" aria-hidden="true">
-              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" width="44" height="44">
-                <circle cx="24" cy="24" r="20"/>
-                <path d="M15 24l7 7 11-12"/>
-              </svg>
+              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" width="44" height="44"><circle cx="24" cy="24" r="20"/><path d="M15 24l7 7 11-12"/></svg>
             </div>
             <p class="rsvp-confirmado-titulo">¡Gracias por tu mensaje!</p>
             <p class="rsvp-confirmado-texto">Carlos &amp; Elida lo leerán con mucho cariño. 🤍</p>
