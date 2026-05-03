@@ -291,22 +291,97 @@ function _mostrarConfirmacionMensaje() {
   }
   var obs = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry) {
-      if (entry.isIntersecting) { entry.target.classList.add('visible'); obs.unobserve(entry.target); }
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        obs.unobserve(entry.target);
+      }
     });
-  }, { threshold: 0.07, rootMargin: '0px 0px -20px 0px' });
+  }, { threshold: 0.08 });
   secciones.forEach(function(el) { obs.observe(el); });
 })();
 
-
-// ─── FECHA: ANIMACIÓN DE ENTRADA ───
+// ─── SCROLL REVEAL — NOMBRES CARLOS & ELIDA ───
 (function() {
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var display = document.querySelector('.fecha-display');
-  if (!display) return;
-  if (!('IntersectionObserver' in window)) {
-    display.classList.add('fecha-visible');
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    // Sin animación: mostrar todo directamente
+    var fraseWrap   = document.querySelector('.padres-frase-wrap');
+    var heroNombres = document.querySelector('.hero-nombres');
+    if (fraseWrap)   fraseWrap.classList.add('nombres-visible');
+    if (heroNombres) heroNombres.classList.add('nombres-visible');
     return;
   }
+
+  if (!('IntersectionObserver' in window)) {
+    var fraseWrap   = document.querySelector('.padres-frase-wrap');
+    var heroNombres = document.querySelector('.hero-nombres');
+    if (fraseWrap)   fraseWrap.classList.add('nombres-visible');
+    if (heroNombres) heroNombres.classList.add('nombres-visible');
+    return;
+  }
+
+  // Observamos .padres-frase-wrap como trigger
+  var trigger = document.querySelector('.padres-frase-wrap');
+  if (!trigger) return;
+
+  var nombresObs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        // Activar frase + ornamentos
+        entry.target.classList.add('nombres-visible');
+        // Activar nombres (Carlos, &, Elida) con leve retardo
+        var heroNombres = document.querySelector('.hero-nombres');
+        if (heroNombres) heroNombres.classList.add('nombres-visible');
+        nombresObs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.25 });
+
+  nombresObs.observe(trigger);
+})();
+
+// ─── SCROLL REVEAL — TIMELINE ITINERARIO ───
+(function() {
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('.tl-item').forEach(function(el) { el.classList.add('tl-visible'); });
+    return;
+  }
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('tl-visible');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.25 });
+  document.querySelectorAll('.tl-item').forEach(function(el) { obs.observe(el); });
+})();
+
+// ─── SCROLL REVEAL — NOTAS ───
+(function() {
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('.nota-item').forEach(function(el) { el.classList.add('nota-visible'); });
+    return;
+  }
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('nota-visible');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+  document.querySelectorAll('.nota-item').forEach(function(el) { obs.observe(el); });
+})();
+
+// ─── SCROLL REVEAL — FECHA ───
+(function() {
+  if (!('IntersectionObserver' in window)) {
+    var fd = document.querySelector('.fecha-display');
+    if (fd) fd.classList.add('fecha-visible');
+    return;
+  }
+  var fd = document.querySelector('.fecha-display');
+  if (!fd) return;
   var obs = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry) {
       if (entry.isIntersecting) {
@@ -314,131 +389,6 @@ function _mostrarConfirmacionMensaje() {
         obs.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.25, rootMargin: '0px 0px -30px 0px' });
-  obs.observe(display);
-})();
-
-
-// ─── PARALLAX FOTOS (excluye imágenes del carrusel) ───
-(function() {
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var fotos = document.querySelectorAll('.foto-novios-img:not(.carrusel-img)');
-  if (!fotos.length) return;
-  var ticking = false;
-  function aplicarParallax() {
-    var wh = window.innerHeight;
-    fotos.forEach(function(img) {
-      var seccion = img.closest('.foto-novios-section');
-      if (!seccion) return;
-      var rect = seccion.getBoundingClientRect();
-      var progreso = (rect.top + rect.height / 2 - wh / 2) / wh;
-      var offset = progreso * 45;
-      img.style.transform = 'scale(1.08) translateY(' + offset + 'px)';
-    });
-    ticking = false;
-  }
-  window.addEventListener('scroll', function() {
-    if (!ticking) { requestAnimationFrame(aplicarParallax); ticking = true; }
-  }, { passive: true });
-  aplicarParallax();
-})();
-
-
-// ─── ITINERARIO: ANIMACIÓN POR SCROLL ───
-(function() {
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  if (!('IntersectionObserver' in window)) {
-    document.querySelectorAll('.tl-item').forEach(function(el) { el.classList.add('tl-visible'); });
-    return;
-  }
-  var items = document.querySelectorAll('.tl-item');
-  if (!items.length) return;
-  var obsTimeline = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('tl-visible');
-        obsTimeline.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.25, rootMargin: '0px 0px -40px 0px' });
-  items.forEach(function(item) { obsTimeline.observe(item); });
-})();
-
-
-// ─── NOTAS: ANIMACIÓN POR SCROLL ───
-(function() {
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  if (!('IntersectionObserver' in window)) {
-    document.querySelectorAll('.nota-item').forEach(function(el) { el.classList.add('nota-visible'); });
-    return;
-  }
-  var notaItems = document.querySelectorAll('.nota-item');
-  if (!notaItems.length) return;
-
-  notaItems.forEach(function(item, i) {
-    item.setAttribute('data-nota-idx', i);
-  });
-
-  var obsNotas = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        var idx = parseInt(entry.target.getAttribute('data-nota-idx') || 0);
-        entry.target.style.transitionDelay = (idx * 0.12) + 's';
-        entry.target.classList.add('nota-visible');
-        obsNotas.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.22, rootMargin: '0px 0px -30px 0px' });
-
-  notaItems.forEach(function(item) { obsNotas.observe(item); });
-})();
-
-
-// ─── NOMBRES CARLOS & ELIDA: ANIMACIÓN POR SCROLL ───
-(function() {
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  if (!('IntersectionObserver' in window)) {
-    var frase = document.querySelector('.padres-frase-wrap');
-    var nombres = document.querySelector('.hero-nombres');
-    if (frase) frase.classList.add('nombres-visible');
-    if (nombres) nombres.classList.add('nombres-visible');
-    return;
-  }
-
-  // Observamos el bloque de la frase (primer elemento visible de la seccion)
-  var fraseWrap = document.querySelector('.padres-frase-wrap');
-  var nombresWrap = document.querySelector('.hero-nombres');
-  if (!fraseWrap || !nombresWrap) return;
-
-  var obsNombres = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        fraseWrap.classList.add('nombres-visible');
-        nombresWrap.classList.add('nombres-visible');
-        obsNombres.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.18, rootMargin: '0px 0px -20px 0px' });
-
-  obsNombres.observe(fraseWrap);
-})();
-
-
-// ─── CARRUSEL: fade-in al entrar en pantalla ───
-(function() {
-  var wrap = document.getElementById('carruselWrap');
-  if (!wrap) return;
-  if ('IntersectionObserver' in window) {
-    var obs = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('carrusel-visible');
-          obs.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
-    obs.observe(wrap);
-  } else {
-    wrap.classList.add('carrusel-visible');
-  }
+  }, { threshold: 0.3 });
+  obs.observe(fd);
 })();
