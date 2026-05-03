@@ -39,10 +39,10 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 16px;
+        gap: 14px;
         text-align: center;
-        padding: 52px 44px;
-        background: rgba(255, 250, 247, 0.88);
+        padding: 48px 44px 44px;
+        background: rgba(255, 250, 247, 0.92);
         border: 1px solid rgba(184,107,82,0.25);
         max-width: 420px;
         box-shadow: 0 12px 48px rgba(92,53,40,0.14);
@@ -81,6 +81,39 @@
         color: #b86b52;
         opacity: 0.7;
         margin-top: 4px;
+      }
+
+      /* QR Code */
+      .aviso-qr-wrap {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        margin-top: 4px;
+      }
+      .aviso-qr-img {
+        width: 148px;
+        height: 148px;
+        border: 6px solid #fff;
+        box-shadow: 0 4px 18px rgba(92,53,40,0.13);
+        border-radius: 4px;
+        display: block;
+      }
+      .aviso-qr-label {
+        font-family: 'Cormorant Garamond', Georgia, serif;
+        font-size: 0.78rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #b86b52;
+        opacity: 0.75;
+      }
+      .aviso-url {
+        font-family: 'Cormorant Garamond', Georgia, serif;
+        font-size: 0.82rem;
+        color: #5c3528;
+        opacity: 0.6;
+        letter-spacing: 0.03em;
+        margin-top: -4px;
       }
 
       /* En pantallas > 520px → mostrar aviso, ocultar invitación */
@@ -182,8 +215,23 @@
           Esta invitación fue diseñada especialmente para ser vista desde tu celular.
         </p>
         <p class="aviso-texto" style="font-style:normal; opacity:0.9;">
-          Por favor, escanea el código QR o abre el enlace desde el navegador de tu teléfono.
+          Escanea el código QR con la cámara de tu teléfono para abrirla:
         </p>
+
+        <!-- QR Code -->
+        <div class="aviso-qr-wrap">
+          <img
+            class="aviso-qr-img"
+            src="https://api.qrserver.com/v1/create-qr-code/?size=148x148&margin=6&color=5c3528&bgcolor=fffaf7&data=https%3A%2F%2Fguzman285.github.io%2Felida%2F"
+            alt="Código QR — Boda Carlos y Elida"
+            width="148"
+            height="148"
+            loading="eager"
+          />
+          <p class="aviso-qr-label">Escanea para abrir</p>
+          <p class="aviso-url">guzman285.github.io/elida</p>
+        </div>
+
         <p class="aviso-sub">Boda · 13 de Junio 2026</p>
       </div>
     </div>
