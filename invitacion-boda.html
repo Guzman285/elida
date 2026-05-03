@@ -11,6 +11,89 @@
     <link rel="stylesheet" href="./assets/css/carrusel.css">
     <title>Boda Carlos &amp; Elida</title>
     <style>
+
+      /* ════════════════════════════════════════════
+         PANTALLA DE AVISO — solo visible en PC/tablet
+         ════════════════════════════════════════════ */
+      #aviso-movil {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        background-image: url('./assets/img/fondos/fondo2.webp');
+        background-size: cover;
+        background-position: top center;
+        background-repeat: no-repeat;
+        align-items: center;
+        justify-content: center;
+      }
+      #aviso-movil::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: rgba(248, 239, 233, 0.72);
+      }
+      .aviso-card {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+        text-align: center;
+        padding: 52px 44px;
+        background: rgba(255, 250, 247, 0.88);
+        border: 1px solid rgba(184,107,82,0.25);
+        max-width: 420px;
+        box-shadow: 0 12px 48px rgba(92,53,40,0.14);
+      }
+      .aviso-titulo {
+        font-family: 'Great Vibes', cursive;
+        font-size: 3.2rem;
+        color: #5c3528;
+        line-height: 1.1;
+      }
+      .aviso-linea {
+        width: 48px;
+        height: 1px;
+        background: #b86b52;
+        opacity: 0.5;
+        margin: -4px 0 4px;
+      }
+      .aviso-icono {
+        font-size: 2.8rem;
+        line-height: 1;
+      }
+      .aviso-texto {
+        font-family: 'Cormorant Garamond', Georgia, serif;
+        font-size: 1.08rem;
+        color: #5c3528;
+        line-height: 1.7;
+        opacity: 0.85;
+        max-width: 300px;
+        font-style: italic;
+      }
+      .aviso-sub {
+        font-family: 'Cormorant Garamond', Georgia, serif;
+        font-size: 0.75rem;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+        color: #b86b52;
+        opacity: 0.7;
+        margin-top: 4px;
+      }
+
+      /* En pantallas > 520px → mostrar aviso, ocultar invitación */
+      @media (min-width: 521px) {
+        #aviso-movil   { display: flex; }
+        body > *:not(#aviso-movil) { visibility: hidden; pointer-events: none; }
+      }
+
+      /* En móvil (≤520px) → ocultar aviso, mostrar invitación normal */
+      @media (max-width: 520px) {
+        #aviso-movil { display: none !important; }
+      }
+
       /* ── RSVP Counter ── */
       .rsvp-counter {
         display: flex;
@@ -88,6 +171,22 @@
     </style>
   </head>
   <body>
+
+    <!-- AVISO SOLO MÓVIL (visible únicamente en PC/tablet) -->
+    <div id="aviso-movil" role="alert" aria-live="polite">
+      <div class="aviso-card">
+        <p class="aviso-titulo">Carlos &amp; Elida</p>
+        <div class="aviso-linea"></div>
+        <span class="aviso-icono">📱</span>
+        <p class="aviso-texto">
+          Esta invitación fue diseñada especialmente para ser vista desde tu celular.
+        </p>
+        <p class="aviso-texto" style="font-style:normal; opacity:0.9;">
+          Por favor, escanea el código QR o abre el enlace desde el navegador de tu teléfono.
+        </p>
+        <p class="aviso-sub">Boda · 13 de Junio 2026</p>
+      </div>
+    </div>
 
     <!-- BARRA FIJA DE MÚSICA -->
     <header class="music-bar">
