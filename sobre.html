@@ -24,12 +24,12 @@
       background-color: var(--crema);
     }
 
-    /* ── FLORES ESQUINAS ── */
+    /* Flores en esquinas — más pequeñas para no tapar texto */
     .flor-izq {
       position: fixed;
       top: -10px;
-      left: -18px;
-      width: clamp(140px, 42vw, 220px);
+      left: -14px;
+      width: clamp(110px, 32vw, 160px);
       height: auto;
       pointer-events: none;
       z-index: 0;
@@ -38,14 +38,14 @@
     .flor-der {
       position: fixed;
       top: -10px;
-      right: -18px;
-      width: clamp(140px, 42vw, 220px);
+      right: -14px;
+      width: clamp(110px, 32vw, 160px);
       height: auto;
       pointer-events: none;
       z-index: 0;
     }
 
-    /* ── CONTENIDO: ocupa exactamente la pantalla ── */
+    /* Contenido fijo, sin scroll */
     .pagina {
       position: fixed;
       inset: 0;
@@ -55,13 +55,14 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: clamp(90px, 20vw, 130px) 24px clamp(24px, 6vw, 48px);
-      gap: clamp(4px, 1.5vw, 10px);
+      /* padding-top generoso para que el texto quede debajo de las flores */
+      padding: clamp(120px, 28vw, 160px) 24px clamp(20px, 5vw, 40px);
+      gap: clamp(2px, 1vw, 8px);
     }
 
-    /* ── TEXTOS ── */
+    /* Textos */
     .pretitulo {
-      font-size: clamp(0.62rem, 2.8vw, 0.76rem);
+      font-size: clamp(0.60rem, 2.6vw, 0.74rem);
       letter-spacing: 5px;
       text-transform: uppercase;
       color: var(--terracota);
@@ -71,14 +72,14 @@
 
     .nombres {
       font-family: 'Great Vibes', cursive;
-      font-size: clamp(2.4rem, 11vw, 4.2rem);
+      font-size: clamp(2.2rem, 10vw, 3.8rem);
       color: var(--terracota-dark);
       line-height: 1.05;
       animation: fadeDown 1s cubic-bezier(0.16,1,0.3,1) 0.1s both;
     }
 
     .fecha {
-      font-size: clamp(0.62rem, 2.8vw, 0.78rem);
+      font-size: clamp(0.60rem, 2.6vw, 0.76rem);
       letter-spacing: 4px;
       text-transform: uppercase;
       color: var(--terracota);
@@ -86,42 +87,43 @@
       animation: fadeDown 1s cubic-bezier(0.16,1,0.3,1) 0.2s both;
     }
 
-    /* ── SOBRE + BOTÓN ── */
+    /* Sobre + botón juntos */
     .sobre-bloque {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0;
+      margin-top: clamp(12px, 3vw, 24px);
       animation: fadeUp 1.1s cubic-bezier(0.16,1,0.3,1) 0.3s both;
     }
 
     .sobre-img {
-      width: clamp(220px, 72vw, 360px);
+      width: clamp(200px, 68vw, 340px);
       height: auto;
       display: block;
       pointer-events: none;
-      filter: drop-shadow(0 8px 24px rgba(92,53,40,0.18));
+      filter: drop-shadow(0 6px 20px rgba(92,53,40,0.18));
     }
 
+    /* Botón pegado debajo del sobre, sin gap extra */
     .boton-img {
-      width: clamp(170px, 58vw, 270px);
+      width: clamp(80px, 26vw, 130px);
       height: auto;
       display: block;
       cursor: pointer;
-      margin-top: -8px;
+      /* negativo para que suba y quede sobre el borde inferior del sobre */
+      margin-top: -22px;
       transition: transform 0.22s cubic-bezier(0.16,1,0.3,1), filter 0.22s ease;
       -webkit-tap-highlight-color: transparent;
-      filter: drop-shadow(0 4px 10px rgba(92,53,40,0.14));
+      filter: drop-shadow(0 4px 10px rgba(92,53,40,0.20));
     }
     .boton-img:hover {
-      transform: scale(1.05) translateY(-2px);
-      filter: drop-shadow(0 8px 18px rgba(92,53,40,0.22));
+      transform: scale(1.07) translateY(-3px);
+      filter: drop-shadow(0 8px 18px rgba(92,53,40,0.28));
     }
     .boton-img:active {
-      transform: scale(0.97);
+      transform: scale(0.96);
     }
 
-    /* ── KEYFRAMES ── */
     @keyframes fadeDown {
       from { opacity: 0; transform: translateY(-16px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -141,11 +143,9 @@
 </head>
 <body>
 
-  <!-- Flores decorativas -->
   <img src="./assets/img/fondos/flor1.png" alt="" class="flor-izq" aria-hidden="true" />
   <img src="./assets/img/fondos/flor2.png" alt="" class="flor-der" aria-hidden="true" />
 
-  <!-- Contenido -->
   <div class="pagina">
 
     <p class="pretitulo">Nuestra Boda</p>
@@ -157,16 +157,16 @@
         src="./assets/img/sobre/sobres.png"
         alt="Sobre de invitación"
         class="sobre-img"
-        width="360"
-        height="234"
+        width="340"
+        height="221"
         loading="eager"
       />
       <img
         src="./assets/img/sobre/boton.png"
         alt="Click para abrir la invitación"
         class="boton-img"
-        width="270"
-        height="72"
+        width="130"
+        height="130"
         loading="eager"
         onclick="window.location.href='./invitacion-boda.html'"
         role="button"
