@@ -143,13 +143,13 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 6px;
-        margin-top: 18px;
+        gap: 10px;
+        margin-top: 20px;
         animation: fadeUp 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
       }
 
       .click-texto {
-        font-size: clamp(0.65rem, 2.4vw, 0.78rem);
+        font-size: clamp(0.85rem, 3.2vw, 1rem);   /* antes 0.65-0.78rem */
         letter-spacing: 4px;
         text-transform: uppercase;
         color: var(--terracota);
@@ -157,31 +157,31 @@
       }
 
       .reservado-titulo {
-        font-size: clamp(0.85rem, 3vw, 1rem);
+        font-size: clamp(1.1rem, 4vw, 1.35rem);   /* antes 0.85-1rem */
         letter-spacing: 4px;
         text-transform: uppercase;
         color: var(--terracota-dark);
         opacity: 0.85;
-        margin-top: 6px;
+        margin-top: 4px;
       }
 
       .reservado-numero {
-        width: clamp(44px, 12vw, 58px);
-        height: clamp(44px, 12vw, 58px);
+        width: clamp(58px, 16vw, 76px);            /* antes 44-58px */
+        height: clamp(58px, 16vw, 76px);
         border: 2px solid var(--terracota-dark);
         border-radius: 8px;
         display: flex;
         align-items: center;
         justify-content: center;
         font-family: 'Cormorant Garamond', Georgia, serif;
-        font-size: clamp(1.4rem, 5vw, 1.8rem);
+        font-size: clamp(1.8rem, 7vw, 2.4rem);    /* antes 1.4-1.8rem */
         font-weight: 400;
         color: var(--terracota-dark);
         opacity: 0.85;
       }
 
       .reservado-subtitulo {
-        font-size: clamp(0.85rem, 3vw, 1rem);
+        font-size: clamp(1.1rem, 4vw, 1.35rem);   /* antes 0.85-1rem */
         letter-spacing: 4px;
         text-transform: uppercase;
         color: var(--terracota-dark);
@@ -219,7 +219,6 @@
       <p class="fecha">13 &middot; Junio &middot; 2026</p>
 
       <div class="sobre-bloque">
-
         <img
           src="./assets/img/sobre/boton.png"
           alt="Click para abrir la invitación"
@@ -232,7 +231,6 @@
           tabindex="0"
           onkeydown="if(event.key==='Enter'||event.key===' '){window.location.href='./invitacion-boda.html';}"
         />
-
         <img
           src="./assets/img/sobre/sobres.png"
           alt="Sobre de invitación"
@@ -241,11 +239,8 @@
           height="221"
           loading="eager"
         />
-
       </div>
-      <!-- fin .sobre-bloque -->
 
-      <!-- Sección debajo del sobre -->
       <div class="reservado-bloque">
         <p class="click-texto">Click para abrir la invitación</p>
         <p class="reservado-titulo">Hemos Reservado</p>
@@ -254,7 +249,6 @@
       </div>
 
     </div>
-    <!-- fin .pagina -->
 
   </body>
 </html>
