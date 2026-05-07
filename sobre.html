@@ -24,7 +24,6 @@
       background-color: var(--crema);
     }
 
-    /* Flores en esquinas — más pequeñas para no tapar texto */
     .flor-izq {
       position: fixed;
       top: -10px;
@@ -45,7 +44,6 @@
       z-index: 0;
     }
 
-    /* Contenido fijo, sin scroll */
     .pagina {
       position: fixed;
       inset: 0;
@@ -55,12 +53,10 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      /* padding-top generoso para que el texto quede debajo de las flores */
       padding: clamp(120px, 28vw, 160px) 24px clamp(20px, 5vw, 40px);
       gap: clamp(2px, 1vw, 8px);
     }
 
-    /* Textos */
     .pretitulo {
       font-size: clamp(0.60rem, 2.6vw, 0.74rem);
       letter-spacing: 5px;
@@ -87,7 +83,6 @@
       animation: fadeDown 1s cubic-bezier(0.16,1,0.3,1) 0.2s both;
     }
 
-    /* Sobre + botón juntos */
     .sobre-bloque {
       display: flex;
       flex-direction: column;
@@ -104,21 +99,30 @@
       filter: drop-shadow(0 6px 20px rgba(92,53,40,0.18));
     }
 
-    /* Botón pegado debajo del sobre, sin gap extra */
     .boton-img {
       width: clamp(80px, 26vw, 130px);
       height: auto;
       display: block;
       cursor: pointer;
-      /* negativo para que suba y quede sobre el borde inferior del sobre */
       margin-top: -22px;
+      /* Tono dorado claro — más claro que el sobre terracota */
+      filter:
+        sepia(1)
+        saturate(2.2)
+        hue-rotate(5deg)
+        brightness(1.45)
+        drop-shadow(0 4px 10px rgba(92,53,40,0.20));
       transition: transform 0.22s cubic-bezier(0.16,1,0.3,1), filter 0.22s ease;
       -webkit-tap-highlight-color: transparent;
-      filter: drop-shadow(0 4px 10px rgba(92,53,40,0.20));
     }
     .boton-img:hover {
+      filter:
+        sepia(1)
+        saturate(2.2)
+        hue-rotate(5deg)
+        brightness(1.65)
+        drop-shadow(0 8px 18px rgba(92,53,40,0.28));
       transform: scale(1.07) translateY(-3px);
-      filter: drop-shadow(0 8px 18px rgba(92,53,40,0.28));
     }
     .boton-img:active {
       transform: scale(0.96);
