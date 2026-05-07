@@ -63,7 +63,7 @@
         align-items: center;
         justify-content: flex-start;
         text-align: center;
-        padding-top: clamp(100px, 22vw, 140px);
+        padding-top: clamp(150px, 30vw, 180px);
         padding-left: 24px;
         padding-right: 24px;
         padding-bottom: clamp(20px, 5vw, 40px);
@@ -120,9 +120,10 @@
         display: block;
         cursor: pointer;
         /* Encimado: sin margen, se posiciona con z-index sobre el sobre */
-        margin-top: 0;
-        margin-bottom: -40px; /* jala el sobre hacia arriba 40px */
-        position: relative;
+        margin-top: 0;          /* déjalo en 0 */
+  margin-bottom: -100px;       /* quita el negativo */
+  position: relative;
+  top: 105px; 
         z-index: 2; /* queda encima del sobre */
         filter:
           sepia(1)
