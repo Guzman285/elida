@@ -51,9 +51,9 @@
     .flor-izq {
     /* Flor decorativa esquina superior IZQUIERDA */
       position: fixed;           /* fija en pantalla, no se mueve */
-      top: -180px;                /* sube 10px fuera del borde superior */
-      left: -85px;               /* sale 14px por el borde izquierdo */
-      width: clamp(180px, 55vw, 300px); /* tamaño fluido: mín 110px, ideal 32vw, máx 160px */
+      top: -180px;               /* posición vertical */
+      left: -85px;               /* posición horizontal */
+      width: clamp(180px, 55vw, 300px); /* tamaño fluido */
       height: auto;              /* alto proporcional al ancho */
       pointer-events: none;      /* el mouse la ignora, no bloquea clicks */
       z-index: 0;                /* capa 0: detrás del contenido principal */
@@ -61,11 +61,11 @@
     }
 
     .flor-der {
-    /* Flor decorativa esquina superior DERECHA */
+    /* Flor decorativa esquina inferior DERECHA */
       position: fixed;           /* fija en pantalla */
-      top: 800px;                /* sube 10px fuera del borde superior */
-      right: -40px;              /* sale 14px por el borde derecho */
-      width: clamp(150px, 45vw, 250px); /* tamaño fluido igual que flor izquierda */
+      top: 800px;                /* posición vertical */
+      right: -40px;              /* posición horizontal */
+      width: clamp(150px, 45vw, 250px); /* tamaño fluido */
       height: auto;              /* alto proporcional */
       pointer-events: none;      /* no bloquea clicks */
       z-index: 0;                /* capa detrás del contenido */
@@ -79,17 +79,18 @@
       display: flex;             /* activa flexbox */
       flex-direction: column;    /* apila los hijos verticalmente */
       align-items: center;       /* centra horizontalmente */
-      justify-content: center;   /* centra verticalmente */
+      justify-content: flex-start; /* alinea desde arriba para dar espacio abajo */
       text-align: center;        /* texto centrado */
-      padding: clamp(80px, 38vw, 50px) /* padding superior: controla posición vertical del bloque */
-               24px              /* padding izquierdo y derecho */
-               clamp(20px, 5vw, 40px); /* padding inferior */
+      padding-top: clamp(100px, 22vw, 140px); /* espacio superior: controla cuánto baja el bloque */
+      padding-left: 24px;        /* padding izquierdo */
+      padding-right: 24px;       /* padding derecho */
+      padding-bottom: clamp(20px, 5vw, 40px); /* padding inferior */
       gap: clamp(2px, 1vw, 8px); /* espacio entre pretítulo, nombres y fecha */
     }
 
     .pretitulo {
     /* Texto "NUESTRA BODA" */
-      font-size: clamp(1.60rem, 3.6vw, 1.74rem); /* tamaño pequeño fluido */
+      font-size: clamp(1.60rem, 3.6vw, 1.74rem); /* tamaño fluido */
       letter-spacing: 5px;       /* espacio amplio entre letras */
       text-transform: uppercase; /* convierte a MAYÚSCULAS automáticamente */
       color: var(--terracota);   /* color terracota claro */
@@ -108,7 +109,7 @@
 
     .fecha {
     /* Texto "13 · JUNIO · 2026" */
-      font-size: clamp(1.60rem, 3.6vw, 1.76rem); /* tamaño pequeño */
+      font-size: clamp(1.60rem, 3.6vw, 1.76rem); /* tamaño fluido */
       letter-spacing: 4px;       /* espaciado entre letras */
       text-transform: uppercase; /* en mayúsculas */
       color: var(--terracota);   /* color terracota */
@@ -194,13 +195,13 @@
 <!-- Cuerpo visible de la página -->
 
   <img src="./assets/img/sobre/flor1.png" alt="" class="flor-izq" aria-hidden="true" />
-  <!-- Flor esquina superior izquierda (espejada con scaleX(-1)) -->
+  <!-- Flor esquina superior izquierda -->
 
   <img src="./assets/img/sobre/flor2.png" alt="" class="flor-der" aria-hidden="true" />
-  <!-- Flor esquina superior derecha -->
+  <!-- Flor esquina inferior derecha -->
 
   <div class="pagina">
-  <!-- Contenedor principal centrado en pantalla -->
+  <!-- Contenedor principal -->
 
     <p class="pretitulo">Nuestra Boda</p>
     <!-- Texto pequeño: "NUESTRA BODA" -->
@@ -237,16 +238,18 @@
         onkeydown="if(event.key==='Enter'||event.key===' '){window.location.href='./invitacion-boda.html';}"
       />
       <!-- Lacre/botón: al hacer click navega a la invitación -->
-      <!-- onclick: cambia './invitacion-boda.html' por la ruta de tu página -->
 
     </div>
     <!-- fin .sobre-bloque -->
+
+    <!-- =============================================
+         AGREGA TU TEXTO AQUI DEBAJO DEL SOBRE
+         Ejemplo:
+         <p class="texto-extra">Tu mensaje aquí</p>
+    ============================================= -->
 
   </div>
   <!-- fin .pagina -->
 
 </body>
-<!-- Fin del cuerpo -->
-
 </html>
-<!-- Fin del documento -->
