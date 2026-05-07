@@ -1,279 +1,246 @@
 <!doctype html>
+<!-- Tipo de documento HTML5 -->
 <html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- Idioma de la pagina: espanol -->
 
-  <!-- =============================================
-       FUENTES
-       - Great Vibes     : nombres (Carlos & Elida)
-       - Cormorant Garamond : textos secundarios
-  ============================================= -->
+<head>
+  <!-- Seccion de configuracion e importaciones -->
+  <meta charset="UTF-8" />
+  <!-- Codificacion de caracteres: permite tildes y especiales -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Vista adaptable a movil: no hace zoom automatico -->
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <!-- Pre-conexion a Google Fonts para cargar mas rapido -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Pre-conexion al servidor de archivos de fuentes -->
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+  <!-- Importa dos fuentes: Great Vibes (cursiva para nombres) y Cormorant Garamond (textos secundarios) -->
 
   <title>Boda Carlos &amp; Elida</title>
+  <!-- Titulo que aparece en la pestana del navegador -->
 
   <style>
 
-    /* =============================================
-       RESET BASICO
-    ============================================= */
+    /* Aplica a todos los elementos: elimina margenes y padding por defecto */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    /* =============================================
-       VARIABLES DE COLOR
-       --terracota       : color del texto secundario y fecha
-       --terracota-dark  : color de los nombres principales
-    ============================================= */
+    /* Variables globales de color reutilizables */
     :root {
-      --terracota: #b86b52;
-      --terracota-dark: #5c3528;
+      --terracota: #b86b52;       /* color terracota claro: usado en textos secundarios */
+      --terracota-dark: #5c3528;  /* color terracota oscuro: usado en los nombres principales */
     }
 
-    /* =============================================
-       BODY / FONDO
-       - overflow: hidden  => sin scroll
-       - background-image  => imagen de fondo (fondo1.jpg)
-       - background-size: cover => cubre toda la pantalla
-    ============================================= */
+    /* Estilos del documento completo y del cuerpo */
     html, body {
-      width: 100%;
-      height: 100%;
-      overflow: hidden;                          /* SIN SCROLL */
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      background-color: #f5ece3;                 /* color fallback si falla la imagen */
-      background-image: url('./assets/img/fondos/fondo1.jpg'); /* IMAGEN DE FONDO */
-      background-size: cover;                    /* cubre toda la pantalla */
-      background-position: center center;        /* centrada */
-      background-repeat: no-repeat;
+      width: 100%;                /* ancho completo de la pantalla */
+      height: 100%;               /* alto completo de la pantalla */
+      overflow: hidden;           /* SIN SCROLL: oculta cualquier contenido que se salga */
+      font-family: 'Cormorant Garamond', Georgia, serif; /* fuente principal del documento */
+      background-color: #f5ece3;  /* color de fondo de respaldo si la imagen no carga */
+      background-image: url('./assets/img/fondos/fondo1.jpg'); /* imagen de fondo */
+      background-size: cover;     /* la imagen cubre toda la pantalla sin dejar espacios */
+      background-position: center center; /* la imagen se centra horizontal y verticalmente */
+      background-repeat: no-repeat;       /* la imagen no se repite */
     }
 
-    /* =============================================
-       FLORES DECORATIVAS (esquinas superiores)
-       - .flor-izq : esquina superior izquierda (espejada)
-       - .flor-der : esquina superior derecha
-       - width     : tamano de las flores => ajustar aqui
-    ============================================= */
+    /* Flor decorativa: esquina superior IZQUIERDA */
     .flor-izq {
-      position: fixed;
-      top: -10px;                                /* posicion vertical desde arriba */
-      left: -14px;                               /* posicion horizontal desde izquierda */
-      width: clamp(110px, 32vw, 160px);          /* TAMANIO FLORES => cambiar estos valores */
-      height: auto;
-      pointer-events: none;
-      z-index: 0;
-      transform: scaleX(-1);                     /* espejo horizontal */
+      position: fixed;            /* fija la flor en pantalla, no se mueve al hacer scroll */
+      top: -10px;                 /* posicion desde el borde superior (negativo = sube fuera de pantalla) */
+      left: -14px;                /* posicion desde el borde izquierdo */
+      width: clamp(110px, 32vw, 160px); /* tamanio fluido: min 110px, ideal 32% viewport, max 160px */
+      height: auto;               /* alto se ajusta proporcionalmente al ancho */
+      pointer-events: none;       /* el mouse la ignora, no bloquea clicks */
+      z-index: 0;                 /* capa 0: detras del contenido principal */
+      transform: scaleX(-1);      /* espejo horizontal: voltea la imagen */
     }
+
+    /* Flor decorativa: esquina superior DERECHA */
     .flor-der {
-      position: fixed;
-      top: -10px;                                /* posicion vertical desde arriba */
-      right: -14px;                              /* posicion horizontal desde derecha */
-      width: clamp(110px, 32vw, 160px);          /* TAMANIO FLORES => cambiar estos valores */
-      height: auto;
-      pointer-events: none;
-      z-index: 0;
+      position: fixed;            /* fija la flor en pantalla */
+      top: -10px;                 /* posicion desde el borde superior */
+      right: -14px;               /* posicion desde el borde derecho */
+      width: clamp(110px, 32vw, 160px); /* tamanio fluido: min 110px, ideal 32% viewport, max 160px */
+      height: auto;               /* alto proporcional */
+      pointer-events: none;       /* no bloquea clicks */
+      z-index: 0;                 /* capa detras del contenido */
     }
 
-    /* =============================================
-       CONTENEDOR PRINCIPAL
-       - position: fixed + inset:0 => ocupa toda la pantalla
-       - justify-content: center   => centra verticalmente
-       - padding-top => controla que tan ARRIBA o ABAJO queda el bloque
-         valores mas bajos = sube el contenido
-         valores mas altos = baja el contenido
-    ============================================= */
+    /* Contenedor principal que centra todo el contenido */
     .pagina {
-      position: fixed;
-      inset: 0;                                  /* cubre toda la pantalla */
-      z-index: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;                   /* centrado vertical */
-      text-align: center;
-      padding: clamp(80px, 18vw, 110px)          /* PADDING TOP => sube/baja todo el bloque */
-               24px                              /* padding horizontal */
-               clamp(16px, 4vw, 32px);           /* padding bottom */
-      gap: clamp(2px, 1vw, 6px);                 /* espacio entre texto-pretitulo, nombres, fecha */
+      position: fixed;            /* ocupa toda la pantalla fijamente */
+      inset: 0;                   /* equivale a top:0 right:0 bottom:0 left:0 */
+      z-index: 1;                 /* capa 1: encima de las flores */
+      display: flex;              /* activa flexbox para alinear hijos */
+      flex-direction: column;     /* los hijos se apilan verticalmente */
+      align-items: center;        /* centra horizontalmente */
+      justify-content: center;    /* centra verticalmente */
+      text-align: center;         /* texto centrado */
+      padding: clamp(80px, 18vw, 110px) /* padding superior: controla que tan abajo empieza el contenido */
+               24px               /* padding izquierdo y derecho */
+               clamp(16px, 4vw, 32px); /* padding inferior */
+      gap: clamp(2px, 1vw, 6px);  /* espacio entre pretitulo, nombres y fecha */
     }
 
-    /* =============================================
-       TEXTO: "NUESTRA BODA"
-       - letter-spacing : espacio entre letras
-       - font-size      : tamanio del texto
-       - opacity        : transparencia (0=invisible, 1=solido)
-    ============================================= */
+    /* Texto: "NUESTRA BODA" */
     .pretitulo {
-      font-size: clamp(0.60rem, 2.6vw, 0.74rem); /* TAMANIO => min, fluido, max */
-      letter-spacing: 5px;
-      text-transform: uppercase;
-      color: var(--terracota);
-      opacity: 0.90;
-      animation: fadeDown 1s cubic-bezier(0.16,1,0.3,1) both;
+      font-size: clamp(0.60rem, 2.6vw, 0.74rem); /* tamanio fluido pequeno */
+      letter-spacing: 5px;        /* espacio amplio entre letras (efecto elegante) */
+      text-transform: uppercase;  /* convierte a MAYUSCULAS automaticamente */
+      color: var(--terracota);    /* color terracota claro */
+      opacity: 0.90;              /* ligera transparencia */
+      animation: fadeDown 1s cubic-bezier(0.16,1,0.3,1) both; /* entra cayendo desde arriba */
     }
 
-    /* =============================================
-       TEXTO: "Carlos & Elida"
-       - font-family : Great Vibes (cursiva elegante)
-       - font-size   : el mas grande de la pagina
-    ============================================= */
+    /* Texto: "Carlos & Elida" */
     .nombres {
-      font-family: 'Great Vibes', cursive;
-      font-size: clamp(2.2rem, 10vw, 3.8rem);    /* TAMANIO NOMBRES => ajustar aqui */
-      color: var(--terracota-dark);
-      line-height: 1.05;
-      animation: fadeDown 1s cubic-bezier(0.16,1,0.3,1) 0.1s both;
+      font-family: 'Great Vibes', cursive; /* fuente cursiva elegante */
+      font-size: clamp(2.2rem, 10vw, 3.8rem); /* tamanio grande fluido */
+      color: var(--terracota-dark); /* color oscuro para los nombres */
+      line-height: 1.05;           /* altura de linea ajustada */
+      animation: fadeDown 1s cubic-bezier(0.16,1,0.3,1) 0.1s both; /* entra con 0.1s de retraso */
     }
 
-    /* =============================================
-       TEXTO: "13 · JUNIO · 2026"
-    ============================================= */
+    /* Texto: "13 · JUNIO · 2026" */
     .fecha {
-      font-size: clamp(0.60rem, 2.6vw, 0.76rem);
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: var(--terracota);
-      opacity: 0.80;
-      animation: fadeDown 1s cubic-bezier(0.16,1,0.3,1) 0.2s both;
+      font-size: clamp(0.60rem, 2.6vw, 0.76rem); /* tamanio pequeno */
+      letter-spacing: 4px;         /* espaciado entre letras */
+      text-transform: uppercase;   /* en mayusculas */
+      color: var(--terracota);     /* color terracota claro */
+      opacity: 0.80;               /* un poco mas transparente que el pretitulo */
+      animation: fadeDown 1s cubic-bezier(0.16,1,0.3,1) 0.2s both; /* entra con 0.2s de retraso */
     }
 
-    /* =============================================
-       BLOQUE SOBRE + LACRE
-       - margin-top : espacio entre la fecha y el sobre
-    ============================================= */
+    /* Bloque que agrupa la imagen del sobre y el lacre */
     .sobre-bloque {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: clamp(10px, 2.5vw, 20px);      /* ESPACIO FECHA -> SOBRE => ajustar aqui */
-      animation: fadeUp 1.1s cubic-bezier(0.16,1,0.3,1) 0.3s both;
+      display: flex;               /* flexbox para apilar sobre y lacre */
+      flex-direction: column;      /* apilados verticalmente */
+      align-items: center;         /* centrados horizontalmente */
+      margin-top: clamp(10px, 2.5vw, 20px); /* espacio entre la fecha y el sobre */
+      animation: fadeUp 1.1s cubic-bezier(0.16,1,0.3,1) 0.3s both; /* sube desde abajo */
     }
 
-    /* =============================================
-       IMAGEN DEL SOBRE (sobres.png)
-       - width : tamanio del sobre
-    ============================================= */
+    /* Imagen del sobre (sobres.png) */
     .sobre-img {
-      width: clamp(200px, 68vw, 340px);          /* TAMANIO SOBRE => ajustar aqui */
-      height: auto;
-      display: block;
-      pointer-events: none;
-      filter: drop-shadow(0 6px 20px rgba(92,53,40,0.22));
+      width: clamp(200px, 68vw, 340px); /* tamanio fluido del sobre */
+      height: auto;                /* alto proporcional al ancho */
+      display: block;              /* evita espacio extra debajo de la imagen */
+      pointer-events: none;        /* no clickeable, solo decorativo */
+      filter: drop-shadow(0 6px 20px rgba(92,53,40,0.22)); /* sombra cafe suave */
     }
 
-    /* =============================================
-       IMAGEN DEL LACRE / BOTON (boton.png)
-       - width      : tamanio del lacre
-       - margin-top : valor NEGATIVO lo sube encima del sobre
-                      mas negativo = mas pegado al sobre
-       - filter     : da el tono dorado al lacre
-           sepia(1)         => convierte a marron
-           saturate(2.2)    => intensifica color
-           hue-rotate(5deg) => pequeno ajuste de tono
-           brightness(1.45) => MAS CLARO (subir para mas claro, bajar para mas oscuro)
-    ============================================= */
+    /* Imagen del lacre / boton (boton.png) */
     .boton-img {
-      width: clamp(70px, 22vw, 110px);           /* TAMANIO LACRE => ajustar aqui */
-      height: auto;
-      display: block;
-      cursor: pointer;
-      margin-top: -32px;                         /* PEGADO AL SOBRE => mas negativo = mas arriba */
-      filter:
-        sepia(1)
-        saturate(2.2)
-        hue-rotate(5deg)
-        brightness(1.45)                         /* CLARIDAD DEL LACRE => subir/bajar este valor */
-        drop-shadow(0 4px 10px rgba(92,53,40,0.22));
-      transition: transform 0.22s cubic-bezier(0.16,1,0.3,1), filter 0.22s ease;
-      -webkit-tap-highlight-color: transparent;
+      width: clamp(70px, 22vw, 110px);  /* tamanio fluido del lacre */
+      height: auto;                     /* alto proporcional */
+      display: block;                   /* evita espacio extra */
+      cursor: pointer;                  /* cursor de mano al pasar encima */
+      margin-top: -32px;                /* valor NEGATIVO: sube el lacre encima del borde del sobre */
+      filter:                           /* filtros para dar color dorado al lacre */
+        sepia(1)                        /* convierte la imagen a tonos cafes */
+        saturate(2.2)                   /* aumenta la intensidad del color */
+        hue-rotate(5deg)                /* ajuste fino del tono de color */
+        brightness(1.45)                /* claridad: subir = mas claro, bajar = mas oscuro */
+        drop-shadow(0 4px 10px rgba(92,53,40,0.22)); /* sombra del lacre */
+      transition: transform 0.22s cubic-bezier(0.16,1,0.3,1), filter 0.22s ease; /* animacion suave al hover */
+      -webkit-tap-highlight-color: transparent; /* elimina el flash azul al tocar en movil */
     }
-    /* Estado hover del lacre (al pasar el mouse) */
+
+    /* Estado del lacre al pasar el mouse encima */
     .boton-img:hover {
       filter:
         sepia(1)
         saturate(2.2)
         hue-rotate(5deg)
-        brightness(1.65)
+        brightness(1.65)            /* mas brillo en hover */
         drop-shadow(0 8px 18px rgba(92,53,40,0.30));
-      transform: scale(1.07) translateY(-3px);
+      transform: scale(1.07) translateY(-3px); /* agranda y sube ligeramente */
     }
-    /* Estado al hacer click */
+
+    /* Estado del lacre al hacer click */
     .boton-img:active {
-      transform: scale(0.96);
+      transform: scale(0.96);       /* se encoge ligeramente al presionar */
     }
 
-    /* =============================================
-       ANIMACIONES DE ENTRADA
-       fadeDown : elementos caen desde arriba
-       fadeUp   : sobre sube desde abajo
-    ============================================= */
+    /* Animacion: entra desde arriba (texto) */
     @keyframes fadeDown {
-      from { opacity: 0; transform: translateY(-16px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(22px); }
-      to   { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; transform: translateY(-16px); } /* inicio: invisible y arriba */
+      to   { opacity: 1; transform: translateY(0); }     /* final: visible en posicion normal */
     }
 
-    /* Respeta la preferencia del usuario de sin animaciones */
+    /* Animacion: entra desde abajo (sobre) */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }  /* inicio: invisible y abajo */
+      to   { opacity: 1; transform: translateY(0); }     /* final: visible en posicion normal */
+    }
+
+    /* Si el usuario prefiere sin animaciones, las desactiva */
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;  /* animacion casi instantanea */
+        transition-duration: 0.01ms !important; /* transicion casi instantanea */
       }
     }
 
   </style>
 </head>
-<body>
 
-  <!-- FLOR ESQUINA IZQUIERDA (espejada de flor2.png) -->
+<body>
+  <!-- Cuerpo visible de la pagina -->
+
+  <!-- Flor decorativa esquina superior izquierda -->
   <img src="./assets/img/fondos/flor1.png" alt="" class="flor-izq" aria-hidden="true" />
 
-  <!-- FLOR ESQUINA DERECHA -->
+  <!-- Flor decorativa esquina superior derecha -->
   <img src="./assets/img/fondos/flor2.png" alt="" class="flor-der" aria-hidden="true" />
 
-  <!-- BLOQUE PRINCIPAL -->
+  <!-- Contenedor principal centrado en pantalla -->
   <div class="pagina">
 
-    <!-- Texto superior -->
+    <!-- Texto pequeno encima de los nombres -->
     <p class="pretitulo">Nuestra Boda</p>
-    <p class="nombres">Carlos &amp; Elida</p>
-    <p class="fecha">13 &middot; Junio &middot; 2026</p>
 
-    <!-- Sobre + Lacre -->
+    <!-- Nombres de los novios en cursiva -->
+    <p class="nombres">Carlos &amp; Elida</p>
+    <!-- &amp; es el simbolo & en HTML -->
+
+    <!-- Fecha de la boda -->
+    <p class="fecha">13 &middot; Junio &middot; 2026</p>
+    <!-- &middot; es el punto centrado · en HTML -->
+
+    <!-- Bloque con el sobre y el lacre -->
     <div class="sobre-bloque">
 
-      <!-- IMAGEN DEL SOBRE -->
+      <!-- Imagen del sobre (no clickeable) -->
       <img
-        src="./assets/img/sobre/sobres.png"
-        alt="Sobre de invitacion"
-        class="sobre-img"
-        width="340"
-        height="221"
-        loading="eager"
+        src="./assets/img/sobre/sobres.png"   <!-- ruta de la imagen del sobre -->
+        alt="Sobre de invitacion"             <!-- texto alternativo para accesibilidad -->
+        class="sobre-img"                     <!-- aplica los estilos de .sobre-img -->
+        width="340"                           <!-- ancho en pixeles (referencia para el navegador) -->
+        height="221"                          <!-- alto en pixeles (referencia para el navegador) -->
+        loading="eager"                       <!-- carga inmediata sin esperar scroll -->
       />
 
-      <!-- LACRE / BOTON => al hacer click va a la invitacion -->
+      <!-- Lacre / boton: al hacer click abre la invitacion -->
       <img
-        src="./assets/img/sobre/boton.png"
-        alt="Click para abrir la invitacion"
-        class="boton-img"
-        width="110"
-        height="110"
-        loading="eager"
-        onclick="window.location.href='./invitacion-boda.html'"  <!-- RUTA DE LA INVITACION -->
-        role="button"
-        tabindex="0"
-        onkeydown="if(event.key==='Enter'||event.key===' '){window.location.href='./invitacion-boda.html';}"
+        src="./assets/img/sobre/boton.png"    <!-- ruta de la imagen del lacre -->
+        alt="Click para abrir la invitacion" <!-- texto alternativo -->
+        class="boton-img"                     <!-- aplica los estilos de .boton-img -->
+        width="110"                           <!-- ancho de referencia -->
+        height="110"                          <!-- alto de referencia -->
+        loading="eager"                       <!-- carga inmediata -->
+        onclick="window.location.href='./invitacion-boda.html'" <!-- RUTA DE LA INVITACION: cambiar aqui -->
+        role="button"                         <!-- indica que es un boton (accesibilidad) -->
+        tabindex="0"                          <!-- permite navegar con teclado -->
+        onkeydown="if(event.key==='Enter'||event.key===' '){window.location.href='./invitacion-boda.html';}" <!-- activa con Enter o Espacio -->
       />
 
     </div>
+    <!-- fin .sobre-bloque -->
 
   </div>
+  <!-- fin .pagina -->
 
 </body>
 </html>
