@@ -51,9 +51,9 @@
     .flor-izq {
     /* Flor decorativa esquina superior IZQUIERDA */
       position: fixed;           /* fija en pantalla, no se mueve */
-      top: -130px;                /* sube 10px fuera del borde superior */
+      top: -180px;                /* sube 10px fuera del borde superior */
       left: -85px;               /* sale 14px por el borde izquierdo */
-      width: clamp(150px, 45vw, 250px); /* tamaño fluido: mín 110px, ideal 32vw, máx 160px */
+      width: clamp(180px, 55vw, 300px); /* tamaño fluido: mín 110px, ideal 32vw, máx 160px */
       height: auto;              /* alto proporcional al ancho */
       pointer-events: none;      /* el mouse la ignora, no bloquea clicks */
       z-index: 0;                /* capa 0: detrás del contenido principal */
@@ -63,8 +63,8 @@
     .flor-der {
     /* Flor decorativa esquina superior DERECHA */
       position: fixed;           /* fija en pantalla */
-      top: 750px;                /* sube 10px fuera del borde superior */
-      right: -105px;              /* sale 14px por el borde derecho */
+      top: 800px;                /* sube 10px fuera del borde superior */
+      right: -40px;              /* sale 14px por el borde derecho */
       width: clamp(150px, 45vw, 250px); /* tamaño fluido igual que flor izquierda */
       height: auto;              /* alto proporcional */
       pointer-events: none;      /* no bloquea clicks */
@@ -193,10 +193,10 @@
 <body>
 <!-- Cuerpo visible de la página -->
 
-  <img src="./assets/img/fondos/flor1.png" alt="" class="flor-izq" aria-hidden="true" />
+  <img src="./assets/img/sobre/flor1.png" alt="" class="flor-izq" aria-hidden="true" />
   <!-- Flor esquina superior izquierda (espejada con scaleX(-1)) -->
 
-  <img src="./assets/img/fondos/flor2.png" alt="" class="flor-der" aria-hidden="true" />
+  <img src="./assets/img/sobre/flor2.png" alt="" class="flor-der" aria-hidden="true" />
   <!-- Flor esquina superior derecha -->
 
   <div class="pagina">
