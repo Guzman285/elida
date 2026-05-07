@@ -14,14 +14,14 @@
       --terracota: #b86b52;
       --terracota-dark: #5c3528;
       --crema: #fdf8f4;
-      --oro: #c9a84c;
     }
 
     html, body {
-      min-height: 100%;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
       font-family: 'Cormorant Garamond', Georgia, serif;
       background-color: var(--crema);
-      overflow-x: hidden;
     }
 
     /* ── FLORES ESQUINAS ── */
@@ -29,7 +29,7 @@
       position: fixed;
       top: -10px;
       left: -18px;
-      width: clamp(160px, 48vw, 240px);
+      width: clamp(140px, 42vw, 220px);
       height: auto;
       pointer-events: none;
       z-index: 0;
@@ -39,53 +39,50 @@
       position: fixed;
       top: -10px;
       right: -18px;
-      width: clamp(160px, 48vw, 240px);
+      width: clamp(140px, 42vw, 220px);
       height: auto;
       pointer-events: none;
       z-index: 0;
     }
 
-    /* ── CONTENIDO PRINCIPAL ── */
+    /* ── CONTENIDO: ocupa exactamente la pantalla ── */
     .pagina {
-      position: relative;
+      position: fixed;
+      inset: 0;
       z-index: 1;
-      min-height: 100dvh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: clamp(100px, 22vw, 140px) 24px clamp(48px, 10vw, 80px);
       text-align: center;
-      gap: 0;
+      padding: clamp(90px, 20vw, 130px) 24px clamp(24px, 6vw, 48px);
+      gap: clamp(4px, 1.5vw, 10px);
     }
 
     /* ── TEXTOS ── */
     .pretitulo {
-      font-size: clamp(0.68rem, 3vw, 0.78rem);
+      font-size: clamp(0.62rem, 2.8vw, 0.76rem);
       letter-spacing: 5px;
       text-transform: uppercase;
       color: var(--terracota);
       opacity: 0.85;
-      margin-bottom: 10px;
       animation: fadeDown 1s cubic-bezier(0.16,1,0.3,1) both;
     }
 
     .nombres {
       font-family: 'Great Vibes', cursive;
-      font-size: clamp(3rem, 14vw, 4.8rem);
+      font-size: clamp(2.4rem, 11vw, 4.2rem);
       color: var(--terracota-dark);
       line-height: 1.05;
       animation: fadeDown 1s cubic-bezier(0.16,1,0.3,1) 0.1s both;
     }
 
     .fecha {
-      font-size: clamp(0.72rem, 3.2vw, 0.85rem);
+      font-size: clamp(0.62rem, 2.8vw, 0.78rem);
       letter-spacing: 4px;
       text-transform: uppercase;
       color: var(--terracota);
       opacity: 0.75;
-      margin-top: 10px;
-      margin-bottom: clamp(28px, 7vw, 44px);
       animation: fadeDown 1s cubic-bezier(0.16,1,0.3,1) 0.2s both;
     }
 
@@ -99,33 +96,26 @@
     }
 
     .sobre-img {
-      width: clamp(260px, 82vw, 400px);
+      width: clamp(220px, 72vw, 360px);
       height: auto;
       display: block;
       pointer-events: none;
-      filter: drop-shadow(0 8px 28px rgba(92,53,40,0.18));
-    }
-
-    .boton-wrap {
-      margin-top: -10px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0;
+      filter: drop-shadow(0 8px 24px rgba(92,53,40,0.18));
     }
 
     .boton-img {
-      width: clamp(200px, 65vw, 300px);
+      width: clamp(170px, 58vw, 270px);
       height: auto;
       display: block;
       cursor: pointer;
+      margin-top: -8px;
       transition: transform 0.22s cubic-bezier(0.16,1,0.3,1), filter 0.22s ease;
       -webkit-tap-highlight-color: transparent;
-      filter: drop-shadow(0 4px 12px rgba(92,53,40,0.15));
+      filter: drop-shadow(0 4px 10px rgba(92,53,40,0.14));
     }
     .boton-img:hover {
-      transform: scale(1.04) translateY(-2px);
-      filter: drop-shadow(0 8px 20px rgba(92,53,40,0.22));
+      transform: scale(1.05) translateY(-2px);
+      filter: drop-shadow(0 8px 18px rgba(92,53,40,0.22));
     }
     .boton-img:active {
       transform: scale(0.97);
@@ -133,11 +123,11 @@
 
     /* ── KEYFRAMES ── */
     @keyframes fadeDown {
-      from { opacity: 0; transform: translateY(-18px); }
+      from { opacity: 0; transform: translateY(-16px); }
       to   { opacity: 1; transform: translateY(0); }
     }
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
+      from { opacity: 0; transform: translateY(22px); }
       to   { opacity: 1; transform: translateY(0); }
     }
 
@@ -167,33 +157,25 @@
         src="./assets/img/sobre/sobres.png"
         alt="Sobre de invitación"
         class="sobre-img"
-        width="400"
-        height="260"
+        width="360"
+        height="234"
         loading="eager"
       />
-      <div class="boton-wrap">
-        <img
-          src="./assets/img/sobre/boton.png"
-          alt="Click para abrir la invitación"
-          class="boton-img"
-          width="300"
-          height="80"
-          loading="eager"
-          onclick="irAInvitacion()"
-          role="button"
-          tabindex="0"
-          onkeydown="if(event.key==='Enter'||event.key===' '){irAInvitacion();}"
-        />
-      </div>
+      <img
+        src="./assets/img/sobre/boton.png"
+        alt="Click para abrir la invitación"
+        class="boton-img"
+        width="270"
+        height="72"
+        loading="eager"
+        onclick="window.location.href='./invitacion-boda.html'"
+        role="button"
+        tabindex="0"
+        onkeydown="if(event.key==='Enter'||event.key===' '){window.location.href='./invitacion-boda.html';}"
+      />
     </div>
 
   </div>
-
-  <script>
-    function irAInvitacion() {
-      window.location.href = './invitacion-boda.html';
-    }
-  </script>
 
 </body>
 </html>
