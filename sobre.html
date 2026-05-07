@@ -13,7 +13,6 @@
     :root {
       --terracota: #b86b52;
       --terracota-dark: #5c3528;
-      --crema: #fdf8f4;
     }
 
     html, body {
@@ -21,7 +20,11 @@
       height: 100%;
       overflow: hidden;
       font-family: 'Cormorant Garamond', Georgia, serif;
-      background-color: var(--crema);
+      background-color: #f5ece3;
+      background-image: url('./assets/img/fondos/fondo1.jpg');
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
     }
 
     .flor-izq {
@@ -62,7 +65,7 @@
       letter-spacing: 5px;
       text-transform: uppercase;
       color: var(--terracota);
-      opacity: 0.85;
+      opacity: 0.90;
       animation: fadeDown 1s cubic-bezier(0.16,1,0.3,1) both;
     }
 
@@ -79,7 +82,7 @@
       letter-spacing: 4px;
       text-transform: uppercase;
       color: var(--terracota);
-      opacity: 0.75;
+      opacity: 0.80;
       animation: fadeDown 1s cubic-bezier(0.16,1,0.3,1) 0.2s both;
     }
 
@@ -96,7 +99,7 @@
       height: auto;
       display: block;
       pointer-events: none;
-      filter: drop-shadow(0 6px 20px rgba(92,53,40,0.18));
+      filter: drop-shadow(0 6px 20px rgba(92,53,40,0.22));
     }
 
     .boton-img {
@@ -105,13 +108,12 @@
       display: block;
       cursor: pointer;
       margin-top: -22px;
-      /* Tono dorado claro — más claro que el sobre terracota */
       filter:
         sepia(1)
         saturate(2.2)
         hue-rotate(5deg)
         brightness(1.45)
-        drop-shadow(0 4px 10px rgba(92,53,40,0.20));
+        drop-shadow(0 4px 10px rgba(92,53,40,0.22));
       transition: transform 0.22s cubic-bezier(0.16,1,0.3,1), filter 0.22s ease;
       -webkit-tap-highlight-color: transparent;
     }
@@ -121,7 +123,7 @@
         saturate(2.2)
         hue-rotate(5deg)
         brightness(1.65)
-        drop-shadow(0 8px 18px rgba(92,53,40,0.28));
+        drop-shadow(0 8px 18px rgba(92,53,40,0.30));
       transform: scale(1.07) translateY(-3px);
     }
     .boton-img:active {
