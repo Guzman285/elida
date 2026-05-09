@@ -128,6 +128,16 @@ body {
 .foto-degradado-bottom { position: absolute; bottom: 0; left: 0; width: 100%; height: 100px; background: linear-gradient(to top, rgba(250,249,247,0.7) 0%, transparent 100%); pointer-events: none; z-index: 2; }
 .foto-novios-section-2 { margin-top: 10px; }
 
+/* ─── FOTO 4 (después del itinerario): degradados más suaves ─── */
+.foto-novios-section-post-itinerario .foto-degradado-top {
+  height: 60px;
+  background: linear-gradient(to bottom, rgba(250,249,247,0.55) 0%, transparent 100%);
+}
+.foto-novios-section-post-itinerario .foto-degradado-bottom {
+  height: 60px;
+  background: linear-gradient(to top, rgba(250,249,247,0.55) 0%, transparent 100%);
+}
+
 /* ─── DECORACIÓN FLORES GENÉRICA ─── */
 .deco-flor {
   position: absolute;
@@ -771,7 +781,6 @@ body {
    NOMBRES CARLOS & ELIDA — SCROLL REVEAL
    ═════════════════════════════════════════════ */
 
-/* Keyframes exclusivos para esta sección */
 @keyframes nombreCaeDesdArriba {
   from {
     opacity: 0;
@@ -834,12 +843,10 @@ body {
   100% { text-shadow: 1px 2px 12px rgba(92,53,40,0.10); }
 }
 
-/* ── Estado inicial (invisible hasta que entra en viewport) ── */
 .nombres-anim-wrap {
   /* contenedor que agrupa .padres-frase-wrap + .hero-nombres */
 }
 
-/* Ornamentos de frase */
 .padres-frase-wrap .frase-ornamento {
   opacity: 0;
   transform-origin: center;
@@ -849,7 +856,6 @@ body {
   transition: none;
 }
 
-/* Frase de invitación */
 .padres-frase-invitacion {
   opacity: 0;
   filter: blur(8px);
@@ -857,7 +863,6 @@ body {
   transition: none;
 }
 
-/* Deco top del bloque nombres */
 .nombres-deco-top {
   opacity: 0;
   transform: scaleX(0);
@@ -865,7 +870,6 @@ body {
   transition: none;
 }
 
-/* Carlos */
 .nombre-carlos {
   opacity: 0;
   filter: blur(6px);
@@ -873,7 +877,6 @@ body {
   transition: none;
 }
 
-/* & */
 .nombre-y-wrap {
   opacity: 0;
   transform: rotate(-12deg) scale(0.6);
@@ -881,7 +884,6 @@ body {
   transition: none;
 }
 
-/* Elida */
 .nombre-elida {
   opacity: 0;
   filter: blur(6px);
@@ -889,15 +891,12 @@ body {
   transition: none;
 }
 
-/* Deco bottom */
 .nombres-deco-bottom {
   opacity: 0;
   transform: scaleY(0);
   transform-origin: center;
   transition: none;
 }
-
-/* ── Clase .nombres-visible activa todas las animaciones ── */
 
 .padres-frase-wrap.nombres-visible .frase-ornamento:nth-child(1) {
   animation: ornamentoCrece 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.05s forwards;
@@ -932,7 +931,6 @@ body {
   animation: ornamentoCrece 0.6s cubic-bezier(0.16, 1, 0.3, 1) 1.0s forwards;
 }
 
-/* Shimmer de brillo en los nombres después de aparecer */
 .hero-nombres.nombres-visible .nombre-carlos {
   animation:
     nombreCaeDesdArriba 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.42s forwards,
