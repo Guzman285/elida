@@ -128,11 +128,16 @@ body {
 .foto-degradado-bottom { position: absolute; bottom: 0; left: 0; width: 100%; height: 100px; background: linear-gradient(to top, rgba(250,249,247,0.7) 0%, transparent 100%); pointer-events: none; z-index: 2; }
 .foto-novios-section-2 { margin-top: 10px; }
 
-/* ─── FOTO 4 (después del itinerario): mismo degradado simple que foto8 + recorte por abajo ─── */
+/* ─── FOTO 4 (después del itinerario): degradado simple igual a foto8 + recorte por abajo ─── */
 .foto-novios-section-post-itinerario { margin-top: 0; }
+.foto-novios-section-post-itinerario .foto-novios-wrap {
+  max-height: 260px;
+}
 .foto-novios-section-post-itinerario .foto-novios-img {
+  object-fit: cover;
   object-position: top center;
-  max-height: 320px;
+  width: 100%;
+  height: 260px;
 }
 .foto-novios-section-post-itinerario .foto-degradado-top {
   height: 100px;
