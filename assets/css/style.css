@@ -131,19 +131,23 @@ body {
 /* ─── FOTO 4 (después del itinerario): degradados suaves y naturales ─── */
 .foto-novios-section-post-itinerario { margin-top: 0; }
 .foto-novios-section-post-itinerario .foto-degradado-top {
-  height: 130px;
+  height: 200px;
   background: linear-gradient(to bottom,
-    rgba(250,249,247,1) 0%,
-    rgba(250,249,247,0.55) 40%,
-    transparent 100%
+    rgba(250,249,247,1)   0%,
+    rgba(250,249,247,0.85) 25%,
+    rgba(250,249,247,0.5)  55%,
+    rgba(250,249,247,0.15) 80%,
+    transparent            100%
   );
 }
 .foto-novios-section-post-itinerario .foto-degradado-bottom {
-  height: 130px;
+  height: 200px;
   background: linear-gradient(to top,
-    rgba(250,249,247,1) 0%,
-    rgba(250,249,247,0.55) 40%,
-    transparent 100%
+    rgba(250,249,247,1)   0%,
+    rgba(250,249,247,0.85) 25%,
+    rgba(250,249,247,0.5)  55%,
+    rgba(250,249,247,0.15) 80%,
+    transparent            100%
   );
 }
 
