@@ -318,17 +318,29 @@ body {
 .tl-contenido { gap: 4px; }
 .tl-icono { margin-bottom: 4px; }
 
-/* ─── ICONOS ITINERARIO: tamaño cuadrado uniforme ─── */
+/* ─── ICONOS ITINERARIO ─── */
 .tl-icono-img {
   width: 160px;
   height: 160px;
   object-fit: contain;
   display: block;
+  /* Animación de entrada (estado inicial invisible) */
+  transform: scale(0.7);
+  opacity: 0;
+  transition:
+    transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1),
+    opacity 0.55s ease;
 }
 .tl-izq .tl-icono-img { margin-left: auto; }
 .tl-der .tl-icono-img { margin-right: auto; }
 
-/* ─── ÍCONO CANDY: zoom para compensar espacio transparente sin romper animaciones ─── */
+/* Estado visible — el observer agrega .tl-visible al .tl-item padre */
+.tl-item.tl-visible .tl-icono-img {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* ─── ÍCONO CANDY: zoom para compensar espacio transparente ─── */
 .tl-icono-img--candy {
   zoom: 1.6;
 }
@@ -361,17 +373,7 @@ body {
   60%  { transform: scale(1.25); }
   100% { transform: scale(1); }
 }
-.tl-icono-img {
-  transform: scale(0.7);
-  opacity: 0;
-  transition:
-    transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1),
-    opacity 0.55s ease;
-}
-.tl-item.tl-visible .tl-icono-img {
-  transform: scale(1);
-  opacity: 1;
-}
+
 .tl-hora, .tl-nombre {
   opacity: 0;
   transform: translateY(8px);
