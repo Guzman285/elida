@@ -260,7 +260,12 @@ body {
 .evento-nav-btn-unico:hover { background: var(--terracota); color: #fff; }
 .evento-nav-btn-unico:active { transform: scale(0.97); }
 
-/* ─── ITINERARIO ─── */
+/* ══════════════════════════════════════════════════════
+   ITINERARIO — TIMELINE VERTICAL ALTERNADO
+   Estructura de cada item:
+     .tl-izq → [contenido(col): icono arriba + hora+nombre abajo] [punto]
+     .tl-der → [punto] [contenido(col): icono arriba + hora+nombre abajo]
+   ══════════════════════════════════════════════════════ */
 .itinerario-section {
   position: relative;
   overflow: hidden;
@@ -279,6 +284,7 @@ body {
 .itinerario-h2 { font-family: "Great Vibes", cursive; font-size: clamp(3rem, 14vw, 4.5rem); font-weight: 400; color: var(--texto); line-height: 1.05; }
 .itinerario-sub { font-family: "Great Vibes", cursive; font-size: clamp(2rem, 9vw, 7rem); font-weight: 400; color: var(--texto); line-height: 1.1; margin-top: -4px; }
 
+/* ── Línea central vertical ── */
 .timeline {
   position: relative;
   width: 100%;
@@ -298,30 +304,90 @@ body {
   opacity: 0.5;
   z-index: 0;
 }
+
+/* ── Item base ── */
 .tl-item {
   display: flex;
-  align-items: center;
+  align-items: center;        /* punto centrado verticalmente con el bloque */
   width: 100%;
   position: relative;
   z-index: 1;
-  margin-top: -40px;
+  /* Sin traslape: cada ítem fluye naturalmente */
+  margin-top: 0;
+  padding: 24px 0;
 }
-.tl-item:first-child { margin-top: 0; }
-.tl-izq { flex-direction: row; }
-.tl-izq .tl-contenido { flex: 1; display: flex; flex-direction: column; align-items: flex-end; text-align: right; padding-right: 14px; }
-.tl-izq .tl-punto { flex-shrink: 0; }
-.tl-izq::after { content: ""; flex: 1; }
-.tl-der { flex-direction: row; }
-.tl-der::before { content: ""; flex: 1; }
-.tl-der .tl-punto { flex-shrink: 0; }
-.tl-der .tl-contenido { flex: 1; display: flex; flex-direction: column; align-items: flex-start; text-align: left; padding-left: 14px; }
-.tl-contenido { gap: 4px; }
-.tl-icono { margin-bottom: 4px; }
+.tl-item:first-child { padding-top: 0; }
+.tl-item:last-child  { padding-bottom: 0; }
 
-/* ─── ICONOS ITINERARIO ─── */
+/* ── Contenido: columna — icono arriba, texto abajo ── */
+.tl-contenido {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;        /* centrado dentro de su mitad */
+  gap: 8px;
+}
+
+/* ── Item IZQUIERDA: contenido | punto ── */
+.tl-izq {
+  flex-direction: row;
+}
+.tl-izq .tl-contenido {
+  align-items: flex-end;      /* empuja icono+texto hacia la línea */
+  text-align: right;
+  padding-right: 14px;
+}
+.tl-izq .tl-punto {
+  flex-shrink: 0;
+}
+/* Espejo derecho vacío para equilibrar */
+.tl-izq::after {
+  content: "";
+  flex: 1;
+}
+
+/* ── Item DERECHA: punto | contenido ── */
+.tl-der {
+  flex-direction: row;
+}
+/* Espejo izquierdo vacío */
+.tl-der::before {
+  content: "";
+  flex: 1;
+}
+.tl-der .tl-punto {
+  flex-shrink: 0;
+}
+.tl-der .tl-contenido {
+  align-items: flex-start;    /* empuja icono+texto alejándose de la línea */
+  text-align: left;
+  padding-left: 14px;
+}
+
+/* ── Punto / corazón central ── */
+.tl-punto {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--crema);
+  border: 1.5px solid var(--terracota);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--terracota);
+  flex-shrink: 0;
+  z-index: 2;
+  /* Centra el punto respecto al centro del bloque (icono + hora + nombre) */
+  align-self: center;
+}
+
+/* ── Iconos ── */
+.tl-icono {
+  margin-bottom: 0;
+}
 .tl-icono-img {
-  width: 160px;
-  height: 160px;
+  width: 150px;
+  height: 150px;
   object-fit: contain;
   display: block;
   /* Animación de entrada (estado inicial invisible) */
@@ -331,25 +397,39 @@ body {
     transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1),
     opacity 0.55s ease;
 }
-.tl-izq .tl-icono-img { margin-left: auto; }
-.tl-der .tl-icono-img { margin-right: auto; }
+.tl-izq .tl-icono-img { margin-left: auto; margin-right: 0; }
+.tl-der .tl-icono-img { margin-right: auto; margin-left: 0; }
 
-/* Estado visible — el observer agrega .tl-visible al .tl-item padre */
+/* Estado visible */
 .tl-item.tl-visible .tl-icono-img {
   transform: scale(1);
   opacity: 1;
 }
 
-/* ─── ÍCONO CANDY: zoom para compensar espacio transparente ─── */
+/* Candy: zoom para compensar espacio transparente */
 .tl-icono-img--candy {
   zoom: 1.6;
 }
 
-.tl-hora { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(1rem, 4.2vw, 1.2rem); letter-spacing: 1px; color: var(--terracota); font-weight: 700; }
-.tl-nombre { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(1.05rem, 4.5vw, 1.25rem); color: var(--texto); line-height: 1.35; font-weight: 600; }
-.tl-punto { width: 28px; height: 28px; border-radius: 50%; background: var(--crema); border: 1.5px solid var(--terracota); display: flex; align-items: center; justify-content: center; color: var(--terracota); flex-shrink: 0; z-index: 2; }
+/* ── Hora y nombre ── */
+.tl-hora {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1rem, 4.2vw, 1.2rem);
+  letter-spacing: 1px;
+  color: var(--terracota);
+  font-weight: 700;
+}
+.tl-nombre {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.05rem, 4.5vw, 1.25rem);
+  color: var(--texto);
+  line-height: 1.35;
+  font-weight: 600;
+}
 
-/* ─── TIMELINE SCROLL ANIMATION ─── */
+/* ══════════════════════════════════════════════════════
+   TIMELINE — ANIMACIONES DE SCROLL
+   ══════════════════════════════════════════════════════ */
 .tl-item {
   opacity: 0;
   transition:
@@ -362,6 +442,7 @@ body {
   opacity: 1;
   transform: translateX(0) !important;
 }
+
 .tl-punto {
   transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.3s ease;
 }
