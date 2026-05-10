@@ -35,7 +35,7 @@
   width: 100%;
   position: relative;
   z-index: 2;
-  margin-top: -65px;   /* más solapamiento = más compacto */
+  margin-top: -75px;
 }
 .tl-item:first-child { margin-top: 0; }
 
