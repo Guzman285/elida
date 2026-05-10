@@ -13,10 +13,10 @@
   flex-direction: column;
   gap: 0;
   position: relative;
-  padding: 8px 0 16px;
+  padding: 4px 0 8px;
 }
 
-/* Línea vertical central — z-index 1 para que quede visible */
+/* Línea vertical central */
 .timeline::before {
   content: "";
   position: absolute;
@@ -27,7 +27,7 @@
   width: 1.5px;
   background: var(--terracota);
   opacity: 0.45;
-  z-index: 1;   /* por encima del fondo, debajo del corazón */
+  z-index: 1;
 }
 
 /* ── Fila base ── */
@@ -36,24 +36,23 @@
   grid-template-columns: 1fr 36px 1fr;
   align-items: center;
   width: 100%;
-  min-height: 140px;
+  min-height: 0;          /* sin altura mínima fija */
   position: relative;
-  z-index: 2;   /* encima de la línea */
-  margin-top: -10px;
+  z-index: 2;
+  margin-top: -38px;      /* solapamiento agresivo para compactar */
 }
 .tl-item:first-child { margin-top: 0; }
 
-/* ── Los lados izq/der NO deben bloquear la línea ── */
+/* ── Lados ── */
 .tl-lado-izq,
 .tl-lado-der {
   display: flex;
   align-items: center;
-  /* Sin background para no tapar la línea */
 }
 .tl-lado-izq { justify-content: flex-end; }
 .tl-lado-der { justify-content: flex-start; }
 
-/* ── Punto central (corazón) — encima de la línea ── */
+/* ── Punto central (corazón) ── */
 .tl-punto {
   width: 30px;
   height: 30px;
@@ -65,21 +64,21 @@
   justify-content: center;
   color: var(--terracota);
   flex-shrink: 0;
-  z-index: 3;   /* siempre encima de la línea */
+  z-index: 3;
   justify-self: center;
   align-self: center;
   position: relative;
 }
 
 /* ══════════════════════════════════════════════════
-   BLOQUE: ícono arriba + texto abajo (juntos)
+   BLOQUE: ícono arriba + hora + nombre
    ══════════════════════════════════════════════════ */
 .tl-bloque {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 5px;
-  padding: 10px 6px;
+  gap: 4px;
+  padding: 6px 4px;       /* padding mínimo */
 }
 
 /* Imagen del ícono — 110x118px */
@@ -118,10 +117,10 @@
    ══════════════════════════════════════════════════ */
 .tl-item {
   opacity: 0;
-  transform: translateY(22px);
+  transform: translateY(18px);
   transition:
-    opacity  0.65s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity  0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .tl-item.tl-visible {
   opacity: 1;
@@ -129,7 +128,7 @@
 }
 
 .tl-item.tl-visible .tl-punto {
-  animation: pulsoPunto 0.5s 0.2s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  animation: pulsoPunto 0.45s 0.15s cubic-bezier(0.34, 1.56, 0.64, 1) both;
 }
 @keyframes pulsoPunto {
   from { transform: scale(0.4); opacity: 0; }
@@ -137,11 +136,11 @@
 }
 
 .tl-icono-img {
-  transform: scale(0.75);
+  transform: scale(0.8);
   opacity: 0;
   transition:
-    transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1),
-    opacity   0.45s ease;
+    transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
+    opacity   0.4s ease;
 }
 .tl-item.tl-visible .tl-icono-img {
   transform: scale(1);
@@ -151,11 +150,11 @@
 .tl-hora,
 .tl-nombre {
   opacity: 0;
-  transform: translateY(6px);
-  transition: opacity 0.45s ease, transform 0.45s ease;
+  transform: translateY(5px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
 }
-.tl-item.tl-visible .tl-hora   { opacity: 1; transform: translateY(0); transition-delay: 0.15s; }
-.tl-item.tl-visible .tl-nombre { opacity: 1; transform: translateY(0); transition-delay: 0.25s; }
+.tl-item.tl-visible .tl-hora   { opacity: 1; transform: translateY(0); transition-delay: 0.12s; }
+.tl-item.tl-visible .tl-nombre { opacity: 1; transform: translateY(0); transition-delay: 0.22s; }
 
 @media (prefers-reduced-motion: reduce) {
   .tl-item, .tl-icono-img, .tl-hora, .tl-nombre {
