@@ -328,6 +328,14 @@ body {
 .tl-izq .tl-icono-img { margin-left: auto; }
 .tl-der .tl-icono-img { margin-right: auto; }
 
+/* ─── ÍCONO CANDY: escala extra para compensar su menor tamaño visual ─── */
+.tl-icono-img--candy {
+  transform: scale(1.5) !important;
+}
+.tl-item.tl-visible .tl-icono-img--candy {
+  transform: scale(1.5) !important;
+}
+
 .tl-hora { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(1rem, 4.2vw, 1.2rem); letter-spacing: 1px; color: var(--terracota); font-weight: 700; }
 .tl-nombre { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(1.05rem, 4.5vw, 1.25rem); color: var(--texto); line-height: 1.35; font-weight: 600; }
 .tl-punto { width: 28px; height: 28px; border-radius: 50%; background: var(--crema); border: 1.5px solid var(--terracota); display: flex; align-items: center; justify-content: center; color: var(--terracota); flex-shrink: 0; z-index: 2; }
