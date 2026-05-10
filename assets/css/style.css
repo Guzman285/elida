@@ -328,12 +328,9 @@ body {
 .tl-izq .tl-icono-img { margin-left: auto; }
 .tl-der .tl-icono-img { margin-right: auto; }
 
-/* ─── ÍCONO CANDY: escala extra para compensar su menor tamaño visual ─── */
+/* ─── ÍCONO CANDY: zoom para compensar espacio transparente sin romper animaciones ─── */
 .tl-icono-img--candy {
-  transform: scale(1.5) !important;
-}
-.tl-item.tl-visible .tl-icono-img--candy {
-  transform: scale(1.5) !important;
+  zoom: 1.6;
 }
 
 .tl-hora { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(1rem, 4.2vw, 1.2rem); letter-spacing: 1px; color: var(--terracota); font-weight: 700; }
