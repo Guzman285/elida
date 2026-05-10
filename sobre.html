@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet" />
     <title>Boda Carlos &amp; Elida</title>
 
     <style>
       *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
       :root {
-        --terracota: #b86b52;
-        --terracota-dark: #5c3528;
+        --terracota: #9e4e35;
+        --terracota-dark: #4a2218;
         --sobre-w: clamp(180px, 62vw, 340px);
       }
 
@@ -33,9 +33,10 @@
         background-attachment: fixed;
       }
 
+      /* ---- Flores ---- */
       .flor-izq {
         position: fixed;
-        top: clamp(-120px, -15vw, -60px);
+        top: clamp(-180px, -28vw, -100px);   /* más arriba que antes */
         left: clamp(-70px, -10vw, -40px);
         width: clamp(130px, 42vw, 300px);
         height: auto;
@@ -54,6 +55,7 @@
         z-index: 0;
       }
 
+      /* ---- Contenedor principal ---- */
       .pagina {
         position: relative;
         z-index: 1;
@@ -69,10 +71,11 @@
 
       .pretitulo {
         font-size: clamp(0.9rem, 3.8vw, 1.74rem);
+        font-weight: 600;
         letter-spacing: 5px;
         text-transform: uppercase;
         color: var(--terracota);
-        opacity: 0.9;
+        opacity: 1;
         animation: fadeDown 1s cubic-bezier(0.16, 1, 0.3, 1) both;
       }
 
@@ -86,10 +89,11 @@
 
       .fecha {
         font-size: clamp(0.9rem, 3.8vw, 1.76rem);
+        font-weight: 600;
         letter-spacing: 4px;
         text-transform: uppercase;
         color: var(--terracota);
-        opacity: 0.8;
+        opacity: 1;
         animation: fadeDown 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
       }
 
@@ -106,37 +110,27 @@
         height: auto;
         display: block;
         filter: drop-shadow(0 6px 20px rgba(92, 53, 40, 0.22));
-        pointer-events: none; /* la imagen en sí no es clicable */
+        pointer-events: none;
       }
 
       /* ---- Área clicable: botón dorado central ---- */
-      /* Centrado horizontal: left 50% - ancho/2                       */
-      /* Vertical: aproximadamente 38%-62% de la altura del sobre      */
-      /* Ajusta top/left/width/height si el botón dorado no coincide   */
       .boton-area {
         position: absolute;
         top: 35%;
         left: 50%;
         transform: translateX(-50%);
-        width: 28%;       /* ancho del botón dorado relativo al sobre  */
-        aspect-ratio: 1; /* zona cuadrada/circular                    */
+        width: 28%;
+        aspect-ratio: 1;
         border-radius: 50%;
         cursor: pointer;
         z-index: 2;
         -webkit-tap-highlight-color: transparent;
-        /* Descomenta la línea siguiente para ver el área mientras ajustas: */
-        /* background: rgba(255,0,0,0.3); */
+        /* background: rgba(255,0,0,0.3); */ /* descomenta para depurar */
         transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
       }
 
-      .boton-area:hover {
-        transform: translateX(-50%) scale(1.08);
-      }
-
-      .boton-area:active {
-        transform: translateX(-50%) scale(0.95);
-      }
-
+      .boton-area:hover  { transform: translateX(-50%) scale(1.08); }
+      .boton-area:active { transform: translateX(-50%) scale(0.95); }
       .boton-area:focus-visible {
         outline: 2px solid var(--terracota);
         outline-offset: 4px;
@@ -154,18 +148,20 @@
 
       .click-texto {
         font-size: clamp(0.72rem, 2.8vw, 1rem);
+        font-weight: 600;
         letter-spacing: 4px;
         text-transform: uppercase;
         color: var(--terracota);
-        opacity: 0.75;
+        opacity: 1;
       }
 
       .reservado-titulo {
         font-size: clamp(0.9rem, 3.5vw, 1.35rem);
+        font-weight: 600;
         letter-spacing: 4px;
         text-transform: uppercase;
         color: var(--terracota-dark);
-        opacity: 0.85;
+        opacity: 1;
         margin-top: 2px;
       }
 
@@ -181,15 +177,16 @@
         font-size: clamp(1.4rem, 6vw, 2.4rem);
         font-weight: 400;
         color: var(--terracota-dark);
-        opacity: 0.85;
+        opacity: 1;
       }
 
       .reservado-subtitulo {
         font-size: clamp(0.9rem, 3.5vw, 1.35rem);
+        font-weight: 600;
         letter-spacing: 4px;
         text-transform: uppercase;
         color: var(--terracota-dark);
-        opacity: 0.85;
+        opacity: 1;
       }
 
       @keyframes fadeDown {
@@ -211,7 +208,7 @@
 
       @media (max-height: 700px) {
         .pagina { padding-top: clamp(60px, 12vw, 90px); gap: 2px; }
-        .sobre-wrapper  { margin-top: 6px; }
+        .sobre-wrapper    { margin-top: 6px; }
         .reservado-bloque { margin-top: 8px; gap: 4px; }
       }
     </style>
@@ -228,7 +225,6 @@
       <p class="nombres">Carlos &amp; Elida</p>
       <p class="fecha">13 &middot; Junio &middot; 2026</p>
 
-      <!-- Sobre con área clicable solo en el botón dorado central -->
       <div class="sobre-wrapper">
         <img
           src="./assets/img/sobre/sobre2.png"
@@ -238,7 +234,6 @@
           height="221"
           loading="eager"
         />
-        <!-- Área invisible clicable sobre el botón dorado -->
         <a
           href="./invitacion-boda.html"
           class="boton-area"
