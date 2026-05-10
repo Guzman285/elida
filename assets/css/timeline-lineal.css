@@ -13,20 +13,6 @@
   padding: 4px 0 8px;
 }
 
-/* Línea vertical central */
-.timeline::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 0;
-  bottom: 0;
-  width: 1.5px;
-  background: var(--terracota);
-  opacity: 0.45;
-  z-index: 1;
-}
-
 /* Fila base */
 .tl-item {
   display: grid;
@@ -47,7 +33,11 @@
 .tl-lado-izq { justify-content: flex-end; }
 .tl-lado-der { justify-content: flex-start; }
 
-/* Punto central (corazón) */
+/* ===================================================
+   PUNTO (corazón) + líneas que salen de él
+   ::before = línea hacia arriba
+   ::after  = línea hacia abajo
+   =================================================== */
 .tl-punto {
   width: 30px;
   height: 30px;
@@ -64,6 +54,39 @@
   align-self: center;
   position: relative;
 }
+
+/* Línea hacia ARRIBA desde el corazón */
+.tl-punto::before {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1.5px;
+  height: 200px;           /* suficientemente larga para cubrir el gap */
+  background: var(--terracota);
+  opacity: 0.4;
+  z-index: -1;
+}
+
+/* Línea hacia ABAJO desde el corazón */
+.tl-punto::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1.5px;
+  height: 200px;
+  background: var(--terracota);
+  opacity: 0.4;
+  z-index: -1;
+}
+
+/* Ocultar línea hacia arriba en el primero */
+.tl-item:first-child .tl-punto::before { display: none; }
+/* Ocultar línea hacia abajo en el último */
+.tl-item:last-child .tl-punto::after  { display: none; }
 
 /* BLOQUE: ícono + hora + nombre */
 .tl-bloque {
