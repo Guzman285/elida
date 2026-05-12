@@ -3,6 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Open Graph / WhatsApp Preview -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://bodacarlosyelida.netlify.app/sobre.html" />
+    <meta property="og:title" content="Carlos &amp; Elida · 13 de Junio 2026" />
+    <meta property="og:description" content="Hemos reservado 2 lugares en su honor 💌" />
+    <meta property="og:image" content="https://bodacarlosyelida.netlify.app/assets/img/novios/foto4.JPG" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="es_GT" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Carlos &amp; Elida · 13 de Junio 2026" />
+    <meta name="twitter:description" content="Hemos reservado 2 lugares en su honor 💌" />
+    <meta name="twitter:image" content="https://bodacarlosyelida.netlify.app/assets/img/novios/foto4.JPG" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet" />
@@ -33,10 +48,9 @@
         background-attachment: fixed;
       }
 
-      /* ---- Flores ---- */
       .flor-izq {
         position: fixed;
-        top: clamp(-180px, -28vw, -100px);   /* más arriba que antes */
+        top: clamp(-180px, -28vw, -100px);
         left: clamp(-70px, -10vw, -40px);
         width: clamp(130px, 42vw, 300px);
         height: auto;
@@ -55,7 +69,6 @@
         z-index: 0;
       }
 
-      /* ---- Contenedor principal ---- */
       .pagina {
         position: relative;
         z-index: 1;
@@ -97,7 +110,6 @@
         animation: fadeDown 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
       }
 
-      /* ---- Contenedor del sobre ---- */
       .sobre-wrapper {
         position: relative;
         display: inline-block;
@@ -113,7 +125,6 @@
         pointer-events: none;
       }
 
-      /* ---- Área clicable: botón dorado central ---- */
       .boton-area {
         position: absolute;
         top: 35%;
@@ -125,7 +136,6 @@
         cursor: pointer;
         z-index: 2;
         -webkit-tap-highlight-color: transparent;
-        /* background: rgba(255,0,0,0.3); */ /* descomenta para depurar */
         transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
       }
 
@@ -136,7 +146,6 @@
         outline-offset: 4px;
       }
 
-      /* ---- Sección "Hemos Reservado" ---- */
       .reservado-bloque {
         display: flex;
         flex-direction: column;
