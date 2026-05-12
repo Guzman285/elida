@@ -582,9 +582,10 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2px;
+  justify-content: flex-end;
+  gap: 6px;
   flex: 1;
-  padding: 8px 8px;
+  padding: 12px 8px 10px;
   background: transparent;
   border: 1px solid rgba(184,107,82,0.35);
   color: var(--terracota);
@@ -596,7 +597,17 @@ body {
   border-radius: 0;
   transition: background 0.25s ease, color 0.25s ease, transform 0.15s ease;
 }
-.rsvp-btn-simple img { width: 96px; height: 96px; object-fit: contain; }
+.rsvp-btn-simple img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  display: block;
+}
+.rsvp-btn-simple span {
+  display: block;
+  line-height: 1;
+  margin-top: 2px;
+}
 .rsvp-btn-simple:hover { background: rgba(184,107,82,0.08); }
 .rsvp-btn-simple:active { transform: scale(0.97); }
 
