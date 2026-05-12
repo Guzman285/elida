@@ -121,7 +121,7 @@ body {
 }
 
 /* ─── FOTO NOVIOS ─── */
-.foto-novios-section { background-color: transparent; width: 100%; margin-top: -72px; }
+.foto-novios-section { background-color: transparent; width: 100%; margin-top: 0; }
 .foto-novios-wrap { position: relative; width: 100%; line-height: 0; overflow: hidden; }
 .foto-novios-img { width: 100%; height: auto; display: block; object-fit: cover; will-change: transform; }
 .foto-degradado-top { position: absolute; top: 0; left: 0; width: 100%; height: 100px; background: linear-gradient(to bottom, rgba(255,255,255,0.7) 0%, transparent 100%); pointer-events: none; z-index: 2; }
