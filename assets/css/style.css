@@ -227,7 +227,7 @@ body {
 .contador-sep { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(2.2rem, 10vw, 3rem); font-weight: 300; color: var(--terracota); opacity: 0.7; align-self: flex-start; padding: 3px 2px 0; }
 
 /* ─── SECCIÓN EVENTO ─── */
-.evento-section { position: relative; overflow: hidden; padding: 24px 16px 32px; display: flex; flex-direction: column; align-items: center; gap: 28px; background-color: transparent; }
+.evento-section { position: relative; overflow: visible; padding: 24px 16px 32px; display: flex; flex-direction: column; align-items: center; gap: 28px; background-color: transparent; }
 .evento-card { position: relative; width: 100%; max-width: 400px; }
 .evento-arco-img { width: 100%; height: auto; display: block; }
 .evento-card-content { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; padding: 10% 15% 30%; text-align: center; pointer-events: none; }
@@ -263,7 +263,7 @@ body {
 /* ─── ITINERARIO ─── */
 .itinerario-section {
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   background-color: transparent;
   padding: 10px 20px 40px;
   display: flex;
@@ -272,7 +272,7 @@ body {
   gap: 32px;
 }
 .deco-flor-itinerario-der { top: 900px; right: -12px; transform: scaleX(-1); width: 46%; max-width: 180px; opacity: 0.72; }
-.deco-flor-itinerario-izq { bottom: 1000px; left: 12px; transform: rotate(90deg); width: 46%; max-width: 180px; opacity: 0.72; }
+.deco-flor-itinerario-izq { bottom: 1030px; left: 12px; transform: rotate(90deg); width: 46%; max-width: 180px; opacity: 0.72; }
 .itinerario-section > *:not(.deco-flor) { position: relative; z-index: 1; }
 
 .itinerario-titulo { text-align: center; line-height: 1; }
@@ -535,9 +535,9 @@ body {
 .modal-nav-separador { display: none; }
 
 /* ─── SECCIÓN RSVP ─── */
-.rsvp-section { position: relative; overflow: hidden; background-color: transparent; padding: 50px 32px 60px; display: flex; flex-direction: column; align-items: center; gap: 28px; text-align: center; border-top: 1px solid rgba(184,107,82,0.15); }
-.deco-flor-rsvp-izq { top: 430px; left: -10px; transform: none; width: 42%; max-width: 165px; opacity: 0.65; }
-.deco-flor-rsvp-der { top: 430px; right: -10px; transform: scaleX(-1); width: 42%; max-width: 165px; opacity: 0.65; }
+.rsvp-section { position: relative; overflow: visible; background-color: transparent; padding: 50px 32px 60px; display: flex; flex-direction: column; align-items: center; gap: 28px; text-align: center; border-top: 1px solid rgba(184,107,82,0.15); }
+.deco-flor-rsvp-izq { top: 460px; left: -10px; transform: none; width: 42%; max-width: 165px; opacity: 0.65; }
+.deco-flor-rsvp-der { top: 460px; right: -10px; transform: scaleX(-1); width: 42%; max-width: 165px; opacity: 0.65; }
 .rsvp-section > *:not(.deco-flor) { position: relative; z-index: 1; }
 .rsvp-deco-top, .rsvp-deco-bottom { opacity: 0.8; }
 .rsvp-pre { font-family: "Great Vibes", cursive; font-size: clamp(1.8rem, 8vw, 2.5rem); color: var(--terracota); line-height: 1; opacity: 0.85; }
