@@ -75,9 +75,9 @@ body {
   background-color: transparent;
   overflow: hidden;
   display: grid;
-  grid-template-columns: 44% 56%;
+  grid-template-columns: 42% 58%;
   align-items: center;
-  padding: 16px 0 0;
+  padding: 24px 0 24px;
 }
 
 .hero-flores-izq {
@@ -98,18 +98,18 @@ body {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  padding: 20px 14px 20px 0;
+  padding: 28px 16px 28px 4px;
   z-index: 2;
 }
 .hero-versiculo { text-align: left; }
 
 .versiculo-texto {
   font-family: "Great Vibes", cursive;
-  font-size: clamp(1.6rem, 7.5vw, 2.2rem);
+  font-size: clamp(1.55rem, 7.2vw, 2.1rem);
   font-style: normal;
   color: var(--texto);
-  line-height: 1.45;
-  margin-bottom: 12px;
+  line-height: 1.5;
+  margin-bottom: 14px;
 }
 .versiculo-ref {
   font-family: "Cormorant Garamond", Georgia, serif;
