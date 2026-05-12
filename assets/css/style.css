@@ -170,8 +170,8 @@ body {
   gap: 28px;
   text-align: center;
 }
-.deco-flor-padres-sup-izq { bottom: 610px; left: -20px; top: auto; transform: rotate(180deg) scaleX(-1); width: 48%; max-width: 190px; opacity: 0.82; }
-.deco-flor-padres-inf-der { top: 280px; right: -20px; bottom: auto; transform: scaleX(-1); width: 48%; max-width: 190px; opacity: 0.75; }
+.deco-flor-padres-sup-izq { bottom: 610px; left: -28px; top: 20px; transform: rotate(180deg) scaleX(-1); width: 48%; max-width: 190px; opacity: 0.82; }
+.deco-flor-padres-inf-der { top: 230px; right: -48px; bottom: auto; transform: scaleX(-1); width: 48%; max-width: 190px; opacity: 0.75; }
 
 .padres-intro { font-family: "Great Vibes", cursive; font-size: clamp(1.9rem, 8.5vw, 2.6rem); color: var(--texto); line-height: 1.15; position: relative; z-index: 1; }
 .padres-linea-deco { width: 50px; height: 1px; background: var(--terracota); opacity: 0.45; margin-top: -14px; position: relative; z-index: 1; }
@@ -272,7 +272,7 @@ body {
   gap: 32px;
 }
 .deco-flor-itinerario-der { top: 900px; right: -12px; transform: scaleX(-1); width: 46%; max-width: 180px; opacity: 0.72; }
-.deco-flor-itinerario-izq { bottom: 1025px; left: 12px; transform: rotate(90deg); width: 46%; max-width: 180px; opacity: 0.72; }
+.deco-flor-itinerario-izq { bottom: 1000px; left: 12px; transform: rotate(90deg); width: 46%; max-width: 180px; opacity: 0.72; }
 .itinerario-section > *:not(.deco-flor) { position: relative; z-index: 1; }
 
 .itinerario-titulo { text-align: center; line-height: 1; }
@@ -536,8 +536,8 @@ body {
 
 /* ─── SECCIÓN RSVP ─── */
 .rsvp-section { position: relative; overflow: hidden; background-color: transparent; padding: 50px 32px 60px; display: flex; flex-direction: column; align-items: center; gap: 28px; text-align: center; border-top: 1px solid rgba(184,107,82,0.15); }
-.deco-flor-rsvp-izq { top: 370px; left: -10px; transform: none; width: 42%; max-width: 165px; opacity: 0.65; }
-.deco-flor-rsvp-der { top: 370px; right: -10px; transform: scaleX(-1); width: 42%; max-width: 165px; opacity: 0.65; }
+.deco-flor-rsvp-izq { top: 430px; left: -10px; transform: none; width: 42%; max-width: 165px; opacity: 0.65; }
+.deco-flor-rsvp-der { top: 430px; right: -10px; transform: scaleX(-1); width: 42%; max-width: 165px; opacity: 0.65; }
 .rsvp-section > *:not(.deco-flor) { position: relative; z-index: 1; }
 .rsvp-deco-top, .rsvp-deco-bottom { opacity: 0.8; }
 .rsvp-pre { font-family: "Great Vibes", cursive; font-size: clamp(1.8rem, 8vw, 2.5rem); color: var(--terracota); line-height: 1; opacity: 0.85; }
