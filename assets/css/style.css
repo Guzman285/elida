@@ -77,7 +77,6 @@ body {
   display: grid;
   grid-template-columns: 44% 56%;
   align-items: center;
-  min-height: 320px;
   padding: 16px 0 0;
 }
 
