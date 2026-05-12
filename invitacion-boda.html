@@ -589,4 +589,271 @@
             </div>
           </div>
           <div class="tl-punto" aria-hidden="true">
-            <svg viewBox="0 0 20 20" fill="currentColor" width="13" height="13">
+            <svg viewBox="0 0 20 20" fill="currentColor" width="13" height="13"><path d="M10 17s-7-4.35-7-9a4 4 0 0 1 7-2.646A4 4 0 0 1 17 8c0 4.65-7 9-7 9z"/></svg>
+          </div>
+          <div class="tl-lado-der"></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FOTO después del itinerario -->
+    <section class="foto-novios-section foto-novios-section-post-itinerario">
+      <div class="foto-novios-wrap">
+        <img src="./assets/img/novios/foto4.JPG" alt="Carlos y Elida" class="foto-novios-img" loading="lazy" />
+        <div class="foto-degradado-top"></div>
+        <div class="foto-degradado-bottom"></div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN NOTAS -->
+    <section class="notas-section">
+      <img src="./assets/img/fondos/flor1.png" alt="" class="deco-flor deco-flor-notas-izq" aria-hidden="true" />
+      <img src="./assets/img/fondos/flor1.png" alt="" class="deco-flor deco-flor-notas-der" aria-hidden="true" />
+      <h2 class="notas-titulo">Notas</h2>
+      <div class="notas-linea-deco"></div>
+      <div class="nota-item">
+        <div class="vestimenta-iconos" aria-hidden="true">
+          <img src="./assets/img/iconos/mujer.png" alt="Vestimenta mujer" class="vestimenta-img" loading="lazy" />
+          <img src="./assets/img/iconos/hombre.png" alt="Vestimenta hombre" class="vestimenta-img" loading="lazy" />
+        </div>
+        <p class="nota-nombre">Código de Vestimenta</p>
+        <p class="nota-desc">Descubre el estilo sugerido para este día especial</p>
+        <button class="nota-btn" onclick="abrirModal('modal-vestimenta')" aria-label="Ver código de vestimenta">
+          <span>Ver más</span>
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14"><path d="M4 10h12M12 6l4 4-4 4"/></svg>
+        </button>
+      </div>
+      <div class="nota-separador"></div>
+      <div class="nota-item">
+        <div class="nota-icono" aria-hidden="true"><img src="./assets/img/iconos/regalo.png" alt="Regalos" class="nota-icono-img" loading="lazy" /></div>
+        <p class="nota-nombre">Sugerencia de Regalos</p>
+        <p class="nota-desc">Si deseas hacernos un regalo, aquí encontrarás opciones</p>
+        <button class="nota-btn" onclick="abrirModal('modal-regalos')" aria-label="Ver sugerencia de regalos">
+          <span>Ver más</span>
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14"><path d="M4 10h12M12 6l4 4-4 4"/></svg>
+        </button>
+      </div>
+      <div class="nota-separador"></div>
+      <div class="nota-item">
+        <div class="nota-icono" aria-hidden="true"><img src="./assets/img/iconos/par.png" alt="Parqueo" class="nota-icono-img" loading="lazy" /></div>
+        <p class="nota-nombre">Parqueo</p>
+        <p class="nota-desc">El lugar cuenta con parqueo disponible. Te pedimos llevar <strong style="font-style:normal; color:var(--terracota)">Q25 en efectivo</strong> para el pago al ingreso. ¡Nos vemos pronto!</p>
+      </div>
+      <div class="nota-separador"></div>
+      <div class="nota-item">
+        <div class="nota-icono" aria-hidden="true"><img src="./assets/img/iconos/bebida.png" alt="Ambiente familiar" class="nota-icono-img" loading="lazy" /></div>
+        <p class="nota-nombre">Ambiente Familiar</p>
+        <p class="nota-desc">Este es un evento familiar y libre de alcohol. Les pedimos con cariño que no se ingrese ni consuma bebidas alcohólicas dentro del lugar, para que todos podamos disfrutar juntos este día tan especial. ¡Gracias por su comprensión!</p>
+      </div>
+    </section>
+
+    <!-- SECCIÓN RSVP -->
+    <section class="rsvp-section">
+      <img src="./assets/img/fondos/flor2.png" alt="" class="deco-flor deco-flor-rsvp-izq" aria-hidden="true" />
+      <img src="./assets/img/fondos/flor2.png" alt="" class="deco-flor deco-flor-rsvp-der" aria-hidden="true" />
+      <div class="rsvp-deco-top" aria-hidden="true">
+        <svg viewBox="0 0 200 20" fill="none" width="160" height="20">
+          <line x1="0" y1="10" x2="80" y2="10" stroke="#b86b52" stroke-width="0.8" opacity="0.5"/>
+          <circle cx="100" cy="10" r="3" fill="none" stroke="#b86b52" stroke-width="0.8" opacity="0.7"/>
+          <line x1="120" y1="10" x2="200" y2="10" stroke="#b86b52" stroke-width="0.8" opacity="0.5"/>
+        </svg>
+      </div>
+      <p class="rsvp-pre">Sería un honor</p>
+      <h2 class="rsvp-titulo">Confirmar Asistencia</h2>
+      <p class="rsvp-texto">Tu presencia hace que este día sea aún más especial.<br>Por favor, házsnoslo saber antes del <strong>1 de Junio.</strong></p>
+      <div id="rsvpOpciones" class="rsvp-opciones-simples">
+        <button class="rsvp-btn-simple" type="button" onclick="abrirModal('modal-confirmar')" aria-label="Confirmar asistencia">
+          <img src="./assets/img/iconos/whatsapp.png" alt="Confirmar" loading="lazy" />
+          <span>Confirmar</span>
+        </button>
+        <button class="rsvp-btn-simple" type="button" onclick="abrirModal('modal-mensaje')" aria-label="Dejar mensaje">
+          <img src="./assets/img/iconos/mensaje.png" alt="Mensaje" loading="lazy" />
+          <span>Mensaje</span>
+        </button>
+      </div>
+      <div class="rsvp-confirmado" id="rsvpNoAsiste" style="display:none">
+        <div class="rsvp-confirmado-icono" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" width="44" height="44"><path d="M24 42s-18-10-18-22a10 10 0 0 1 18-6 10 10 0 0 1 18 6c0 12-18 22-18 22z"/></svg>
+        </div>
+        <p class="rsvp-confirmado-titulo">¡Muchas gracias!</p>
+        <p class="rsvp-confirmado-texto">Los tendremos en nuestro corazón ese día. ♥</p>
+      </div>
+      <div class="rsvp-deco-bottom" aria-hidden="true">
+        <svg viewBox="0 0 200 20" fill="none" width="160" height="20">
+          <line x1="0" y1="10" x2="80" y2="10" stroke="#b86b52" stroke-width="0.8" opacity="0.5"/>
+          <circle cx="100" cy="10" r="3" fill="none" stroke="#b86b52" stroke-width="0.8" opacity="0.7"/>
+          <line x1="120" y1="10" x2="200" y2="10" stroke="#b86b52" stroke-width="0.8" opacity="0.5"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- FOOTER DE CIERRE -->
+    <footer class="boda-footer" aria-label="Cierre de invitación">
+      <div class="footer-ornamento" aria-hidden="true">
+        <div class="footer-orn-linea"></div>
+        <div class="footer-orn-punto"></div>
+        <div class="footer-orn-rombo"></div>
+        <div class="footer-orn-punto"></div>
+        <div class="footer-orn-linea der"></div>
+      </div>
+      <p class="footer-nombres">Carlos &amp; Elida</p>
+      <div class="footer-corazon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M12 21s-9-5.25-9-11A5 5 0 0 1 12 6.9 5 5 0 0 1 21 10c0 5.75-9 11-9 11z"/></svg>
+      </div>
+      <p class="footer-fecha">13 · Junio · 2026</p>
+      <p class="footer-frase">Con mucho amor y alegría<br>los esperamos ese día tan especial.</p>
+      <div class="footer-ornamento footer-ornamento-bottom" aria-hidden="true">
+        <div class="footer-orn-linea"></div>
+        <div class="footer-orn-punto"></div>
+        <div class="footer-orn-rombo"></div>
+        <div class="footer-orn-punto"></div>
+        <div class="footer-orn-linea der"></div>
+      </div>
+    </footer>
+
+    <!-- MODAL: VESTIMENTA -->
+    <div class="modal-overlay" id="modal-vestimenta" role="dialog" aria-modal="true" aria-label="Código de vestimenta" onclick="cerrarModalOverlay(event, 'modal-vestimenta')">
+      <div class="modal-contenido">
+        <button class="modal-cerrar" onclick="cerrarModal('modal-vestimenta')" aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+        <div class="modal-arco-wrap">
+          <img src="./assets/img/fondos/arco2.png" alt="Código de vestimenta" class="modal-img" />
+          <div class="modal-arco-texto modal-vestimenta-texto">
+            <p class="modal-arco-titulo">Código de<br>Vestimenta</p>
+            <div class="modal-arco-linea"></div>
+            <p class="modal-arco-desc">Les pedimos vestir de manera elegante.</p>
+            <p class="modal-arco-desc">Por favor evitar el color <strong>blanco</strong>, reservado para la novia, y el color <strong>rojo</strong>, para mantener la armonía y el protocolo del día.</p>
+            <p class="modal-arco-desc" style="margin-top:6px; font-style:italic; opacity:0.75;">¡Gracias por ser parte de este momento tan especial!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL: REGALOS -->
+    <div class="modal-overlay" id="modal-regalos" role="dialog" aria-modal="true" aria-label="Sugerencia de regalos" onclick="cerrarModalOverlay(event, 'modal-regalos')">
+      <div class="modal-contenido">
+        <button class="modal-cerrar" onclick="cerrarModal('modal-regalos')" aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+        <div class="modal-arco-wrap">
+          <img src="./assets/img/fondos/arco2.png" alt="Sugerencia de regalos" class="modal-img" />
+          <div class="modal-arco-texto modal-regalos-texto">
+            <p class="modal-arco-titulo">Sugerencia<br>de Regalos</p>
+            <div class="modal-arco-linea"></div>
+            <p class="modal-arco-desc">Con mucho cariño te compartimos esta opción:</p>
+            <div class="cuenta-item">
+              <div class="cuenta-info">
+                <span class="cuenta-banco">Depósito Banrural — Cuenta de Ahorro</span>
+                <span class="cuenta-numero" id="num-banrural">3033299549</span>
+              </div>
+              <button class="cuenta-copiar" onclick="copiarCuenta('num-banrural', this)" aria-label="Copiar número Banrural">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              </button>
+            </div>
+            <p class="modal-arco-desc" style="font-style:italic; opacity:0.8;">O también puedes entregar un <strong>sobre</strong> el día del evento. ¡Con mucho amor! 🤍</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL: NAVEGACIÓN -->
+    <div class="modal-overlay" id="modal-navegacion" role="dialog" aria-modal="true" aria-label="Cómo llegar" onclick="cerrarModalOverlay(event, 'modal-navegacion')">
+      <div class="modal-contenido modal-nav-contenido">
+        <button class="modal-cerrar" onclick="cerrarModal('modal-navegacion')" aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+        <div class="modal-nav-body">
+          <p class="modal-nav-titulo">¿Cómo deseas llegar?</p>
+          <p class="modal-nav-lugar">Casa del Lago — Lago de Amatitlán</p>
+          <div class="modal-nav-opciones">
+            <a class="modal-nav-opcion" href="https://www.google.com/maps/place/CASA+DEL+LAGO/@14.4572059,-90.6249416,14z/data=!4m6!3m5!1s0x858909bd75a51c95:0xd3ae47181ded58f5!8m2!3d14.4481766!4d-90.5930761!16s%2Fg%2F11bc72q1n2" target="_blank" rel="noopener noreferrer">
+              <img src="./assets/img/iconos/maps.png" alt="Google Maps" class="modal-nav-icon" />
+              <span class="modal-nav-nombre">Google Maps</span>
+            </a>
+            <a class="modal-nav-opcion" href="https://waze.com/ul?ll=14.4481766,-90.5930761&navigate=yes" target="_blank" rel="noopener noreferrer">
+              <img src="./assets/img/iconos/waze.png" alt="Waze" class="modal-nav-icon" />
+              <span class="modal-nav-nombre">Waze</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL: CONFIRMAR ASISTENCIA -->
+    <div class="modal-overlay" id="modal-confirmar" role="dialog" aria-modal="true" aria-label="Confirmar asistencia" onclick="cerrarModalOverlay(event, 'modal-confirmar')">
+      <div class="modal-contenido modal-nav-contenido" style="max-width:360px;">
+        <button class="modal-cerrar" onclick="cerrarModal('modal-confirmar')" aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+        <div class="modal-nav-body" style="gap:14px;">
+          <div style="width:100%; display:flex; flex-direction:column; align-items:center; gap:10px;">
+            <p class="modal-nav-titulo" style="font-size:clamp(1.6rem,7vw,2rem);">¿Podrás<br>acompañarnos? 💍</p>
+            <p class="modal-nav-lugar">Carlos &amp; Elida &bull; 13 de Junio</p>
+            <form class="rsvp-form" onsubmit="enviarConfirmacion(event)" novalidate style="width:100%;">
+              <div class="rsvp-field">
+                <label class="rsvp-label" for="rsvpNombre">Tu nombre</label>
+                <input class="rsvp-input" type="text" id="rsvpNombre" placeholder="Ej: María García" autocomplete="name" />
+                <span class="rsvp-error" id="rsvpNombreError" style="display:none">Por favor escribe tu nombre.</span>
+              </div>
+              <div class="rsvp-field">
+                <label class="rsvp-label">¿Cuántas personas asistirán?</label>
+                <div class="rsvp-counter">
+                  <button type="button" class="rsvp-counter-btn" onclick="cambiarCantidad(-1)" aria-label="Restar persona">−</button>
+                  <span class="rsvp-counter-num" id="rsvpCantidad">1</span>
+                  <button type="button" class="rsvp-counter-btn" onclick="cambiarCantidad(1)" aria-label="Agregar persona">+</button>
+                </div>
+              </div>
+              <div class="rsvp-field">
+                <label class="rsvp-label">¿Asistirás?</label>
+                <div class="rsvp-toggle-wrap">
+                  <button type="button" class="rsvp-toggle-btn rsvp-toggle-si activo" id="btnSi" onclick="seleccionarAsistencia('si')" aria-pressed="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="15" height="15"><path d="M20 6L9 17l-5-5"/></svg>
+                    Sí, asistiré
+                  </button>
+                  <button type="button" class="rsvp-toggle-btn rsvp-toggle-no" id="btnNo" onclick="seleccionarAsistencia('no')" aria-pressed="false">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="15" height="15"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                    No podré ir
+                  </button>
+                </div>
+              </div>
+              <button class="rsvp-submit-btn" type="submit" id="rsvpSubmitBtn">
+                <svg viewBox="0 0 32 32" fill="currentColor" width="18" height="18" style="flex-shrink:0;"><path d="M27.3 4.7C24.5 1.9 20.8.3 16.9.3 8.9.3 2.4 6.8 2.4 14.8c0 2.5.7 5 1.9 7.2L2.3 29.7l7.9-2.1c2.1 1.1 4.4 1.7 6.7 1.7 8 0 14.5-6.5 14.5-14.5 0-3.9-1.5-7.5-4.1-10.1zm-10.4 22.3c-2.1 0-4.2-.6-6-1.6l-.4-.3-4.7 1.2 1.3-4.6-.3-.5c-1.1-1.9-1.7-4-1.7-6.2 0-6.6 5.4-12 12-12 3.2 0 6.2 1.2 8.5 3.5s3.5 5.3 3.5 8.5c-.1 6.6-5.5 12-12.2 12zm6.6-9c-.4-.2-2.1-1-2.4-1.1-.3-.1-.6-.2-.8.2-.2.4-.9 1.1-1.1 1.3-.2.2-.4.2-.8 0-.4-.2-1.5-.5-2.9-1.8-1.1-.9-1.8-2.1-2-2.4-.2-.4 0-.6.1-.7.1-.1.4-.4.5-.6.2-.2.2-.4.3-.6.1-.2 0-.4 0-.6-.1-.2-.8-1.9-1.1-2.6-.3-.7-.6-.6-.8-.6h-.7c-.2 0-.6.1-.9.4-.3.3-1.2 1.2-1.2 2.9 0 1.7 1.2 3.4 1.4 3.6.2.2 2.4 3.8 5.9 5.2.8.3 1.5.5 2 .7.8.2 1.6.2 2.2.1.7-.1 2.1-.8 2.4-1.6.3-.8.3-1.5.2-1.6-.2-.2-.4-.3-.8-.5z"/></svg>
+              Enviar por WhatsApp
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL: MENSAJE A LOS NOVIOS -->
+    <div class="modal-overlay" id="modal-mensaje" role="dialog" aria-modal="true" aria-label="Dejar mensaje" onclick="cerrarModalOverlay(event, 'modal-mensaje')">
+      <div class="modal-contenido modal-nav-contenido" style="max-width:360px;">
+        <button class="modal-cerrar" onclick="cerrarModal('modal-mensaje')" aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+        <div class="modal-nav-body" style="gap:14px;">
+          <div id="modalMensajeForm" style="width:100%; display:flex; flex-direction:column; align-items:center; gap:12px;">
+            <p class="modal-nav-titulo" style="font-size:clamp(1.6rem,7vw,2rem);">Un mensaje<br>para nosotros 💌</p>
+            <p class="modal-nav-lugar">Cuéntanos algo bonito</p>
+            <form class="rsvp-form" onsubmit="enviarMensaje(event)" novalidate style="width:100%;">
+              <div class="rsvp-field">
+                <label class="rsvp-label" for="msgNombre">Tu nombre</label>
+                <input class="rsvp-input" type="text" id="msgNombre" placeholder="Ej: María García" autocomplete="name" />
+                <span class="rsvp-error" style="display:none">Por favor escribe tu nombre.</span>
+              </div>
+              <div class="rsvp-field">
+                <label class="rsvp-label" for="msgTexto">Tu mensaje</label>
+                <textarea class="rsvp-input rsvp-textarea" id="msgTexto" rows="4" placeholder="Escríbeles algo bonito a los novios..."></textarea>
+                <span class="rsvp-error" style="display:none">Por favor escribe tu mensaje.</span>
+              </div>
+              <button class="rsvp-submit-btn" type="submit" id="msgSubmitBtn">Enviar mensaje 💌</button>
+            </form>
+          </div>
+          <div class="rsvp-confirmado" id="modalMensajeConfirmado" style="display:none;">
+            <div class="rsvp-confirmado-icono" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" width="44" height="44"><circle cx="24" cy="24" r="20"/><path d="M15 24l7 7 11-12"/></svg>
+            </div>
+            <p class="rsvp-confirmado-titulo">¡Gracias por tu mensaje!</p>
+            <p class="rsvp-confirmado-texto">Carlos &amp; Elida lo leerán con mucho cariño. 🤍</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <main class="main-content"></main>
+    <script src="./assets/js/app.js"></script>
+  </body>
+</html>
